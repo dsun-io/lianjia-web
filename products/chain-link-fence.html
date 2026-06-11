@@ -364,7 +364,8 @@
   var btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),h=document.getElementById('icon-hamburger'),c=document.getElementById('icon-close');
   if(!btn||!menu)return;
   btn.addEventListener('click',function(){var o=btn.getAttribute('aria-expanded')==='true';if(o){menu.style.maxHeight='0px';btn.setAttribute('aria-expanded','false');h.classList.remove('hidden');c.classList.add('hidden');setTimeout(function(){if(btn.getAttribute('aria-expanded')==='false')menu.classList.add('hidden');},300)}else{menu.classList.remove('hidden');menu.offsetHeight;menu.style.maxHeight=menu.scrollHeight+'px';btn.setAttribute('aria-expanded','true');h.classList.add('hidden');c.classList.remove('hidden')}});
-  var form=document.querySelector('#inquiry form');if(form)form.addEventListener('submit',function(){var d=document.getElementById('inquiry-dwell');if(d&&window.LJTracker)try{d.value=JSON.stringify(window.LJTracker.getAllDwell())}catch(e){}});
+  /* 表单：拦截提交，fetch 异步发送 + 直接重定向到本地 thank-you 页，避免经过外部 formspree 导致浏览器历史死循环 */
+  var form=document.querySelector('#inquiry form');if(form)form.addEventListener('submit',function(e){e.preventDefault();try{sessionStorage.setItem('lj_form_source',window.location.href)}catch(e){}var data=new FormData(form);var d=document.getElementById('inquiry-dwell');if(d&&window.LJTracker)try{data.set('dwell_times',JSON.stringify(window.LJTracker.getAllDwell()))}catch(e){}if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);history.replaceState(null,'',window.location.pathname);setTimeout(function(){fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).catch(function(){})},100);location.href='../thank-you.html'});
 })();
 </script>
 </body>

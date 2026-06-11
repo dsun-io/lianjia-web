@@ -484,20 +484,31 @@
 <script src="../assets/js/time-tracker.js"></script>
 <script src="../assets/js/cookie-consent.js"></script>
 <script>
-// 询盘表单：注入停留时长数据
+// 询盘表单：拦截提交，fetch 异步发送 + 直接重定向到本地 thank-you 页，避免经过外部 formspree 导致浏览器历史死循环
 (function() {
   var form = document.querySelector('#inquiry form');
   if (!form) return;
-  form.addEventListener('submit', function() {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    try { sessionStorage.setItem('lj_form_source', window.location.href); } catch(e) {}
+    var data = new FormData(form);
     var dwellEl = document.getElementById('inquiry-dwell');
     if (dwellEl && window.LJTracker) {
       try {
-        var data = window.LJTracker.getAllDwell();
-        dwellEl.value = JSON.stringify(data);
+        data.set('dwell_times', JSON.stringify(window.LJTracker.getAllDwell()));
       } catch(e) {}
     }
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
+    history.replaceState(null, '', window.location.pathname);
+    setTimeout(function() {
+      fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .catch(function() {});
+    }, 100);
+    location.href = '../thank-you.html';
   });
 })();
+
 // Mobile menu toggle
 (function() {
   var btn = document.getElementById('mobile-menu-btn');
