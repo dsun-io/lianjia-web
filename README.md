@@ -4,13 +4,13 @@
 
 ## 📋 项目概述
 
-| 项目 | 说明 |
-|------|------|
-| **目标客户** | 澳大利亚 / 新西兰围栏批发商、工程商、进口商 |
+| 项目               | 说明                                                                            |
+| ------------------ | ------------------------------------------------------------------------------- |
+| **目标客户** | 澳大利亚 / 新西兰围栏批发商、工程商、进口商                                     |
 | **核心产品** | 牛栏网 (Field Fence)、勾花网 (Chain Link Fence)、Y型立柱 (Y Post / Star Picket) |
-| **技术栈** | 纯静态 HTML + Tailwind CSS (Play CDN) + AOS 动画 |
-| **表单方案** | Formspree（零后端） |
-| **部署平台** | GitHub Pages / Netlify |
+| **技术栈**   | 纯静态 HTML + Tailwind CSS (Play CDN) + AOS 动画                                |
+| **表单方案** | Formspree（零后端）                                                             |
+| **部署平台** | GitHub Pages / Netlify                                                          |
 
 ## 📁 文件结构
 
@@ -40,17 +40,17 @@
 
 每个产品独立页面（`/products/xxx.html`）包含：
 
-| 功能模块 | 说明 |
-|---------|------|
-| **Hero Banner** | 产品大图 + 简介 |
-| **规格表** | 完整技术参数（Material / Wire Diameter / Zinc Coating 等） |
-| **检测数据** | 镀锌量、丝径公差、拉力强度、标准合规 |
-| **应用场景** | 3 个典型使用场景卡片 |
-| **使用方法** | 分步安装指南 + Pro Tip |
-| **配套推荐** | 关联产品交叉导流 |
-| **参考价格** | 出厂裸价（明确标注不含运费/关税/末端配送） |
-| **询盘表单** | 项目/使用场景、围栏长度、是否需要立柱/配件（可留空/不确定） |
-| **停留时长埋点** | 仅页面可见时计时，存 localStorage，提交时一并传给后端 |
+| 功能模块               | 说明                                                        |
+| ---------------------- | ----------------------------------------------------------- |
+| **Hero Banner**  | 产品大图 + 简介                                             |
+| **规格表**       | 完整技术参数（Material / Wire Diameter / Zinc Coating 等）  |
+| **检测数据**     | 镀锌量、丝径公差、拉力强度、标准合规                        |
+| **应用场景**     | 3 个典型使用场景卡片                                        |
+| **使用方法**     | 分步安装指南 + Pro Tip                                      |
+| **配套推荐**     | 关联产品交叉导流                                            |
+| **参考价格**     | 出厂裸价（明确标注不含运费/关税/末端配送）                  |
+| **询盘表单**     | 项目/使用场景、围栏长度、是否需要立柱/配件（可留空/不确定） |
+| **停留时长埋点** | 仅页面可见时计时，存 localStorage，提交时一并传给后端       |
 
 ## 📊 停留时长追踪（改动 2）
 
@@ -72,32 +72,35 @@
 
 表单新增字段（均可为空或"不确定"）：
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| Project / Usage Scenario | textarea | 围栏长度、用途、是否需立柱+配件 |
-| Fence Length (approx.) | input | 如 500m / 2km / Not sure |
-| Need Posts / Accessories? | select | Not sure yet / Yes / No |
-| Product of Interest | select | 自动回显停留最长的产品 |
-| source_page | hidden | 来源页 slug |
-| dwell_times | hidden | 各产品停留秒数 JSON |
+| 字段                      | 类型     | 说明                            |
+| ------------------------- | -------- | ------------------------------- |
+| Project / Usage Scenario  | textarea | 围栏长度、用途、是否需立柱+配件 |
+| Fence Length (approx.)    | input    | 如 500m / 2km / Not sure        |
+| Need Posts / Accessories? | select   | Not sure yet / Yes / No         |
+| Product of Interest       | select   | 自动回显停留最长的产品          |
+| source_page               | hidden   | 来源页 slug                     |
+| dwell_times               | hidden   | 各产品停留秒数 JSON             |
 
 ## 🔧 待替换占位符
 
 上线前需全局替换以下占位符：
 
-| 占位符 | 说明 |
-|--------|------|
-| `[COMPANY_NAME]` | 公司英文名 |
-| `[DOMAIN]` | 域名（如 lianjia-fence.com） |
-| `[YEAR_FOUNDED]` | 成立年份 |
-| `[YEARS]` | 经营年数 |
-| `[CAPACITY]` | 月产能（柜数） |
-| `[PHONE]` | 联系电话 |
-| `[EMAIL]` | 销售邮箱 |
-| `[WHATSAPP]` | WhatsApp 号码 |
-| `[WHATSAPP_LINK]` | WhatsApp wa.me 链接 |
-| `[YEAR]` | 当前年份 |
-| `FORM_ID` | Formspree 表单 ID |
+| 占位符                            | 说明                                                                             |
+| --------------------------------- | -------------------------------------------------------------------------------- |
+| `[COMPANY_NAME]`                | 公司英文名                                                                       |
+| `[DOMAIN]`                      | 域名（如 lianjia-fence.com）                                                     |
+| `[FACTORY_ADDRESS]`             | 工厂详细地址（如 No.88, West Industrial Zone, Anping）                           |
+| `[FACTORY_ADDRESS_URL_ENCODED]` | 同上，空格用+替换（如 No.88+West+Industrial+Zone+Anping），用于 Google Maps 嵌入 |
+| `FORM_SCRIPT_URL`               | Google Apps Script Web App URL（表单提交后端），详见下方说明                     |
+| `[YEAR_FOUNDED]`                | 成立年份                                                                         |
+| `[YEARS]`                       | 经营年数                                                                         |
+| `[CAPACITY]`                    | 月产能（柜数）                                                                   |
+| `[PHONE]`                       | 联系电话                                                                         |
+| `[EMAIL]`                       | 销售邮箱                                                                         |
+| `[WHATSAPP]`                    | WhatsApp 号码                                                                    |
+| `[WHATSAPP_LINK]`               | WhatsApp wa.me 链接                                                              |
+| `[YEAR]`                        | 当前年份                                                                         |
+| `FORM_ID`                       | Formspree 表单 ID                                                                |
 
 ## 🚀 部署
 
@@ -106,6 +109,12 @@
 3. 推送到 GitHub 仓库
 4. 启用 GitHub Pages（或连接 Netlify）
 5. 配置自定义域名 + SSL
+
+## 后续
+
+后续可以接入客户自动化开发平台, 实现客户提交表单自动发送打招呼邮件的功能, 目前客户提交表单以后, 需要人工介入维护, 因为该渠道客户精准度高, 所以当前方式尚可, 自动化邮件开发后续作为锦上添花的补充能力.
+
+且客户自动化开发未来会融入kaas, 作为其中的部分能力.
 
 ---
 
