@@ -6,4 +6,11 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Barbed Wire product section anchored at #products -->
+  <url>
+    <loc>https://[YOUR-DOMAIN].com/#products</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
