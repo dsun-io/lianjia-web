@@ -58,6 +58,18 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .wa-pulse { animation: wa-pulse 2s infinite; }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      min-width: 200px; background: white; border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid #e5e7eb; padding: 6px 0;
+      opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s, margin-top 0.2s;
+      margin-top: 8px; pointer-events: none;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover {
+      opacity: 1; visibility: visible; margin-top: 0; pointer-events: auto;
+    }
+    .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
   </style>
 </head>
 
@@ -72,7 +84,15 @@
       <img src="../assets/img/logo.svg" alt="[COMPANY_NAME] logo" class="h-10 w-auto">
     </a>
     <ul class="hidden lg:flex items-center gap-x-8 text-sm font-medium tracking-wide">
-      <li><a href="../#products" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">Products</a></li>
+      <li><a href="../" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">Home</a></li>
+      <li class="nav-dropdown relative">
+        <a href="../#products" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22] inline-flex items-center gap-1">Products <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="field-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a>
+          <a href="chain-link-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a>
+          <a href="y-post.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a>
+        </div>
+      </li>
       <li><a href="../#why-us" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">Why Us</a></li>
       <li><a href="../#factory" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">Factory</a></li>
       <li><a href="../#faq" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">FAQ</a></li>
@@ -91,7 +111,15 @@
   </nav>
   <div id="mobile-menu" class="lg:hidden hidden overflow-hidden transition-all duration-300 max-h-0 bg-white/95 backdrop-blur-md border-t border-gray-100">
     <ul class="flex flex-col px-6 py-4 space-y-1 text-base font-medium">
-      <li><a href="../#products" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Products</a></li>
+      <li><a href="../" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Home</a></li>
+      <li>
+        <a href="../#products" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Products</a>
+        <ul class="pl-4 mt-1 space-y-1">
+          <li><a href="field-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a></li>
+          <li><a href="chain-link-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a></li>
+          <li><a href="y-post.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a></li>
+        </ul>
+      </li>
       <li><a href="../#why-us" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Why Us</a></li>
       <li><a href="../#factory" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Factory</a></li>
       <li><a href="../#faq" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">FAQ</a></li>
