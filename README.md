@@ -102,7 +102,27 @@
 | `[YEAR]`                        | 当前年份                                                                         |
 | `FORM_ID`                       | Formspree 表单 ID                                                                |
 
-## 🚀 部署
+## �️ 本地开发
+
+### 启动项目
+
+```bash
+# 方式一：Python（推荐，Windows/macOS/Linux 通用）
+cd "外贸独立站设计(未来接入kaas做自动化)"
+python -m http.server 8080
+
+# 方式二：Node.js（需先安装 Node.js）
+npx serve .
+
+# 方式三：PHP
+php -S localhost:8080
+```
+
+启动后访问 **http://localhost:8080** 即可预览网站。
+
+> 如果 8080 端口被占用，可换成其他端口（如 3000、9000）。
+
+## �🚀 部署
 
 1. 替换所有占位符
 2. 替换 `assets/` 下的素材文件（参见「素材清单-发给老板.md」）
