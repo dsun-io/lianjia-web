@@ -1142,9 +1142,11 @@
       cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 225) + 'px, ' + (glowSmooth.y - 225) + 'px)';
     }
 
-    /* Dot position (transform-based) */
-    smooth.x += (raw.x - smooth.x) * 0.18;
-    smooth.y += (raw.y - smooth.y) * 0.18;
+    /* Dot position (transform-based) — 高跟踪系数减少延迟，距离极小时直接吸附 */
+    var lerpX = (raw.x - smooth.x) * 0.55;
+    var lerpY = (raw.y - smooth.y) * 0.55;
+    smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;
+    smooth.y += Math.abs(lerpY) < 0.5 ? (raw.y - smooth.y) : lerpY;
     cursorDot.style.transform = 'translate(' + smooth.x + 'px, ' + smooth.y + 'px) translate(-50%, -50%)';
 
     /* Parallax (only when in hero) */
