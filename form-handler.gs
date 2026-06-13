@@ -187,7 +187,7 @@ function sendQuotaAlert(remaining) {
       payload: JSON.stringify({
         msgtype: 'text',
         text: {
-          content: '⚠️ 邮件配额预警\n剩余: ' + remaining + ' 封\n时间: ' +
+          content: '⚠️ 联佳海外站询盘表单邮件配额预警\n剩余: ' + remaining + ' 封\n时间: ' +
                    new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
         }
       })
