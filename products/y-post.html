@@ -413,6 +413,17 @@
           <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">Send Inquiry</button>
           <p class="text-sm text-gray-400 flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>We reply within 24 hours. Your details stay private.</p>
         </form>
+        <!-- Success message (inline, initially hidden) -->
+        <div id="inquiry-success" class="hidden text-center py-8">
+          <div class="mb-6"><svg class="w-20 h-20 mx-auto" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" stroke="#E67E22" stroke-width="3" fill="#FFF7ED"/><path d="M25 42l10 10 20-20" stroke="#E67E22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:50;animation:checkDraw .6s ease-out .3s forwards"/></svg></div>
+          <h3 class="text-2xl sm:text-3xl font-bold mb-3">Thank You for Your Inquiry!</h3>
+          <p class="text-gray-400 text-lg mb-2">We've received your message and our sales team will get back to you <strong class="text-white">within 24 hours</strong> with a detailed quote.</p>
+          <p class="text-gray-500 text-sm mb-8">If urgent, reach us directly via WhatsApp.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onclick="var f=document.querySelector('#inquiry form');document.getElementById('inquiry-success').classList.add('hidden');f.classList.remove('hidden');f.querySelector('button[type=submit]').disabled=false;f.querySelector('button[type=submit]').textContent='Send Inquiry';history.replaceState(null,'','');" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors">Submit Another Inquiry</button>
+            <a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold rounded transition-colors">Chat on WhatsApp</a>
+          </div>
+        </div>
       </div>
       <div class="lg:col-span-2">
         <div class="bg-slate-700/60 border border-slate-600/50 rounded-2xl p-8 lg:p-10 backdrop-blur-sm">
@@ -429,7 +440,7 @@
           </ul>
           <!-- Google Maps -->
           <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
-            <iframe title="Factory location" src="https://www.google.com/maps?q=Anping+County+Hengshui+Hebei+China&output=embed" width="100%" height="200" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe title="Factory location" src="https://www.google.com/maps?q=Anping+Lianjia+Wire+Products+Diwo+Village+Anping+County+Hengshui+Hebei+China&output=embed" width="100%" height="200" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
           <ul class="space-y-5 mt-6">
         </div>
@@ -475,7 +486,7 @@
   if(!btn||!menu)return;
   btn.addEventListener('click',function(){var o=btn.getAttribute('aria-expanded')==='true';if(o){menu.style.maxHeight='0px';btn.setAttribute('aria-expanded','false');h.classList.remove('hidden');c.classList.add('hidden');setTimeout(function(){if(btn.getAttribute('aria-expanded')==='false')menu.classList.add('hidden');},300)}else{menu.classList.remove('hidden');menu.offsetHeight;menu.style.maxHeight=menu.scrollHeight+'px';btn.setAttribute('aria-expanded','true');h.classList.add('hidden');c.classList.remove('hidden')}});
   /* Form: intercept submit, fetch async + redirect to local thank-you page */
-  var form=document.querySelector('#inquiry form');if(form)form.addEventListener('submit',function(e){e.preventDefault();try{sessionStorage.setItem('lj_form_source',window.location.href)}catch(e){}var data=new FormData(form);var d=document.getElementById('inquiry-dwell');if(d&&window.LJTracker)try{data.set('dwell_times',JSON.stringify(window.LJTracker.getAllDwell()))}catch(e){}if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);history.replaceState(null,'',window.location.pathname);setTimeout(function(){fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).catch(function(){})},100);location.href='../thank-you.html'});
+  var form=document.querySelector('#inquiry form');if(form)form.addEventListener('submit',function(e){e.preventDefault();try{sessionStorage.setItem('lj_form_source',window.location.href)}catch(e){}var data=new FormData(form);var d=document.getElementById('inquiry-dwell');if(d&&window.LJTracker)try{data.set('dwell_times',JSON.stringify(window.LJTracker.getAllDwell()))}catch(e){}if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);history.replaceState(null,'',window.location.pathname);setTimeout(function(){fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).catch(function(){})},100);location.href='#thank-you';form.classList.add('hidden');var s=document.getElementById('inquiry-success');if(s)s.classList.remove('hidden');document.title='Thank You — Inquiry Received | [COMPANY_NAME]'});
 })();
 </script>
 <!-- Back to Top show/hide logic -->

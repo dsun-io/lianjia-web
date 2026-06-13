@@ -442,6 +442,17 @@
           <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">Send Inquiry</button>
           <p class="text-sm text-gray-400 flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>We reply within 24 hours. Your details stay private.</p>
         </form>
+        <!-- Success message (inline, initially hidden) -->
+        <div id="inquiry-success" class="hidden text-center py-8">
+          <div class="mb-6"><svg class="w-20 h-20 mx-auto" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" stroke="#E67E22" stroke-width="3" fill="#FFF7ED"/><path d="M25 42l10 10 20-20" stroke="#E67E22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:50;animation:checkDraw .6s ease-out .3s forwards"/></svg></div>
+          <h3 class="text-2xl sm:text-3xl font-bold mb-3">Thank You for Your Inquiry!</h3>
+          <p class="text-gray-400 text-lg mb-2">We've received your message and our sales team will get back to you <strong class="text-white">within 24 hours</strong> with a detailed quote.</p>
+          <p class="text-gray-500 text-sm mb-8">If urgent, reach us directly via WhatsApp.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onclick="var f=document.querySelector('#inquiry form');document.getElementById('inquiry-success').classList.add('hidden');f.classList.remove('hidden');f.querySelector('button[type=submit]').disabled=false;f.querySelector('button[type=submit]').textContent='Send Inquiry';history.replaceState(null,'','');" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors">Submit Another Inquiry</button>
+            <a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold rounded transition-colors">Chat on WhatsApp</a>
+          </div>
+        </div>
       </div>
       <div class="lg:col-span-2">
         <div class="bg-slate-700/60 border border-slate-600/50 rounded-2xl p-8 lg:p-10 backdrop-blur-sm">
@@ -460,6 +471,12 @@
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span><div><p class="text-sm text-gray-400">Email</p><a href="mailto:[EMAIL]" class="text-white hover:text-orange-400 transition-colors font-medium break-all">[EMAIL]</a></div></li>
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500/15 text-green-400"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span><div><p class="text-sm text-gray-400">WhatsApp</p><a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="text-white hover:text-green-400 transition-colors font-medium">[WHATSAPP]</a></div></li>
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="text-sm text-gray-400">Factory Address</p><p class="text-white font-medium">[FACTORY_ADDRESS]</p><p class="text-gray-400 text-sm mt-1">Anping County, Hengshui, Hebei, China 053600</p></div></li>
+          </ul>
+          <!-- Google Maps -->
+          <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
+            <iframe title="Factory location" src="https://www.google.com/maps?q=Anping+Lianjia+Wire+Products+Diwo+Village+Anping+County+Hengshui+Hebei+China&output=embed" width="100%" height="200" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <ul class="space-y-5 mt-6">
           </ul>
         </div>
       </div>
@@ -533,7 +550,11 @@
       fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
         .catch(function() {});
     }, 100);
-    location.href = '../thank-you.html';
+    location.href = '#thank-you';
+    form.classList.add('hidden');
+    var success = document.getElementById('inquiry-success');
+    if (success) { success.classList.remove('hidden'); }
+    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
   });
 })();
 
