@@ -155,7 +155,11 @@ php -S localhost:8080
 - [ ] **配置配额预警**：企业微信群添加机器人，获取 webhook URL 填入 Apps Script `WECHAT_WEBHOOK`
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，监控网站 URL，通知接企业微信
 - [ ] **开启 GitHub Secret Scanning**：仓库 Settings → Security → 开启自动密钥扫描
-- [ ] **素材性能优化**：图片转 WebP + 懒加载 + srcset；GIF 转 MP4；长视频上 YouTube
+- [ ] **素材性能优化**：
+  - 图片：JPG/PNG → WebP + `loading="lazy"` + `srcset` 响应式
+  - GIF：GIF → MP4（`<video autoplay loop muted playsinline>`），体积减少 80%+
+  - 长视频：上传 YouTube（Unlisted）→ `youtube-nocookie.com` 嵌入 + facade 懒加载
+  - ⚠️ 不要直接上传到 GitHub Pages（无 CDN、无自适应码率、占仓库空间）
 
 ---
 
