@@ -9,7 +9,7 @@
 | **目标客户** | 澳大利亚 / 新西兰围栏批发商、工程商、进口商                                     |
 | **核心产品** | 牛栏网 (Field Fence)、勾花网 (Chain Link Fence)、Y型立柱 (Y Post / Star Picket) |
 | **技术栈**   | 纯静态 HTML + Tailwind CSS (Play CDN) + AOS 动画                                |
-| **表单方案** | Formspree（零后端）                                                             |
+| **表单方案** | Google Apps Script（Sheet 兜底 + 邮件通知）                                      |
 | **部署平台** | GitHub Pages / Netlify                                                          |
 
 ## 📁 文件结构
@@ -135,6 +135,27 @@ php -S localhost:8080
 后续可以接入客户自动化开发平台, 实现客户提交表单自动发送打招呼邮件的功能, 目前客户提交表单以后, 需要人工介入维护, 因为该渠道客户精准度高, 所以当前方式尚可, 自动化邮件开发后续作为锦上添花的补充能力.
 
 且客户自动化开发未来会融入kaas, 作为其中的部分能力.
+
+---
+
+## ✅ 待办事项
+
+### 已完成
+
+- [x] Sheet 兜底存储（先写 Sheet 再发邮件，配额耗尽不丢客户）
+- [x] 蜜罐检测（`_gotcha` 字段拦截机器人）
+- [x] Turnstile 代码预埋（配置 site_key + secret 后自动生效）
+- [x] 配额预警代码预埋（配置企业微信 webhook 后自动生效）
+- [x] 仓库安全扫描（git 历史无密钥泄露）
+
+### 待完成
+
+- [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
+- [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码
+- [ ] **配置配额预警**：企业微信群添加机器人，获取 webhook URL 填入 Apps Script `WECHAT_WEBHOOK`
+- [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，监控网站 URL，通知接企业微信
+- [ ] **开启 GitHub Secret Scanning**：仓库 Settings → Security → 开启自动密钥扫描
+- [ ] **素材性能优化**：图片转 WebP + 懒加载 + srcset；GIF 转 MP4；长视频上 YouTube
 
 ---
 
