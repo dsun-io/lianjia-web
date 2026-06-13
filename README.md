@@ -151,9 +151,9 @@ php -S localhost:8080
 ### 待完成
 
 - [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
-- [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码
-- [ ] **配置配额预警**：企业微信群添加机器人，获取 webhook URL 填入 Apps Script `WECHAT_WEBHOOK`
-- [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，监控网站 URL，通知接企业微信
+- [x] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
+- [ ] **启用 Cloudflare Turnstile**：等域名确定后注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码
+- [ ] **配置 UptimeRobot**：等域名确定后注册 https://uptimerobot.com ，监控网站 URL，通知接企业微信
 - [ ] **开启 GitHub Secret Scanning**：仓库 Settings → Security → 开启自动密钥扫描
 - [ ] **素材性能优化**：
   - 图片：JPG/PNG → WebP + `loading="lazy"` + `srcset` 响应式
