@@ -151,7 +151,7 @@ php -S localhost:8080
 ### 待完成
 
 - [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
-- [ ] 牛栏网 勾花规格修改为
+- [ ] 牛栏网 勾花规格按照澳新本地习惯修改
 - [X] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
 - [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码（用 GitHub Pages URL 即可，不需要自定义域名）
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，用 GitHub Pages URL 监控，通知接企业微信
