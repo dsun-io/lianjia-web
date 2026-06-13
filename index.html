@@ -432,42 +432,50 @@
     <div class="relative py-16 lg:py-20">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-orange-500 rounded-full"></div>
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <!-- Left: Hero image + two knot-type cards -->
       <div class="w-full lg:w-1/2">
-        <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/field-fence-01.jpg" data-lightbox="product-1" class="col-span-2 block rounded-lg overflow-hidden group"><img src="assets/img/field-fence-01.jpg" alt="Hot-dipped galvanized field fence roll in factory warehouse" class="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/field-fence-02.jpg" data-lightbox="product-1" class="block rounded-lg overflow-hidden group"><img src="assets/img/field-fence-02.jpg" alt="Field fence hinge-joint knot detail close-up" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/field-fence-03.jpg" data-lightbox="product-1" class="block rounded-lg overflow-hidden group"><img src="assets/img/field-fence-03.jpg" alt="Field fence installed on rural cattle farm" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+        <div class="rounded-xl overflow-hidden shadow-md mb-4">
+          <img id="ff-hero" src="assets/img/field-fence-01.jpg" alt="Galvanized field fence roll" class="w-full h-64 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
         </div>
-        <div class="mt-4 rounded-lg overflow-hidden border border-gray-200"><img src="assets/gif/weaving.gif" alt="Hinge joint weaving process in factory" class="w-full h-32 object-cover" loading="lazy"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-02.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
+            <img src="assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="w-full h-24 object-cover rounded-lg mb-2">
+            <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Hinge Joint</p>
+            <p class="text-[11px] text-gray-500">Flexible &middot; Absorbs impact</p>
+          </button>
+          <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-03.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
+            <img src="assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="w-full h-24 object-cover rounded-lg mb-2">
+            <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Ring Lock</p>
+            <p class="text-[11px] text-gray-500">Rigid &middot; Holds shape</p>
+          </button>
+        </div>
       </div>
+      <!-- Right: copy + specs + CTA -->
       <div class="w-full lg:w-1/2">
         <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 01</span>
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Field Fence / Hinge Joint Fence</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6">Hinge-joint field fence built for cattle, sheep and rural fencing &mdash; high-tensile, hot-dipped galvanized, made to stay up for years outdoors.</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Field Fence &mdash; Hinge Joint &amp; Ring Lock</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-6">Field fence in two knot types &mdash; Hinge Joint for flexible rural runs and Ring Lock for high-pressure stock &amp; exclusion fencing.</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">High-tensile wire, hinge-joint knot for strength and flex</span></li>
-          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Hot-dipped galvanized, 40&ndash;200 g/m&sup2; zinc for long life</span></li>
-          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Custom height, mesh spacing and roll length available</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">High-tensile wire, hot-dip galvanised for AU &amp; NZ rural fencing</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Two knot types: Hinge Joint (flexible) &amp; Ring Lock (rigid)</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Custom height, line wires, stay spacing &amp; roll length</span></li>
         </ul>
         <div class="mb-6 overflow-x-auto">
           <table class="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
             <thead><tr class="bg-gray-50"><th class="text-left font-semibold text-gray-800 px-4 py-2.5 border-b border-gray-200">Spec</th><th class="text-left font-semibold text-gray-800 px-4 py-2.5 border-b border-gray-200">Value</th></tr></thead>
             <tbody class="divide-y divide-gray-200">
               <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Material</td><td class="px-4 py-2 text-gray-800 font-medium">High tensile galvanized steel wire</td></tr>
-              <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">Wire Diameter</td><td class="px-4 py-2 text-gray-800 font-medium">2.0 / 2.5 / 3.0 mm</td></tr>
-              <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Height</td><td class="px-4 py-2 text-gray-800 font-medium">0.8 / 1.0 / 1.2 / 1.5 m</td></tr>
-              <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">Mesh Opening</td><td class="px-4 py-2 text-gray-800 font-medium">150 / 200 mm</td></tr>
-              <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Zinc Coating</td><td class="px-4 py-2 text-gray-800 font-medium">40 / 60 / 100 / 200 g/m&sup2;</td></tr>
-              <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">Roll Length</td><td class="px-4 py-2 text-gray-800 font-medium">50 / 100 m</td></tr>
-              <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Packing</td><td class="px-4 py-2 text-gray-800 font-medium">Plastic film + pallet</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">Knot Types</td><td class="px-4 py-2 text-gray-800 font-medium">Hinge Joint / Ring Lock</td></tr>
+              <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Height</td><td class="px-4 py-2 text-gray-800 font-medium">900 / 1200 / 1500 / 1800 mm</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">Zinc Coating</td><td class="px-4 py-2 text-gray-800 font-medium">40 / 60 / 100 / 200 g/m&sup2;</td></tr>
+              <tr class="bg-white"><td class="px-4 py-2 text-gray-600">Roll Length</td><td class="px-4 py-2 text-gray-800 font-medium">50 / 100 m</td></tr>
               <tr class="bg-gray-50"><td class="px-4 py-2 text-gray-600">MOQ</td><td class="px-4 py-2 text-gray-800 font-medium">1x20GP / 1x40HQ (trial order accepted)</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="text-sm text-gray-500 mb-6"><span class="font-semibold text-gray-700">Applications:</span> Cattle &amp; sheep farms, rural boundaries, paddock and vineyard fencing.</p>
         <div class="flex flex-wrap items-center gap-4">
           <a href="#contact" class="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
-          <a href="products/field-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+          <a href="products/field-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Field Fence Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
     </div>
@@ -857,15 +865,24 @@
       <div class="lg:col-span-2">
         <div class="bg-slate-700/60 border border-slate-600/50 rounded-2xl p-8 lg:p-10 backdrop-blur-sm">
           <h3 class="text-2xl font-bold text-white mb-3">Get Factory-Direct Pricing</h3>
-          <p class="text-gray-400 mb-8 leading-relaxed">Tell us what you need — we reply within 24 hours with a quote and samples.</p>
+          <p class="text-gray-400 mb-6 leading-relaxed">Tell us what you need — we reply within 24 hours with a quote and samples.</p>
+          <div class="bg-slate-600/50 rounded-lg p-4 mb-6">
+            <p class="text-sm text-orange-400 font-semibold mb-1">📋 What you'll get:</p>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Product reference price</li>
+              <li>• Estimated freight to your port</li>
+              <li>• Recommended specs for your use</li>
+              <li>• Lead time &amp; packing details</li>
+            </ul>
+          </div>
           <ul class="space-y-6">
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Email</p><a href="mailto:[EMAIL]" class="text-white hover:text-orange-400 transition-colors duration-200 font-medium break-all">[EMAIL]</a></div></li>
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500/15 text-green-400"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">WhatsApp</p><a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="text-white hover:text-green-400 transition-colors duration-200 font-medium">[WHATSAPP]</a></div></li>
-            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Factory Address</p><p class="text-white font-medium">[FACTORY_ADDRESS]</p><p class="text-gray-400 text-sm mt-1">Anping County, Hengshui City, Hebei Province, China 053600</p></div></li>
+            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Factory Address</p><p class="text-white font-medium">100m North of Diwo Village, Anping County</p><p class="text-gray-400 text-sm mt-1">Hengshui City, Hebei Province, China 053600</p></div></li>
           </ul>
           <!-- Factory Map -->
           <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
-            <iframe title="Factory location" src="https://www.google.com/maps/d/u/0/embed?mid=1acpswmvihj3oilepFs1jyB3hjEKp1cI&ehbc=2E312F" width="100%" height="200" style="border:0" loading="lazy"></iframe>
+            <iframe title="Factory location" src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k" width="100%" height="200" style="border:0" loading="lazy"></iframe>
           </div>
           <ul class="space-y-6 mt-6">
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Business Hours</p><p class="text-white font-medium">Mon – Sat (UTC+8)</p></div></li>
@@ -1138,6 +1155,35 @@
       });
       card.classList.remove('border-gray-200');
       card.classList.add('border-orange-500', 'bg-orange-50/50');
+    });
+  });
+})();
+</script>
+
+<!-- Field Fence knot-type card interaction: click to switch hero image -->
+<script>
+(function() {
+  var cards = document.querySelectorAll('.ff-card');
+  var hero = document.getElementById('ff-hero');
+  if (!cards.length || !hero) return;
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      hero.style.opacity = '0';
+      setTimeout(function() {
+        hero.src = card.getAttribute('data-img');
+        hero.alt = card.getAttribute('data-alt');
+        hero.style.opacity = '1';
+      }, 200);
+      cards.forEach(function(c) {
+        c.classList.remove('border-orange-500', 'bg-orange-50/50');
+        c.classList.add('border-gray-200');
+        var lbl = c.querySelector('.text-xs');
+        if (lbl) { lbl.classList.remove('text-orange-600'); lbl.classList.add('text-gray-700'); }
+      });
+      card.classList.remove('border-gray-200');
+      card.classList.add('border-orange-500', 'bg-orange-50/50');
+      var activeLbl = card.querySelector('.text-xs');
+      if (activeLbl) { activeLbl.classList.remove('text-gray-700'); activeLbl.classList.add('text-orange-600'); }
     });
   });
 })();
