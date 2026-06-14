@@ -42,9 +42,123 @@
       opacity: 1; visibility: visible; margin-top: 0; pointer-events: auto;
     }
     .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+
+    /* ── Cursor Glow (hero only) ── */
+    #cursor-glow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle,
+        rgba(230, 126, 34, 0.18) 0%,
+        rgba(230, 126, 34, 0.06) 30%,
+        rgba(230, 126, 34, 0.02) 50%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 5;
+      mix-blend-mode: screen;
+      will-change: transform;
+    }
+    #cursor-glow.visible { opacity: 1; }
+    /* Inner hot core */
+    #cursor-glow::after {
+      content: '';
+      position: absolute;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+
+    /* ── Custom Cursor: Industrial Crosshair ── */
+    #cursor-dot {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+      z-index: 99999;
+      will-change: transform;
+    }
+    /* Crosshair lines */
+    #cursor-dot::before,
+    #cursor-dot::after {
+      content: '';
+      position: absolute;
+      background: #E67E22;
+      border-radius: 1px;
+    }
+    #cursor-dot::before {
+      width: 1px; height: 100%;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+    }
+    #cursor-dot::after {
+      width: 100%; height: 1px;
+      top: 50%; left: 0;
+      transform: translateY(-50%);
+    }
+    /* Center dot */
+    #cursor-dot .dot-center {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #E67E22;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background 0.3s;
+    }
+    /* Hover state: expand into circle */
+    #cursor-dot.hovering {
+      width: 56px; height: 56px;
+    }
+    #cursor-dot.hovering .dot-center {
+      width: 56px; height: 56px;
+      background: rgba(230, 126, 34, 0.08);
+      border: 1.5px solid rgba(230, 126, 34, 0.5);
+      border-radius: 50%;
+    }
+    #cursor-dot.hovering::before,
+    #cursor-dot.hovering::after { opacity: 0; }
+
+    /* ── Magnetic Button ── */
+    .magnetic-btn {
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* ── Wire Mesh Click Ripple ── */
+    .click-ripple {
+      position: fixed;
+      border: 1.5px solid rgba(230, 126, 34, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99997;
+      animation: ripple-expand 0.6s ease-out forwards;
+    }
+    @keyframes ripple-expand {
+      0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); }
+      100% { width: 80px; height: 80px; opacity: 0; transform: translate(-50%, -50%); }
+    }
+
+    /* Hide cursor effects on small screens */
+    @media (max-width: 768px) {
+      #cursor-dot, #cursor-glow, .cursor-particle { display: none !important; }
+    }
   </style>
 </head>
 <body class="bg-white text-steel-gray antialiased">
+
+<!-- Custom Cursor Elements -->
+<div id="cursor-dot"><div class="dot-center"></div></div>
+<div id="cursor-glow"></div>
 
 <!-- HEADER -->
 <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
@@ -488,6 +602,154 @@
 <script src="../assets/js/tracker.js"></script>
 <script src="../assets/js/time-tracker.js"></script>
 <script src="../assets/js/cookie-consent.js"></script>
+
+<!-- CURSOR INTERACTION SYSTEM (same as homepage) -->
+<script>
+(function() {
+  /* ── Skip on touch devices ── */
+  if ('ontouchstart' in window && matchMedia('(hover: none)').matches) return;
+
+  var cursorDot  = document.getElementById('cursor-dot');
+  var cursorGlow = document.getElementById('cursor-glow');
+  var hero       = document.getElementById('hero');
+  if (!cursorDot) return;
+
+  /* ── State (single source of truth) ── */
+  var raw    = { x: -100, y: -100 };   // actual mouse
+  var smooth = { x: -100, y: -100 };   // smoothed for dot
+  var glowSmooth = { x: 0, y: 0 };    // smoothed for glow (relative to hero)
+  var heroRect   = { t: 0, b: 0, l: 0, r: 0, w: 0, h: 0 };
+  var isHero     = false;
+  var ticking    = false;
+  var heroDirty  = true;
+
+  /* ── Cache hero rect on scroll/resize ── */
+  function cacheHeroRect() {
+    if (!hero) return;
+    var r = hero.getBoundingClientRect();
+    heroRect = { t: r.top, b: r.bottom, l: r.left, r: r.right, w: r.width, h: r.height };
+  }
+  cacheHeroRect();
+  window.addEventListener('resize', cacheHeroRect, { passive: true });
+  window.addEventListener('scroll', function() { heroDirty = true; }, { passive: true });
+
+  /* ── Mouse tracking (only store coords, no DOM work) ── */
+  document.addEventListener('mousemove', function(e) {
+    raw.x = e.clientX;
+    raw.y = e.clientY;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateFrame);
+    }
+  }, { passive: true });
+
+  /* ── Single rAF update per frame ── */
+  function updateFrame() {
+    ticking = false;
+
+    /* Recalc hero rect only when needed */
+    if (heroDirty) { cacheHeroRect(); heroDirty = false; }
+
+    /* Check if inside hero */
+    isHero = hero ? (raw.y >= heroRect.t && raw.y <= heroRect.b && raw.x >= heroRect.l && raw.x <= heroRect.r) : false;
+
+    /* Glow visibility */
+    if (isHero) {
+      if (!cursorGlow.classList.contains('visible')) cursorGlow.classList.add('visible');
+    } else {
+      if (cursorGlow.classList.contains('visible')) cursorGlow.classList.remove('visible');
+    }
+
+    /* Glow position (transform-based, no reflow) */
+    if (isHero) {
+      var gx = raw.x - heroRect.l;
+      var gy = raw.y - heroRect.t;
+      var glx = (gx - glowSmooth.x) * 0.55;
+      var gly = (gy - glowSmooth.y) * 0.55;
+      glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
+      glowSmooth.y += Math.abs(gly) < 0.5 ? (gy - glowSmooth.y) : gly;
+      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 225) + 'px, ' + (glowSmooth.y - 225) + 'px)';
+    }
+
+    /* Dot position (transform-based) — high tracking coefficient reduces lag, snaps when distance is minimal */
+    var lerpX = (raw.x - smooth.x) * 0.55;
+    var lerpY = (raw.y - smooth.y) * 0.55;
+    smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;
+    smooth.y += Math.abs(lerpY) < 0.5 ? (raw.y - smooth.y) : lerpY;
+    cursorDot.style.transform = 'translate(' + smooth.x + 'px, ' + smooth.y + 'px) translate(-50%, -50%)';
+
+    /* Parallax (only when in hero) */
+    if (isHero && parallaxEls.length) {
+      var cx = (raw.x - heroRect.l - heroRect.w / 2) / heroRect.w;
+      var cy = (raw.y - heroRect.t - heroRect.h / 2) / heroRect.h;
+      for (var i = 0; i < parallaxEls.length; i++) {
+        var f = parseFloat(parallaxEls[i].pFactor) || 0.02;
+        parallaxEls[i].style.transform = 'translate(' + (-cx * f * 100) + 'px, ' + (-cy * f * 100) + 'px)';
+      }
+    }
+  }
+
+  /* ── Hover detection (event delegation) ── */
+  var interactiveSel = 'a, button, input, textarea, select, [role="button"], .magnetic-btn';
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest(interactiveSel)) cursorDot.classList.add('hovering');
+  }, { passive: true });
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest(interactiveSel)) cursorDot.classList.remove('hovering');
+  }, { passive: true });
+
+  /* ── Magnetic Button Effect ── */
+  var magneticBtns = document.querySelectorAll('.magnetic-btn');
+  for (var i = 0; i < magneticBtns.length; i++) {
+    (function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top  + rect.height / 2;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var maxDim = Math.max(rect.width, rect.height);
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var strength = Math.min(dist / maxDim, 1) * 8;
+        btn.style.transform = 'translate(' + (dx / maxDim * strength) + 'px, ' + (dy / maxDim * strength) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    })(magneticBtns[i]);
+  }
+
+  /* ── Hero Parallax (pre-cache elements) ── */
+  var parallaxEls = hero ? hero.querySelectorAll('[data-parallax]') : [];
+  for (var j = 0; j < parallaxEls.length; j++) {
+    parallaxEls[j].pFactor = parallaxEls[j].getAttribute('data-parallax');
+    parallaxEls[j].style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+  }
+  if (hero) {
+    hero.addEventListener('mouseleave', function() {
+      for (var k = 0; k < parallaxEls.length; k++) {
+        parallaxEls[k].style.transform = 'translate(0, 0)';
+      }
+    });
+  }
+
+  /* ── Wire Mesh Click Ripple ── */
+  document.addEventListener('click', function(e) {
+    var ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top  = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(function() { ripple.remove(); }, 700);
+  });
+
+  /* ── Cursor visibility on enter/leave ── */
+  document.addEventListener('mouseleave', function() { cursorDot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function() { cursorDot.style.opacity = '1'; });
+
+})();
+</script>
+
 <script>
 (function(){
   var btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),h=document.getElementById('icon-hamburger'),c=document.getElementById('icon-close');

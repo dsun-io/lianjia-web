@@ -89,7 +89,7 @@
 | --------------------------------- | -------------------------------------------------------------------------------- |
 | `[COMPANY_NAME]`                | 公司英文名                                                                       |
 | `[DOMAIN]`                      | 域名（如 lianjia-fence.com）                                                     |
-| `[FACTORY_ADDRESS]`             | 工厂详细地址（堤涡村村北100米处, Anping County）                                |
+| `[FACTORY_ADDRESS]`             | 工厂详细地址（堤涡村村北100米处, Anping County）                                 |
 | `[FACTORY_ADDRESS_URL_ENCODED]` | 同上，空格用+替换（如 No.88+West+Industrial+Zone+Anping），用于 Google Maps 嵌入 |
 | `FORM_SCRIPT_URL`               | Google Apps Script Web App URL（表单提交后端），详见下方说明                     |
 | `[YEAR_FOUNDED]`                | 成立年份                                                                         |
@@ -152,6 +152,8 @@ php -S localhost:8080
 
 - [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
 - [ ] 牛栏网 勾花规格按照澳新本地习惯修改
+- [ ] 牛栏网和立柱产品详情页,排版不一致
+- [ ] 产品推荐部分是什么逻辑, 会推荐当前产品以及官网首页吗?
 - [X] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
 - [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码（用 GitHub Pages URL 即可，不需要自定义域名）
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，用 GitHub Pages URL 监控，通知接企业微信
