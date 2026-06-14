@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="cursor:none">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>*, *::before, *::after { cursor: none !important; } iframe { cursor: auto !important; } @media (hover: none) and (pointer: coarse) { *, *::before, *::after { cursor: auto !important; } }</style>
 
   <!-- SEO Meta -->
   <title>Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]</title>
@@ -194,13 +195,14 @@
     }
     /* Hover state: expand into circle */
     #cursor-dot.hovering {
-      width: 56px; height: 56px;
+      width: 40px; height: 40px;
     }
     #cursor-dot.hovering .dot-center {
-      width: 56px; height: 56px;
-      background: rgba(230, 126, 34, 0.08);
-      border: 1.5px solid rgba(230, 126, 34, 0.5);
+      width: 40px; height: 40px;
+      background: rgba(230, 126, 34, 0.85);
+      border: 2px solid #E67E22;
       border-radius: 50%;
+      box-shadow: 0 0 12px rgba(230, 126, 34, 0.5);
     }
     #cursor-dot.hovering::before,
     #cursor-dot.hovering::after { opacity: 0; }
@@ -270,6 +272,7 @@
 </head>
 
 <body class="bg-white text-steel-gray antialiased">
+<script>document.documentElement.style.cursor='none';document.addEventListener('mousedown',function(e){var a=e.target.closest('a');if(a&&a.href){document.documentElement.style.cursor='none';document.body.style.cursor='none'}},true);window.addEventListener('beforeunload',function(){document.documentElement.style.cursor='none'})</script>
 
 <!-- Custom Cursor -->
 <div id="cursor-dot"><div class="dot-center"></div></div>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="cursor:none">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>*, *::before, *::after { cursor: none !important; } iframe { cursor: auto !important; } @media (hover: none) and (pointer: coarse) { *, *::before, *::after { cursor: auto !important; } }</style>
   <title>Thank You — Inquiry Received | [COMPANY_NAME]</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +18,7 @@
   </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-6">
+<script>document.documentElement.style.cursor='none';document.addEventListener('mousedown',function(e){var a=e.target.closest('a');if(a&&a.href){document.documentElement.style.cursor='none';document.body.style.cursor='none'}},true);window.addEventListener('beforeunload',function(){document.documentElement.style.cursor='none'})</script>
   <div class="max-w-lg w-full text-center">
     <!-- Logo -->
     <a href="/" class="inline-block mb-8">

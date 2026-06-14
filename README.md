@@ -154,6 +154,7 @@ php -S localhost:8080
 - [ ] 牛栏网 勾花规格按照澳新本地习惯修改
 - [ ] 牛栏网和立柱产品详情页,排版不一致
 - [ ] 产品推荐部分是什么逻辑, 会推荐当前产品以及官网首页吗?
+- [ ] **自定义光标页面跳转闪现系统指针**：已做 4 层防护（html inline style / head style / body script mousedown / beforeunload），但跨页面跳转瞬间仍会短暂显示系统默认指针，可能是浏览器导航过渡行为，需进一步研究（如 SPA 化或 pagehide/page transition API）
 - [X] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
 - [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码（用 GitHub Pages URL 即可，不需要自定义域名）
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，用 GitHub Pages URL 监控，通知接企业微信
