@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="[COMPANY_NAME]">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <!-- Cloudflare Turnstile (load after site_key configured) -->
   <script>
@@ -43,22 +43,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- 部署到子目录时改为 /仓库名/；根部署保持 / -->
-  <base href="/">
-
-  <!-- Tailwind CSS：预编译静态文件，消除 Swup 换页 FOUC -->
-  <link href="assets/css/tailwind.css" rel="stylesheet">
+  <!-- Tailwind CSS v3 Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'heading': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            'steel-gray': '#1C1917',
+            'deep-blue': '#0C0A09',
+            'accent': {
+              DEFAULT: '#C2410C',
+              light: '#EA580C',
+              dark: '#9A3412',
+            },
+          },
+          borderRadius: {
+            'DEFAULT': '0px',
+          },
+        }
+      }
+    }
+  </script>
 
   <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <!-- Swup v4 + Scroll Plugin（自托管） -->
-  <script src="assets/js/swup-4.8.0.umd.js"></script>
-  <script src="assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
-
-  <!-- 全局光标系统 + Swup 初始化 -->
-  <script src="assets/js/cursor.js"></script>
-  <script src="assets/js/swup-init.js"></script>
+  <script src="/assets/js/swup-4.8.0.umd.js"></script>
+  <script src="/assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
+  <script src="/assets/js/swup-init.js"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
@@ -412,7 +430,7 @@
 
     <!-- Logo -->
     <a href="#" class="flex items-center shrink-0" aria-label="[COMPANY_NAME] home">
-      <img src="assets/img/logo.svg" alt="[COMPANY_NAME] logo" class="h-10 w-auto">
+      <img src="/assets/img/logo.svg" alt="[COMPANY_NAME] logo" class="h-10 w-auto">
     </a>
 
     <!-- Desktop Navigation Links (center) -->
@@ -421,9 +439,9 @@
       <li class="nav-dropdown relative">
         <a href="#products" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22] inline-flex items-center gap-1">Products <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></a>
         <div class="nav-dropdown-menu">
-          <a href="products/field-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a>
-          <a href="products/chain-link-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a>
-          <a href="products/y-post.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a>
+          <a href="/products/field-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a>
+          <a href="/products/chain-link-fence.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a>
+          <a href="/products/y-post.html" class="block px-4 py-2.5 text-sm text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a>
         </div>
       </li>
       <li><a href="#why-us" class="text-[#2D3436] hover:text-[#E67E22] transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-[#E67E22]">Why Us</a></li>
@@ -468,9 +486,9 @@
       <li role="none">
         <a href="#products" role="menuitem" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors duration-200">Products</a>
         <ul class="pl-4 mt-1 space-y-1">
-          <li><a href="products/field-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a></li>
-          <li><a href="products/chain-link-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a></li>
-          <li><a href="products/y-post.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a></li>
+          <li><a href="/products/field-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Field Fence</a></li>
+          <li><a href="/products/chain-link-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Chain Link Fence</a></li>
+          <li><a href="/products/y-post.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-[#E67E22] hover:bg-orange-50 transition-colors">Y Post / Star Picket</a></li>
         </ul>
       </li>
       <li role="none"><a href="#why-us" role="menuitem" class="mobile-nav-link block py-3 px-3 rounded-lg text-[#2D3436] hover:text-[#E67E22] hover:bg-orange-50 transition-colors duration-200">Why Us</a></li>
@@ -498,7 +516,7 @@
   <!-- Cursor Glow Effect -->
   <div id="cursor-glow"></div>
   <!-- Background Image -->
-  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/img/hero-landscape.svg');"></div>
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/img/hero-landscape.svg');"></div>
   <!-- Dark Overlay -->
   <div class="absolute inset-0 bg-black/60"></div>
   <!-- Grain Texture -->
@@ -563,16 +581,16 @@
       <!-- Left: Hero image + two knot-type cards -->
       <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="rounded-xl overflow-hidden shadow-md mb-4">
-          <img id="ff-hero" src="assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="img-product-hero h-64 sm:h-72" loading="lazy" decoding="async">
+          <img id="ff-hero" src="/assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="img-product-hero h-64 sm:h-72" loading="lazy" decoding="async">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-hero.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
-            <div class="img-wrap rounded-lg mb-2"><img src="assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="img-product h-20"></div>
+            <div class="img-wrap rounded-lg mb-2"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="img-product h-20"></div>
             <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Hinge Joint</p>
             <p class="text-[11px] text-gray-500">Flexible &middot; Absorbs impact</p>
           </button>
           <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-rl-main.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
-            <div class="img-wrap rounded-lg mb-2"><img src="assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="img-product h-20"></div>
+            <div class="img-wrap rounded-lg mb-2"><img src="/assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="img-product h-20"></div>
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Ring Lock</p>
             <p class="text-[11px] text-gray-500">Rigid &middot; Holds shape</p>
           </button>
@@ -603,7 +621,7 @@
         </div>
         <div class="flex flex-wrap items-center gap-4">
           <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
-          <a href="products/field-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Field Fence Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+          <a href="/products/field-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Field Fence Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
     </div>
@@ -615,11 +633,11 @@
       <div class="flex flex-col lg:flex-row-reverse items-start gap-10 lg:gap-16">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/chain-link-01.jpg" data-lightbox="product-2" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-01.jpg" alt="Galvanized chain link fence roll in warehouse" class="img-product group-hover:scale-105 h-80 sm:h-96" loading="lazy" decoding="async"></a>
-          <a href="assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-02.jpg" alt="Chain link fence diamond mesh detail" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
-          <a href="assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/chain-link-01.jpg" data-lightbox="product-2" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/chain-link-01.jpg" alt="Galvanized chain link fence roll in warehouse" class="img-product group-hover:scale-105 h-80 sm:h-96" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/chain-link-02.jpg" alt="Chain link fence diamond mesh detail" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
         </div>
-        <div class="mt-3 rounded-lg overflow-hidden border border-gray-200 img-wrap"><img src="assets/img/chain-link-app-01.jpg" alt="Chain link fence detail" class="img-product h-24" loading="lazy" decoding="async"></div>
+        <div class="mt-3 rounded-lg overflow-hidden border border-gray-200 img-wrap"><img src="/assets/img/chain-link-app-01.jpg" alt="Chain link fence detail" class="img-product h-24" loading="lazy" decoding="async"></div>
       </div>
       <div class="w-full lg:w-1/2">
         <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-3">Product 02</span>
@@ -648,7 +666,7 @@
         <p class="text-sm text-gray-500 mb-6"><span class="font-semibold text-gray-700">Applications:</span> Security fencing, sports fields, industrial sites, boundary and yard fencing.</p>
         <div class="flex flex-wrap items-center gap-4">
           <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
-          <a href="products/chain-link-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+          <a href="/products/chain-link-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
     </div>
@@ -661,20 +679,20 @@
       <!-- Left: Hero image + three type cards -->
       <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="rounded-xl overflow-hidden shadow-md mb-3">
-          <img id="y-post-hero" src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="img-product-hero h-64 sm:h-72" loading="lazy" decoding="async">
+          <img id="y-post-hero" src="/assets/img/y-post-01.jpg" alt="Studded Star Post" class="img-product-hero h-64 sm:h-72" loading="lazy" decoding="async">
         </div>
         <!-- Three type cards: Studded / Plain / Scalloped -->
         <div class="grid grid-cols-3 gap-3">
           <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-2.5 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/y-post-01.jpg" data-alt="Studded Star Post">
-            <img src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <img src="/assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-orange-600 uppercase tracking-wider leading-tight">Studded</p>
           </button>
           <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-02.jpg" data-alt="Plain Y-Post">
-            <img src="assets/img/y-post-02.jpg" alt="Plain Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <img src="/assets/img/y-post-02.jpg" alt="Plain Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Plain</p>
           </button>
           <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post">
-            <img src="assets/img/y-post-03.jpg" alt="Scalloped Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <img src="/assets/img/y-post-03.jpg" alt="Scalloped Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Scalloped</p>
           </button>
         </div>
@@ -712,7 +730,7 @@
         <p class="text-xs text-gray-400 mb-6">Material: Q235 steel · Coating: Galvanised (HDG) / Black bitumen / Painted · // TODO: confirm material grade</p>
         <div class="flex flex-wrap items-center gap-4">
           <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
-          <a href="products/y-post.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+          <a href="/products/y-post.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
     </div>
@@ -724,9 +742,9 @@
       <div class="flex flex-col lg:flex-row-reverse items-start gap-10 lg:gap-16">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="img-product group-hover:scale-105 h-80 sm:h-96" loading="lazy" decoding="async"></a>
-          <a href="assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
-          <a href="assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="img-product group-hover:scale-105 h-80 sm:h-96" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
+          <a href="/assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="/assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="img-product group-hover:scale-105 h-40 sm:h-48" loading="lazy" decoding="async"></a>
         </div>
       </div>
       <div class="w-full lg:w-1/2">
@@ -825,7 +843,7 @@
     </div>
     <div class="max-w-3xl mx-auto mb-12" data-aos="fade-up">
       <div class="relative w-full rounded-xl overflow-hidden shadow-lg bg-gray-900" style="padding-top: 56.25%;">
-        <video class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="assets/img/factory-illustration.svg" src="assets/video/factory-tour.mp4">Your browser does not support the video tag.</video>
+        <video class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="/assets/img/factory-illustration.svg" src="/assets/video/factory-tour.mp4">Your browser does not support the video tag.</video>
       </div>
     </div>
     <div class="text-center" data-aos="fade-up">
@@ -842,7 +860,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div class="order-1 lg:order-2">
-        <img src="assets/img/factory-illustration.svg" alt="Anping wire fence factory production floor — galvanizing and wire drawing workshop" class="w-full h-auto rounded-lg shadow-lg object-cover" loading="lazy" decoding="async">
+        <img src="/assets/img/factory-illustration.svg" alt="Anping wire fence factory production floor — galvanizing and wire drawing workshop" class="w-full h-auto rounded-lg shadow-lg object-cover" loading="lazy" decoding="async">
       </div>
       <div class="order-2 lg:order-1" data-aos="fade-up">
         <p class="text-sm font-semibold tracking-[0.15em] uppercase text-orange-600 mb-4">About Us</p>
@@ -1030,7 +1048,6 @@
     <p class="text-xs text-gray-500 pt-4 border-t border-slate-800">&copy; [YEAR] [COMPANY_NAME]. All rights reserved.</p>
   </div>
 </footer>
-</main>
 
 <!-- ============================================= -->
 <!-- FLOATING BUTTONS                              -->
@@ -1082,10 +1099,470 @@
 <!-- ============================================= -->
 <!-- SCRIPTS                                       -->
 <!-- ============================================= -->
-<!-- AOS -->
+<!-- AOS Init -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true, duration: 800, offset: 80 });</script>
+
+<!-- Mobile Menu Toggle -->
+<script>
+(function () {
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  var iconHamburger = document.getElementById('icon-hamburger');
+  var iconClose = document.getElementById('icon-close');
+  var navLinks = menu.querySelectorAll('.mobile-nav-link');
+  function toggleMenu() {
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      menu.style.maxHeight = '0px';
+      btn.setAttribute('aria-expanded', 'false');
+      iconHamburger.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      setTimeout(function () { if (btn.getAttribute('aria-expanded') === 'false') menu.classList.add('hidden'); }, 300);
+    } else {
+      menu.classList.remove('hidden');
+      menu.offsetHeight;
+      menu.style.maxHeight = menu.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+      iconHamburger.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    }
+  }
+  btn.addEventListener('click', toggleMenu);
+  navLinks.forEach(function (link) { link.addEventListener('click', function () { if (btn.getAttribute('aria-expanded') === 'true') toggleMenu(); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { toggleMenu(); btn.focus(); } });
+})();
+</script>
+
+<!-- Trust Strip Counter Animation -->
+<script>
+(function () {
+  function animateCountUp(el, target, duration) {
+    var start = 0, startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - (1 - progress) * (1 - progress);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-target]');
+  if (!counters.length) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target, target = parseInt(el.getAttribute('data-target'), 10);
+        if (!isNaN(target) && !el.dataset.counted) { el.dataset.counted = 'true'; animateCountUp(el, target, 2000); }
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(function (el) { observer.observe(el); });
+})();
+</script>
+
+<!-- FAQ Accordion -->
+<script>
+(function() {
+  var accordion = document.getElementById('faq-accordion');
+  if (!accordion) return;
+  var questions = accordion.querySelectorAll('.faq-question');
+  questions.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var arrow = this.querySelector('.faq-arrow');
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      questions.forEach(function(otherBtn) {
+        if (otherBtn !== btn) {
+          var otherItem = otherBtn.closest('.faq-item');
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherItem.querySelector('.faq-answer').classList.add('hidden');
+          otherBtn.querySelector('.faq-arrow').classList.remove('rotate-180');
+        }
+      });
+      if (isOpen) { this.setAttribute('aria-expanded', 'false'); answer.classList.add('hidden'); arrow.classList.remove('rotate-180'); }
+      else { this.setAttribute('aria-expanded', 'true'); answer.classList.remove('hidden'); arrow.classList.add('rotate-180'); }
+    });
+  });
+})();
+</script>
+
+<!-- Lightbox -->
+<script>
+(function() {
+  var overlay = document.getElementById('lightbox-overlay');
+  var imgEl = document.getElementById('lightbox-img');
+  var counterEl = document.getElementById('lightbox-counter');
+  var currentGroup = [], currentIndex = 0;
+  var allLinks = document.querySelectorAll('[data-lightbox]');
+  var groups = {};
+  allLinks.forEach(function(link) { var g = link.getAttribute('data-lightbox'); if (!groups[g]) groups[g] = []; groups[g].push(link); });
+  allLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentGroup = groups[link.getAttribute('data-lightbox')];
+      currentIndex = currentGroup.indexOf(link);
+      showImage();
+      overlay.classList.remove('hidden'); overlay.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function showImage() { imgEl.src = currentGroup[currentIndex].getAttribute('href'); imgEl.alt = 'Product image ' + (currentIndex + 1); counterEl.textContent = (currentIndex + 1) + ' / ' + currentGroup.length; }
+  window.closeLightbox = function(e) { if (e) e.stopPropagation(); overlay.classList.add('hidden'); overlay.classList.remove('flex'); document.body.style.overflow = ''; };
+  window.navLightbox = function(e, dir) { if (e) e.stopPropagation(); currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length; showImage(); };
+  document.addEventListener('keydown', function(e) { if (overlay.classList.contains('hidden')) return; if (e.key === 'Escape') window.closeLightbox(); if (e.key === 'ArrowLeft') window.navLightbox(null, -1); if (e.key === 'ArrowRight') window.navLightbox(null, 1); });
+})();
+</script>
 
 <!-- Tracker & Cookie Consent -->
-<script src="assets/js/tracker.js"></script>
-<script src="assets/js/time-tracker.js"></script>
-<script src="assets/js/cookie-consent.js"></script>
+<script src="/assets/js/tracker.js"></script>
+<script src="/assets/js/time-tracker.js"></script>
+<script src="/assets/js/cookie-consent.js"></script>
+
+<!-- Form submit: inline success (no redirect, avoids SPA routing issue) -->
+<script>
+(function() {
+  var form = document.getElementById('inquiry-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // 必填项验证：Name 和 Email
+    var nameInput = form.querySelector('[name="name"]');
+    var emailInput = form.querySelector('[name="email"]');
+    var firstInvalid = null;
+
+    // 清除旧的错误样式
+    form.querySelectorAll('.ring-2.ring-red-500').forEach(function(el) {
+      el.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
+    });
+
+    if (!nameInput || !nameInput.value.trim()) {
+      if (nameInput) { nameInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
+      if (!firstInvalid) firstInvalid = nameInput;
+    }
+    if (!emailInput || !emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      if (emailInput) { emailInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
+      if (!firstInvalid) firstInvalid = emailInput;
+    }
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
+      return;
+    }
+
+    var btn = document.getElementById('submit-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+    var data = new FormData(form);
+    var dwellEl = document.getElementById('inquiry-dwell');
+    if (dwellEl && window.LJTracker) {
+      try { data.set('dwell_times', JSON.stringify(window.LJTracker.getAllDwell())); } catch(e) {}
+    }
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    // Send form data async
+    setTimeout(function() {
+      fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .catch(function() {});
+    }, 100);
+    // Hide form, show success message, update URL
+    form.classList.add('hidden');
+    var success = document.getElementById('inquiry-success');
+    if (success) { success.classList.remove('hidden'); }
+    history.pushState(null, '', '#thank-you');
+    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
+  });
+
+  // Listen for browser back/forward, sync form display state
+  window.addEventListener('popstate', function() {
+    var isThankYou = window.location.hash === '#thank-you';
+    var success = document.getElementById('inquiry-success');
+    var btn = document.getElementById('submit-btn');
+    if (isThankYou) {
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
+    } else {
+      form.classList.remove('hidden');
+      if (success) success.classList.add('hidden');
+      if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
+      document.title = 'Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]';
+    }
+  });
+
+  // If hash is #thank-you (refresh or direct visit), show success state
+  if (window.location.hash === '#thank-you') {
+    form.classList.add('hidden');
+    var success = document.getElementById('inquiry-success');
+    if (success) { success.classList.remove('hidden'); }
+    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
+  }
+
+  // 输入时清除错误样式
+  form.querySelectorAll('input, textarea').forEach(function(input) {
+    input.addEventListener('input', function() {
+      input.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
+    });
+  });
+})();
+</script>
+
+<!-- Y Post type card interaction: click to switch hero image -->
+<script>
+(function() {
+  var cards = document.querySelectorAll('.y-post-card');
+  var hero = document.getElementById('y-post-hero');
+  if (!cards.length || !hero) return;
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      // Switch hero image
+      hero.style.opacity = '0';
+      setTimeout(function() {
+        hero.src = card.getAttribute('data-img');
+        hero.alt = card.getAttribute('data-alt');
+        hero.style.opacity = '1';
+      }, 200);
+      // Update card selected state
+      cards.forEach(function(c) {
+        c.classList.remove('border-orange-500', 'bg-orange-50/50');
+        c.classList.add('border-gray-200');
+      });
+      card.classList.remove('border-gray-200');
+      card.classList.add('border-orange-500', 'bg-orange-50/50');
+    });
+  });
+})();
+</script>
+
+<!-- Field Fence knot-type card interaction: click to switch hero image -->
+<script>
+(function() {
+  var cards = document.querySelectorAll('.ff-card');
+  var hero = document.getElementById('ff-hero');
+  if (!cards.length || !hero) return;
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      hero.style.opacity = '0';
+      setTimeout(function() {
+        hero.src = card.getAttribute('data-img');
+        hero.alt = card.getAttribute('data-alt');
+        hero.style.opacity = '1';
+      }, 200);
+      cards.forEach(function(c) {
+        c.classList.remove('border-orange-500', 'bg-orange-50/50');
+        c.classList.add('border-gray-200');
+        var lbl = c.querySelector('.text-xs');
+        if (lbl) { lbl.classList.remove('text-orange-600'); lbl.classList.add('text-gray-700'); }
+      });
+      card.classList.remove('border-gray-200');
+      card.classList.add('border-orange-500', 'bg-orange-50/50');
+      var activeLbl = card.querySelector('.text-xs');
+      if (activeLbl) { activeLbl.classList.remove('text-gray-700'); activeLbl.classList.add('text-orange-600'); }
+    });
+  });
+})();
+</script>
+
+<!-- Sync email → _replyto -->
+<script>
+(function() {
+  var emailInput = document.getElementById('contact-email');
+  var replytoInput = document.getElementById('hidden-replyto');
+  if (emailInput) { emailInput.addEventListener('change', function() { if (replytoInput) replytoInput.value = this.value; }); }
+})();
+</script>
+
+<!-- LJTracker: auto-select product + source page -->
+<script>
+(function() {
+  var source = window.LJTracker && window.LJTracker.getCurrentProduct();
+  if (source) {
+    var sourceEl = document.getElementById('inquiry-source');
+    if (sourceEl) sourceEl.value = source;
+    var productSel2 = document.getElementById('contact-product');
+    if (productSel2 && window.LJTracker) {
+      var name2 = window.LJTracker.getProductName(source);
+      for (var j = 0; j < productSel2.options.length; j++) {
+        if (productSel2.options[j].value === name2) { productSel2.selectedIndex = j; break; }
+      }
+    }
+  }
+})();
+</script>
+
+<!-- Turnstile: loaded conditionally in head, skip here -->
+
+<!-- Back to Top: show/hide on scroll -->
+<script>
+(function() {
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var show = window.scrollY > 400;
+    if (show) {
+      btn.classList.remove('hidden', 'opacity-0', 'translate-y-4', 'pointer-events-none');
+    } else {
+      btn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      setTimeout(function() { if (window.scrollY <= 400) btn.classList.add('hidden'); }, 300);
+    }
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+})();
+</script>
+
+<!-- ============================================= -->
+<!-- CURSOR INTERACTION SYSTEM                     -->
+<!-- Industrial wire-fence themed interactions     -->
+<!-- ============================================= -->
+<script>
+(function() {
+  /* ── Skip on touch devices ── */
+  if ('ontouchstart' in window && matchMedia('(hover: none)').matches) return;
+
+  var cursorDot  = document.getElementById('cursor-dot');
+  var cursorGlow = document.getElementById('cursor-glow');
+  var hero       = document.getElementById('hero');
+  if (!cursorDot || !hero) return;
+
+  /* ── State (single source of truth) ── */
+  var raw    = { x: -100, y: -100 };   // actual mouse
+  var smooth = { x: -100, y: -100 };   // smoothed for dot
+  var glowSmooth = { x: 0, y: 0 };    // smoothed for glow (relative to hero)
+  var heroRect   = { t: 0, b: 0, l: 0, r: 0, w: 0, h: 0 };
+  var isHero     = false;
+  var ticking    = false;
+  var heroDirty  = true;
+
+  /* ── Cache hero rect on scroll/resize ── */
+  function cacheHeroRect() {
+    var r = hero.getBoundingClientRect();
+    heroRect = { t: r.top, b: r.bottom, l: r.left, r: r.right, w: r.width, h: r.height };
+  }
+  cacheHeroRect();
+  window.addEventListener('resize', cacheHeroRect, { passive: true });
+  window.addEventListener('scroll', function() { heroDirty = true; }, { passive: true });
+
+  /* ── Mouse tracking (only store coords, no DOM work) ── */
+  document.addEventListener('mousemove', function(e) {
+    raw.x = e.clientX;
+    raw.y = e.clientY;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateFrame);
+    }
+  }, { passive: true });
+
+  /* ── Single rAF update per frame ── */
+  function updateFrame() {
+    ticking = false;
+
+    /* Recalc hero rect only when needed */
+    if (heroDirty) { cacheHeroRect(); heroDirty = false; }
+
+    /* Check if inside hero */
+    isHero = (raw.y >= heroRect.t && raw.y <= heroRect.b && raw.x >= heroRect.l && raw.x <= heroRect.r);
+
+    /* Glow visibility */
+    if (isHero) {
+      if (!cursorGlow.classList.contains('visible')) cursorGlow.classList.add('visible');
+    } else {
+      if (cursorGlow.classList.contains('visible')) cursorGlow.classList.remove('visible');
+    }
+
+    /* Glow position (transform-based, no reflow) */
+    if (isHero) {
+      var gx = raw.x - heroRect.l;
+      var gy = raw.y - heroRect.t;
+      var glx = (gx - glowSmooth.x) * 0.55;
+      var gly = (gy - glowSmooth.y) * 0.55;
+      glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
+      glowSmooth.y += Math.abs(gly) < 0.5 ? (gy - glowSmooth.y) : gly;
+      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 175) + 'px, ' + (glowSmooth.y - 175) + 'px)';
+    }
+
+    /* Dot position (transform-based) — high tracking coefficient reduces lag, snaps when distance is minimal */
+    var lerpX = (raw.x - smooth.x) * 0.55;
+    var lerpY = (raw.y - smooth.y) * 0.55;
+    smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;
+    smooth.y += Math.abs(lerpY) < 0.5 ? (raw.y - smooth.y) : lerpY;
+    cursorDot.style.transform = 'translate(' + smooth.x + 'px, ' + smooth.y + 'px) translate(-50%, -50%)';
+
+    /* Parallax (only when in hero) */
+    if (isHero && parallaxEls.length) {
+      var cx = (raw.x - heroRect.l - heroRect.w / 2) / heroRect.w;
+      var cy = (raw.y - heroRect.t - heroRect.h / 2) / heroRect.h;
+      for (var i = 0; i < parallaxEls.length; i++) {
+        var f = parseFloat(parallaxEls[i].pFactor) || 0.02;
+        parallaxEls[i].style.transform = 'translate(' + (-cx * f * 100) + 'px, ' + (-cy * f * 100) + 'px)';
+      }
+    }
+  }
+
+  /* ── Hover detection (event delegation) ── */
+  var interactiveSel = 'a, button, input, textarea, select, [role="button"], .magnetic-btn';
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest(interactiveSel)) cursorDot.classList.add('hovering');
+  }, { passive: true });
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest(interactiveSel)) cursorDot.classList.remove('hovering');
+  }, { passive: true });
+
+  /* ── Magnetic Button Effect ── */
+  var magneticBtns = document.querySelectorAll('.magnetic-btn');
+  for (var i = 0; i < magneticBtns.length; i++) {
+    (function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top  + rect.height / 2;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var maxDim = Math.max(rect.width, rect.height);
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var strength = Math.min(dist / maxDim, 1) * 4;
+        btn.style.transform = 'translate(' + (dx / maxDim * strength) + 'px, ' + (dy / maxDim * strength) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    })(magneticBtns[i]);
+  }
+
+  /* ── Hero Parallax (pre-cache elements) ── */
+  var parallaxEls = hero.querySelectorAll('[data-parallax]');
+  for (var j = 0; j < parallaxEls.length; j++) {
+    parallaxEls[j].pFactor = parallaxEls[j].getAttribute('data-parallax');
+    parallaxEls[j].style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+  }
+  hero.addEventListener('mouseleave', function() {
+    for (var k = 0; k < parallaxEls.length; k++) {
+      parallaxEls[k].style.transform = 'translate(0, 0)';
+    }
+  });
+
+  /* ── Click Ripple ── */
+  document.addEventListener('click', function(e) {
+    var ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top  = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(function() { ripple.remove(); }, 700);
+  });
+
+  /* ── Cursor visibility on enter/leave ── */
+  document.addEventListener('mouseleave', function() { cursorDot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function() { cursorDot.style.opacity = '1'; });
+
+})();
+</script>
+</main>
+</body>
+</html>
