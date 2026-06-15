@@ -19,11 +19,15 @@
   };
 
   /* ── 从当前 URL 推断产品 slug ── */
-  var path = window.location.pathname.toLowerCase();
-  var currentProduct = null;
-  for (var slug in PRODUCTS) {
-    if (path.indexOf(slug) !== -1) { currentProduct = slug; break; }
+  function detectProduct() {
+    var path = window.location.pathname.toLowerCase();
+    for (var slug in PRODUCTS) {
+      if (path.indexOf(slug) !== -1) { return slug; }
+    }
+    return null;
   }
+
+  var currentProduct = detectProduct();
   if (!currentProduct) return;   // 非产品页，不追踪
 
   /* ── 读取已有数据 ── */
@@ -102,6 +106,26 @@
     /** 返回产品显示名 */
     getProductName: function (slug) {
       return PRODUCTS[slug] || slug;
+    },
+    /** 结算当前页停留时长（Swup visit:start 调用） */
+    _settleDwell: function () {
+      stopTimer();
+    },
+    /** 上报一次 PV（Swup page:view 调用） */
+    _reportPageview: function () {
+      currentProduct = detectProduct();
+      // 若后续接入真实分析服务，可在此发送 PV
+      // 目前仅确保 currentProduct 与当前 URL 一致
+    },
+    /** 重置新页计时器（Swup page:view 调用） */
+    _resetTimer: function () {
+      stopTimer();
+      currentProduct = detectProduct();
+      data = loadData();
+      if (currentProduct && !data[currentProduct]) data[currentProduct] = 0;
+      startTime = null;
+      pageTotal = 0;
+      if (!document.hidden) startTimer();
     }
   };
 })();
