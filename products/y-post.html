@@ -149,7 +149,7 @@
 
 <!-- HERO -->
 <section class="relative bg-slate-900 text-white overflow-hidden">
-  <div class="absolute inset-0"><img src="../assets/img/y-post-01.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager"></div>
+  <div class="absolute inset-0"><img src="../assets/img/y-post-01.jpg" alt="" class="img-product-hero opacity-30" loading="eager" fetchpriority="high"></div>
   <div class="absolute inset-0 bg-black/40"></div>
   <div class="grain-overlay" style="filter:url(#grain)"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -176,7 +176,7 @@
       <div data-aos="fade-right">
         <!-- Hero image + three type cards -->
         <div class="rounded-xl overflow-hidden shadow-sm mb-5">
-          <img id="y-post-hero" src="../assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-72 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
+          <img id="y-post-hero" src="../assets/img/y-post-01.jpg" alt="Studded Star Post" class="img-product-hero h-72 sm:h-80" loading="lazy" decoding="async">
         </div>
         <div class="grid grid-cols-3 gap-5">
           <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-4 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="../assets/img/y-post-01.jpg" data-alt="Studded Star Post">
@@ -203,13 +203,13 @@
               <th class="text-left font-semibold text-gray-800 px-3 py-2.5 border-b border-gray-200">Studded (kg/pc)</th>
             </tr></thead>
             <tbody class="divide-y divide-gray-200">
-              <tr class="bg-white"><td class="px-3 py-2.5 text-gray-600">1.3</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.04</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.43</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-gray-50"><td class="px-3 py-2.5 text-gray-600">1.5</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.20</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.65</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-white"><td class="px-3 py-2.5 text-gray-600">1.7</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.36</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.87</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-gray-50"><td class="px-3 py-2.5 text-gray-600">1.8</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.44</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.98</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-white"><td class="px-3 py-2.5 text-gray-600">2.0</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.60</td><td class="px-3 py-2.5 text-gray-800 font-medium">2.20</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-gray-50"><td class="px-3 py-2.5 text-gray-600">2.3</td><td class="px-3 py-2.5 text-gray-800 font-medium">1.84</td><td class="px-3 py-2.5 text-gray-800 font-medium">2.53</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
-              <tr class="bg-white"><td class="px-3 py-2.5 text-gray-600">2.5</td><td class="px-3 py-2.5 text-gray-800 font-medium">2.00</td><td class="px-3 py-2.5 text-gray-800 font-medium">2.75</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-white"><td class="px-3 py-2 text-gray-600">1.3</td><td class="px-3 py-2 text-gray-800 font-medium">1.04</td><td class="px-3 py-2 text-gray-800 font-medium">1.43</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-gray-50"><td class="px-3 py-2 text-gray-600">1.5</td><td class="px-3 py-2 text-gray-800 font-medium">1.20</td><td class="px-3 py-2 text-gray-800 font-medium">1.65</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-white"><td class="px-3 py-2 text-gray-600">1.7</td><td class="px-3 py-2 text-gray-800 font-medium">1.36</td><td class="px-3 py-2 text-gray-800 font-medium">1.87</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-gray-50"><td class="px-3 py-2 text-gray-600">1.8</td><td class="px-3 py-2 text-gray-800 font-medium">1.44</td><td class="px-3 py-2 text-gray-800 font-medium">1.98</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-white"><td class="px-3 py-2 text-gray-600">2.0</td><td class="px-3 py-2 text-gray-800 font-medium">1.60</td><td class="px-3 py-2 text-gray-800 font-medium">2.20</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-gray-50"><td class="px-3 py-2 text-gray-600">2.3</td><td class="px-3 py-2 text-gray-800 font-medium">1.84</td><td class="px-3 py-2 text-gray-800 font-medium">2.53</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
+              <tr class="bg-white"><td class="px-3 py-2 text-gray-600">2.5</td><td class="px-3 py-2 text-gray-800 font-medium">2.00</td><td class="px-3 py-2 text-gray-800 font-medium">2.75</td><td class="px-3 py-2.5 text-gray-400 italic text-xs">TBC</td></tr>
             </tbody>
           </table>
         </div>
@@ -267,7 +267,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
       <!-- Studded Star Post -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-type-01.jpg" alt="Studded Star Post" class="w-full h-48 object-cover" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-type-01.jpg" alt="Studded Star Post" class="img-product h-48" loading="lazy" decoding="async"></div>
         <div class="p-6">
           <p class="text-xs font-bold tracking-widest uppercase text-orange-500 mb-2">Type 01</p>
           <h3 class="text-xl font-bold text-gray-900 mb-1">Studded Star Post</h3>
@@ -282,7 +282,7 @@
       </div>
       <!-- Plain Y-Post -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-type-02.jpg" alt="Plain Y-Post" class="w-full h-48 object-cover" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-type-02.jpg" alt="Plain Y-Post" class="img-product h-48" loading="lazy" decoding="async"></div>
         <div class="p-6">
           <p class="text-xs font-bold tracking-widest uppercase text-orange-500 mb-2">Type 02</p>
           <h3 class="text-xl font-bold text-gray-900 mb-1">Plain Y-Post</h3>
@@ -296,7 +296,7 @@
       </div>
       <!-- Scalloped Y-Post -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-type-03.jpg" alt="Scalloped Y-Post" class="w-full h-48 object-cover" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-type-03.jpg" alt="Scalloped Y-Post" class="img-product h-48" loading="lazy" decoding="async"></div>
         <div class="p-6">
           <p class="text-xs font-bold tracking-widest uppercase text-orange-500 mb-2">Type 03</p>
           <h3 class="text-xl font-bold text-gray-900 mb-1">Scalloped Y-Post</h3>
@@ -321,15 +321,15 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-app-01.jpg" alt="Y post on farm fence line" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-app-01.jpg" alt="Y post on farm fence line" class="img-product h-56" loading="lazy" decoding="async"></div>
         <div class="p-6"><h3 class="text-lg font-bold text-gray-900 mb-2">Farm &amp; Rural Fencing</h3><p class="text-gray-600 text-sm leading-relaxed">The standard line post for field fence and wire fencing across Australian farms. Drives in fast with a post driver, holds tight for decades.</p></div>
       </div>
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-app-02.jpg" alt="Y post for temporary fencing" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-app-02.jpg" alt="Y post for temporary fencing" class="img-product h-56" loading="lazy" decoding="async"></div>
         <div class="p-6"><h3 class="text-lg font-bold text-gray-900 mb-2">Temporary &amp; Construction</h3><p class="text-gray-600 text-sm leading-relaxed">Quick-install posts for temporary fencing on construction sites, events and road works. Pull out and reuse when done.</p></div>
       </div>
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden"><img src="../assets/img/y-post-app-03.jpg" alt="Y post in vineyard" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="overflow-hidden img-wrap"><img src="../assets/img/y-post-app-03.jpg" alt="Y post in vineyard" class="img-product h-56" loading="lazy" decoding="async"></div>
         <div class="p-6"><h3 class="text-lg font-bold text-gray-900 mb-2">Vineyards &amp; Orchards</h3><p class="text-gray-600 text-sm leading-relaxed">Clean, low-profile support for vine training wires and orchard netting. Galvanized finish resists corrosion in humid conditions.</p></div>
       </div>
     </div>
@@ -489,7 +489,7 @@
           </ul>
           <!--           <!-- Factory Map -->
           <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
-            <iframe title="Factory location" src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k" width="100%" height="200" style="border:0" loading="lazy"></iframe>
+            <iframe title="Factory location" src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k" width="100%" height="200" style="border:0" loading="lazy" decoding="async"></iframe>
           </div>
 
           <ul class="space-y-5 mt-6">
