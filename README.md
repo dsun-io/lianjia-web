@@ -43,6 +43,7 @@
 | 功能模块               | 说明                                                        |
 | ---------------------- | ----------------------------------------------------------- |
 | **Hero Banner**  | 产品大图 + 简介                                             |
+| **变体切换画廊** | 点击变体卡片切换对应产品图片组（带方向滑动动画）            |
 | **规格表**       | 完整技术参数（Material / Wire Diameter / Zinc Coating 等）  |
 | **检测数据**     | 镀锌量、丝径公差、拉力强度、标准合规                        |
 | **应用场景**     | 3 个典型使用场景卡片                                        |
@@ -152,9 +153,9 @@ php -S localhost:8080
 
 - [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
 - [ ] 牛栏网 勾花规格按照澳新本地习惯修改
-- [ ] 牛栏网和立柱产品详情页,排版不一致
+- [X] 牛栏网和立柱产品详情页,排版不一致（已统一：GIF 工艺图、配套推荐、参考价格区块一致）
 - [ ] 产品推荐部分是什么逻辑, 会推荐当前产品以及官网首页吗?
-- [ ] **自定义光标页面跳转闪现系统指针**：已做 4 层防护（html inline style / head style / body script mousedown / beforeunload），但跨页面跳转瞬间仍会短暂显示系统默认指针，可能是浏览器导航过渡行为，需进一步研究（如 SPA 化或 pagehide/page transition API）
+- [X] **自定义光标页面跳转已优化**：已加 View Transitions (crossfade 过渡) + Speculation Rules (hover 预渲染) 优化至浏览器能力上限；残余为浏览器原生导航行为（仅 Firefox 等不支持的浏览器），属 P3 已知边界，接受。
 - [X] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
 - [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码（用 GitHub Pages URL 即可，不需要自定义域名）
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，用 GitHub Pages URL 监控，通知接企业微信

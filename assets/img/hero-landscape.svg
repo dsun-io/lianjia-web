@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Australian outback golden hour sky -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="25%" stop-color="#16213e"/>
+      <stop offset="50%" stop-color="#e2703a"/>
+      <stop offset="70%" stop-color="#ee9b00"/>
+      <stop offset="85%" stop-color="#ca6702"/>
+      <stop offset="100%" stop-color="#9b2226"/>
+    </linearGradient>
+    <!-- Sun glow -->
+    <radialGradient id="sun" cx="50%" cy="58%" r="20%">
+      <stop offset="0%" stop-color="#ffd166" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#ee9b00" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ee9b00" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Ground gradient -->
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  
+  <!-- Sun glow -->
+  <ellipse cx="960" cy="620" rx="400" ry="350" fill="url(#sun)"/>
+  <!-- Sun disc -->
+  <circle cx="960" cy="620" r="60" fill="#ffd166" opacity="0.95"/>
+  <circle cx="960" cy="620" r="45" fill="#ffe5a0" opacity="0.7"/>
+
+  <!-- Distant hills -->
+  <path d="M0 650 Q200 580 400 620 Q600 560 800 600 Q1000 550 1200 590 Q1400 560 1600 610 Q1800 570 1920 600 L1920 700 L0 700Z" fill="#2d1b0e" opacity="0.6"/>
+  <path d="M0 680 Q300 630 500 660 Q700 620 900 650 Q1100 610 1300 640 Q1500 620 1700 650 Q1850 630 1920 640 L1920 720 L0 720Z" fill="#1a0f05" opacity="0.8"/>
+
+  <!-- Eucalyptus tree silhouette - left -->
+  <g opacity="0.85">
+    <rect x="280" y="420" width="8" height="260" fill="#0d0d0d"/>
+    <path d="M284 420 Q250 380 220 350 Q240 340 260 360 Q270 340 250 310 Q270 320 284 350 Q290 320 310 300 Q300 330 290 350 Q310 350 330 330 Q310 360 290 370 Q285 400 284 420Z" fill="#0d0d0d"/>
+    <path d="M284 350 Q260 310 240 270 Q255 265 265 290 Q275 270 260 240 Q280 260 284 290 Q290 260 305 240 Q298 270 290 290 Q305 280 320 270 Q305 300 290 310Z" fill="#0d0d0d"/>
+  </g>
+
+  <!-- Eucalyptus tree silhouette - right -->
+  <g opacity="0.75">
+    <rect x="1580" y="440" width="7" height="240" fill="#0d0d0d"/>
+    <path d="M1583 440 Q1555 405 1530 380 Q1550 370 1565 385 Q1575 365 1555 340 Q1575 350 1583 375 Q1590 345 1605 330 Q1598 355 1590 375 Q1608 370 1620 355 Q1605 380 1593 390 Q1590 420 1583 440Z" fill="#0d0d0d"/>
+    <path d="M1583 375 Q1560 340 1545 305 Q1560 300 1570 320 Q1578 300 1565 275 Q1580 290 1583 315 Q1588 290 1600 275 Q1595 300 1588 320 Q1600 310 1615 300 Q1602 325 1590 335Z" fill="#0d0d0d"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="700" width="1920" height="380" fill="url(#ground)"/>
+
+  <!-- ─── Wire Fence Line ─── -->
+  <!-- Fence posts (Y-posts) -->
+  <g fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1">
+    <!-- Post 1 -->
+    <path d="M200 500 L195 720 L205 720 L200 500Z"/>
+    <path d="M200 500 L190 495 L200 490 L210 495 L200 500Z"/>
+    <!-- Post 2 -->
+    <path d="M420 490 L415 720 L425 720 L420 490Z"/>
+    <path d="M420 490 L410 485 L420 480 L430 485 L420 490Z"/>
+    <!-- Post 3 -->
+    <path d="M640 485 L635 720 L645 720 L640 485Z"/>
+    <path d="M640 485 L630 480 L640 475 L650 480 L640 485Z"/>
+    <!-- Post 4 -->
+    <path d="M860 480 L855 720 L865 720 L860 480Z"/>
+    <path d="M860 480 L850 475 L860 470 L870 475 L860 480Z"/>
+    <!-- Post 5 (center, tallest) -->
+    <path d="M1080 470 L1075 720 L1085 720 L1080 470Z"/>
+    <path d="M1080 470 L1070 465 L1080 460 L1090 465 L1080 470Z"/>
+    <!-- Post 6 -->
+    <path d="M1300 480 L1295 720 L1305 720 L1300 480Z"/>
+    <path d="M1300 480 L1290 475 L1300 470 L1310 475 L1300 480Z"/>
+    <!-- Post 7 -->
+    <path d="M1520 485 L1515 720 L1525 720 L1520 485Z"/>
+    <path d="M1520 485 L1510 480 L1520 475 L1530 480 L1520 485Z"/>
+    <!-- Post 8 -->
+    <path d="M1740 490 L1735 720 L1745 720 L1740 490Z"/>
+    <path d="M1740 490 L1730 485 L1740 480 L1750 485 L1740 490Z"/>
+  </g>
+
+  <!-- Wire lines (horizontal) -->
+  <g stroke="#3a3a3a" stroke-width="1.5" fill="none" opacity="0.9">
+    <line x1="180" y1="520" x2="1760" y2="510"/>
+    <line x1="180" y1="555" x2="1760" y2="548"/>
+    <line x1="180" y1="590" x2="1760" y2="586"/>
+    <line x1="180" y1="625" x2="1760" y2="624"/>
+    <line x1="180" y1="660" x2="1760" y2="662"/>
+    <line x1="180" y1="695" x2="1760" y2="700"/>
+  </g>
+
+  <!-- Vertical stay wires (hinge joint style) -->
+  <g stroke="#2a2a2a" stroke-width="0.8" fill="none" opacity="0.6">
+    <line x1="200" y1="510" x2="200" y2="700"/>
+    <line x1="310" y1="505" x2="310" y2="700"/>
+    <line x1="420" y1="500" x2="420" y2="700"/>
+    <line x1="530" y1="498" x2="530" y2="700"/>
+    <line x1="640" y1="495" x2="640" y2="700"/>
+    <line x1="750" y1="493" x2="750" y2="700"/>
+    <line x1="860" y1="490" x2="860" y2="700"/>
+    <line x1="970" y1="488" x2="970" y2="700"/>
+    <line x1="1080" y1="485" x2="1080" y2="700"/>
+    <line x1="1190" y1="488" x2="1190" y2="700"/>
+    <line x1="1300" y1="490" x2="1300" y2="700"/>
+    <line x1="1410" y1="493" x2="1410" y2="700"/>
+    <line x1="1520" y1="495" x2="1520" y2="700"/>
+    <line x1="1630" y1="498" x2="1630" y2="700"/>
+    <line x1="1740" y1="500" x2="1740" y2="700"/>
+  </g>
+
+  <!-- Fence post tops catching sunlight -->
+  <g fill="#ee9b00" opacity="0.3">
+    <ellipse cx="200" cy="488" rx="8" ry="4"/>
+    <ellipse cx="420" cy="478" rx="8" ry="4"/>
+    <ellipse cx="640" cy="473" rx="8" ry="4"/>
+    <ellipse cx="860" cy="468" rx="8" ry="4"/>
+    <ellipse cx="1080" cy="458" rx="9" ry="5"/>
+    <ellipse cx="1300" cy="468" rx="8" ry="4"/>
+    <ellipse cx="1520" cy="473" rx="8" ry="4"/>
+    <ellipse cx="1740" cy="478" rx="8" ry="4"/>
+  </g>
+
+  <!-- Wire catching sunlight highlights -->
+  <g stroke="#ffd166" stroke-width="0.5" fill="none" opacity="0.2">
+    <line x1="180" y1="520" x2="1760" y2="510"/>
+    <line x1="180" y1="555" x2="1760" y2="548"/>
+  </g>
+
+  <!-- Grass tufts in foreground -->
+  <g fill="#1a1a1a" opacity="0.7">
+    <path d="M50 720 Q55 690 60 720 Q65 695 70 720 Q75 700 80 720Z"/>
+    <path d="M300 730 Q305 700 310 730 Q315 705 320 730 Q325 708 330 730Z"/>
+    <path d="M600 725 Q605 695 610 725 Q615 700 620 725Z"/>
+    <path d="M900 735 Q905 705 910 735 Q915 710 920 735 Q925 712 930 735Z"/>
+    <path d="M1200 728 Q1205 698 1210 728 Q1215 703 1220 728Z"/>
+    <path d="M1500 732 Q1505 702 1510 732 Q1515 707 1520 732 Q1525 710 1530 732Z"/>
+    <path d="M1800 725 Q1805 695 1810 725 Q1815 700 1820 725Z"/>
+  </g>
+
+  <!-- Atmospheric particles / dust -->
+  <g fill="#ffd166" opacity="0.08">
+    <circle cx="300" cy="500" r="2"/>
+    <circle cx="700" cy="450" r="1.5"/>
+    <circle cx="1100" cy="520" r="2"/>
+    <circle cx="1500" cy="480" r="1.5"/>
+    <circle cx="500" cy="550" r="1"/>
+    <circle cx="1300" cy="560" r="1"/>
+  </g>
+
+  <!-- Bottom vignette for text readability -->
+  <rect x="0" y="750" width="1920" height="330" fill="url(#ground)" opacity="0.95"/>
+  <rect x="0" y="650" width="1920" height="100" fill="url(#ground)" opacity="0.3"/>
+</svg>

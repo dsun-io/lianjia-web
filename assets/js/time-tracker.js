@@ -78,13 +78,24 @@ var TimeTracker = (function () {
     _isVisible = !document.hidden;
     document.addEventListener('visibilitychange', _onVisibilityChange);
 
-    // 每秒累计
-    _intervalId = setInterval(_tick, INTERVAL_MS);
+    // 预渲染兼容：prerender 状态下不计时，激活后才开始
+    if (document.prerendering) {
+      document.addEventListener('prerenderingchange', function () {
+        if (!document.prerendering) _startTicking();
+      }, { once: true });
+    } else {
+      _startTicking();
+    }
 
     // 页面卸载时停止
     window.addEventListener('beforeunload', function () {
       if (_intervalId) clearInterval(_intervalId);
     });
+  }
+
+  /** 内部方法：启动每秒计时 */
+  function _startTicking() {
+    _intervalId = setInterval(_tick, INTERVAL_MS);
   }
 
   /**

@@ -62,8 +62,14 @@
     if (document.hidden) stopTimer(); else startTimer();
   });
 
-  /* ── 页面加载时判断初始可见状态 ── */
-  if (!document.hidden) startTimer();
+  /* ── 预渲染兼容：prerender 状态下不计时，激活后才开始 ── */
+  if (document.prerendering) {
+    document.addEventListener('prerenderingchange', function () {
+      if (!document.prerendering && !document.hidden) startTimer();
+    }, { once: true });
+  } else if (!document.hidden) {
+    startTimer();
+  }
 
   /* ── 页面离开时保存 ── */
   window.addEventListener('beforeunload', stopTimer);

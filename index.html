@@ -38,17 +38,33 @@
   })();
   </script>
 
+  <!-- Fonts: Space Grotesk (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS v3 Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            'heading': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+          },
           colors: {
-            'steel-gray': '#2D3436',
-            'deep-blue': '#1B2838',
-            'accent': '#E67E22',
-          }
+            'steel-gray': '#1C1917',
+            'deep-blue': '#0C0A09',
+            'accent': {
+              DEFAULT: '#C2410C',
+              light: '#EA580C',
+              dark: '#9A3412',
+            },
+          },
+          borderRadius: {
+            'DEFAULT': '0px',
+          },
         }
       }
     }
@@ -100,165 +116,215 @@
 
   <!-- Custom Styles -->
   <style>
-    /* Smooth scroll for anchor links */
+    /* ═══════════════════════════════════════════
+       Design Tokens — 全站统一样式变量
+       ═══════════════════════════════════════════ */
+    :root {
+      /* 字号层级 (1.25 模块比) */
+      --fs-eyebrow: 0.8125rem;
+      --fs-caption: 0.875rem;
+      --fs-body: 1rem;
+      --fs-h4: 1.25rem;
+      --fs-h3: 1.5rem;
+      --fs-h2: 2.25rem;
+      --fs-h1: 3.25rem;
+
+      /* 8pt 间距体系 */
+      --space-1: 0.25rem;  /* 4px */
+      --space-2: 0.5rem;   /* 8px */
+      --space-3: 0.75rem;  /* 12px */
+      --space-4: 1rem;     /* 16px */
+      --space-6: 1.5rem;   /* 24px */
+      --space-8: 2rem;     /* 32px */
+      --space-12: 3rem;    /* 48px */
+      --space-16: 4rem;    /* 64px */
+      --space-20: 5rem;    /* 80px */
+      --space-24: 6rem;    /* 96px */
+      --space-32: 8rem;    /* 128px */
+
+      /* 统一缓动 */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-normal: 500ms;
+      --duration-slow: 700ms;
+
+      /* 阴影 token */
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
+
+      /* 描边 */
+      --hairline: 1px solid rgba(0,0,0,0.08);
+
+      /* 配色 */
+      --accent: #C2410C;
+      --accent-light: #EA580C;
+      --accent-dark: #9A3412;
+    }
+
+    /* ── 全局基础 ── */
     html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── 标题字体 ── */
+    h1, h2, h3, h4, h5, h6,
+    .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+    h1 { font-size: var(--fs-h1); letter-spacing: -0.03em; line-height: 1.1; }
+    h2 { font-size: var(--fs-h2); letter-spacing: -0.02em; line-height: 1.15; }
+    h3 { font-size: var(--fs-h3); letter-spacing: -0.015em; line-height: 1.2; }
+    h4 { font-size: var(--fs-h4); letter-spacing: -0.01em; line-height: 1.3; }
+
+    /* Eyebrow 小字 */
+    .eyebrow {
+      font-size: var(--fs-eyebrow);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* 等宽数字 */
+    .tabular-nums { font-variant-numeric: tabular-nums; }
 
     /* Safe area for mobile bottom bar */
     .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
 
     /* Hero fade-in animation */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero-content { animation: fadeInUp 1s ease-out forwards; }
+    .hero-content { animation: fadeInUp 0.8s var(--ease-out-expo) forwards; }
 
     /* WhatsApp pulse */
     @keyframes wa-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-      70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
-    .wa-pulse { animation: wa-pulse 2s infinite; }
+    .wa-pulse { animation: wa-pulse 2.5s infinite; }
 
-    /* ── Cursor Glow: Welding Spark (Hero Section) ── */
+    /* ── Custom Cursor: 工业十字线（加粗 + 黑边） ── */
+    #cursor-dot {
+      position: fixed;
+      left: 0; top: 0;
+      width: 24px; height: 24px;
+      pointer-events: none;
+      z-index: 99999;
+      will-change: transform;
+    }
+    #cursor-dot::before,
+    #cursor-dot::after {
+      content: '';
+      position: absolute;
+      background: var(--accent);
+      border-radius: 1px;
+      opacity: 0.9;
+    }
+    #cursor-dot::before {
+      width: 1.5px; height: 100%;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+    }
+    #cursor-dot::after {
+      width: 100%; height: 1.5px;
+      top: 50%; left: 0;
+      transform: translateY(-50%);
+    }
+    #cursor-dot .dot-center {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      transition: width var(--duration-normal) var(--ease-out-expo),
+                  height var(--duration-normal) var(--ease-out-expo),
+                  background var(--duration-normal) var(--ease-out-expo);
+    }
+    #cursor-dot.hovering {
+      width: 32px; height: 32px;
+    }
+    #cursor-dot.hovering .dot-center {
+      width: 32px; height: 32px;
+      background: rgba(194, 65, 12, 0.12);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(194, 65, 12, 0.4), 0 0 20px rgba(194, 65, 12, 0.15);
+    }
+    #cursor-dot.hovering::before,
+    #cursor-dot.hovering::after { opacity: 0; }
+
+    /* ── Cursor Glow (Hero only, 收敛) ── */
     #cursor-glow {
       position: absolute;
-      left: 0;
-      top: 0;
-      width: 450px;
-      height: 450px;
+      left: 0; top: 0;
+      width: 350px; height: 350px;
       border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle,
-        rgba(230, 126, 34, 0.18) 0%,
-        rgba(230, 126, 34, 0.06) 30%,
-        rgba(230, 126, 34, 0.02) 50%,
-        transparent 70%
+        rgba(194, 65, 12, 0.18) 0%,
+        rgba(194, 65, 12, 0.08) 30%,
+        transparent 60%
       );
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease;
       z-index: 5;
       mix-blend-mode: screen;
       will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
-    /* Inner hot core */
-    #cursor-glow::after {
-      content: '';
-      position: absolute;
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-    }
 
-    /* ── Custom Cursor: Industrial Crosshair ── */
-    #cursor-dot {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 28px;
-      height: 28px;
-      pointer-events: none;
-      z-index: 99999;
-      will-change: transform;
-    }
-    /* Crosshair lines */
-    #cursor-dot::before,
-    #cursor-dot::after {
-      content: '';
-      position: absolute;
-      background: #E67E22;
-      border-radius: 1px;
-    }
-    #cursor-dot::before {
-      width: 1px; height: 100%;
-      left: 50%; top: 0;
-      transform: translateX(-50%);
-    }
-    #cursor-dot::after {
-      width: 100%; height: 1px;
-      top: 50%; left: 0;
-      transform: translateY(-50%);
-    }
-    /* Center dot */
-    #cursor-dot .dot-center {
-      position: absolute;
-      width: 4px; height: 4px;
-      background: #E67E22;
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s, background 0.3s;
-    }
-    /* Hover state: expand into circle */
-    #cursor-dot.hovering {
-      width: 40px; height: 40px;
-    }
-    #cursor-dot.hovering .dot-center {
-      width: 40px; height: 40px;
-      background: rgba(230, 126, 34, 0.85);
-      border: 2px solid #E67E22;
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(230, 126, 34, 0.5);
-    }
-    #cursor-dot.hovering::before,
-    #cursor-dot.hovering::after { opacity: 0; }
-
-    /* ── Magnetic Button ── */
+    /* ── Magnetic Button (收敛位移) ── */
     .magnetic-btn {
       position: relative;
-      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform var(--duration-normal) var(--ease-out-expo);
     }
 
-    /* ── Wire Mesh Click Ripple ── */
+    /* ── Click Ripple ── */
     .click-ripple {
       position: fixed;
-      border: 1.5px solid rgba(230, 126, 34, 0.6);
+      border: 1.5px solid rgba(194, 65, 12, 0.7);
       border-radius: 50%;
       pointer-events: none;
       z-index: 99997;
-      animation: ripple-expand 0.6s ease-out forwards;
+      animation: ripple-expand 0.6s var(--ease-out-expo) forwards;
     }
     @keyframes ripple-expand {
       0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); }
-      100% { width: 80px; height: 80px; opacity: 0; transform: translate(-50%, -50%); }
+      100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); }
     }
 
-    /* ── Products Dropdown ── */
+    /* ── Dropdown Nav ── */
     .nav-dropdown-menu {
       position: absolute;
-      top: 100%;
-      left: 50%;
+      top: 100%; left: 50%;
       transform: translateX(-50%);
       min-width: 200px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
-      border: 1px solid #e5e7eb;
-      padding: 6px 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s, margin-top 0.2s;
-      margin-top: 8px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-lg);
+      border: var(--hairline);
+      padding: var(--space-2) 0;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.25s var(--ease-out-expo), visibility 0.25s, margin-top 0.25s var(--ease-out-expo);
+      margin-top: var(--space-2);
       pointer-events: none;
     }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown-menu:hover {
-      opacity: 1;
-      visibility: visible;
-      margin-top: 0;
-      pointer-events: auto;
+      opacity: 1; visibility: visible;
+      margin-top: 0; pointer-events: auto;
     }
     .nav-dropdown-menu::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: 0;
-      right: 0;
-      height: 8px;
+      top: -8px; left: 0; right: 0; height: 8px;
     }
 
     /* Hide custom cursor on touch devices */
@@ -268,11 +334,51 @@
 
     /* Submit success checkmark animation */
     @keyframes checkDraw { from { stroke-dashoffset: 50; } to { stroke-dashoffset: 0; } }
+
+    /* ── Noise/Grain 质感叠层 ── */
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.04;
+    }
+
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .hero-content { animation: none; opacity: 1; }
+      #cursor-glow { display: none; }
+    }
+
+    /* ── MPA View Transitions ── */
+    @view-transition { navigation: auto; }
   </style>
+
+  <!-- Speculation Rules: hover/按下时预渲染链接目标页，消除加载空窗 -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-white text-steel-gray antialiased">
-<script>document.documentElement.style.cursor='none';document.addEventListener('mousedown',function(e){var a=e.target.closest('a');if(a&&a.href){document.documentElement.style.cursor='none';document.body.style.cursor='none'}},true);window.addEventListener('beforeunload',function(){document.documentElement.style.cursor='none'})</script>
+<script>document.documentElement.style.cursor='none';</script>
+
+<!-- Noise/Grain texture (inline SVG, zero dependency) -->
+<svg style="position:absolute;width:0;height:0">
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter>
+</svg>
 
 <!-- Custom Cursor -->
 <div id="cursor-dot"><div class="dot-center"></div></div>
@@ -317,7 +423,7 @@
       </a>
       <!-- Get a Quote CTA -->
       <a href="#contact"
-        class="magnetic-btn hidden sm:inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2 rounded transition-colors duration-200 shadow-sm hover:shadow-md">
+        class="magnetic-btn hidden sm:inline-flex items-center bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2 rounded transition-colors duration-200 shadow-sm hover:shadow-md">
         Get a Quote
       </a>
       <!-- Mobile hamburger button -->
@@ -370,21 +476,19 @@
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
   <!-- Cursor Glow Effect -->
   <div id="cursor-glow"></div>
-  <!-- Background Video (desktop only) -->
-  <div class="absolute inset-0 hidden md:block">
-    <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="assets/img/hero-poster.svg" src="assets/video/hero-factory.mp4"></video>
-  </div>
-  <!-- Static Poster Fallback (mobile only) -->
-  <div class="absolute inset-0 md:hidden bg-cover bg-center" style="background-image: url('assets/img/hero-poster.svg');"></div>
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/img/hero-landscape.svg');"></div>
   <!-- Dark Overlay -->
   <div class="absolute inset-0 bg-black/60"></div>
+  <!-- Grain Texture -->
+  <div class="grain-overlay" style="filter:url(#grain)"></div>
   <!-- Content -->
   <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white hero-content" data-parallax-container>
     <p data-parallax="0.02" class="text-sm md:text-base tracking-[0.2em] uppercase text-gray-300 mb-6">ANPING, HEBEI, CHINA &middot; WIRE FENCE MANUFACTURER SINCE [YEAR_FOUNDED]</p>
     <h1 data-parallax="0.04" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Field Fence, Chain Link, Barbed Wire &amp; Y Posts &mdash; Factory Direct from Anping, Hebei, China</h1>
     <p data-parallax="0.03" class="text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">[COMPANY_NAME] manufactures galvanized field fence, chain link fence, barbed wire and Y posts in Anping &mdash; China's largest wire mesh base. Factory-direct pricing, free samples, and a quote within 24 hours. Reliable supply to Australia &amp; New Zealand.</p>
     <div data-parallax="0.05" class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="#contact" class="magnetic-btn inline-block w-full sm:w-auto px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded transition-colors duration-200">Get a Free Quote</a>
+      <a href="#contact" class="magnetic-btn inline-block w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold text-lg rounded transition-colors duration-200">Get a Free Quote</a>
       <a href="#products" class="magnetic-btn inline-block w-full sm:w-auto px-8 py-4 border-2 border-white text-white hover:bg-white/10 font-semibold text-lg rounded transition-colors duration-200">View Product Catalog</a>
     </div>
   </div>
@@ -438,15 +542,15 @@
       <!-- Left: Hero image + two knot-type cards -->
       <div class="w-full lg:w-1/2">
         <div class="rounded-xl overflow-hidden shadow-md mb-4">
-          <img id="ff-hero" src="assets/img/field-fence-01.jpg" alt="Galvanized field fence roll" class="w-full h-64 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
+          <img id="ff-hero" src="assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="w-full h-64 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-02.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
+          <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-hero.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
             <img src="assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="w-full h-24 object-cover rounded-lg mb-2">
             <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Hinge Joint</p>
             <p class="text-[11px] text-gray-500">Flexible &middot; Absorbs impact</p>
           </button>
-          <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-03.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
+          <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-rl-main.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
             <img src="assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="w-full h-24 object-cover rounded-lg mb-2">
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Ring Lock</p>
             <p class="text-[11px] text-gray-500">Rigid &middot; Holds shape</p>
@@ -477,7 +581,7 @@
           </table>
         </div>
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
+          <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
           <a href="products/field-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Field Fence Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
@@ -494,7 +598,7 @@
           <a href="assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group"><img src="assets/img/chain-link-02.jpg" alt="Chain link fence diamond mesh detail" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
           <a href="assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group"><img src="assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
         </div>
-        <div class="mt-4 rounded-lg overflow-hidden border border-gray-200"><img src="assets/gif/galvanizing.gif" alt="Hot-dip galvanizing process" class="w-full h-32 object-cover" loading="lazy"></div>
+        <div class="mt-4 rounded-lg overflow-hidden border border-gray-200"><img src="assets/img/chain-link-app-01.jpg" alt="Chain link fence detail" class="w-full h-32 object-cover" loading="lazy"></div>
       </div>
       <div class="w-full lg:w-1/2">
         <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 02</span>
@@ -522,7 +626,7 @@
         </div>
         <p class="text-sm text-gray-500 mb-6"><span class="font-semibold text-gray-700">Applications:</span> Security fencing, sports fields, industrial sites, boundary and yard fencing.</p>
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
+          <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
           <a href="products/chain-link-fence.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
@@ -589,7 +693,7 @@
         </div>
         <p class="text-xs text-gray-400 mb-6">Material: Q235 steel · Coating: Galvanised (HDG) / Black bitumen / Painted · // TODO: confirm material grade</p>
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
+          <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
           <a href="products/y-post.html" class="inline-flex items-center gap-1 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded transition-colors duration-200">View Full Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
         </div>
       </div>
@@ -602,9 +706,9 @@
       <div class="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/barbed-wire-01.svg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-01.svg" alt="Galvanized barbed wire roll in factory" class="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/barbed-wire-02.svg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-02.svg" alt="Barbed wire barb detail close-up" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/barbed-wire-03.svg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-03.svg" alt="Barbed wire installed on farm fence" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
         </div>
       </div>
       <div class="w-full lg:w-1/2">
@@ -632,7 +736,7 @@
           </table>
         </div>
         <p class="text-sm text-gray-500 mb-6"><span class="font-semibold text-gray-700">Applications:</span> Farm perimeter security, livestock fencing, military zones, highway guardrail topper.</p>
-        <a href="#contact" class="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
+        <a href="#contact" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Request a Quote</a>
       </div>
     </div>
     </div>
@@ -703,12 +807,12 @@
     </div>
     <div class="max-w-3xl mx-auto mb-12" data-aos="fade-up">
       <div class="relative w-full rounded-xl overflow-hidden shadow-lg bg-gray-900" style="padding-top: 56.25%;">
-        <video class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="assets/img/factory-01.jpg" src="assets/video/factory-tour.mp4">Your browser does not support the video tag.</video>
+        <video class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="assets/img/factory-illustration.svg" src="assets/video/factory-tour.mp4">Your browser does not support the video tag.</video>
       </div>
     </div>
     <div class="text-center" data-aos="fade-up">
       <p class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">See it for yourself — book a factory audit or a live video walk-through any time.</p>
-      <a href="#contact" class="inline-block mt-6 px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors duration-200">Book a Factory Audit</a>
+      <a href="#contact" class="inline-block mt-6 px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors duration-200">Book a Factory Audit</a>
     </div>
   </div>
 </section>
@@ -720,7 +824,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div class="order-1 lg:order-2">
-        <img src="assets/img/factory-01.jpg" alt="Anping wire fence factory production floor — galvanizing and wire drawing workshop" class="w-full h-auto rounded-lg shadow-lg object-cover" loading="lazy">
+        <img src="assets/img/factory-illustration.svg" alt="Anping wire fence factory production floor — galvanizing and wire drawing workshop" class="w-full h-auto rounded-lg shadow-lg object-cover" loading="lazy">
       </div>
       <div class="order-2 lg:order-1" data-aos="fade-up">
         <p class="text-sm font-semibold tracking-[0.15em] uppercase text-orange-600 mb-4">About Us</p>
@@ -804,8 +908,9 @@
 <!-- ============================================= -->
 <!-- INQUIRY FORM                                  -->
 <!-- ============================================= -->
-<section id="contact" class="bg-slate-800 text-white py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="contact" class="bg-slate-800 text-white py-20 relative">
+  <div class="grain-overlay" style="filter:url(#grain)"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
       <div class="lg:col-span-3">
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">Request a Quote</h2>
@@ -833,7 +938,7 @@
           <div><label for="contact-message" class="block text-sm font-medium text-gray-300 mb-1.5">Additional Details</label><textarea id="contact-message" name="message" rows="4" placeholder="Wire diameter, zinc coating, quantity, delivery terms, or any other requirements..." class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 resize-vertical"></textarea></div>
           <!-- Turnstile widget (show after site_key configured) -->
           <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-callback="onTurnstileSuccess" style="display:none"></div>
-          <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">Send Inquiry</button>
+          <button type="submit" id="submit-btn" class="w-full sm:w-auto px-10 py-4 bg-accent hover:bg-accent-dark text-white font-semibold text-lg rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-slate-800">Send Inquiry</button>
           <p class="text-sm text-gray-400 flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>We reply within 24 hours. Your details stay private.</p>
         </form>
 
@@ -857,7 +962,7 @@
             </ol>
           </div>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onclick="var f=document.getElementById('inquiry-form');var b=document.getElementById('submit-btn');document.getElementById('inquiry-success').classList.add('hidden');f.classList.remove('hidden');if(b){b.disabled=false;b.textContent='Send Inquiry'}history.replaceState(null,'','#contact');document.getElementById('contact').scrollIntoView({behavior:'smooth'});document.title='Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]'" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition-colors">← Submit Another Inquiry</button>
+            <button onclick="var f=document.getElementById('inquiry-form');var b=document.getElementById('submit-btn');document.getElementById('inquiry-success').classList.add('hidden');f.classList.remove('hidden');if(b){b.disabled=false;b.textContent='Send Inquiry'}history.replaceState(null,'','#contact');document.getElementById('contact').scrollIntoView({behavior:'smooth'});document.title='Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]'" class="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors">← Submit Another Inquiry</button>
             <a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold rounded transition-colors">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Chat on WhatsApp
@@ -937,7 +1042,7 @@
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
-    <a href="#contact" class="flex-1 flex items-center justify-center gap-2 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-200">
+    <a href="#contact" class="flex-1 flex items-center justify-center gap-2 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors duration-200">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
       Get a Quote
     </a>
@@ -1088,6 +1193,32 @@
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // 必填项验证：Name 和 Email
+    var nameInput = form.querySelector('[name="name"]');
+    var emailInput = form.querySelector('[name="email"]');
+    var firstInvalid = null;
+
+    // 清除旧的错误样式
+    form.querySelectorAll('.ring-2.ring-red-500').forEach(function(el) {
+      el.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
+    });
+
+    if (!nameInput || !nameInput.value.trim()) {
+      if (nameInput) { nameInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
+      if (!firstInvalid) firstInvalid = nameInput;
+    }
+    if (!emailInput || !emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      if (emailInput) { emailInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
+      if (!firstInvalid) firstInvalid = emailInput;
+    }
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
+      return;
+    }
+
     var btn = document.getElementById('submit-btn');
     if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
     var data = new FormData(form);
@@ -1133,6 +1264,13 @@
     if (success) { success.classList.remove('hidden'); }
     document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
   }
+
+  // 输入时清除错误样式
+  form.querySelectorAll('input, textarea').forEach(function(input) {
+    input.addEventListener('input', function() {
+      input.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
+    });
+  });
 })();
 </script>
 
@@ -1310,7 +1448,7 @@
       var gly = (gy - glowSmooth.y) * 0.55;
       glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
       glowSmooth.y += Math.abs(gly) < 0.5 ? (gy - glowSmooth.y) : gly;
-      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 225) + 'px, ' + (glowSmooth.y - 225) + 'px)';
+      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 175) + 'px, ' + (glowSmooth.y - 175) + 'px)';
     }
 
     /* Dot position (transform-based) — high tracking coefficient reduces lag, snaps when distance is minimal */
@@ -1352,7 +1490,7 @@
         var dy = e.clientY - cy;
         var maxDim = Math.max(rect.width, rect.height);
         var dist = Math.sqrt(dx * dx + dy * dy);
-        var strength = Math.min(dist / maxDim, 1) * 8;
+        var strength = Math.min(dist / maxDim, 1) * 4;
         btn.style.transform = 'translate(' + (dx / maxDim * strength) + 'px, ' + (dy / maxDim * strength) + 'px)';
       }, { passive: true });
       btn.addEventListener('mouseleave', function() {
@@ -1365,7 +1503,7 @@
   var parallaxEls = hero.querySelectorAll('[data-parallax]');
   for (var j = 0; j < parallaxEls.length; j++) {
     parallaxEls[j].pFactor = parallaxEls[j].getAttribute('data-parallax');
-    parallaxEls[j].style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+    parallaxEls[j].style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
   }
   hero.addEventListener('mouseleave', function() {
     for (var k = 0; k < parallaxEls.length; k++) {
@@ -1373,7 +1511,7 @@
     }
   });
 
-  /* ── Wire Mesh Click Ripple ── */
+  /* ── Click Ripple ── */
   document.addEventListener('click', function(e) {
     var ripple = document.createElement('div');
     ripple.className = 'click-ripple';
