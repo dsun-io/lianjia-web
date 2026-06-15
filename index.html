@@ -355,8 +355,31 @@
       #cursor-glow { display: none; }
     }
 
-    /* ── MPA View Transitions ── */
-    @view-transition { navigation: auto; }
+    /* ═══════════════════════════════
+       Image Utility Classes
+       ═══════════════════════════════ */
+    .img-product {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.04) brightness(1.03);
+    }
+    .img-product-hero {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: contrast(1.03) saturate(1.02) brightness(1.05);
+    }
+    .img-wrap { overflow: hidden; }
+    .img-wrap img { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-wrap:hover img { transform: scale(1.04); }
+    /* 等高布局 */
+    .row-equal {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 1024px) {
+      .lg\:row-equal { display: flex; flex-direction: column; }
+      .lg\:col-fill { flex: 1; }
+    }
   </style>
 
   <!-- Speculation Rules: hover/按下时预渲染链接目标页，消除加载空窗 -->
@@ -538,20 +561,20 @@
     <!-- Product 1: Field Fence -->
     <div class="relative py-16 lg:py-20">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-orange-500 rounded-full"></div>
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
       <!-- Left: Hero image + two knot-type cards -->
-      <div class="w-full lg:w-1/2">
+      <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="rounded-xl overflow-hidden shadow-md mb-4">
-          <img id="ff-hero" src="assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="w-full h-64 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
+          <img id="ff-hero" src="assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="img-product-hero h-64 sm:h-72" loading="lazy">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-hero.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
-            <img src="assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="w-full h-24 object-cover rounded-lg mb-2">
+            <div class="img-wrap rounded-lg mb-2"><img src="assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="img-product h-20"></div>
             <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Hinge Joint</p>
             <p class="text-[11px] text-gray-500">Flexible &middot; Absorbs impact</p>
           </button>
           <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-rl-main.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
-            <img src="assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="w-full h-24 object-cover rounded-lg mb-2">
+            <div class="img-wrap rounded-lg mb-2"><img src="assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="img-product h-20"></div>
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Ring Lock</p>
             <p class="text-[11px] text-gray-500">Rigid &middot; Holds shape</p>
           </button>
@@ -561,8 +584,8 @@
       <div class="w-full lg:w-1/2">
         <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 01</span>
         <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Field Fence &mdash; Hinge Joint &amp; Ring Lock</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6">Field fence in two knot types &mdash; Hinge Joint for flexible rural runs and Ring Lock for high-pressure stock &amp; exclusion fencing.</p>
-        <ul class="space-y-3 mb-8">
+        <p class="text-gray-600 text-lg leading-relaxed mb-5">Field fence in two knot types &mdash; Hinge Joint for flexible rural runs and Ring Lock for high-pressure stock &amp; exclusion fencing.</p>
+        <ul class="space-y-2 mb-6">
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">High-tensile wire, hot-dip galvanised for AU &amp; NZ rural fencing</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Two knot types: Hinge Joint (flexible) &amp; Ring Lock (rigid)</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Custom height, line wires, stay spacing &amp; roll length</span></li>
@@ -591,20 +614,20 @@
     <!-- Product 2: Chain Link Fence (reversed) -->
     <div class="relative py-16 lg:py-20 bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-orange-500 rounded-full"></div>
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row-reverse items-start gap-10 lg:gap-16">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/chain-link-01.jpg" data-lightbox="product-2" class="col-span-2 block rounded-lg overflow-hidden group"><img src="assets/img/chain-link-01.jpg" alt="Galvanized chain link fence roll in warehouse" class="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group"><img src="assets/img/chain-link-02.jpg" alt="Chain link fence diamond mesh detail" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group"><img src="assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+          <a href="assets/img/chain-link-01.jpg" data-lightbox="product-2" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-01.jpg" alt="Galvanized chain link fence roll in warehouse" class="img-product group-hover:scale-105 h-56 sm:h-64" loading="lazy"></a>
+          <a href="assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-02.jpg" alt="Chain link fence diamond mesh detail" class="img-product group-hover:scale-105 h-32 sm:h-36" loading="lazy"></a>
+          <a href="assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="img-product group-hover:scale-105 h-32 sm:h-36" loading="lazy"></a>
         </div>
-        <div class="mt-4 rounded-lg overflow-hidden border border-gray-200"><img src="assets/img/chain-link-app-01.jpg" alt="Chain link fence detail" class="w-full h-32 object-cover" loading="lazy"></div>
+        <div class="mt-3 rounded-lg overflow-hidden border border-gray-200 img-wrap"><img src="assets/img/chain-link-app-01.jpg" alt="Chain link fence detail" class="img-product h-24" loading="lazy"></div>
       </div>
       <div class="w-full lg:w-1/2">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 02</span>
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Chain Link Fence (Diamond Mesh)</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6">Versatile galvanized or PVC-coated chain link fence for security, sports grounds, industrial and boundary fencing.</p>
-        <ul class="space-y-3 mb-8">
+        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-3">Product 02</span>
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Chain Link Fence (Diamond Mesh)</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-5">Versatile galvanized or PVC-coated chain link fence for security, sports grounds, industrial and boundary fencing.</p>
+        <ul class="space-y-2 mb-6">
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Galvanized or PVC-coated, green / black / custom RAL colors</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Full accessory kit: posts, tension wire, tie wire, clamps</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Any height and roll length to spec</span></li>
@@ -636,36 +659,33 @@
     <!-- Product 3: Y Post / Star Picket -->
     <div class="relative py-16 lg:py-20">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-orange-500 rounded-full"></div>
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
       <!-- Left: Hero image + three type cards -->
-      <div class="w-full lg:w-1/2">
-        <div class="rounded-xl overflow-hidden shadow-md mb-4">
-          <img id="y-post-hero" src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-64 sm:h-80 object-cover transition-opacity duration-200" loading="lazy">
+      <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
+        <div class="rounded-xl overflow-hidden shadow-md mb-3">
+          <img id="y-post-hero" src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="img-product-hero h-64 sm:h-72" loading="lazy">
         </div>
         <!-- Three type cards: Studded / Plain / Scalloped -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/y-post-01.jpg" data-alt="Studded Star Post — raised anchor studs for anti-slip wire grip">
-            <img src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-24 object-cover rounded-lg mb-2">
-            <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Studded Star Post</p>
-            <p class="text-[11px] text-gray-500">Studded · Anti-slip anchor studs</p>
+        <div class="grid grid-cols-3 gap-3">
+          <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-2.5 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/y-post-01.jpg" data-alt="Studded Star Post">
+            <img src="assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <p class="text-[10px] font-bold text-orange-600 uppercase tracking-wider leading-tight">Studded</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-02.jpg" data-alt="Plain Y-Post — flat edge, no anti-slip structure">
-            <img src="assets/img/y-post-02.jpg" alt="Plain Y-Post" class="w-full h-24 object-cover rounded-lg mb-2">
-            <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Plain Y-Post</p>
-            <p class="text-[11px] text-gray-500">Plain · Flat-terrain line post</p>
+          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-02.jpg" data-alt="Plain Y-Post">
+            <img src="assets/img/y-post-02.jpg" alt="Plain Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Plain</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post — wave edge for better wire retention">
-            <img src="assets/img/y-post-03.jpg" alt="Scalloped Y-Post" class="w-full h-24 object-cover rounded-lg mb-2">
-            <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Scalloped Y-Post</p>
-            <p class="text-[11px] text-gray-500">Scalloped · Slopes & heavy livestock</p>
+          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post">
+            <img src="assets/img/y-post-03.jpg" alt="Scalloped Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
+            <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Scalloped</p>
           </button>
         </div>
       </div>
       <!-- Right: copy + specs + CTA -->
       <div class="w-full lg:w-1/2">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 03</span>
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Y Post / Star Picket</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6">Three profiles for every fencing need &mdash; from flat-edge economy to studded Australian-standard star pickets. Galvanised, bitumen or painted finish.</p>
+        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-3">Product 03</span>
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Y Post / Star Picket</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-5">Three profiles for every fencing need — from flat-edge economy to studded Australian-standard star pickets. Galvanised, bitumen or painted finish.</p>
         <ul class="space-y-3 mb-8">
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Q235 steel, 1.3–2.5 m lengths, 1.04–2.75 kg/pc</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Galvanised (HDG) / Black bitumen / Painted finish</span></li>
@@ -703,19 +723,19 @@
     <!-- Product 4: Barbed Wire -->
     <div class="relative py-16 lg:py-20 bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-orange-500 rounded-full"></div>
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row-reverse items-start gap-10 lg:gap-16">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-3">
-          <a href="assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
-          <a href="assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group"><img src="assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="img-product group-hover:scale-105 h-56 sm:h-64" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="img-product group-hover:scale-105 h-32 sm:h-36" loading="lazy"></a>
+          <a href="assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block rounded-lg overflow-hidden group img-wrap"><img src="assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="img-product group-hover:scale-105 h-32 sm:h-36" loading="lazy"></a>
         </div>
       </div>
       <div class="w-full lg:w-1/2">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-4">Product 04</span>
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Barbed Wire</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-6">Hot-dipped galvanized barbed wire for perimeter security, farm fencing and livestock control &mdash; sharp, tough and corrosion-resistant.</p>
-        <ul class="space-y-3 mb-8">
+        <span class="inline-block text-xs font-bold tracking-widest uppercase text-orange-500 bg-orange-100 px-3 py-1 rounded-full mb-3">Product 04</span>
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Barbed Wire</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-5">Hot-dipped galvanized barbed wire for perimeter security, farm fencing and livestock control &mdash; sharp, tough and corrosion-resistant.</p>
+        <ul class="space-y-2 mb-6">
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Single or double strand, galvanized or PVC-coated</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">High-tensile core wire for maximum cutting resistance</span></li>
           <li class="flex items-start gap-3"><svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><span class="text-gray-700">Barb spacing 75 / 100 / 150 mm, custom available</span></li>
