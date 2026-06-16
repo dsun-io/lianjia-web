@@ -127,16 +127,16 @@
     .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
 
     /* ── Gallery slide animation ── */
-    .ff-gallery-wrapper { position: relative; min-height: 360px; }
+    .ff-gallery-wrapper { position: relative; min-height: 360px; overflow: hidden; }
     .ff-gallery {
       position: absolute; top: 0; left: 0; width: 100%;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition: transform 0.4s ease;
       pointer-events: none;
     }
-    .ff-gallery-hidden-left  { opacity: 0; transform: translateX(-120px); }
-    .ff-gallery-hidden-right { opacity: 0; transform: translateX(120px); }
+    .ff-gallery-hidden-left  { transform: translateX(-100%); }
+    .ff-gallery-hidden-right { transform: translateX(100%); }
     .ff-gallery-visible {
-      opacity: 1; transform: translateX(0);
+      transform: translateX(0);
       z-index: 1; pointer-events: auto;
     }
 
