@@ -74,48 +74,51 @@
   }
 
   function switchFieldFenceVariant(variant) {
-    var active = document.querySelector('.ff-variant-card.border-orange-500');
-    var previousVariant = active ? active.getAttribute('data-variant') : null;
-
-    // 根据点击卡片相对于当前激活卡片的位置决定进出方向：
-    // 点右侧卡片 → 新画廊从右往左进入；点左侧卡片 → 新画廊从左往右进入
-    var goRight = false;
-    if (previousVariant && previousVariant !== variant) {
-      var cards = Array.from(document.querySelectorAll('.ff-variant-card'));
-      var prevIdx = cards.findIndex(function (c) { return c.getAttribute('data-variant') === previousVariant; });
-      var nextIdx = cards.findIndex(function (c) { return c.getAttribute('data-variant') === variant; });
-      goRight = nextIdx > prevIdx;
-    }
-
+    // 从当前可见画廊推断旧 variant（不依赖卡片 class，因为 setActiveCard 已先执行）
     var currentGallery = document.querySelector('.ff-gallery-visible');
+    var previousVariant = currentGallery ? currentGallery.id.replace('gallery-', '') : null;
+    var goRight = previousVariant && previousVariant !== variant ? variant === 'rl' : false;
+
     var nextGallery = document.getElementById('gallery-' + variant);
-    if (!nextGallery || nextGallery === currentGallery) return;
+    if (!nextGallery || nextGallery === currentGallery) { switchSpecTab(variant); return; }
 
-    // 旧画廊向反方向离开，新画廊从另一侧进入，形成"相向而过"
-    // 点右侧 RL → 旧 HJ 向右离开（hidden-right），新 RL 从右往左进入
-    // 点左侧 HJ → 旧 RL 向左离开（hidden-left），新 HJ 从左往右进入
-    if (currentGallery) {
-      currentGallery.classList.remove('ff-gallery-visible');
-      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
-    }
+    // 全部用内联样式，动画结束再恢复 class
+    var enterX = goRight ? '120px' : '-120px';
+    var exitX  = goRight ? '-120px' : '120px';
 
-    // 新画廊：内联样式瞬间放到进入起始位置 → 下一帧开过渡滑入
-    // 点右侧 RL → 从右侧 +120px 进入；点左侧 HJ → 从左侧 -120px 进入
-    nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-    nextGallery.style.transition = 'none';
-    nextGallery.style.transform = 'translateX(' + (goRight ? '120px' : '-120px') + ')';
-    nextGallery.style.opacity = '0';
-
-    requestAnimationFrame(function () {
-      nextGallery.style.transition = '';
-      nextGallery.style.transform = '';
-      nextGallery.style.opacity = '';
-      nextGallery.classList.add('ff-gallery-visible');
+    [currentGallery, nextGallery].forEach(function (g) {
+      g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+      g.style.transition = 'none';
     });
 
-    switchSpecTab(variant);
+    nextGallery.style.transform  = 'translateX(' + enterX + ')';
+    nextGallery.style.opacity    = '0';
+    nextGallery.style.visibility = 'hidden';
 
-    switchSpecTab(variant);
+    currentGallery.style.transform  = 'translateX(0)';
+    currentGallery.style.opacity    = '1';
+    currentGallery.style.visibility = 'visible';
+
+    currentGallery.offsetHeight; // reflow
+
+    [currentGallery, nextGallery].forEach(function (g) { g.style.transition = ''; });
+
+    nextGallery.style.transform  = 'translateX(0)';
+    nextGallery.style.opacity    = '1';
+    nextGallery.style.visibility = 'visible';
+
+    currentGallery.style.transform = 'translateX(' + exitX + ')';
+    currentGallery.style.opacity   = '0';
+
+    var cleanup = function () {
+      [currentGallery, nextGallery].forEach(function (g) {
+        g.style.transition = g.style.transform = g.style.opacity = g.style.visibility = '';
+      });
+      nextGallery.classList.add('ff-gallery-visible');
+      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
+      switchSpecTab(variant);
+    };
+    nextGallery.addEventListener('transitionend', cleanup, { once: true });
   }
 
   function switchSpecTab(which) {
