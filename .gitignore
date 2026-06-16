@@ -1,1 +1,5 @@
 素材/
+node_modules/
+test-results/
+screenshot-*.png
+package-lock.json
