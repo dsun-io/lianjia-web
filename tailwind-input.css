@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* 品牌/文案色 token，供 JS 内联样式复用 */
+    --accent: #C2410C;
+    --accent-light: #EA580C;
+    --accent-dark: #9A3412;
+    --accent-bright: #E67E22;
+    --accent-bright-rgb: 230, 126, 34;
+    --heading: #2D3436;
+    --whatsapp: #25D366;
+    --whatsapp-hover: #128C7E;
+  }
+}

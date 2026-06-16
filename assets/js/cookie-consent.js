@@ -37,7 +37,7 @@
     'font-size:14px',
     'line-height:1.6',
     'font-family:system-ui,-apple-system,sans-serif',
-    'border-top:1px solid rgba(230,126,34,0.3)',
+    'border-top:1px solid rgba(var(--accent-bright-rgb),0.3)',
     'transition:transform 0.4s cubic-bezier(0.23,1,0.32,1),opacity 0.4s ease',
     'transform:translateY(0)',
     'opacity:1'
@@ -45,15 +45,15 @@
 
   banner.innerHTML =
     '<p style="margin:0;max-width:720px;text-align:center">' +
-      '<svg style="display:inline-block;vertical-align:middle;margin-right:6px;width:16px;height:16px;color:#E67E22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
+      '<svg style="display:inline-block;vertical-align:middle;margin-right:6px;width:16px;height:16px;color:var(--accent-bright)" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
       'This website uses anonymous browsing data (page dwell time) solely to improve our service. ' +
       'No personal data is shared with third parties. By continuing, you agree to our data usage for analytics purposes.' +
     '</p>' +
     '<button id="cookie-consent-accept" style="' +
-      'background:#E67E22;color:#fff;border:none;padding:8px 24px;border-radius:6px;' +
+      'background:var(--accent-bright);color:#fff;border:none;padding:8px 24px;border-radius:6px;' +
       'font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap;' +
       'transition:background 0.2s ease' +
-    '" onmouseover="this.style.background=\'#d35400\'" onmouseout="this.style.background=\'#E67E22\'">' +
+    '" onmouseover="this.style.background=\'var(--accent-dark)\'" onmouseout="this.style.background=\'var(--accent-bright)\'">' +
       'Got It' +
     '</button>';
 

@@ -15,6 +15,14 @@ module.exports = {
     'ring-2',
     'ring-red-500',
     'ring-offset-2',
+    // 颜色 token：确保这些工具类在编译后存在
+    'text-heading',
+    'text-accent-bright',
+    'border-accent-bright',
+    'ring-accent-bright',
+    'stroke-accent-bright',
+    'bg-whatsapp',
+    'hover:bg-whatsapp-hover',
   ],
   theme: {
     extend: {
@@ -25,10 +33,16 @@ module.exports = {
       colors: {
         'steel-gray': '#1C1917',
         'deep-blue': '#0C0A09',
+        'heading': '#2D3436',
         'accent': {
           DEFAULT: '#C2410C',
           light: '#EA580C',
           dark: '#9A3412',
+          bright: '#E67E22',
+        },
+        'whatsapp': {
+          DEFAULT: '#25D366',
+          hover: '#128C7E',
         },
       },
       borderRadius: {
