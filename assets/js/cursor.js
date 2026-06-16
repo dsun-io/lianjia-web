@@ -6,9 +6,18 @@
 (function () {
   'use strict';
 
+  var initialized = false;
+
   function initCursor() {
   /* ── 跳过触摸设备 ── */
   if ('ontouchstart' in window && matchMedia('(hover: none)').matches) return;
+
+  /* ── 避免重复绑定全局事件；Swup page:view 再次调用时只刷新 hero 引用 ── */
+  if (initialized) {
+    refreshHero();
+    return;
+  }
+  initialized = true;
 
   var cursorDot  = document.getElementById('cursor-dot');
   var cursorGlow = document.getElementById('cursor-glow');

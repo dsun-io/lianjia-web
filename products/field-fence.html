@@ -42,12 +42,13 @@
   <!-- Swup v4 + Scroll Plugin（自托管） -->
   <script src="/assets/js/swup-4.8.0.umd.js"></script>
   <script src="/assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
+  <script src="/assets/js/cursor.js"></script>
   <script src="/assets/js/swup-init.js"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
-    .transition-fade { opacity: 1; transition: none; }
-    html.is-animating .transition-fade { opacity: 1; }
+    .transition-fade { opacity: 1; transition: opacity 120ms ease; }
+    html.is-animating .transition-fade { opacity: 0; }
     @media (prefers-reduced-motion: reduce) {
       .transition-fade, html.is-animating .transition-fade { transition: none !important; opacity: 1 !important; }
     }
@@ -675,7 +676,7 @@
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500/15 text-green-400"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span><div><p class="text-sm text-gray-400">WhatsApp</p><a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="text-white hover:text-green-400 transition-colors font-medium">[WHATSAPP]</a></div></li>
             <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="text-sm text-gray-400">Factory Address</p><p class="text-white font-medium">100m North of Diwo Village, Anping County</p><p class="text-gray-400 text-sm mt-1">Hengshui, Hebei, China 053600</p></div></li>
           </ul>
-          <!--           <!-- Factory Map -->
+          <!-- Factory Map -->
           <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
             <iframe title="Factory location" src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k" width="100%" height="200" style="border:0" loading="lazy" decoding="async"></iframe>
           </div>
@@ -707,7 +708,7 @@
 </footer>
 
 <!-- Back to Top + Floating buttons -->
-<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+<button id="back-to-top"
   class="fixed bottom-40 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-white/90 backdrop-blur border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white shadow-lg shadow-orange-500/10 hover:shadow-orange-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 opacity-0 translate-y-4 pointer-events-none"
   aria-label="Back to top" title="Back to top">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
@@ -739,162 +740,16 @@
 <script src="/assets/js/time-tracker.js"></script>
 <script src="/assets/js/cookie-consent.js"></script>
 
-<!-- CURSOR INTERACTION SYSTEM (same as homepage) -->
+<script src="/assets/js/mobile-menu.js"></script>
+<script src="/assets/js/back-to-top.js"></script>
 <script>
-(function() {
-  /* ── Skip on touch devices ── */
-  if ('ontouchstart' in window && matchMedia('(hover: none)').matches) return;
-
-  var cursorDot  = document.getElementById('cursor-dot');
-  var cursorGlow = document.getElementById('cursor-glow');
-  var hero       = document.getElementById('hero');
-  if (!cursorDot) return;
-
-  /* ── State (single source of truth) ── */
-  var raw    = { x: -100, y: -100 };   // actual mouse
-  var smooth = { x: -100, y: -100 };   // smoothed for dot
-  var glowSmooth = { x: 0, y: 0 };    // smoothed for glow (relative to hero)
-  var heroRect   = { t: 0, b: 0, l: 0, r: 0, w: 0, h: 0 };
-  var isHero     = false;
-  var ticking    = false;
-  var heroDirty  = true;
-
-  /* ── Cache hero rect on scroll/resize ── */
-  function cacheHeroRect() {
-    if (!hero) return;
-    var r = hero.getBoundingClientRect();
-    heroRect = { t: r.top, b: r.bottom, l: r.left, r: r.right, w: r.width, h: r.height };
-  }
-  cacheHeroRect();
-  window.addEventListener('resize', cacheHeroRect, { passive: true });
-  window.addEventListener('scroll', function() { heroDirty = true; }, { passive: true });
-
-  /* ── Mouse tracking (only store coords, no DOM work) ── */
-  document.addEventListener('mousemove', function(e) {
-    raw.x = e.clientX;
-    raw.y = e.clientY;
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateFrame);
-    }
-  }, { passive: true });
-
-  /* ── Single rAF update per frame ── */
-  function updateFrame() {
-    ticking = false;
-
-    /* Recalc hero rect only when needed */
-    if (heroDirty) { cacheHeroRect(); heroDirty = false; }
-
-    /* Check if inside hero */
-    isHero = hero ? (raw.y >= heroRect.t && raw.y <= heroRect.b && raw.x >= heroRect.l && raw.x <= heroRect.r) : false;
-
-    /* Glow visibility */
-    if (isHero) {
-      if (!cursorGlow.classList.contains('visible')) cursorGlow.classList.add('visible');
-    } else {
-      if (cursorGlow.classList.contains('visible')) cursorGlow.classList.remove('visible');
-    }
-
-    /* Glow position (transform-based, no reflow) */
-    if (isHero) {
-      var gx = raw.x - heroRect.l;
-      var gy = raw.y - heroRect.t;
-      var glx = (gx - glowSmooth.x) * 0.55;
-      var gly = (gy - glowSmooth.y) * 0.55;
-      glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
-      glowSmooth.y += Math.abs(gly) < 0.5 ? (gy - glowSmooth.y) : gly;
-      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 225) + 'px, ' + (glowSmooth.y - 225) + 'px)';
-    }
-
-    /* Dot position (transform-based) — high tracking coefficient reduces lag, snaps when distance is minimal */
-    var lerpX = (raw.x - smooth.x) * 0.55;
-    var lerpY = (raw.y - smooth.y) * 0.55;
-    smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;
-    smooth.y += Math.abs(lerpY) < 0.5 ? (raw.y - smooth.y) : lerpY;
-    cursorDot.style.transform = 'translate(' + smooth.x + 'px, ' + smooth.y + 'px) translate(-50%, -50%)';
-
-    /* Parallax (only when in hero) */
-    if (isHero && parallaxEls.length) {
-      var cx = (raw.x - heroRect.l - heroRect.w / 2) / heroRect.w;
-      var cy = (raw.y - heroRect.t - heroRect.h / 2) / heroRect.h;
-      for (var i = 0; i < parallaxEls.length; i++) {
-        var f = parseFloat(parallaxEls[i].pFactor) || 0.02;
-        parallaxEls[i].style.transform = 'translate(' + (-cx * f * 100) + 'px, ' + (-cy * f * 100) + 'px)';
-      }
-    }
-  }
-
-  /* ── Hover detection (event delegation) ── */
-  var interactiveSel = 'a, button, input, textarea, select, [role="button"], .magnetic-btn';
-  document.addEventListener('mouseover', function(e) {
-    if (e.target.closest(interactiveSel)) cursorDot.classList.add('hovering');
-  }, { passive: true });
-  document.addEventListener('mouseout', function(e) {
-    if (e.target.closest(interactiveSel)) cursorDot.classList.remove('hovering');
-  }, { passive: true });
-
-  /* ── Magnetic Button Effect ── */
-  var magneticBtns = document.querySelectorAll('.magnetic-btn');
-  for (var i = 0; i < magneticBtns.length; i++) {
-    (function(btn) {
-      btn.addEventListener('mousemove', function(e) {
-        var rect = btn.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top  + rect.height / 2;
-        var dx = e.clientX - cx;
-        var dy = e.clientY - cy;
-        var maxDim = Math.max(rect.width, rect.height);
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        var strength = Math.min(dist / maxDim, 1) * 8;
-        btn.style.transform = 'translate(' + (dx / maxDim * strength) + 'px, ' + (dy / maxDim * strength) + 'px)';
-      }, { passive: true });
-      btn.addEventListener('mouseleave', function() {
-        btn.style.transform = '';
-      });
-    })(magneticBtns[i]);
-  }
-
-  /* ── Hero Parallax (pre-cache elements) ── */
-  var parallaxEls = hero ? hero.querySelectorAll('[data-parallax]') : [];
-  for (var j = 0; j < parallaxEls.length; j++) {
-    parallaxEls[j].pFactor = parallaxEls[j].getAttribute('data-parallax');
-    parallaxEls[j].style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
-  }
-  if (hero) {
-    hero.addEventListener('mouseleave', function() {
-      for (var k = 0; k < parallaxEls.length; k++) {
-        parallaxEls[k].style.transform = 'translate(0, 0)';
-      }
-    });
-  }
-
-  /* ── Wire Mesh Click Ripple ── */
-  document.addEventListener('click', function(e) {
-    var ripple = document.createElement('div');
-    ripple.className = 'click-ripple';
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top  = e.clientY + 'px';
-    document.body.appendChild(ripple);
-    setTimeout(function() { ripple.remove(); }, 700);
-  });
-
-  /* ── Cursor visibility on enter/leave ── */
-  document.addEventListener('mouseleave', function() { cursorDot.style.opacity = '0'; });
-  document.addEventListener('mouseenter', function() { cursorDot.style.opacity = '1'; });
-
-})();
-</script>
-
-<script>
-// 询盘表单：拦截提交，fetch 异步发送 + 直接重定向到本地 thank-you 页，避免经过外部 formspree 导致浏览器历史死循环
+// Form handling (preserved)
 (function() {
   var form = document.querySelector('#inquiry form');
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // 必填项验证
     var nameInput = form.querySelector('[name="name"]');
     var emailInput = form.querySelector('[name="email"]');
     var firstInvalid = null;
@@ -915,9 +770,7 @@
     var data = new FormData(form);
     var dwellEl = document.getElementById('inquiry-dwell');
     if (dwellEl && window.LJTracker) {
-      try {
-        data.set('dwell_times', JSON.stringify(window.LJTracker.getAllDwell()));
-      } catch(e) {}
+      try { data.set('dwell_times', JSON.stringify(window.LJTracker.getAllDwell())); } catch(e) {}
     }
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
@@ -933,7 +786,6 @@
     document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
   });
 
-  // 输入时清除错误样式
   form.querySelectorAll('input, textarea').forEach(function(input) {
     input.addEventListener('input', function() {
       input.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
@@ -941,28 +793,8 @@
   });
 })();
 
-// Back to Top show/hide logic
+// Variant card + spec tab switching (preserved)
 (function() {
-  var btt = document.getElementById('back-to-top');
-  if (!btt) return;
-  var ticking = false;
-  function update() {
-    ticking = false;
-    if (window.scrollY > 400) {
-      btt.classList.remove('hidden', 'opacity-0', 'translate-y-4', 'pointer-events-none');
-    } else {
-      btt.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-      setTimeout(function() { if (window.scrollY <= 400) btt.classList.add('hidden'); }, 300);
-    }
-  }
-  window.addEventListener('scroll', function() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }, { passive: true });
-})();
-
-// Variant card + spec tab switching
-(function() {
-  /* ── Variant chooser cards ── */
   var cards = document.querySelectorAll('.ff-variant-card');
   cards.forEach(function(card) {
     card.addEventListener('click', function() {
@@ -975,35 +807,28 @@
       card.classList.remove('border-gray-200');
       card.classList.add('border-orange-500', 'shadow-md');
       card.querySelectorAll('svg').forEach(function(svg) { svg.classList.remove('text-gray-400'); svg.classList.add('text-orange-500'); });
-      // 根据点击方向滑动切换画廊
       var slideOut = (variant === 'hj') ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
       var slideIn = (variant === 'hj') ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right';
-      // 1. 所有画廊滑出
       document.querySelectorAll('.ff-gallery').forEach(function(g) {
         g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
         g.style.transition = 'none';
         g.classList.add(slideOut);
       });
-      // 2. 目标画廊设为起始位置（屏幕外）
       var gallery = document.getElementById('gallery-' + variant);
       if (gallery) {
         gallery.classList.remove(slideOut);
         gallery.classList.add(slideIn);
-        // 3. 强制重排后启用动画
         gallery.offsetHeight;
         gallery.style.transition = '';
-        // 4. 滑入
         setTimeout(function() {
           gallery.classList.remove(slideIn);
           gallery.classList.add('ff-gallery-visible');
         }, 20);
       }
-      // Switch spec tab to match
       switchTab(variant);
     });
   });
 
-  /* ── Spec tab buttons ── */
   var tabs = document.querySelectorAll('.ff-spec-tab');
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
@@ -1012,7 +837,6 @@
   });
 
   function switchTab(which) {
-    // Update tab button styles
     tabs.forEach(function(t) {
       if (t.getAttribute('data-tab') === which) {
         t.classList.remove('bg-gray-100', 'text-gray-600');
@@ -1022,11 +846,9 @@
         t.classList.add('bg-gray-100', 'text-gray-600');
       }
     });
-    // Show/hide panels
     document.querySelectorAll('.ff-spec-panel').forEach(function(p) { p.classList.add('hidden'); });
     var panel = document.getElementById('spec-panel-' + which);
     if (panel) panel.classList.remove('hidden');
-    // Pre-fill inquiry knot type dropdown
     var knotSel = document.getElementById('inq-knot-type');
     if (knotSel) {
       for (var i = 0; i < knotSel.options.length; i++) {
@@ -1035,20 +857,6 @@
       }
     }
   }
-})();
-
-// Mobile menu toggle
-(function() {
-  var btn = document.getElementById('mobile-menu-btn');
-  var menu = document.getElementById('mobile-menu');
-  var h = document.getElementById('icon-hamburger');
-  var c = document.getElementById('icon-close');
-  if (!btn || !menu) return;
-  btn.addEventListener('click', function() {
-    var open = btn.getAttribute('aria-expanded') === 'true';
-    if (open) { menu.style.maxHeight='0px'; btn.setAttribute('aria-expanded','false'); h.classList.remove('hidden'); c.classList.add('hidden'); setTimeout(function(){ if(btn.getAttribute('aria-expanded')==='false') menu.classList.add('hidden'); },300); }
-    else { menu.classList.remove('hidden'); menu.offsetHeight; menu.style.maxHeight=menu.scrollHeight+'px'; btn.setAttribute('aria-expanded','true'); h.classList.add('hidden'); c.classList.remove('hidden'); }
-  });
 })();
 </script>
 

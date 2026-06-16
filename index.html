@@ -76,12 +76,13 @@
   <!-- Swup v4 + Scroll Plugin（自托管） -->
   <script src="/assets/js/swup-4.8.0.umd.js"></script>
   <script src="/assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
+  <script src="/assets/js/cursor.js"></script>
   <script src="/assets/js/swup-init.js"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
-    .transition-fade { opacity: 1; transition: none; }
-    html.is-animating .transition-fade { opacity: 1; }
+    .transition-fade { opacity: 1; transition: opacity 120ms ease; }
+    html.is-animating .transition-fade { opacity: 0; }
     @media (prefers-reduced-motion: reduce) {
       .transition-fade, html.is-animating .transition-fade { transition: none !important; opacity: 1 !important; }
     }
@@ -419,6 +420,7 @@
 
 <!-- Custom Cursor -->
 <div id="cursor-dot"><div class="dot-center"></div></div>
+<div id="cursor-glow"></div>
 
 <!-- ============================================= -->
 <!-- STICKY HEADER NAVIGATION                      -->
@@ -513,8 +515,6 @@
 <!-- HERO SECTION                                  -->
 <!-- ============================================= -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Cursor Glow Effect -->
-  <div id="cursor-glow"></div>
   <!-- Background Image -->
   <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/img/hero-landscape.svg');"></div>
   <!-- Dark Overlay -->
@@ -584,12 +584,12 @@
           <img id="ff-hero" src="/assets/img/field-fence-hero.jpg" alt="Galvanized field fence roll" class="img-product-hero h-64 sm:h-72" loading="lazy" decoding="async">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/field-fence-hero.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
+          <button type="button" class="ff-card group border-2 border-orange-500 rounded-xl p-3 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="/assets/img/field-fence-hero.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
             <div class="img-wrap rounded-lg mb-2"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint knot detail" class="img-product h-20"></div>
             <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Hinge Joint</p>
             <p class="text-[11px] text-gray-500">Flexible &middot; Absorbs impact</p>
           </button>
-          <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/field-fence-rl-main.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
+          <button type="button" class="ff-card group border border-gray-200 rounded-xl p-3 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/field-fence-rl-main.jpg" data-alt="Ring Lock — crimped ring knot holds shape under heavy pressure">
             <div class="img-wrap rounded-lg mb-2"><img src="/assets/img/field-fence-03.jpg" alt="Ring Lock installed on rural farm" class="img-product h-20"></div>
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Ring Lock</p>
             <p class="text-[11px] text-gray-500">Rigid &middot; Holds shape</p>
@@ -683,15 +683,15 @@
         </div>
         <!-- Three type cards: Studded / Plain / Scalloped -->
         <div class="grid grid-cols-3 gap-3">
-          <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-2.5 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="assets/img/y-post-01.jpg" data-alt="Studded Star Post">
+          <button type="button" class="y-post-card group border-2 border-orange-500 rounded-xl p-2.5 text-center bg-orange-50/50 transition-all duration-200 hover:shadow-md" data-img="/assets/img/y-post-01.jpg" data-alt="Studded Star Post">
             <img src="/assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-orange-600 uppercase tracking-wider leading-tight">Studded</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-02.jpg" data-alt="Plain Y-Post">
+          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-02.jpg" data-alt="Plain Y-Post">
             <img src="/assets/img/y-post-02.jpg" alt="Plain Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Plain</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post">
+          <button type="button" class="y-post-card group border border-gray-200 rounded-xl p-2.5 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post">
             <img src="/assets/img/y-post-03.jpg" alt="Scalloped Y-Post" class="w-full h-16 object-cover rounded-lg mb-1">
             <p class="text-[10px] font-bold text-gray-700 uppercase tracking-wider leading-tight">Scalloped</p>
           </button>
@@ -1053,7 +1053,7 @@
 <!-- FLOATING BUTTONS                              -->
 <!-- ============================================= -->
 <!-- Back to Top — floating (above Get a Quote) -->
-<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+<button id="back-to-top"
   class="fixed bottom-40 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-white/90 backdrop-blur border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white shadow-lg shadow-orange-500/10 hover:shadow-orange-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 opacity-0 translate-y-4 pointer-events-none"
   aria-label="Back to top" title="Back to top">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
@@ -1104,35 +1104,7 @@
 <script>AOS.init({ once: true, duration: 800, offset: 80 });</script>
 
 <!-- Mobile Menu Toggle -->
-<script>
-(function () {
-  var btn = document.getElementById('mobile-menu-btn');
-  var menu = document.getElementById('mobile-menu');
-  var iconHamburger = document.getElementById('icon-hamburger');
-  var iconClose = document.getElementById('icon-close');
-  var navLinks = menu.querySelectorAll('.mobile-nav-link');
-  function toggleMenu() {
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    if (expanded) {
-      menu.style.maxHeight = '0px';
-      btn.setAttribute('aria-expanded', 'false');
-      iconHamburger.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      setTimeout(function () { if (btn.getAttribute('aria-expanded') === 'false') menu.classList.add('hidden'); }, 300);
-    } else {
-      menu.classList.remove('hidden');
-      menu.offsetHeight;
-      menu.style.maxHeight = menu.scrollHeight + 'px';
-      btn.setAttribute('aria-expanded', 'true');
-      iconHamburger.classList.add('hidden');
-      iconClose.classList.remove('hidden');
-    }
-  }
-  btn.addEventListener('click', toggleMenu);
-  navLinks.forEach(function (link) { link.addEventListener('click', function () { if (btn.getAttribute('aria-expanded') === 'true') toggleMenu(); }); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { toggleMenu(); btn.focus(); } });
-})();
-</script>
+<script src="/assets/js/mobile-menu.js"></script>
 
 <!-- Trust Strip Counter Animation -->
 <script>
@@ -1395,174 +1367,9 @@
 
 <!-- Turnstile: loaded conditionally in head, skip here -->
 
-<!-- Back to Top: show/hide on scroll -->
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  if (!btn) return;
-  var ticking = false;
-  function update() {
-    ticking = false;
-    var show = window.scrollY > 400;
-    if (show) {
-      btn.classList.remove('hidden', 'opacity-0', 'translate-y-4', 'pointer-events-none');
-    } else {
-      btn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-      setTimeout(function() { if (window.scrollY <= 400) btn.classList.add('hidden'); }, 300);
-    }
-  }
-  window.addEventListener('scroll', function() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }, { passive: true });
-})();
-</script>
+<!-- Back to Top toggle -->
+<script src="/assets/js/back-to-top.js"></script>
 
-<!-- ============================================= -->
-<!-- CURSOR INTERACTION SYSTEM                     -->
-<!-- Industrial wire-fence themed interactions     -->
-<!-- ============================================= -->
-<script>
-(function() {
-  /* ── Skip on touch devices ── */
-  if ('ontouchstart' in window && matchMedia('(hover: none)').matches) return;
-
-  var cursorDot  = document.getElementById('cursor-dot');
-  var cursorGlow = document.getElementById('cursor-glow');
-  var hero       = document.getElementById('hero');
-  if (!cursorDot || !hero) return;
-
-  /* ── State (single source of truth) ── */
-  var raw    = { x: -100, y: -100 };   // actual mouse
-  var smooth = { x: -100, y: -100 };   // smoothed for dot
-  var glowSmooth = { x: 0, y: 0 };    // smoothed for glow (relative to hero)
-  var heroRect   = { t: 0, b: 0, l: 0, r: 0, w: 0, h: 0 };
-  var isHero     = false;
-  var ticking    = false;
-  var heroDirty  = true;
-
-  /* ── Cache hero rect on scroll/resize ── */
-  function cacheHeroRect() {
-    var r = hero.getBoundingClientRect();
-    heroRect = { t: r.top, b: r.bottom, l: r.left, r: r.right, w: r.width, h: r.height };
-  }
-  cacheHeroRect();
-  window.addEventListener('resize', cacheHeroRect, { passive: true });
-  window.addEventListener('scroll', function() { heroDirty = true; }, { passive: true });
-
-  /* ── Mouse tracking (only store coords, no DOM work) ── */
-  document.addEventListener('mousemove', function(e) {
-    raw.x = e.clientX;
-    raw.y = e.clientY;
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateFrame);
-    }
-  }, { passive: true });
-
-  /* ── Single rAF update per frame ── */
-  function updateFrame() {
-    ticking = false;
-
-    /* Recalc hero rect only when needed */
-    if (heroDirty) { cacheHeroRect(); heroDirty = false; }
-
-    /* Check if inside hero */
-    isHero = (raw.y >= heroRect.t && raw.y <= heroRect.b && raw.x >= heroRect.l && raw.x <= heroRect.r);
-
-    /* Glow visibility */
-    if (isHero) {
-      if (!cursorGlow.classList.contains('visible')) cursorGlow.classList.add('visible');
-    } else {
-      if (cursorGlow.classList.contains('visible')) cursorGlow.classList.remove('visible');
-    }
-
-    /* Glow position (transform-based, no reflow) */
-    if (isHero) {
-      var gx = raw.x - heroRect.l;
-      var gy = raw.y - heroRect.t;
-      var glx = (gx - glowSmooth.x) * 0.55;
-      var gly = (gy - glowSmooth.y) * 0.55;
-      glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
-      glowSmooth.y += Math.abs(gly) < 0.5 ? (gy - glowSmooth.y) : gly;
-      cursorGlow.style.transform = 'translate(' + (glowSmooth.x - 175) + 'px, ' + (glowSmooth.y - 175) + 'px)';
-    }
-
-    /* Dot position (transform-based) — high tracking coefficient reduces lag, snaps when distance is minimal */
-    var lerpX = (raw.x - smooth.x) * 0.55;
-    var lerpY = (raw.y - smooth.y) * 0.55;
-    smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;
-    smooth.y += Math.abs(lerpY) < 0.5 ? (raw.y - smooth.y) : lerpY;
-    cursorDot.style.transform = 'translate(' + smooth.x + 'px, ' + smooth.y + 'px) translate(-50%, -50%)';
-
-    /* Parallax (only when in hero) */
-    if (isHero && parallaxEls.length) {
-      var cx = (raw.x - heroRect.l - heroRect.w / 2) / heroRect.w;
-      var cy = (raw.y - heroRect.t - heroRect.h / 2) / heroRect.h;
-      for (var i = 0; i < parallaxEls.length; i++) {
-        var f = parseFloat(parallaxEls[i].pFactor) || 0.02;
-        parallaxEls[i].style.transform = 'translate(' + (-cx * f * 100) + 'px, ' + (-cy * f * 100) + 'px)';
-      }
-    }
-  }
-
-  /* ── Hover detection (event delegation) ── */
-  var interactiveSel = 'a, button, input, textarea, select, [role="button"], .magnetic-btn';
-  document.addEventListener('mouseover', function(e) {
-    if (e.target.closest(interactiveSel)) cursorDot.classList.add('hovering');
-  }, { passive: true });
-  document.addEventListener('mouseout', function(e) {
-    if (e.target.closest(interactiveSel)) cursorDot.classList.remove('hovering');
-  }, { passive: true });
-
-  /* ── Magnetic Button Effect ── */
-  var magneticBtns = document.querySelectorAll('.magnetic-btn');
-  for (var i = 0; i < magneticBtns.length; i++) {
-    (function(btn) {
-      btn.addEventListener('mousemove', function(e) {
-        var rect = btn.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top  + rect.height / 2;
-        var dx = e.clientX - cx;
-        var dy = e.clientY - cy;
-        var maxDim = Math.max(rect.width, rect.height);
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        var strength = Math.min(dist / maxDim, 1) * 4;
-        btn.style.transform = 'translate(' + (dx / maxDim * strength) + 'px, ' + (dy / maxDim * strength) + 'px)';
-      }, { passive: true });
-      btn.addEventListener('mouseleave', function() {
-        btn.style.transform = '';
-      });
-    })(magneticBtns[i]);
-  }
-
-  /* ── Hero Parallax (pre-cache elements) ── */
-  var parallaxEls = hero.querySelectorAll('[data-parallax]');
-  for (var j = 0; j < parallaxEls.length; j++) {
-    parallaxEls[j].pFactor = parallaxEls[j].getAttribute('data-parallax');
-    parallaxEls[j].style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
-  }
-  hero.addEventListener('mouseleave', function() {
-    for (var k = 0; k < parallaxEls.length; k++) {
-      parallaxEls[k].style.transform = 'translate(0, 0)';
-    }
-  });
-
-  /* ── Click Ripple ── */
-  document.addEventListener('click', function(e) {
-    var ripple = document.createElement('div');
-    ripple.className = 'click-ripple';
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top  = e.clientY + 'px';
-    document.body.appendChild(ripple);
-    setTimeout(function() { ripple.remove(); }, 700);
-  });
-
-  /* ── Cursor visibility on enter/leave ── */
-  document.addEventListener('mouseleave', function() { cursorDot.style.opacity = '0'; });
-  document.addEventListener('mouseenter', function() { cursorDot.style.opacity = '1'; });
-
-})();
-</script>
 </main>
 </body>
 </html>

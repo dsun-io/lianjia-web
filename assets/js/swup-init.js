@@ -16,16 +16,30 @@
     containers: ['#swup'],
     cache: true,
     animateHistoryBrowsing: !prefersReducedMotion,
-    linkSelector: 'a[href]:not([data-no-swup]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
+    linkSelector: 'a[href]:not([data-no-swup]):not([href*="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
     plugins: [
       new SwupScrollPlugin({
         doScrollingRightAway: false,
         animateScroll: {
           betweenPages: !prefersReducedMotion,
-          samePageWithHash: !prefersReducedMotion,
-          samePage: !prefersReducedMotion
+          samePageWithHash: false,
+          samePage: false
         }
       })
     ]
+  });
+
+  /* ── 页面切换后刷新光标 hero 引用与追踪器计时 ── */
+  window._swup.hooks.on('page:view', function () {
+    if (typeof window._cursorRefreshHero === 'function') window._cursorRefreshHero();
+    if (window.LJTracker && typeof window.LJTracker._reportPageview === 'function') window.LJTracker._reportPageview();
+    if (window.LJTracker && typeof window.LJTracker._resetTimer === 'function') window.LJTracker._resetTimer();
+    if (window.LJBackToTop && typeof window.LJBackToTop.init === 'function') window.LJBackToTop.init();
+    if (window.LJMobileMenu && typeof window.LJMobileMenu.init === 'function') window.LJMobileMenu.init();
+  });
+
+  /* ── 离开页面前结算当前页停留时长 ── */
+  window._swup.hooks.on('visit:start', function () {
+    if (window.LJTracker && typeof window.LJTracker._settleDwell === 'function') window.LJTracker._settleDwell();
   });
 })();
