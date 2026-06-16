@@ -32,6 +32,18 @@
 
   /* ── 页面切换后刷新光标 hero 引用与追踪器计时 ── */
   window._swup.hooks.on('page:view', function () {
+    // Header 在 Swup 容器外，需要把 Get a Quote 按钮的 hash 修正为当前页对应表单的 id
+    var isHome = !location.pathname || location.pathname === '/' || location.pathname === '/index.html';
+    var targetHash = isHome ? '#contact' : '#inquiry';
+    var headerCta = document.querySelector('header nav a.bg-accent');
+    var mobileMenuCta = document.querySelector('header #mobile-menu a.bg-orange-500');
+    var floatingCta = document.querySelector('a[aria-label="Get a Quote"][href^="#"]');
+    var bottomBarCta = document.querySelector('#mobile-bottom-bar a[href^="#"]');
+    if (headerCta) headerCta.setAttribute('href', targetHash);
+    if (mobileMenuCta) mobileMenuCta.setAttribute('href', targetHash);
+    if (floatingCta) floatingCta.setAttribute('href', targetHash);
+    if (bottomBarCta) bottomBarCta.setAttribute('href', targetHash);
+
     if (typeof window._cursorRefreshHero === 'function') window._cursorRefreshHero();
     if (window.LJTracker && typeof window.LJTracker._reportPageview === 'function') window.LJTracker._reportPageview();
     if (window.LJTracker && typeof window.LJTracker._resetTimer === 'function') window.LJTracker._resetTimer();
