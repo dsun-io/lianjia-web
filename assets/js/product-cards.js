@@ -91,13 +91,15 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 旧画廊向反方向滑出
+    // 旧画廊向反方向滑出：点右侧 RL 时旧 HJ 向左离开，点左侧 HJ 时旧 RL 向右离开
     if (currentGallery) {
       currentGallery.classList.remove('ff-gallery-visible');
       currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
     }
 
-    // 新画廊从点击方向的反方向进入，与旧画廊严格反向
+    // 新画廊从点击方向同侧进入，看起来像是“内容整体横向切换”：
+    // 点右侧 RL → 新 RL 从右往左进入（初始位于右侧 +120px，滑到 0）
+    // 点左侧 HJ → 新 HJ 从左往右进入（初始位于左侧 -120px，滑到 0）
     nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
     nextGallery.classList.add(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
     nextGallery.offsetHeight; // force reflow
