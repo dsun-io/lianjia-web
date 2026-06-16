@@ -91,11 +91,12 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 旧画廊：class 驱动自然过渡离开，方向与进入方向相反
-    // 点右侧 RL → 旧 HJ 向左离开（hidden-left）；点左侧 HJ → 旧 RL 向右离开（hidden-right）
+    // 旧画廊向反方向离开，新画廊从另一侧进入，形成"相向而过"
+    // 点右侧 RL → 旧 HJ 向右离开（hidden-right），新 RL 从右往左进入
+    // 点左侧 HJ → 旧 RL 向左离开（hidden-left），新 HJ 从左往右进入
     if (currentGallery) {
       currentGallery.classList.remove('ff-gallery-visible');
-      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
+      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
     }
 
     // 新画廊：内联样式瞬间放到进入起始位置 → 下一帧开过渡滑入
