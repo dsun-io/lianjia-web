@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
     }
     res.writeHead(200, {
       'Content-Type': types[ext] || 'application/octet-stream',
-      'Cache-Control': 'public, max-age=3600'
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
     });
     res.end(data);
   });
