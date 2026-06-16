@@ -15,7 +15,8 @@
   window._swup = new Swup({
     containers: ['#swup'],
     cache: true,
-    animateHistoryBrowsing: !prefersReducedMotion,
+    animationSelector: false,
+    animateHistoryBrowsing: false,
     linkSelector: 'a[href]:not([data-no-swup]):not([href*="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
     plugins: [
       new SwupScrollPlugin({
