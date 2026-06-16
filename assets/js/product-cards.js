@@ -34,41 +34,41 @@
   function setActiveCard(cards, activeCard, options) {
     options = options || {};
     cards.forEach(function (c) {
-      c.classList.remove('border-amber-800', 'bg-amber-50/50', 'shadow-md');
+      c.classList.remove('border-orange-500', 'bg-orange-50/50', 'shadow-md');
       c.classList.add('border-gray-200');
 
       if (options.labelSelector) {
         var lbl = c.querySelector(options.labelSelector);
         if (lbl) {
-          lbl.classList.remove('text-amber-800');
+          lbl.classList.remove('text-orange-600');
           lbl.classList.add('text-gray-700');
         }
       }
 
       if (options.iconColorToggle) {
         c.querySelectorAll('svg').forEach(function (svg) {
-          svg.classList.remove('text-amber-800');
+          svg.classList.remove('text-orange-500');
           svg.classList.add('text-gray-400');
         });
       }
     });
 
     activeCard.classList.remove('border-gray-200');
-    activeCard.classList.add('border-amber-800', 'bg-amber-50/50');
+    activeCard.classList.add('border-orange-500', 'bg-orange-50/50');
     if (options.addShadow) activeCard.classList.add('shadow-md');
 
     if (options.labelSelector) {
       var activeLbl = activeCard.querySelector(options.labelSelector);
       if (activeLbl) {
         activeLbl.classList.remove('text-gray-700');
-        activeLbl.classList.add('text-amber-800');
+        activeLbl.classList.add('text-orange-600');
       }
     }
 
     if (options.iconColorToggle) {
       activeCard.querySelectorAll('svg').forEach(function (svg) {
         svg.classList.remove('text-gray-400');
-        svg.classList.add('text-amber-800');
+        svg.classList.add('text-orange-500');
       });
     }
   }
@@ -102,9 +102,9 @@
     tabs.forEach(function (t) {
       if (t.getAttribute('data-tab') === which) {
         t.classList.remove('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
-        t.classList.add('bg-amber-800', 'text-white', 'shadow-md');
+        t.classList.add('bg-orange-500', 'text-white', 'shadow-md');
       } else {
-        t.classList.remove('bg-amber-800', 'text-white', 'shadow-md');
+        t.classList.remove('bg-orange-500', 'text-white', 'shadow-md');
         t.classList.add('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
       }
     });
