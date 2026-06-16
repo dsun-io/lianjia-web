@@ -91,19 +91,30 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 旧、新画廊初始位置放在同侧，运动时才会相向而过、方向相反
-    // 点右侧卡片 → 两者初始都在右侧，旧内容向右离开，新内容从右往左进入
-    // 点左侧卡片 → 两者初始都在左侧，旧内容向左离开，新内容从左往右进入
+    // 方向：点右侧卡片时新内容从右往左进入，点左侧卡片时新内容从左往右进入
     var hiddenClass = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
 
+    // 步骤 1：先关闭 transition，把元素放到动画起始位置
     if (currentGallery) {
+      currentGallery.style.transition = 'none';
+      currentGallery.classList.remove('ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+      currentGallery.classList.add('ff-gallery-visible');
+    }
+    nextGallery.style.transition = 'none';
+    nextGallery.classList.remove('ff-gallery-visible');
+    nextGallery.classList.add(hiddenClass);
+
+    // 步骤 2：强制 reflow，确保起始位置生效
+    nextGallery.offsetHeight;
+    if (currentGallery) currentGallery.offsetHeight;
+
+    // 步骤 3：重新开启 transition，同时让旧内容离开、新内容进入
+    if (currentGallery) {
+      currentGallery.style.transition = '';
       currentGallery.classList.remove('ff-gallery-visible');
       currentGallery.classList.add(hiddenClass);
     }
-
-    nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-    nextGallery.classList.add(hiddenClass);
-    nextGallery.offsetHeight; // force reflow
+    nextGallery.style.transition = '';
     nextGallery.classList.remove(hiddenClass);
     nextGallery.classList.add('ff-gallery-visible');
 
