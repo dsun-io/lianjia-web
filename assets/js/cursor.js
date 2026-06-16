@@ -24,9 +24,9 @@
   if (!cursorDot) return;
 
   /* ── 状态 ── */
-  var raw    = { x: -100, y: -100 };   // 实际鼠标位置
+  var raw    = { x: -100, y: -100 };   // 实际鼠标位置（viewport 坐标）
   var smooth = { x: -100, y: -100 };   // 光标平滑位置
-  var glowSmooth = { x: 0, y: 0 };     // glow 平滑位置（相对 hero）
+  var glowSmooth = { x: 0, y: 0 };     // glow 平滑位置（viewport 坐标）
   var heroRect   = { t: 0, b: 0, l: 0, r: 0, w: 0, h: 0 };
   var isHero     = false;
   var ticking    = false;
@@ -102,10 +102,10 @@
         if (cursorGlow.classList.contains('visible')) cursorGlow.classList.remove('visible');
       }
 
-      /* Glow 位置 */
+      /* Glow 位置 — fixed 定位下直接跟随 viewport 坐标 */
       if (isHero) {
-        var gx = raw.x - heroRect.l;
-        var gy = raw.y - heroRect.t;
+        var gx = raw.x;
+        var gy = raw.y;
         var glx = (gx - glowSmooth.x) * 0.55;
         var gly = (gy - glowSmooth.y) * 0.55;
         glowSmooth.x += Math.abs(glx) < 0.5 ? (gx - glowSmooth.x) : glx;
@@ -114,7 +114,7 @@
       }
     }
 
-    /* Dot 位置 */
+    /* Dot 位置 — 左上角对齐实际鼠标位置，再用 CSS 偏移居中 */
     var lerpX = (raw.x - smooth.x) * 0.55;
     var lerpY = (raw.y - smooth.y) * 0.55;
     smooth.x += Math.abs(lerpX) < 0.5 ? (raw.x - smooth.x) : lerpX;

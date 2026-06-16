@@ -74,8 +74,20 @@
   }
 
   function switchFieldFenceVariant(variant) {
-    var slideOut = (variant === 'hj') ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
-    var slideIn = (variant === 'hj') ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right';
+    var active = document.querySelector('.ff-variant-card.border-orange-500');
+    var previousVariant = active ? active.getAttribute('data-variant') : null;
+
+    // 根据点击卡片相对于当前激活卡片的位置决定进出方向
+    var goRight = false;
+    if (previousVariant && previousVariant !== variant) {
+      var cards = Array.from(document.querySelectorAll('.ff-variant-card'));
+      var prevIdx = cards.findIndex(function (c) { return c.getAttribute('data-variant') === previousVariant; });
+      var nextIdx = cards.findIndex(function (c) { return c.getAttribute('data-variant') === variant; });
+      goRight = nextIdx > prevIdx;
+    }
+
+    var slideOut = goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right';
+    var slideIn = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
 
     document.querySelectorAll('.ff-gallery').forEach(function (g) {
       g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');

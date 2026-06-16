@@ -17,7 +17,7 @@
     cache: true,
     animationSelector: false,
     animateHistoryBrowsing: false,
-    linkSelector: 'a[href]:not([data-no-swup]):not([href*="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
+    linkSelector: 'a[href]:not([data-no-swup]):not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
     plugins: [
       new SwupScrollPlugin({
         doScrollingRightAway: false,

@@ -50,7 +50,7 @@
   <script src="/assets/js/form-handler.js?v=2"></script>
   <script src="/assets/js/back-to-top.js"></script>
   <script src="/assets/js/mobile-menu.js"></script>
-  <script src="/assets/js/swup-init.js?v=2"></script>
+  <script src="/assets/js/swup-init.js?v=3"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
@@ -134,7 +134,7 @@
 
     /* ── Cursor Glow (收敛) ── */
     #cursor-glow {
-      position: absolute; left: 0; top: 0;
+      position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
@@ -143,16 +143,18 @@
     #cursor-glow.visible { opacity: 1; }
 
     /* ── Custom Cursor (收敛) ── */
-    #cursor-dot { position: fixed; left: 0; top: 0; width: 20px; height: 20px; pointer-events: none; z-index: 99999; will-change: transform; }
-    #cursor-dot::before, #cursor-dot::after { content: ''; position: absolute; background: var(--accent); border-radius: 1px; opacity: 0.7; }
-    #cursor-dot::before { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
-    #cursor-dot::after { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
-    #cursor-dot .dot-center { position: absolute; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo); }
+    #cursor-dot { position: fixed; left: 0; top: 0; width: 24px; height: 24px; pointer-events: none; z-index: 99999; will-change: transform; }
+    #cursor-dot::before, #cursor-dot::after { content: ''; position: absolute; background: var(--accent); border-radius: 1px; opacity: 0.9; }
+    #cursor-dot::before { width: 1.5px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+    #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
+    #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
     #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
+    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
       #cursor-dot, #cursor-glow, .cursor-particle { display: none !important; }
