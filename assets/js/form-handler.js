@@ -98,11 +98,9 @@
     var btn = form.querySelector('button[type="submit"]');
     setSubmitting(btn, false);
 
-    // 首页重置：回到 #contact 并恢复标题
+    // 重置表单时保持当前滚动位置，不要自动滚动
     if (form.id === 'inquiry-form') {
       history.replaceState(null, '', '#contact');
-      var contactSection = document.getElementById('contact');
-      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
       document.title = 'Field Fence & Chain Link Fence Manufacturer in China | [COMPANY_NAME]';
     } else {
       history.replaceState(null, '', '');
@@ -157,12 +155,12 @@
 
     var data = collectFormData(form);
 
+    // 保持当前滚动位置，不要自动回到页面顶部
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
-    window.scrollTo(0, 0);
 
-    // 产品页使用 replaceState + location hash；首页使用 pushState（配合 popstate）
+    // 首页使用 pushState（配合 popstate）；产品页只显示成功提示，不跳 hash
     if (form.id === 'inquiry-form') {
       history.pushState(null, '', '#thank-you');
     } else {
@@ -176,10 +174,6 @@
         headers: { 'Accept': 'application/json' }
       }).catch(function () {});
     }, 100);
-
-    if (form.id !== 'inquiry-form') {
-      location.href = '#thank-you';
-    }
 
     showSuccess(form);
   }
