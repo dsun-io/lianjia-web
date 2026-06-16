@@ -43,6 +43,9 @@
     if (prevBtn) prevBtn.removeAttribute('onclick');
     if (nextBtn) nextBtn.removeAttribute('onclick');
 
+    if (overlay.__ljLightboxBound) return;
+    overlay.__ljLightboxBound = true;
+
     overlay.addEventListener('click', closeLightbox);
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
     if (prevBtn) prevBtn.addEventListener('click', function (e) { navigate(e, -1); });
