@@ -9,15 +9,22 @@
   window.__ljMobileMenuInit = true;
 
   function init() {
-    if (window.__ljMobileMenuReady) return;
-    window.__ljMobileMenuReady = true;
-
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
     if (!btn || !menu) return;
 
     var iconHamburger = document.getElementById('icon-hamburger');
     var iconClose = document.getElementById('icon-close');
+
+    // Swup 切换后菜单 DOM 在容器外保留，强制重置为关闭状态
+    menu.style.maxHeight = '0px';
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    if (iconHamburger) iconHamburger.classList.remove('hidden');
+    if (iconClose) iconClose.classList.add('hidden');
+
+    if (window.__ljMobileMenuReady) return;
+    window.__ljMobileMenuReady = true;
 
     function toggleMenu() {
       var expanded = btn.getAttribute('aria-expanded') === 'true';
