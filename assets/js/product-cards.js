@@ -77,7 +77,8 @@
     var active = document.querySelector('.ff-variant-card.border-orange-500');
     var previousVariant = active ? active.getAttribute('data-variant') : null;
 
-    // 根据点击卡片相对于当前激活卡片的位置决定进出方向
+    // 根据点击卡片相对于当前激活卡片的位置决定进出方向：
+    // 点右侧卡片 → 新画廊从右往左进入；点左侧卡片 → 新画廊从左往右进入
     var goRight = false;
     if (previousVariant && previousVariant !== variant) {
       var cards = Array.from(document.querySelectorAll('.ff-variant-card'));
@@ -86,26 +87,22 @@
       goRight = nextIdx > prevIdx;
     }
 
-    var slideOut = goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right';
-    var slideIn = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
+    var currentGallery = document.querySelector('.ff-gallery-visible');
+    var nextGallery = document.getElementById('gallery-' + variant);
+    if (!nextGallery || nextGallery === currentGallery) return;
 
-    document.querySelectorAll('.ff-gallery').forEach(function (g) {
-      g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-      g.style.transition = 'none';
-      g.classList.add(slideOut);
-    });
-
-    var gallery = document.getElementById('gallery-' + variant);
-    if (gallery) {
-      gallery.classList.remove(slideOut);
-      gallery.classList.add(slideIn);
-      gallery.offsetHeight; // force reflow
-      gallery.style.transition = '';
-      setTimeout(function () {
-        gallery.classList.remove(slideIn);
-        gallery.classList.add('ff-gallery-visible');
-      }, 20);
+    // 旧画廊向反方向滑出
+    if (currentGallery) {
+      currentGallery.classList.remove('ff-gallery-visible');
+      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
     }
+
+    // 新画廊从点击方向的反方向进入，与旧画廊严格反向
+    nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+    nextGallery.classList.add(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
+    nextGallery.offsetHeight; // force reflow
+    nextGallery.classList.remove(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
+    nextGallery.classList.add('ff-gallery-visible');
 
     switchSpecTab(variant);
   }

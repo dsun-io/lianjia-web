@@ -50,7 +50,7 @@
   <script src="/assets/js/form-handler.js?v=2"></script>
   <script src="/assets/js/back-to-top.js"></script>
   <script src="/assets/js/mobile-menu.js"></script>
-  <script src="/assets/js/swup-init.js?v=3"></script>
+  <script src="/assets/js/swup-init.js?v=4"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
@@ -127,9 +127,13 @@
     .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
 
     /* ── Gallery slide animation ── */
-    .ff-gallery { transition: opacity 0.35s var(--ease-out-expo), transform 0.35s var(--ease-out-expo); }
-    .ff-gallery-hidden-left { opacity: 0 !important; transform: translateX(-40px) !important; pointer-events: none; position: absolute; visibility: hidden; }
-    .ff-gallery-hidden-right { opacity: 0 !important; transform: translateX(40px) !important; pointer-events: none; position: absolute; visibility: hidden; }
+    .ff-gallery-wrapper { position: relative; min-height: 360px; }
+    .ff-gallery-wrapper .ff-gallery {
+      position: absolute; top: 0; left: 0; width: 100%; margin-bottom: 0;
+      transition: opacity 0.35s var(--ease-out-expo), transform 0.35s var(--ease-out-expo);
+    }
+    .ff-gallery-hidden-left { opacity: 0 !important; transform: translateX(-80px) !important; pointer-events: none; visibility: hidden; }
+    .ff-gallery-hidden-right { opacity: 0 !important; transform: translateX(80px) !important; pointer-events: none; visibility: hidden; }
     .ff-gallery-visible { opacity: 1 !important; transform: translateX(0) !important; position: relative; visibility: visible; }
 
     /* ── Cursor Glow (收敛) ── */
@@ -318,26 +322,28 @@
     </div>
 
     <!-- Image gallery — 随变体选择切换 -->
-    <div id="gallery-hj" class="ff-gallery ff-gallery-visible mb-14">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-white bg-orange-500 px-3 py-1 rounded-full">Hinge Joint</span>
-        <span class="text-sm text-gray-500">拧编工艺 — 钢丝缠绕铰合节点</span>
+    <div class="ff-gallery-wrapper mb-14">
+      <div id="gallery-hj" class="ff-gallery ff-gallery-visible">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="inline-block text-xs font-bold tracking-widest uppercase text-white bg-orange-500 px-3 py-1 rounded-full">Hinge Joint</span>
+          <span class="text-sm text-gray-500">拧编工艺 — 钢丝缠绕铰合节点</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
+          <div class="img-wrap"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint field fence rolls" class="img-product h-64" loading="lazy" decoding="async"></div>
+          <div class="img-wrap"><img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge Joint knot detail" class="img-product h-64" loading="lazy" decoding="async"></div>
+          <div class="img-wrap"><img src="/assets/img/field-fence-hj-03.jpg" alt="Hinge Joint close-up" class="img-product h-64" loading="lazy" decoding="async"></div>
+        </div>
       </div>
-      <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
-        <div class="img-wrap"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint field fence rolls" class="img-product h-64" loading="lazy" decoding="async"></div>
-        <div class="img-wrap"><img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge Joint knot detail" class="img-product h-64" loading="lazy" decoding="async"></div>
-        <div class="img-wrap"><img src="/assets/img/field-fence-hj-03.jpg" alt="Hinge Joint close-up" class="img-product h-64" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-    <div id="gallery-rl" class="ff-gallery ff-gallery-hidden-right mb-14">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-white bg-gray-700 px-3 py-1 rounded-full">Ring Lock</span>
-        <span class="text-sm text-gray-500">环扣工艺 — 压扣环锁定节点</span>
-      </div>
-      <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
-        <div class="img-wrap"><img src="/assets/img/field-fence-rl-main.jpg" alt="Ring Lock field fence installed" class="img-product h-64" loading="lazy" decoding="async"></div>
-        <div class="img-wrap"><img src="/assets/img/field-fence-rl-02.jpg" alt="Ring Lock knot detail" class="img-product h-64" loading="lazy" decoding="async"></div>
-        <div class="img-wrap"><img src="/assets/img/field-fence-rl-03.jpg" alt="Ring Lock close-up" class="img-product h-64" loading="lazy" decoding="async"></div>
+      <div id="gallery-rl" class="ff-gallery ff-gallery-hidden-right">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="inline-block text-xs font-bold tracking-widest uppercase text-white bg-gray-700 px-3 py-1 rounded-full">Ring Lock</span>
+          <span class="text-sm text-gray-500">环扣工艺 — 压扣环锁定节点</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
+          <div class="img-wrap"><img src="/assets/img/field-fence-rl-main.jpg" alt="Ring Lock field fence installed" class="img-product h-64" loading="lazy" decoding="async"></div>
+          <div class="img-wrap"><img src="/assets/img/field-fence-rl-02.jpg" alt="Ring Lock knot detail" class="img-product h-64" loading="lazy" decoding="async"></div>
+          <div class="img-wrap"><img src="/assets/img/field-fence-rl-03.jpg" alt="Ring Lock close-up" class="img-product h-64" loading="lazy" decoding="async"></div>
+        </div>
       </div>
     </div>
 
