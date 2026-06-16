@@ -15,6 +15,8 @@
   if (window.__ljProductCardsInit) return;
   window.__ljProductCardsInit = true;
 
+  var heroImageTimeout = null;
+
   function switchHeroImage(heroSelector, card) {
     var hero = document.querySelector(heroSelector);
     if (!hero) return;
@@ -24,7 +26,8 @@
     if (!newSrc) return;
 
     hero.style.opacity = '0';
-    setTimeout(function () {
+    clearTimeout(heroImageTimeout);
+    heroImageTimeout = setTimeout(function () {
       hero.src = newSrc;
       if (newAlt) hero.alt = newAlt;
       hero.style.opacity = '1';
