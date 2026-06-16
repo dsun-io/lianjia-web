@@ -76,6 +76,27 @@
     if (success) success.classList.remove('hidden');
     document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
     setSubmitting(btn, false);
+
+    if (form.id === 'inquiry-form') {
+      history.pushState(null, '', '#thank-you');
+    } else {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  function showError(form, message) {
+    if (!form) return;
+    var btn = form.querySelector('button[type="submit"]');
+    setSubmitting(btn, false);
+
+    var existing = form.querySelector('.lj-form-error');
+    if (!existing) {
+      existing = document.createElement('p');
+      existing.className = 'lj-form-error text-red-400 text-sm mt-3 flex items-center gap-2';
+      existing.innerHTML = '<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span></span>';
+      btn.parentNode.insertBefore(existing, btn.nextSibling);
+    }
+    existing.querySelector('span').textContent = message || 'Submission failed. Please check your connection and try again.';
   }
 
   function resetForm(resetBtn) {
@@ -160,22 +181,23 @@
       history.scrollRestoration = 'manual';
     }
 
-    // 首页使用 pushState（配合 popstate）；产品页只显示成功提示，不跳 hash
-    if (form.id === 'inquiry-form') {
-      history.pushState(null, '', '#thank-you');
-    } else {
-      history.replaceState(null, '', window.location.pathname);
-    }
-
     setTimeout(function () {
       fetch(form.action, {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
-      }).catch(function () {});
+      })
+        .then(function (response) {
+          if (response.ok) {
+            showSuccess(form);
+          } else {
+            showError(form, 'Submission failed (server error). Please try again.');
+          }
+        })
+        .catch(function () {
+          showError(form, 'Network error. Please check your connection and try again.');
+        });
     }, 100);
-
-    showSuccess(form);
   }
 
   function onInput(e) {
