@@ -182,19 +182,20 @@
     }
 
     setTimeout(function () {
+      // GAS /exec 端点不支持返回 CORS 响应头，浏览器会拦截 cors 模式下的响应读取，
+      // 导致 fetch 抛 "Failed to fetch" 而永远走 .catch（即使数据已成功写入 Sheet）。
+      // 因此使用 no-cors 模式：请求发起即视为成功，依赖后端"先写 Sheet 再发邮件"的兜底。
       fetch(form.action, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        mode: 'no-cors',
+        body: data
       })
-        .then(function (response) {
-          if (response.ok) {
-            showSuccess(form);
-          } else {
-            showError(form, 'Submission failed (server error). Please try again.');
-          }
+        .then(function () {
+          // no-cors 响应不可读（opaque response），请求完成即视为提交成功
+          showSuccess(form);
         })
         .catch(function () {
+          // 仅真实网络断开/DNS 失败才会触发
           showError(form, 'Network error. Please check your connection and try again.');
         });
     }, 100);
