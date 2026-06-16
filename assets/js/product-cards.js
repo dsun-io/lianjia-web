@@ -91,58 +91,26 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 新图进入方向：点右侧从右边进入，点左侧从左边进入
-    // 旧图离开方向：与新图进入方向相反
-    var enterX = goRight ? '120px' : '-120px';
-    var leaveX = goRight ? '-120px' : '120px';
-
-    // 统一重置：所有 gallery 立即就位，无动画
-    document.querySelectorAll('.ff-gallery').forEach(function (g) {
-      g.style.transition = 'none';
-      g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-      g.style.opacity = '0';
-      g.style.pointerEvents = 'none';
-      g.style.visibility = 'hidden';
-    });
+    // 旧、新画廊初始位置放在同侧，运动时才会相向而过、方向相反
+    // 点右侧卡片 → 两者初始都在右侧，旧内容向右离开，新内容从右往左进入
+    // 点左侧卡片 → 两者初始都在左侧，旧内容向左离开，新内容从左往右进入
+    var hiddenClass = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
 
     if (currentGallery) {
-      currentGallery.style.transform = 'translateX(0)';
-      currentGallery.style.opacity = '1';
-      currentGallery.style.visibility = 'visible';
+      currentGallery.classList.remove('ff-gallery-visible');
+      currentGallery.classList.add(hiddenClass);
     }
-    nextGallery.style.transform = 'translateX(' + enterX + ')';
-    nextGallery.style.opacity = '0';
-    nextGallery.style.visibility = 'visible';
 
-    // 强制 reflow 确保起始位置生效
-    nextGallery.offsetHeight;
-
-    // 同时启动动画
-    document.querySelectorAll('.ff-gallery').forEach(function (g) {
-      g.style.transition = 'opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo)';
-    });
-
-    if (currentGallery) {
-      currentGallery.style.transform = 'translateX(' + leaveX + ')';
-      currentGallery.style.opacity = '0';
-    }
-    nextGallery.style.transform = 'translateX(0)';
-    nextGallery.style.opacity = '1';
-    nextGallery.style.pointerEvents = 'auto';
-
-    // 动画结束后仅保留 visible 类，其余 gallery 回到 CSS 默认隐藏状态
-    setTimeout(function () {
-      document.querySelectorAll('.ff-gallery').forEach(function (g) {
-        g.style.transition = '';
-        g.style.transform = '';
-        g.style.opacity = '';
-        g.style.pointerEvents = '';
-        g.style.visibility = '';
-        if (g === nextGallery) {
-          g.classList.add('ff-gallery-visible');
-        }
-      });
-    }, 420);
+    // 关键：先关过渡 → 重置位置 → 设隐藏位移 → 开过渡 → 滑入可见
+    // 否则当 nextGallery 上一轮就是同一个 hidden 类时，浏览器无 CSS 变更，不触发动画
+    nextGallery.style.transition = 'none';
+    nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+    nextGallery.offsetHeight; // reflow — 此时 translateX 为 none（即 0）
+    nextGallery.classList.add(hiddenClass);
+    nextGallery.offsetHeight; // reflow — 浏览器确认元素在 ±120px
+    nextGallery.style.transition = '';
+    nextGallery.classList.remove(hiddenClass);
+    nextGallery.classList.add('ff-gallery-visible');
 
     switchSpecTab(variant);
   }
