@@ -91,17 +91,20 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 点右侧卡片 → 新内容从右往左进入（初始在右侧 +120px），旧内容向左离开
-    // 点左侧卡片 → 新内容从左往右进入（初始在左侧 -120px），旧内容向右离开
+    // 旧、新画廊初始位置放在同侧，运动时才会相向而过、方向相反
+    // 点右侧卡片 → 两者初始都在右侧，旧内容向右离开，新内容从右往左进入
+    // 点左侧卡片 → 两者初始都在左侧，旧内容向左离开，新内容从左往右进入
+    var hiddenClass = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
+
     if (currentGallery) {
       currentGallery.classList.remove('ff-gallery-visible');
-      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
+      currentGallery.classList.add(hiddenClass);
     }
 
     nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-    nextGallery.classList.add(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
+    nextGallery.classList.add(hiddenClass);
     nextGallery.offsetHeight; // force reflow
-    nextGallery.classList.remove(goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left');
+    nextGallery.classList.remove(hiddenClass);
     nextGallery.classList.add('ff-gallery-visible');
 
     switchSpecTab(variant);
