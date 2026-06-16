@@ -92,31 +92,59 @@
     if (!nextGallery || nextGallery === currentGallery) return;
 
     // 方向：点右侧卡片时新内容从右往左进入，点左侧卡片时新内容从左往右进入
-    var hiddenClass = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
+    var enterX = goRight ? '120px' : '-120px';
+    var leaveX = goRight ? '-120px' : '120px';
 
-    // 步骤 1：先关闭 transition，把元素放到动画起始位置
+    // 先把所有 gallery 的 transition 关掉，避免残留动画
+    document.querySelectorAll('.ff-gallery').forEach(function (g) {
+      g.style.transition = 'none';
+      g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+      g.style.opacity = '0';
+      g.style.pointerEvents = 'none';
+      g.style.visibility = 'hidden';
+    });
+
+    // 旧画廊放在当前位置（0），新画廊放在进入侧
     if (currentGallery) {
-      currentGallery.style.transition = 'none';
-      currentGallery.classList.remove('ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-      currentGallery.classList.add('ff-gallery-visible');
+      currentGallery.style.transform = 'translateX(0)';
+      currentGallery.style.opacity = '1';
+      currentGallery.style.visibility = 'visible';
     }
-    nextGallery.style.transition = 'none';
-    nextGallery.classList.remove('ff-gallery-visible');
-    nextGallery.classList.add(hiddenClass);
+    nextGallery.style.transform = 'translateX(' + enterX + ')';
+    nextGallery.style.opacity = '0';
+    nextGallery.style.visibility = 'visible';
 
-    // 步骤 2：强制 reflow，确保起始位置生效
+    // 强制 reflow
     nextGallery.offsetHeight;
-    if (currentGallery) currentGallery.offsetHeight;
 
-    // 步骤 3：重新开启 transition，同时让旧内容离开、新内容进入
+    // 同时开启动画：旧内容向 leaveX 离开，新内容从 enterX 进入
+    document.querySelectorAll('.ff-gallery').forEach(function (g) {
+      g.style.transition = 'opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo)';
+    });
+
     if (currentGallery) {
-      currentGallery.style.transition = '';
-      currentGallery.classList.remove('ff-gallery-visible');
-      currentGallery.classList.add(hiddenClass);
+      currentGallery.style.transform = 'translateX(' + leaveX + ')';
+      currentGallery.style.opacity = '0';
     }
-    nextGallery.style.transition = '';
-    nextGallery.classList.remove(hiddenClass);
-    nextGallery.classList.add('ff-gallery-visible');
+    nextGallery.style.transform = 'translateX(0)';
+    nextGallery.style.opacity = '1';
+    nextGallery.style.pointerEvents = 'auto';
+
+    // 动画结束后清理 class，让 visible 状态保持一致
+    setTimeout(function () {
+      document.querySelectorAll('.ff-gallery').forEach(function (g) {
+        g.style.transition = '';
+        g.style.transform = '';
+        g.style.opacity = '';
+        g.style.pointerEvents = '';
+        g.style.visibility = '';
+        if (g === nextGallery) {
+          g.classList.add('ff-gallery-visible');
+        } else {
+          g.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
+        }
+      });
+    }, 420);
 
     switchSpecTab(variant);
   }
