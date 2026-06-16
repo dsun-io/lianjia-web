@@ -91,26 +91,28 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 旧、新画廊初始位置放在同侧，运动时才会相向而过、方向相反
-    // 点右侧卡片 → 两者初始都在右侧，旧内容向右离开，新内容从右往左进入
-    // 点左侧卡片 → 两者初始都在左侧，旧内容向左离开，新内容从左往右进入
-    var hiddenClass = goRight ? 'ff-gallery-hidden-right' : 'ff-gallery-hidden-left';
-
+    // 旧画廊：class 驱动自然过渡离开，方向与进入方向相反
+    // 点右侧 RL → 旧 HJ 向左离开（hidden-left）；点左侧 HJ → 旧 RL 向右离开（hidden-right）
     if (currentGallery) {
       currentGallery.classList.remove('ff-gallery-visible');
-      currentGallery.classList.add(hiddenClass);
+      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
     }
 
-    // 关键：先关过渡 → 重置位置 → 设隐藏位移 → 开过渡 → 滑入可见
-    // 否则当 nextGallery 上一轮就是同一个 hidden 类时，浏览器无 CSS 变更，不触发动画
-    nextGallery.style.transition = 'none';
+    // 新画廊：内联样式瞬间放到进入起始位置 → 下一帧开过渡滑入
+    // 点右侧 RL → 从右侧 +120px 进入；点左侧 HJ → 从左侧 -120px 进入
     nextGallery.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-    nextGallery.offsetHeight; // reflow — 此时 translateX 为 none（即 0）
-    nextGallery.classList.add(hiddenClass);
-    nextGallery.offsetHeight; // reflow — 浏览器确认元素在 ±120px
-    nextGallery.style.transition = '';
-    nextGallery.classList.remove(hiddenClass);
-    nextGallery.classList.add('ff-gallery-visible');
+    nextGallery.style.transition = 'none';
+    nextGallery.style.transform = 'translateX(' + (goRight ? '120px' : '-120px') + ')';
+    nextGallery.style.opacity = '0';
+
+    requestAnimationFrame(function () {
+      nextGallery.style.transition = '';
+      nextGallery.style.transform = '';
+      nextGallery.style.opacity = '';
+      nextGallery.classList.add('ff-gallery-visible');
+    });
+
+    switchSpecTab(variant);
 
     switchSpecTab(variant);
   }
