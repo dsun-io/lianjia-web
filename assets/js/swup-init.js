@@ -44,6 +44,17 @@
     if (floatingCta) floatingCta.setAttribute('href', targetHash);
     if (bottomBarCta) bottomBarCta.setAttribute('href', targetHash);
 
+    /* Header 在 Swup 容器外持久保留；从首页切到产品页后，
+       原来带 # 的锚点链接会指向产品页不存在的 id，导致点击无反应。
+       因此非首页时把 header 内所有 hash 链接补成绝对路径 /#xxx，
+       回到首页时再恢复为相对 #xxx，让浏览器/ScrollPlugin 正常滚动。 */
+    var headerHashLinks = document.querySelectorAll('header a[href^="#"]');
+    headerHashLinks.forEach(function (a) {
+      var hash = a.getAttribute('href');
+      if (hash.charAt(0) !== '#') return;
+      a.setAttribute('href', isHome ? hash : '/' + hash);
+    });
+
     if (typeof window._cursorRefreshHero === 'function') window._cursorRefreshHero();
     if (window.LJTracker && typeof window.LJTracker._reportPageview === 'function') window.LJTracker._reportPageview();
     if (window.LJTracker && typeof window.LJTracker._resetTimer === 'function') window.LJTracker._resetTimer();
