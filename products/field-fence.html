@@ -44,7 +44,7 @@
   <script src="/assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
   <script src="/assets/js/cursor.js"></script>
   <script src="/assets/js/faq.js?v=2"></script>
-  <script src="/assets/js/product-cards.js?v=10"></script>
+  <script src="/assets/js/product-cards.js?v=11"></script>
   <script src="/assets/js/lightbox.js?v=2"></script>
   <script src="/assets/js/counter.js?v=2"></script>
   <script src="/assets/js/form-handler.js?v=4"></script>
@@ -128,13 +128,17 @@
 
     /* ── Gallery slide animation ── */
     .ff-gallery-wrapper { position: relative; min-height: 360px; }
-    .ff-gallery-wrapper .ff-gallery {
-      position: absolute; top: 0; left: 0; width: 100%; margin-bottom: 0; z-index: 0;
-      transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+    .ff-gallery {
+      position: absolute; top: 0; left: 0; width: 100%;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
     }
-    .ff-gallery-hidden-left { opacity: 0 !important; transform: translateX(-120px) !important; pointer-events: none; visibility: hidden; z-index: 0; }
-    .ff-gallery-hidden-right { opacity: 0 !important; transform: translateX(120px) !important; pointer-events: none; visibility: hidden; z-index: 0; }
-    .ff-gallery-visible { opacity: 1 !important; transform: translateX(0) !important; visibility: visible; z-index: 1; }
+    .ff-gallery-hidden-left  { opacity: 0; transform: translateX(-120px); }
+    .ff-gallery-hidden-right { opacity: 0; transform: translateX(120px); }
+    .ff-gallery-visible {
+      opacity: 1; transform: translateX(0);
+      z-index: 1; pointer-events: auto;
+    }
 
     /* ── Cursor Glow (收敛) ── */
     #cursor-glow {

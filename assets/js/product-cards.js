@@ -73,63 +73,26 @@
     }
   }
 
-  var _switching = false;
-
   function switchFieldFenceVariant(variant) {
-    if (_switching) return;  // 防止动画期间重复点击
-    var currentGallery = document.querySelector('.ff-gallery-visible');
-    if (!currentGallery) return;
+    var next = document.getElementById('gallery-' + variant);
+    var current = document.querySelector('.ff-gallery-visible');
+    if (!next || next === current) return;
+    var goRight = variant === 'rl'; // RL 在右侧
 
-    var currentVariant = currentGallery.id.replace('gallery-', '');
-    if (currentVariant === variant) return;
+    // 旧画廊朝点击的反方向离场
+    if (current) {
+      current.classList.remove('ff-gallery-visible');
+      current.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
+    }
+    // 新画廊从对侧进场
+    next.classList.remove('ff-gallery-hidden-left', 'ff-gallery-hidden-right');
+    next.classList.add('ff-gallery-visible');
 
-    var nextGallery = document.getElementById('gallery-' + variant);
-    if (!nextGallery) return;
+    // 卡片高亮
+    var cardEl = document.getElementById('variant-' + variant);
+    setActiveCard(document.querySelectorAll('.ff-variant-card'), cardEl, { addShadow: true, iconColorToggle: true });
 
-    var goRight = variant === 'rl';
-    var enterX = goRight ? '120px' : '-120px';
-    var exitX  = goRight ? '-120px' : '120px';
-    var DURATION = 400; // 与 CSS transition 时长一致
-
-    _switching = true;
-
-    // 关过渡，设起始位置
-    [currentGallery, nextGallery].forEach(function (g) {
-      g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
-      g.style.transition = 'none';
-    });
-
-    nextGallery.style.transform  = 'translateX(' + enterX + ')';
-    nextGallery.style.opacity    = '0';
-    nextGallery.style.visibility = 'hidden';
-
-    currentGallery.style.transform  = 'translateX(0)';
-    currentGallery.style.opacity    = '1';
-    currentGallery.style.visibility = 'visible';
-
-    currentGallery.offsetHeight;
-
-    // 开过渡，设终点
-    [currentGallery, nextGallery].forEach(function (g) { g.style.transition = ''; });
-
-    nextGallery.style.transform  = 'translateX(0)';
-    nextGallery.style.opacity    = '1';
-    nextGallery.style.visibility = 'visible';
-
-    currentGallery.style.transform = 'translateX(' + exitX + ')';
-    currentGallery.style.opacity   = '0';
-
-    // setTimeout 清理（比 transitionend 可靠）
-    setTimeout(function () {
-      currentGallery.style.visibility = 'hidden';
-      [currentGallery, nextGallery].forEach(function (g) {
-        g.style.transition = g.style.transform = g.style.opacity = g.style.visibility = '';
-      });
-      nextGallery.classList.add('ff-gallery-visible');
-      currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
-      switchSpecTab(variant);
-      _switching = false;
-    }, DURATION);
+    switchSpecTab(variant);
   }
 
   function switchSpecTab(which) {
@@ -199,7 +162,6 @@
         e.preventDefault();
         var variant = card.getAttribute('data-variant');
         if (!variant) return;
-        setActiveCard(document.querySelectorAll('.ff-variant-card'), card, { addShadow: true, iconColorToggle: true });
         switchFieldFenceVariant(variant);
         return;
       }
