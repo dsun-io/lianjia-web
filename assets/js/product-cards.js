@@ -91,11 +91,12 @@
     var nextGallery = document.getElementById('gallery-' + variant);
     if (!nextGallery || nextGallery === currentGallery) return;
 
-    // 方向：点右侧卡片时新内容从右往左进入，点左侧卡片时新内容从左往右进入
+    // 新图进入方向：点右侧从右边进入，点左侧从左边进入
+    // 旧图离开方向：与新图进入方向相反
     var enterX = goRight ? '120px' : '-120px';
     var leaveX = goRight ? '-120px' : '120px';
 
-    // 先把所有 gallery 的 transition 关掉，避免残留动画
+    // 统一重置：所有 gallery 立即就位，无动画
     document.querySelectorAll('.ff-gallery').forEach(function (g) {
       g.style.transition = 'none';
       g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
@@ -104,7 +105,6 @@
       g.style.visibility = 'hidden';
     });
 
-    // 旧画廊放在当前位置（0），新画廊放在进入侧
     if (currentGallery) {
       currentGallery.style.transform = 'translateX(0)';
       currentGallery.style.opacity = '1';
@@ -114,10 +114,10 @@
     nextGallery.style.opacity = '0';
     nextGallery.style.visibility = 'visible';
 
-    // 强制 reflow
+    // 强制 reflow 确保起始位置生效
     nextGallery.offsetHeight;
 
-    // 同时开启动画：旧内容向 leaveX 离开，新内容从 enterX 进入
+    // 同时启动动画
     document.querySelectorAll('.ff-gallery').forEach(function (g) {
       g.style.transition = 'opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo)';
     });
@@ -130,7 +130,7 @@
     nextGallery.style.opacity = '1';
     nextGallery.style.pointerEvents = 'auto';
 
-    // 动画结束后清理 class，让 visible 状态保持一致
+    // 动画结束后仅保留 visible 类，其余 gallery 回到 CSS 默认隐藏状态
     setTimeout(function () {
       document.querySelectorAll('.ff-gallery').forEach(function (g) {
         g.style.transition = '';
@@ -140,8 +140,6 @@
         g.style.visibility = '';
         if (g === nextGallery) {
           g.classList.add('ff-gallery-visible');
-        } else {
-          g.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
         }
       });
     }, 420);
