@@ -89,7 +89,7 @@
 | 占位符                            | 说明                                                                             |
 | --------------------------------- | -------------------------------------------------------------------------------- |
 | `[COMPANY_NAME]`                | 公司英文名                                                                       |
-| `[DOMAIN]`                      | 域名（如 lianjia-fence.com）                                                     |
+| `[DOMAIN]`                      | 域名（如 lianjiafence.com）                                                      |
 | `[FACTORY_ADDRESS]`             | 工厂详细地址（堤涡村村北100米处, Anping County）                                 |
 | `[FACTORY_ADDRESS_URL_ENCODED]` | 同上，空格用+替换（如 No.88+West+Industrial+Zone+Anping），用于 Google Maps 嵌入 |
 | `FORM_SCRIPT_URL`               | Google Apps Script Web App URL（表单提交后端），详见下方说明                     |
