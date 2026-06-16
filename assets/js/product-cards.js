@@ -73,19 +73,27 @@
     }
   }
 
+  var _switching = false;
+
   function switchFieldFenceVariant(variant) {
-    // 从当前可见画廊推断旧 variant（不依赖卡片 class，因为 setActiveCard 已先执行）
+    if (_switching) return;  // 防止动画期间重复点击
     var currentGallery = document.querySelector('.ff-gallery-visible');
-    var previousVariant = currentGallery ? currentGallery.id.replace('gallery-', '') : null;
-    var goRight = previousVariant && previousVariant !== variant ? variant === 'rl' : false;
+    if (!currentGallery) return;
+
+    var currentVariant = currentGallery.id.replace('gallery-', '');
+    if (currentVariant === variant) return;
 
     var nextGallery = document.getElementById('gallery-' + variant);
-    if (!nextGallery || nextGallery === currentGallery) { switchSpecTab(variant); return; }
+    if (!nextGallery) return;
 
-    // 全部用内联样式，动画结束再恢复 class
+    var goRight = variant === 'rl';
     var enterX = goRight ? '120px' : '-120px';
     var exitX  = goRight ? '-120px' : '120px';
+    var DURATION = 400; // 与 CSS transition 时长一致
 
+    _switching = true;
+
+    // 关过渡，设起始位置
     [currentGallery, nextGallery].forEach(function (g) {
       g.classList.remove('ff-gallery-visible', 'ff-gallery-hidden-left', 'ff-gallery-hidden-right');
       g.style.transition = 'none';
@@ -99,8 +107,9 @@
     currentGallery.style.opacity    = '1';
     currentGallery.style.visibility = 'visible';
 
-    currentGallery.offsetHeight; // reflow
+    currentGallery.offsetHeight;
 
+    // 开过渡，设终点
     [currentGallery, nextGallery].forEach(function (g) { g.style.transition = ''; });
 
     nextGallery.style.transform  = 'translateX(0)';
@@ -110,15 +119,17 @@
     currentGallery.style.transform = 'translateX(' + exitX + ')';
     currentGallery.style.opacity   = '0';
 
-    var cleanup = function () {
+    // setTimeout 清理（比 transitionend 可靠）
+    setTimeout(function () {
+      currentGallery.style.visibility = 'hidden';
       [currentGallery, nextGallery].forEach(function (g) {
         g.style.transition = g.style.transform = g.style.opacity = g.style.visibility = '';
       });
       nextGallery.classList.add('ff-gallery-visible');
       currentGallery.classList.add(goRight ? 'ff-gallery-hidden-left' : 'ff-gallery-hidden-right');
       switchSpecTab(variant);
-    };
-    nextGallery.addEventListener('transitionend', cleanup, { once: true });
+      _switching = false;
+    }, DURATION);
   }
 
   function switchSpecTab(which) {
