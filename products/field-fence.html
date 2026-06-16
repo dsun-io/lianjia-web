@@ -155,8 +155,9 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
     .grain-overlay{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.04}
-    .img-product{width:100%;height:100%;object-fit:cover;filter:contrast(1.05)saturate(1.04)brightness(1.03)}
-    .img-product-hero{width:100%;height:100%;object-fit:cover;filter:contrast(1.03)saturate(1.02)brightness(1.05)}
+    .img-product{width:100%;object-fit:cover;filter:contrast(1.05)saturate(1.04)brightness(1.03)}
+    .img-product-hero{width:100%;object-fit:cover;filter:contrast(1.03)saturate(1.02)brightness(1.05)}
+    picture{display:block;width:100%}
     .img-wrap{overflow:hidden}
     .img-wrap img{transition:transform .4s cubic-bezier(0.16,1,0.3,1)}
     .img-wrap:hover img{transform:scale(1.04)}
@@ -254,7 +255,7 @@
 <!-- ============================================= -->
 <section class="relative bg-slate-900 text-white overflow-hidden">
   <div class="absolute inset-0">
-    <picture><source srcset="/assets/img/field-fence-hero.webp" type="image/webp"><img src="/assets/img/field-fence-hero.jpg" alt="" class="img-product-hero opacity-30" loading="eager" fetchpriority="high"></picture>
+    <picture><source srcset="/assets/img/field-fence-hero.webp" type="image/webp"><img src="/assets/img/field-fence-hero.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high" width="1280" height="1280"></picture>
   </div>
   <div class="absolute inset-0 bg-black/40"></div>
   <div class="grain-overlay" style="filter:url(#grain)"></div>
@@ -316,9 +317,9 @@
           <span class="text-sm text-gray-500">拧编工艺 — 钢丝缠绕铰合节点</span>
         </div>
         <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-02.webp" type="image/webp"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint field fence rolls" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp"><img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge Joint knot detail" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp"><img src="/assets/img/field-fence-hj-03.jpg" alt="Hinge Joint close-up" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-02.webp" type="image/webp"><img src="/assets/img/field-fence-02.jpg" alt="Hinge Joint field fence rolls" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="720" height="1280"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp"><img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge Joint knot detail" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1280" height="1280"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp"><img src="/assets/img/field-fence-hj-03.jpg" alt="Hinge Joint close-up" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1280" height="1280"></picture></div>
         </div>
       </div>
       <div id="gallery-rl" class="ff-gallery ff-gallery-hidden-right">
@@ -327,9 +328,9 @@
           <span class="text-sm text-gray-500">环扣工艺 — 压扣环锁定节点</span>
         </div>
         <div class="grid grid-cols-3 gap-4 rounded-xl overflow-hidden">
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-main.webp" type="image/webp"><img src="/assets/img/field-fence-rl-main.jpg" alt="Ring Lock field fence installed" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-02.webp" type="image/webp"><img src="/assets/img/field-fence-rl-02.jpg" alt="Ring Lock knot detail" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
-          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-03.webp" type="image/webp"><img src="/assets/img/field-fence-rl-03.jpg" alt="Ring Lock close-up" class="img-product h-64" loading="lazy" decoding="async"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-main.webp" type="image/webp"><img src="/assets/img/field-fence-rl-main.jpg" alt="Ring Lock field fence installed" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1400" height="1400"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-02.webp" type="image/webp"><img src="/assets/img/field-fence-rl-02.jpg" alt="Ring Lock knot detail" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1060" height="1050"></picture></div>
+          <div class="img-wrap"><picture><source srcset="/assets/img/field-fence-rl-03.webp" type="image/webp"><img src="/assets/img/field-fence-rl-03.jpg" alt="Ring Lock close-up" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1400" height="1400"></picture></div>
         </div>
       </div>
     </div>
@@ -466,21 +467,21 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-01.webp" type="image/webp"><img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on cattle farm" class="img-product h-56" loading="lazy" decoding="async"></picture></div>
+        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-01.webp" type="image/webp"><img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on cattle farm" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="800" height="800"></picture></div>
         <div class="p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-2">Cattle &amp; Sheep Farms</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Hinge-joint knot absorbs animal impact without breaking. Ideal for livestock paddocks and rotational grazing.</p>
         </div>
       </div>
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-02.webp" type="image/webp"><img src="/assets/img/field-fence-app-02.jpg" alt="Rural boundary fencing" class="img-product h-56" loading="lazy" decoding="async"></picture></div>
+        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-02.webp" type="image/webp"><img src="/assets/img/field-fence-app-02.jpg" alt="Rural boundary fencing" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="800" height="800"></picture></div>
         <div class="p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-2">Rural Boundaries</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Clear property lines with a fence that handles Australian weather — UV, rain, wind and temperature swings.</p>
         </div>
       </div>
       <div class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-03.webp" type="image/webp"><img src="/assets/img/field-fence-app-03.jpg" alt="Vineyard and orchard fencing" class="img-product h-56" loading="lazy" decoding="async"></picture></div>
+        <div class="overflow-hidden img-wrap"><picture><source srcset="/assets/img/field-fence-app-03.webp" type="image/webp"><img src="/assets/img/field-fence-app-03.jpg" alt="Vineyard and orchard fencing" class="img-product w-full aspect-[4/3] object-cover" loading="lazy" decoding="async" width="1060" height="1050"></picture></div>
         <div class="p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-2">Vineyards &amp; Orchards</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Keeps wildlife out while maintaining an open, clean look. Available in low-profile heights for vine protection.</p>
