@@ -4,6 +4,7 @@ module.exports = {
     './index.html',
     './thank-you.html',
     './products/*.html',
+    './assets/js/*.js',
   ],
   safelist: [
     // 由 JS 动态添加、HTML 中未静态出现的 Tailwind 工具类
