@@ -35,6 +35,11 @@
     if (typeof window._cursorRefreshHero === 'function') window._cursorRefreshHero();
     if (window.LJTracker && typeof window.LJTracker._reportPageview === 'function') window.LJTracker._reportPageview();
     if (window.LJTracker && typeof window.LJTracker._resetTimer === 'function') window.LJTracker._resetTimer();
+    if (window.LJFAQ && typeof window.LJFAQ.init === 'function') window.LJFAQ.init();
+    if (window.LJProductCards && typeof window.LJProductCards.init === 'function') window.LJProductCards.init();
+    if (window.LJLightbox && typeof window.LJLightbox.init === 'function') window.LJLightbox.init();
+    if (window.LJCounter && typeof window.LJCounter.init === 'function') window.LJCounter.init();
+    if (window.LJFormHandler && typeof window.LJFormHandler.init === 'function') window.LJFormHandler.init();
     if (window.LJBackToTop && typeof window.LJBackToTop.init === 'function') window.LJBackToTop.init();
     if (window.LJMobileMenu && typeof window.LJMobileMenu.init === 'function') window.LJMobileMenu.init();
   });

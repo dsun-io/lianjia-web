@@ -77,7 +77,14 @@
   <script src="/assets/js/swup-4.8.0.umd.js"></script>
   <script src="/assets/js/swup-scroll-plugin-4.0.0.umd.js"></script>
   <script src="/assets/js/cursor.js"></script>
-  <script src="/assets/js/swup-init.js"></script>
+  <script src="/assets/js/faq.js?v=2"></script>
+  <script src="/assets/js/product-cards.js?v=2"></script>
+  <script src="/assets/js/lightbox.js?v=2"></script>
+  <script src="/assets/js/counter.js?v=2"></script>
+  <script src="/assets/js/form-handler.js?v=2"></script>
+  <script src="/assets/js/back-to-top.js"></script>
+  <script src="/assets/js/mobile-menu.js"></script>
+  <script src="/assets/js/swup-init.js?v=2"></script>
 
   <!-- Swup 过渡样式 -->
   <style>
@@ -998,7 +1005,7 @@
             </ol>
           </div>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onclick="var f=document.getElementById('inquiry-form');var b=document.getElementById('submit-btn');document.getElementById('inquiry-success').classList.add('hidden');f.classList.remove('hidden');if(b){b.disabled=false;b.textContent='Send Inquiry'}history.replaceState(null,'','#contact');document.getElementById('contact').scrollIntoView({behavior:'smooth'});document.title='Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]'" class="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors">← Submit Another Inquiry</button>
+            <button data-reset-form="#inquiry-form" class="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded transition-colors">← Submit Another Inquiry</button>
             <a href="[WHATSAPP_LINK]" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold rounded transition-colors">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Chat on WhatsApp
@@ -1088,11 +1095,11 @@
 <!-- ============================================= -->
 <!-- LIGHTBOX OVERLAY                              -->
 <!-- ============================================= -->
-<div id="lightbox-overlay" class="fixed inset-0 z-[9999] bg-black/90 hidden items-center justify-center p-4 cursor-pointer" onclick="closeLightbox(event)">
-  <button id="lightbox-close" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-white text-3xl font-light hover:text-orange-400 transition-colors cursor-pointer" onclick="closeLightbox(event)" aria-label="Close lightbox">&times;</button>
-  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-white text-2xl hover:text-orange-400 transition-colors cursor-pointer bg-white/10 rounded-full" onclick="navLightbox(event,-1)" aria-label="Previous image">&lsaquo;</button>
-  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl select-none" onclick="event.stopPropagation()">
-  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-white text-2xl hover:text-orange-400 transition-colors cursor-pointer bg-white/10 rounded-full" onclick="navLightbox(event,1)" aria-label="Next image">&rsaquo;</button>
+<div id="lightbox-overlay" class="fixed inset-0 z-[9999] bg-black/90 hidden items-center justify-center p-4 cursor-pointer">
+  <button id="lightbox-close" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-white text-3xl font-light hover:text-orange-400 transition-colors cursor-pointer" aria-label="Close lightbox">&times;</button>
+  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-white text-2xl hover:text-orange-400 transition-colors cursor-pointer bg-white/10 rounded-full" aria-label="Previous image">&lsaquo;</button>
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl select-none">
+  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-white text-2xl hover:text-orange-400 transition-colors cursor-pointer bg-white/10 rounded-full" aria-label="Next image">&rsaquo;</button>
   <p id="lightbox-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm"></p>
 </div>
 
@@ -1103,272 +1110,12 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init({ once: true, duration: 800, offset: 80 });</script>
 
-<!-- Mobile Menu Toggle -->
-<script src="/assets/js/mobile-menu.js"></script>
-
-<!-- Trust Strip Counter Animation -->
-<script>
-(function () {
-  function animateCountUp(el, target, duration) {
-    var start = 0, startTime = null;
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      var eased = 1 - (1 - progress) * (1 - progress);
-      el.textContent = Math.floor(eased * target);
-      if (progress < 1) requestAnimationFrame(step); else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-  var counters = document.querySelectorAll('[data-target]');
-  if (!counters.length) return;
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target, target = parseInt(el.getAttribute('data-target'), 10);
-        if (!isNaN(target) && !el.dataset.counted) { el.dataset.counted = 'true'; animateCountUp(el, target, 2000); }
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.3 });
-  counters.forEach(function (el) { observer.observe(el); });
-})();
-</script>
-
-<!-- FAQ Accordion -->
-<script>
-(function() {
-  var accordion = document.getElementById('faq-accordion');
-  if (!accordion) return;
-  var questions = accordion.querySelectorAll('.faq-question');
-  questions.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var item = this.closest('.faq-item');
-      var answer = item.querySelector('.faq-answer');
-      var arrow = this.querySelector('.faq-arrow');
-      var isOpen = this.getAttribute('aria-expanded') === 'true';
-      questions.forEach(function(otherBtn) {
-        if (otherBtn !== btn) {
-          var otherItem = otherBtn.closest('.faq-item');
-          otherBtn.setAttribute('aria-expanded', 'false');
-          otherItem.querySelector('.faq-answer').classList.add('hidden');
-          otherBtn.querySelector('.faq-arrow').classList.remove('rotate-180');
-        }
-      });
-      if (isOpen) { this.setAttribute('aria-expanded', 'false'); answer.classList.add('hidden'); arrow.classList.remove('rotate-180'); }
-      else { this.setAttribute('aria-expanded', 'true'); answer.classList.remove('hidden'); arrow.classList.add('rotate-180'); }
-    });
-  });
-})();
-</script>
-
-<!-- Lightbox -->
-<script>
-(function() {
-  var overlay = document.getElementById('lightbox-overlay');
-  var imgEl = document.getElementById('lightbox-img');
-  var counterEl = document.getElementById('lightbox-counter');
-  var currentGroup = [], currentIndex = 0;
-  var allLinks = document.querySelectorAll('[data-lightbox]');
-  var groups = {};
-  allLinks.forEach(function(link) { var g = link.getAttribute('data-lightbox'); if (!groups[g]) groups[g] = []; groups[g].push(link); });
-  allLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      currentGroup = groups[link.getAttribute('data-lightbox')];
-      currentIndex = currentGroup.indexOf(link);
-      showImage();
-      overlay.classList.remove('hidden'); overlay.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-  function showImage() { imgEl.src = currentGroup[currentIndex].getAttribute('href'); imgEl.alt = 'Product image ' + (currentIndex + 1); counterEl.textContent = (currentIndex + 1) + ' / ' + currentGroup.length; }
-  window.closeLightbox = function(e) { if (e) e.stopPropagation(); overlay.classList.add('hidden'); overlay.classList.remove('flex'); document.body.style.overflow = ''; };
-  window.navLightbox = function(e, dir) { if (e) e.stopPropagation(); currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length; showImage(); };
-  document.addEventListener('keydown', function(e) { if (overlay.classList.contains('hidden')) return; if (e.key === 'Escape') window.closeLightbox(); if (e.key === 'ArrowLeft') window.navLightbox(null, -1); if (e.key === 'ArrowRight') window.navLightbox(null, 1); });
-})();
-</script>
-
 <!-- Tracker & Cookie Consent -->
 <script src="/assets/js/tracker.js"></script>
 <script src="/assets/js/time-tracker.js"></script>
 <script src="/assets/js/cookie-consent.js"></script>
 
-<!-- Form submit: inline success (no redirect, avoids SPA routing issue) -->
-<script>
-(function() {
-  var form = document.getElementById('inquiry-form');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // 必填项验证：Name 和 Email
-    var nameInput = form.querySelector('[name="name"]');
-    var emailInput = form.querySelector('[name="email"]');
-    var firstInvalid = null;
-
-    // 清除旧的错误样式
-    form.querySelectorAll('.ring-2.ring-red-500').forEach(function(el) {
-      el.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
-    });
-
-    if (!nameInput || !nameInput.value.trim()) {
-      if (nameInput) { nameInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
-      if (!firstInvalid) firstInvalid = nameInput;
-    }
-    if (!emailInput || !emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-      if (emailInput) { emailInput.classList.add('ring-2', 'ring-red-500', 'ring-offset-2'); }
-      if (!firstInvalid) firstInvalid = emailInput;
-    }
-
-    if (firstInvalid) {
-      firstInvalid.focus();
-      if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
-      return;
-    }
-
-    var btn = document.getElementById('submit-btn');
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
-    var data = new FormData(form);
-    var dwellEl = document.getElementById('inquiry-dwell');
-    if (dwellEl && window.LJTracker) {
-      try { data.set('dwell_times', JSON.stringify(window.LJTracker.getAllDwell())); } catch(e) {}
-    }
-    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-    // Send form data async
-    setTimeout(function() {
-      fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-        .catch(function() {});
-    }, 100);
-    // Hide form, show success message, update URL
-    form.classList.add('hidden');
-    var success = document.getElementById('inquiry-success');
-    if (success) { success.classList.remove('hidden'); }
-    history.pushState(null, '', '#thank-you');
-    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
-  });
-
-  // Listen for browser back/forward, sync form display state
-  window.addEventListener('popstate', function() {
-    var isThankYou = window.location.hash === '#thank-you';
-    var success = document.getElementById('inquiry-success');
-    var btn = document.getElementById('submit-btn');
-    if (isThankYou) {
-      form.classList.add('hidden');
-      if (success) success.classList.remove('hidden');
-      document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
-    } else {
-      form.classList.remove('hidden');
-      if (success) success.classList.add('hidden');
-      if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
-      document.title = 'Field Fence &amp; Chain Link Fence Manufacturer in China | [COMPANY_NAME]';
-    }
-  });
-
-  // If hash is #thank-you (refresh or direct visit), show success state
-  if (window.location.hash === '#thank-you') {
-    form.classList.add('hidden');
-    var success = document.getElementById('inquiry-success');
-    if (success) { success.classList.remove('hidden'); }
-    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
-  }
-
-  // 输入时清除错误样式
-  form.querySelectorAll('input, textarea').forEach(function(input) {
-    input.addEventListener('input', function() {
-      input.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
-    });
-  });
-})();
-</script>
-
-<!-- Y Post type card interaction: click to switch hero image -->
-<script>
-(function() {
-  var cards = document.querySelectorAll('.y-post-card');
-  var hero = document.getElementById('y-post-hero');
-  if (!cards.length || !hero) return;
-  cards.forEach(function(card) {
-    card.addEventListener('click', function() {
-      // Switch hero image
-      hero.style.opacity = '0';
-      setTimeout(function() {
-        hero.src = card.getAttribute('data-img');
-        hero.alt = card.getAttribute('data-alt');
-        hero.style.opacity = '1';
-      }, 200);
-      // Update card selected state
-      cards.forEach(function(c) {
-        c.classList.remove('border-orange-500', 'bg-orange-50/50');
-        c.classList.add('border-gray-200');
-      });
-      card.classList.remove('border-gray-200');
-      card.classList.add('border-orange-500', 'bg-orange-50/50');
-    });
-  });
-})();
-</script>
-
-<!-- Field Fence knot-type card interaction: click to switch hero image -->
-<script>
-(function() {
-  var cards = document.querySelectorAll('.ff-card');
-  var hero = document.getElementById('ff-hero');
-  if (!cards.length || !hero) return;
-  cards.forEach(function(card) {
-    card.addEventListener('click', function() {
-      hero.style.opacity = '0';
-      setTimeout(function() {
-        hero.src = card.getAttribute('data-img');
-        hero.alt = card.getAttribute('data-alt');
-        hero.style.opacity = '1';
-      }, 200);
-      cards.forEach(function(c) {
-        c.classList.remove('border-orange-500', 'bg-orange-50/50');
-        c.classList.add('border-gray-200');
-        var lbl = c.querySelector('.text-xs');
-        if (lbl) { lbl.classList.remove('text-orange-600'); lbl.classList.add('text-gray-700'); }
-      });
-      card.classList.remove('border-gray-200');
-      card.classList.add('border-orange-500', 'bg-orange-50/50');
-      var activeLbl = card.querySelector('.text-xs');
-      if (activeLbl) { activeLbl.classList.remove('text-gray-700'); activeLbl.classList.add('text-orange-600'); }
-    });
-  });
-})();
-</script>
-
-<!-- Sync email → _replyto -->
-<script>
-(function() {
-  var emailInput = document.getElementById('contact-email');
-  var replytoInput = document.getElementById('hidden-replyto');
-  if (emailInput) { emailInput.addEventListener('change', function() { if (replytoInput) replytoInput.value = this.value; }); }
-})();
-</script>
-
-<!-- LJTracker: auto-select product + source page -->
-<script>
-(function() {
-  var source = window.LJTracker && window.LJTracker.getCurrentProduct();
-  if (source) {
-    var sourceEl = document.getElementById('inquiry-source');
-    if (sourceEl) sourceEl.value = source;
-    var productSel2 = document.getElementById('contact-product');
-    if (productSel2 && window.LJTracker) {
-      var name2 = window.LJTracker.getProductName(source);
-      for (var j = 0; j < productSel2.options.length; j++) {
-        if (productSel2.options[j].value === name2) { productSel2.selectedIndex = j; break; }
-      }
-    }
-  }
-})();
-</script>
-
 <!-- Turnstile: loaded conditionally in head, skip here -->
-
-<!-- Back to Top toggle -->
-<script src="/assets/js/back-to-top.js"></script>
 
 </main>
 </body>
