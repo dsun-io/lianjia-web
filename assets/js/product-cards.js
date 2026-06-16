@@ -93,6 +93,7 @@
 
     // 卡片高亮
     var cardEl = document.getElementById('variant-' + variant);
+    if (!cardEl) return;
     setActiveCard(document.querySelectorAll('.ff-variant-card'), cardEl, { addShadow: true, iconColorToggle: true });
 
     switchSpecTab(variant);
