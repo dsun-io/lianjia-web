@@ -1217,10 +1217,6 @@ video {
   word-break: break-all;
 }
 
-.rounded {
-  border-radius: 0px;
-}
-
 .rounded-full {
   border-radius: 9999px;
 }
