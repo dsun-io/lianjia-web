@@ -109,20 +109,6 @@
     }
     .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
 
-    /* ── Gallery slide animation ── */
-    .ff-gallery-wrapper { position: relative; min-height: 360px; overflow: hidden; }
-    .ff-gallery {
-      position: absolute; top: 0; left: 0; width: 100%;
-      transition: transform 0.4s ease;
-      pointer-events: none;
-    }
-    .ff-gallery-hidden-left  { transform: translateX(-100%); }
-    .ff-gallery-hidden-right { transform: translateX(100%); }
-    .ff-gallery-visible {
-      transform: translateX(0);
-      z-index: 1; pointer-events: auto;
-    }
-
     /* ── Cursor Glow (收敛) ── */
     #cursor-glow {
       position: fixed; left: 0; top: 0;
@@ -308,6 +294,22 @@
         </ul>
       </div>
     </div>
+
+    <!-- Gallery slide styles — 单独内联，避免被 head style 解析异常吞掉 -->
+    <style>
+      .ff-gallery-wrapper { position: relative; min-height: 360px; overflow: hidden; }
+      .ff-gallery {
+        position: absolute; top: 0; left: 0; width: 100%;
+        transition: transform 0.4s ease;
+        pointer-events: none;
+      }
+      .ff-gallery-hidden-left  { transform: translateX(-100%); }
+      .ff-gallery-hidden-right { transform: translateX(100%); }
+      .ff-gallery-visible {
+        transform: translateX(0);
+        z-index: 1; pointer-events: auto;
+      }
+    </style>
 
     <!-- Image gallery — 随变体选择切换 -->
     <div class="ff-gallery-wrapper mb-14">
