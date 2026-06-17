@@ -255,6 +255,23 @@
     };
     container.addEventListener('click', container.__ljFormHandlerResetHandler);
 
+    // "Get a Quote" 按钮委托 — 动态跳转到当前页表单
+    if (container.__ljFormHandlerGotoFormHandler) {
+      container.removeEventListener('click', container.__ljFormHandlerGotoFormHandler);
+    }
+    container.__ljFormHandlerGotoFormHandler = function (e) {
+      var link = e.target.closest('a[href="#contact"], a[href="#inquiry"]');
+      if (!link) return;
+      e.preventDefault();
+      // 优先找产品页的 #inquiry，找不到则用首页的 #contact
+      var target = document.getElementById('inquiry') || document.getElementById('contact');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', '#' + target.id);
+      }
+    };
+    container.addEventListener('click', container.__ljFormHandlerGotoFormHandler);
+
     // 邮箱同步
     var emailInput = document.getElementById('contact-email');
     if (emailInput) {
