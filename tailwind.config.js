@@ -23,6 +23,9 @@ module.exports = {
     'stroke-accent-bright',
     'bg-whatsapp',
     'hover:bg-whatsapp-hover',
+    // 视觉收敛后显式使用的 orange 工具类
+    'bg-orange-500',
+    'hover:bg-orange-600',
   ],
   theme: {
     extend: {
@@ -35,10 +38,10 @@ module.exports = {
         'deep-blue': '#0C0A09',
         'heading': '#2D3436',
         'accent': {
-          DEFAULT: '#C2410C',
-          light: '#EA580C',
-          dark: '#9A3412',
-          bright: '#E67E22',
+          DEFAULT: '#f97316', // orange-500
+          light: '#f97316',
+          dark: '#ea580c',    // orange-600
+          bright: '#f97316',
         },
         'whatsapp': {
           DEFAULT: '#25D366',

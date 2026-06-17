@@ -74,7 +74,7 @@
 
     form.classList.add('hidden');
     if (success) success.classList.remove('hidden');
-    document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
+    document.title = 'Thank You — Inquiry Received | Lianjia Fence';
     setSubmitting(btn, false);
 
     if (form.id === 'inquiry-form') {
@@ -122,7 +122,7 @@
     // 重置表单时保持当前滚动位置，不要自动滚动
     if (form.id === 'inquiry-form') {
       history.replaceState(null, '', '#contact');
-      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | [COMPANY_NAME]';
+      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | Lianjia Fence';
     } else {
       history.replaceState(null, '', '');
     }
@@ -185,18 +185,24 @@
       // GAS /exec 端点不支持返回 CORS 响应头，浏览器会拦截 cors 模式下的响应读取，
       // 导致 fetch 抛 "Failed to fetch" 而永远走 .catch（即使数据已成功写入 Sheet）。
       // 因此使用 no-cors 模式：请求发起即视为成功，依赖后端"先写 Sheet 再发邮件"的兜底。
-      fetch(form.action, {
+      var fetchPromise = fetch(form.action, {
         method: 'POST',
         mode: 'no-cors',
         body: data
-      })
-        .then(function () {
-          // no-cors 响应不可读（opaque response），请求完成即视为提交成功
-          showSuccess(form);
-        })
-        .catch(function () {
-          // 仅真实网络断开/DNS 失败才会触发
-          showError(form, 'Network error. Please check your connection and try again.');
+      });
+
+      // 乐观提交：fetch 发出即跳转成功页，不等响应
+      showSuccess(form);
+
+      fetchPromise.catch(function () {
+          // 网络断开/DNS 失败：表单已隐藏，将错误提示追加到成功区域
+          var success = document.getElementById('inquiry-success');
+          if (success) {
+            var err = document.createElement('p');
+            err.className = 'text-red-400 text-sm mt-4';
+            err.textContent = '\u26a0 Submission may have failed due to network error. Please try again or contact us directly.';
+            success.appendChild(err);
+          }
         });
     }, 100);
   }
@@ -217,12 +223,12 @@
     if (window.location.hash === '#thank-you') {
       homeForm.classList.add('hidden');
       if (success) success.classList.remove('hidden');
-      document.title = 'Thank You — Inquiry Received | [COMPANY_NAME]';
+      document.title = 'Thank You — Inquiry Received | Lianjia Fence';
     } else {
       homeForm.classList.remove('hidden');
       if (success) success.classList.add('hidden');
       setSubmitting(btn, false);
-      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | [COMPANY_NAME]';
+      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | Lianjia Fence';
     }
   }
 
