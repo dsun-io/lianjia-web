@@ -18,8 +18,8 @@ const replacements = [
   { from: /url\(['"]?\.\.\/assets\//g, to: `url('/${REPO}/assets/` },
   { from: /url\(['"]?assets\//g, to: `url('/${REPO}/assets/` },
   // Assets and favicon in src/href
-  { from: /\b(href|src)="favicon\.svg"/g, to: `$1="/${REPO}/favicon.svg"` },
-  { from: /\b(href|src)="\.\.\/favicon\.svg"/g, to: `$1="/${REPO}/favicon.svg"` },
+  { from: /\b(href|src)="favicon\.ico"/g, to: `$1="/${REPO}/favicon.ico"` },
+  { from: /\b(href|src)="\.\.\/favicon\.ico"/g, to: `$1="/${REPO}/favicon.ico"` },
   { from: /\b(href|src)="\.\.\/assets\//g, to: `$1="/${REPO}/assets/` },
   { from: /\b(href|src)="assets\//g, to: `$1="/${REPO}/assets/` },
   // Internal cross-page links
