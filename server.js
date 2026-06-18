@@ -31,7 +31,29 @@ const server = http.createServer((req, res) => {
   }
   let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
   filePath = filePath.split('?')[0];
+
+  // Fallback: bare paths like /products/field-fence → /products/field-fence.html
+  function resolveFilePath(targetPath) {
+    try {
+      const stat = fs.statSync(targetPath);
+      if (stat.isFile()) return targetPath;
+    } catch (e) {
+      // targetPath does not exist; try .html fallback below
+    }
+    if (!path.extname(targetPath)) {
+      const htmlPath = targetPath + '.html';
+      try {
+        if (fs.statSync(htmlPath).isFile()) return htmlPath;
+      } catch (e) {
+        // .html fallback also does not exist
+      }
+    }
+    return targetPath;
+  }
+
+  filePath = resolveFilePath(filePath);
   const ext = path.extname(filePath).toLowerCase();
+
   fs.readFile(filePath, (err, data) => {
     if (err) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });

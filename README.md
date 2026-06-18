@@ -28,7 +28,7 @@
 │       ├── tracker.js                  # 产品页停留时长追踪器（LJTracker）
 │       ├── time-tracker.js             # 备用停留时长模块（TimeTracker）
 │       └── cookie-consent.js           # Cookie/数据使用说明横幅
-├── favicon.svg                         # 网站图标
+├── favicon.ico                         # 网站图标
 ├── robots.txt                          # 搜索引擎爬虫配置
 ├── sitemap.xml                         # 站点地图
 ├── 建站技术方案.md                      # 建站技术方案文档
