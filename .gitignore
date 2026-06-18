@@ -1,6 +1,44 @@
+# 本地素材源文件（已处理/压缩后的版本放在 assets/ 下跟踪）
 素材/
+
+# 依赖
 node_modules/
+
+# 测试与截图输出
 test-results/
 screenshot-*.png
+
+# 包管理锁定文件（本项目无构建步骤，不锁定）
 package-lock.json
+
+# Lighthouse 报告（本地性能审计）
 .claude/lighthouse-*.json
+
+# OS 文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 构建与缓存输出
+dist/
+.cache/
+.temp/
+tmp/
+
+# 环境变量（包含敏感信息）
+.env
+.env.local
+.env.*.local

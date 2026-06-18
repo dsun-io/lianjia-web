@@ -16,23 +16,40 @@
 
 ```
 ├── index.html                          # 首页（产品总览 + Why Us + Factory + FAQ + 询盘表单）
-├── products/
+├── products/                           # 产品详情页
 │   ├── field-fence.html                # 牛栏网产品详情页
 │   ├── chain-link-fence.html           # 勾花网产品详情页
 │   └── y-post.html                     # Y型立柱产品详情页
-├── assets/
-│   ├── img/                            # 图片素材
-│   ├── video/                          # 视频素材
+├── assets/                             # 静态资源
+│   ├── css/                            # 编译后的 Tailwind CSS
+│   ├── img/                            # 图片素材（JPG / WebP / SVG / ICO）
 │   ├── gif/                            # 工艺动图
-│   └── js/
+│   ├── video/                          # 视频素材
+│   └── js/                             # 前端脚本
 │       ├── tracker.js                  # 产品页停留时长追踪器（LJTracker）
-│       ├── time-tracker.js             # 备用停留时长模块（TimeTracker）
-│       └── cookie-consent.js           # Cookie/数据使用说明横幅
+│       ├── cookie-consent.js           # Cookie / 数据使用说明横幅
+│       ├── cursor.js                   # 自定义光标 + 视差 + 磁力按钮
+│       ├── lightbox.js                 # 图片灯箱
+│       ├── faq.js                      # FAQ 手风琴
+│       ├── form-handler.js             # 询盘表单提交与验证
+│       ├── mobile-menu.js              # 移动端导航
+│       ├── counter.js                  # 信任条数字滚动
+│       ├── back-to-top.js              # 返回顶部按钮
+│       ├── product-cards.js            # 产品卡片交互
+│       └── swup-init.js                # 页面过渡与预渲染初始化
+├── server.js                           # Node.js 本地开发服务器（推荐）
+├── server.py                           # Python 3 本地开发服务器
+├── tailwind.config.js                  # Tailwind 配置
+├── tailwind-input.css                  # Tailwind 入口 CSS
+├── check-assets.js                     # 素材引用检查脚本
+├── fix-paths.js                        # 路径修复脚本
+├── form-handler.gs                     # Google Apps Script 表单后端
 ├── favicon.ico                         # 网站图标
 ├── robots.txt                          # 搜索引擎爬虫配置
 ├── sitemap.xml                         # 站点地图
+├── thank-you.html                      # 表单提交成功页
 ├── 建站技术方案.md                      # 建站技术方案文档
-├── 素材清单-发给老板.md                 # 素材准备清单
+├── 素材清单.md                          # 素材准备清单
 └── README.md                           # 本文件
 ```
 
@@ -103,27 +120,27 @@
 | `[YEAR]`                        | 当前年份                                                                         |
 | `FORM_ID`                       | Formspree 表单 ID                                                                |
 
-## �️ 本地开发
+## 🛠️ 本地开发
 
 ### 启动项目
 
+项目已内置本地服务器，支持无扩展名路径自动回落到 `.html`（如 `/products/field-fence` → `/products/field-fence.html`），便于开发预览。
+
 ```bash
-# 方式一：Python（推荐，Windows/macOS/Linux 通用）
-cd "外贸独立站设计(未来接入kaas做自动化)"
-python -m http.server 8080
+# 方式一：Node.js（推荐）
+node server.js
 
-# 方式二：Node.js（需先安装 Node.js）
-npx serve .
-
-# 方式三：PHP
-php -S localhost:8080
+# 方式二：Python 3
+python server.py
+# 或
+python3 server.py
 ```
 
 启动后访问 **http://localhost:8080** 即可预览网站。
 
-> 如果 8080 端口被占用，可换成其他端口（如 3000、9000）。
+> 若 8080 端口被占用，可编辑 `server.js` / `server.py` 中的 `PORT` 变量，或临时关闭占用端口的程序。
 
-## �🚀 部署
+## 🚀 部署
 
 1. 替换所有占位符
 2. 替换 `assets/` 下的素材文件（参见「素材清单-发给老板.md」）
