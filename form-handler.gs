@@ -21,7 +21,7 @@
 // ║                   配 置 区                    ║
 // ╚══════════════════════════════════════════════╝
 
-var YOUR_EMAIL       = 'dspro0124@163.com';           // 接收询盘的邮箱
+var YOUR_EMAIL       = 'sales@lianjiafence.com';      // 接收询盘的邮箱
 var SHEET_ID         = '1BO5WZMTCnXTg8tYY6Oi0TmiAoPlXu27Phdy0GcorU3s'; // Google Sheet ID
 var TURNSTILE_SECRET = '';                            // Turnstile secret_key（留空跳过校验）
 var WECHAT_WEBHOOK   = '';                            // 企业微信 webhook（留空跳过报警）

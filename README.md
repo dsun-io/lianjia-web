@@ -114,7 +114,7 @@
 | `[YEARS]`                       | 经营年数                                                                         |
 | `[CAPACITY]`                    | 月产能（柜数）                                                                   |
 | `[PHONE]`                       | 联系电话                                                                         |
-| `[EMAIL]`                       | 销售邮箱                                                                         |
+| `[EMAIL]`                       | 销售邮箱（已替换为 sales@lianjiafence.com）                                   |
 | `[WHATSAPP]`                    | WhatsApp 号码                                                                    |
 | `[WHATSAPP_LINK]`               | WhatsApp wa.me 链接                                                              |
 | `[YEAR]`                        | 当前年份                                                                         |

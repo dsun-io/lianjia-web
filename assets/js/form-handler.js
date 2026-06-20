@@ -122,7 +122,7 @@
     // 重置表单时保持当前滚动位置，不要自动滚动
     if (form.id === 'inquiry-form') {
       history.replaceState(null, '', '#contact');
-      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | Lianjia Fence';
+      document.title = 'Chain Link & Field Fence Supplier China | Lianjia Fence';
     } else {
       history.replaceState(null, '', '');
     }
@@ -228,7 +228,7 @@
       homeForm.classList.remove('hidden');
       if (success) success.classList.add('hidden');
       setSubmitting(btn, false);
-      document.title = 'Field Fence & Chain Link Fence Manufacturer in China | Lianjia Fence';
+      document.title = 'Chain Link & Field Fence Supplier China | Lianjia Fence';
     }
   }
 
