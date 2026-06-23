@@ -35,6 +35,27 @@
   var parallaxEls = [];
   var glowRadius = 175;                // 与 CSS #cursor-glow width/2 一致
 
+  /* ── 在第三方组件上隐藏自定义光标 ── */
+  function hideCursor() {
+    cursorDot.style.opacity = '0';
+    if (cursorGlow) cursorGlow.style.opacity = '0';
+  }
+
+  function showCursor() {
+    cursorDot.style.opacity = '1';
+    if (cursorGlow) cursorGlow.style.opacity = '1';
+  }
+
+  function bindCursorHide(root) {
+    var targets = root.querySelectorAll('iframe, [data-hide-cursor]');
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i]._cursorHideBound) continue;
+      targets[i]._cursorHideBound = true;
+      targets[i].addEventListener('mouseenter', hideCursor, { passive: true });
+      targets[i].addEventListener('mouseleave', showCursor, { passive: true });
+    }
+  }
+
   /* ── 缓存 hero 矩形 ── */
   function cacheHeroRect() {
     if (!hero) return;
@@ -57,6 +78,7 @@
     }
     cacheHeroRect();
     heroDirty = false;
+    bindCursorHide(document);
   }
 
   function resetParallax() {
@@ -70,6 +92,7 @@
 
   /* ── 初始缓存 ── */
   refreshHero();
+  bindCursorHide(document);
 
   window.addEventListener('resize', cacheHeroRect, { passive: true });
   window.addEventListener('scroll', function () { heroDirty = true; }, { passive: true });
