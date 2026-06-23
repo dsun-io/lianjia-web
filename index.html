@@ -55,7 +55,6 @@
   <script src="/assets/js/cursor.js"></script>
   <script src="/assets/js/faq.js?v=2"></script>
   <script src="/assets/js/product-cards.js?v=7"></script>
-  <script src="/assets/js/lightbox.js?v=2"></script>
   <script src="/assets/js/counter.js?v=2"></script>
   <script src="/assets/js/form-handler.js?v=4"></script>
   <script src="/assets/js/back-to-top.js"></script>
@@ -520,9 +519,9 @@
       <!-- Left: Hero image + two knot-type cards -->
       <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="aspect-[4/3] overflow-hidden rounded-lg shadow-md mb-3">
-          <a href="/assets/img/field-fence-02.jpg" data-lightbox="product-1" class="block cursor-pointer h-full">
+          <div class="h-full">
             <picture class="block h-full"><img id="ff-hero" src="/assets/img/field-fence-02.jpg" alt="Hinge Joint — flexible, springy knot absorbs stock pressure" class="w-full h-full object-cover" style="object-position:center" loading="eager" fetchpriority="high" width="1200" height="900"></picture>
-          </a>
+          </div>
         </div>
         <div class="grid grid-cols-2 gap-2">
           <button type="button" class="ff-card group border-2 border-orange-500 rounded-lg p-2.5 text-center bg-orange-50/50 shadow-sm transition-all duration-200 hover:shadow-md" data-img="/assets/img/field-fence-02.jpg" data-alt="Hinge Joint — flexible, springy knot absorbs stock pressure">
@@ -576,11 +575,11 @@
       <!-- Left: product image gallery -->
       <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="aspect-[4/3] overflow-hidden rounded-lg shadow-md mb-3">
-          <a href="/assets/img/chain-link-01.jpg" data-lightbox="product-2" class="block cursor-pointer h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-01.webp" type="image/webp"><img src="/assets/img/chain-link-01.jpg" alt="Galvanized chain link fence in production" class="w-full h-full object-cover" style="object-position:center" loading="eager" fetchpriority="high" width="1200" height="900"></picture></a>
+          <div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-01.webp" type="image/webp"><img src="/assets/img/chain-link-01.jpg" alt="Galvanized chain link fence in production" class="w-full h-full object-cover" style="object-position:center" loading="eager" fetchpriority="high" width="1200" height="900"></picture></div>
         </div>
         <div class="grid grid-cols-2 gap-2">
-          <div class="aspect-square overflow-hidden rounded-lg"><a href="/assets/img/chain-link-03.jpg" data-lightbox="product-2" class="block cursor-pointer h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-03.webp" type="image/webp"><img src="/assets/img/chain-link-03.jpg" alt="Chain link diamond mesh detail" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></a></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><a href="/assets/img/chain-link-02.jpg" data-lightbox="product-2" class="block cursor-pointer h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-02.webp" type="image/webp"><img src="/assets/img/chain-link-02.jpg" alt="Chain link fence rolls packed for export" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></a></div>
+          <div class="aspect-square overflow-hidden rounded-lg"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-03.webp" type="image/webp"><img src="/assets/img/chain-link-03.jpg" alt="Chain link diamond mesh detail" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></div></div>
+          <div class="aspect-square overflow-hidden rounded-lg"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-02.webp" type="image/webp"><img src="/assets/img/chain-link-02.jpg" alt="Chain link fence rolls packed for export" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></div></div>
         </div>
       </div>
       <!-- Right: copy + specs + CTA -->
@@ -624,9 +623,9 @@
       <!-- Left: Hero image + three type cards -->
       <div class="w-full lg:w-1/2 lg:sticky lg:top-28">
         <div class="aspect-[4/3] overflow-hidden rounded-lg shadow-md mb-3">
-          <a href="/assets/img/y-post-01.jpg" data-lightbox="product-3" class="block cursor-pointer h-full">
+          <div class="h-full">
             <picture class="block h-full"><source srcset="/assets/img/y-post-01.webp" type="image/webp"><img id="y-post-hero" src="/assets/img/y-post-01.jpg" alt="Studded Star Post" class="w-full h-full object-cover" style="object-position:center" loading="eager" fetchpriority="high" width="1200" height="900"></picture>
-          </a>
+          </div>
         </div>
         <!-- Three type cards: Studded / Plain / Scalloped -->
         <div class="grid grid-cols-3 gap-2">
@@ -634,11 +633,11 @@
             <div class="aspect-square overflow-hidden rounded-lg mb-2"><picture class="block h-full"><img src="/assets/img/y-post-type-02.jpg" alt="Studded Star Post" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></div>
             <p class="text-xs font-bold text-orange-600 uppercase tracking-wider leading-tight">Studded</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-lg p-2 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-02.jpg" data-alt="Plain Y-Post">
+          <button type="button" class="y-post-card group border border-gray-200 rounded-lg p-2 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-app-02.jpg" data-alt="Plain Y-Post">
             <div class="aspect-square overflow-hidden rounded-lg mb-2"><picture class="block h-full"><img src="/assets/img/y-post-type-01.jpg" alt="Plain Y-Post" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></div>
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider leading-tight">Plain</p>
           </button>
-          <button type="button" class="y-post-card group border border-gray-200 rounded-lg p-2 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-03.jpg" data-alt="Scalloped Y-Post">
+          <button type="button" class="y-post-card group border border-gray-200 rounded-lg p-2 text-center transition-all duration-200 hover:border-orange-300 hover:shadow-md" data-img="/assets/img/y-post-app-01.jpg" data-alt="Scalloped Y-Post">
             <div class="aspect-square overflow-hidden rounded-lg mb-2"><picture class="block h-full"><img src="/assets/img/y-post-type-03.jpg" alt="Scalloped Y-Post" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async" width="800" height="800"></picture></div>
             <p class="text-xs font-bold text-gray-700 uppercase tracking-wider leading-tight">Scalloped</p>
           </button>
@@ -683,9 +682,9 @@
       <div class="flex flex-col lg:flex-row-reverse items-start gap-8">
       <div class="w-full lg:w-1/2">
         <div class="grid grid-cols-2 gap-2">
-          <a href="/assets/img/barbed-wire-01.jpg" data-lightbox="product-4" class="col-span-2 block aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-01.webp" type="image/webp"><img src="/assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></a>
-          <a href="/assets/img/barbed-wire-02.jpg" data-lightbox="product-4" class="block aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-02.webp" type="image/webp"><img src="/assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></a>
-          <a href="/assets/img/barbed-wire-03.jpg" data-lightbox="product-4" class="block aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-03.webp" type="image/webp"><img src="/assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></a>
+          <div class="col-span-2 aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-01.webp" type="image/webp"><img src="/assets/img/barbed-wire-01.jpg" alt="Galvanized barbed wire roll in factory" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-02.webp" type="image/webp"><img src="/assets/img/barbed-wire-02.jpg" alt="Barbed wire barb detail close-up" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></div>
+          <div class="aspect-[4/3] overflow-hidden rounded-lg group img-wrap"><picture class="block h-full"><source srcset="/assets/img/barbed-wire-03.webp" type="image/webp"><img src="/assets/img/barbed-wire-03.jpg" alt="Barbed wire installed on farm fence" class="w-full h-full object-cover group-hover:scale-105" style="object-position:center" loading="lazy" decoding="async" width="1200" height="900"></picture></div>
         </div>
       </div>
       <div class="w-full lg:w-1/2">
@@ -772,7 +771,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <div class="order-1 lg:order-2 aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
-        <a href="/assets/img/about-factory.jpg" data-lightbox="about-factory" class="block cursor-pointer h-full"><img src="/assets/img/about-factory.jpg" alt="Lianjia wire fence factory workshop interior" class="w-full h-full object-cover" loading="lazy" decoding="async"></a>
+        <img src="/assets/img/about-factory.jpg" alt="Lianjia wire fence factory workshop interior" class="w-full h-full object-cover" loading="lazy" decoding="async">
       </div>
       <div class="order-2 lg:order-1" data-aos="fade-up">
         <p class="text-sm font-semibold tracking-[0.15em] uppercase text-orange-600 mb-4">About Us</p>

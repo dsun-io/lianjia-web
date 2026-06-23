@@ -31,9 +31,6 @@
       hero.src = newSrc;
       if (newAlt) hero.alt = newAlt;
       hero.style.opacity = '1';
-      // 同步更新包裹 hero 的 lightbox 链接，使放大的是当前显示的图片
-      var link = hero.closest('a[data-lightbox]');
-      if (link) link.setAttribute('href', newSrc);
     }, 200);
   }
 
