@@ -89,9 +89,7 @@
     .img-product{width:100%;object-fit:cover;filter:contrast(1.05)saturate(1.04)brightness(1.03)}
     .img-product-hero{width:100%;object-fit:cover;filter:contrast(1.03)saturate(1.02)brightness(1.05)}
     picture{display:block;width:100%}
-    .img-wrap{overflow:hidden}
-    .img-wrap img{transition:transform .4s cubic-bezier(0.16,1,0.3,1)}
-    .img-wrap:hover img{transform:scale(1.04)}
+    .img-wrap{overflow:hidden}.img-wrap picture,.img-wrap .h-full{display:block;width:100%;height:100%}.img-wrap img{transition:transform .4s cubic-bezier(0.16,1,0.3,1)}.img-wrap:hover img{transform:scale(1.04)}
   </style>
 
   <!-- Speculation Rules: hover/按下时预渲染链接目标页，消除加载空窗 -->
@@ -200,9 +198,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
       <div data-aos="fade-right" class="h-full">
         <div class="grid grid-cols-3 grid-rows-2 gap-4 h-full">
-          <div class="col-span-2 row-span-2 rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-01.webp" type="image/webp"><img src="/assets/img/chain-link-01.jpg" alt="Galvanized chain link fence rolls in warehouse" class="img-product-hero w-full h-full object-cover group-hover:scale-105" loading="eager" fetchpriority="high" width="1200" height="900"></picture></div></div>
-          <div class="rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-02.webp" type="image/webp"><img src="/assets/img/chain-link-02.jpg" alt="Chain link diamond mesh detail" class="img-product w-full h-full object-cover group-hover:scale-105" loading="lazy" decoding="async" width="1200" height="900"></picture></div></div>
-          <div class="rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-03.webp" type="image/webp"><img src="/assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="img-product w-full h-full object-cover group-hover:scale-105" loading="lazy" decoding="async" width="1200" height="900"></picture></div></div>
+          <div class="col-span-2 row-span-2 rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-01.webp" type="image/webp"><img src="/assets/img/chain-link-01.jpg" alt="Galvanized chain link fence rolls in warehouse" class="img-product-hero w-full h-full object-cover" loading="eager" fetchpriority="high" width="1200" height="900"></picture></div></div>
+          <div class="rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-02.webp" type="image/webp"><img src="/assets/img/chain-link-02.jpg" alt="Chain link diamond mesh detail" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="900"></picture></div></div>
+          <div class="rounded-lg overflow-hidden img-wrap"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/chain-link-03.webp" type="image/webp"><img src="/assets/img/chain-link-03.jpg" alt="Chain link fence installed at industrial site" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="900"></picture></div></div>
         </div>
       </div>
       <div data-aos="fade-left" class="h-full flex flex-col justify-center">
