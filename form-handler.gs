@@ -21,10 +21,10 @@
 // ║                   配 置 区                    ║
 // ╚══════════════════════════════════════════════╝
 
-var YOUR_EMAIL       = 'sales@lianjiafence.com';      // 接收询盘的邮箱
-var SHEET_ID         = '1BO5WZMTCnXTg8tYY6Oi0TmiAoPlXu27Phdy0GcorU3s'; // Google Sheet ID
+var YOUR_EMAIL       = 'sales@lianjiafence.com';           // 接收询盘的邮箱
+var SHEET_ID         = '1bHHw6tG5qyKHwjUNkzdlbsOqWt639qRCDK389SOLvPU'; // Google Sheet ID
 var TURNSTILE_SECRET = '';                            // Turnstile secret_key（留空跳过校验）
-var WECHAT_WEBHOOK   = '';                            // 企业微信 webhook（留空跳过报警）
+var WECHAT_WEBHOOK   = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=399bb370-22ff-461e-96d7-bedf532c24ce';                            // 企业微信 webhook（留空跳过报警）
 var QUOTA_THRESHOLD  = 10;                            // 邮件配额低于此值时报警
 
 // ╔══════════════════════════════════════════════╗
