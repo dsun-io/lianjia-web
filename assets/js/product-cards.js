@@ -136,7 +136,7 @@
 
   function preloadCardImages() {
     // 预加载所有选项卡/卡片对应的大图，避免首次切换时出现加载延迟
-    ['.ff-card', '.y-post-card'].forEach(function (sel) {
+    ['.ff-card', '.cl-card', '.y-post-card'].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (card) {
         var src = card.getAttribute('data-img');
         if (src) {
@@ -158,7 +158,7 @@
     }
 
     container.__ljProductCardsClickHandler = function (e) {
-      var card = e.target.closest('.y-post-card, .ff-card, .ff-variant-card, .ff-spec-tab');
+      var card = e.target.closest('.y-post-card, .ff-card, .cl-card, .ff-variant-card, .ff-spec-tab');
       if (!card) return;
 
       // Y Post cards
@@ -174,6 +174,14 @@
         e.preventDefault();
         switchHeroImage('#ff-hero', card);
         setActiveCard(document.querySelectorAll('.ff-card'), card, { labelSelector: '.text-xs' });
+        return;
+      }
+
+      // Chain Link Fence view cards (home page)
+      if (card.classList.contains('cl-card')) {
+        e.preventDefault();
+        switchHeroImage('#cl-hero', card);
+        setActiveCard(document.querySelectorAll('.cl-card'), card, { labelSelector: '.text-xs' });
         return;
       }
 
