@@ -4,7 +4,6 @@
  * 处理的卡片类型：
  *   - .y-post-card          （data-img / data-alt）切换 #y-post-hero
  *   - .ff-card              （data-img / data-alt）切换 #ff-hero
- *   - .cl-card              （data-img / data-alt）切换 #cl-hero
  *   - .ff-variant-card      （data-variant）切换 Field Fence 画廊 + 规格面板
  *   - .ff-spec-tab          （data-tab）切换规格标签页
  *
@@ -137,7 +136,7 @@
 
   function preloadCardImages() {
     // 预加载所有选项卡/卡片对应的大图，避免首次切换时出现加载延迟
-    ['.ff-card', '.cl-card', '.y-post-card'].forEach(function (sel) {
+    ['.ff-card', '.y-post-card'].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (card) {
         var src = card.getAttribute('data-img');
         if (src) {
@@ -159,14 +158,14 @@
     }
 
     container.__ljProductCardsClickHandler = function (e) {
-      var card = e.target.closest('.y-post-card, .ff-card, .cl-card, .ff-variant-card, .ff-spec-tab');
+      var card = e.target.closest('.y-post-card, .ff-card, .ff-variant-card, .ff-spec-tab');
       if (!card) return;
 
       // Y Post cards
       if (card.classList.contains('y-post-card')) {
         e.preventDefault();
         switchHeroImage('#y-post-hero', card);
-        setActiveCard(document.querySelectorAll('.y-post-card'), card);
+        setActiveCard(document.querySelectorAll('.y-post-card'), card, { labelSelector: '.text-xs' });
         return;
       }
 
@@ -175,14 +174,6 @@
         e.preventDefault();
         switchHeroImage('#ff-hero', card);
         setActiveCard(document.querySelectorAll('.ff-card'), card, { labelSelector: '.text-xs' });
-        return;
-      }
-
-      // Chain Link Fence view cards (home page)
-      if (card.classList.contains('cl-card')) {
-        e.preventDefault();
-        switchHeroImage('#cl-hero', card);
-        setActiveCard(document.querySelectorAll('.cl-card'), card, { labelSelector: '.text-xs' });
         return;
       }
 
