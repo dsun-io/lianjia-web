@@ -8,7 +8,7 @@
 | ------------------ | ------------------------------------------------------------------------------- |
 | **目标客户** | 澳大利亚 / 新西兰围栏批发商、工程商、进口商                                     |
 | **核心产品** | 牛栏网 (Field Fence)、勾花网 (Chain Link Fence)、Y型立柱 (Y Post / Star Picket) |
-| **技术栈**   | 纯静态 HTML + Tailwind CSS (Play CDN) + AOS 动画                                |
+| **技术栈**   | 纯静态 HTML + Tailwind CSS v3 (standalone CLI) + AOS 动画                       |
 | **表单方案** | Google Apps Script（Sheet 兜底 + 邮件通知）                                     |
 | **部署平台** | GitHub Pages / Netlify                                                          |
 
@@ -21,15 +21,14 @@
 │   ├── chain-link-fence.html           # 勾花网产品详情页
 │   └── y-post.html                     # Y型立柱产品详情页
 ├── assets/                             # 静态资源
-│   ├── css/                            # 编译后的 Tailwind CSS
-│   ├── img/                            # 图片素材（JPG / WebP / SVG / ICO）
+│   ├── css/                            # 编译后的 Tailwind CSS（standalone CLI 输出）
+│   ├── img/                            # 图片素材（JPG + WebP 双格式）
 │   ├── gif/                            # 工艺动图
-│   ├── video/                          # 视频素材
 │   └── js/                             # 前端脚本
 │       ├── tracker.js                  # 产品页停留时长追踪器（LJTracker）
 │       ├── cookie-consent.js           # Cookie / 数据使用说明横幅
 │       ├── cursor.js                   # 自定义光标 + 视差 + 磁力按钮
-│       ├── lightbox.js                 # 图片灯箱
+│       ├── lightbox.js                 # 图片灯箱（备用，当前 DOM 已内联）
 │       ├── faq.js                      # FAQ 手风琴
 │       ├── form-handler.js             # 询盘表单提交与验证
 │       ├── mobile-menu.js              # 移动端导航
@@ -53,6 +52,16 @@
 └── README.md                           # 本文件
 ```
 
+## 🎨 图片交互规范
+
+全站图片统一使用 `.img-wrap` 容器实现悬停放大效果：
+
+- 容器必须带 `overflow: hidden`，防止放大时图片溢出圆角/边框。
+- 图片默认 `transform: scale(1)`，悬停时 `transform: scale(1.04)`，过渡 0.4s。
+- 缓动曲线：`cubic-bezier(0.16, 1, 0.3, 1)`（out-expo），与勾花/链网区块保持一致。
+- 已覆盖首页 4 个产品图组、About 工厂图、3 个产品详情页所有图片。
+- 减少动画偏好（`prefers-reduced-motion: reduce`）下自动禁用过渡。
+
 ## 🛍️ 产品详情页功能
 
 每个产品独立页面（`/products/xxx.html`）包含：
@@ -63,8 +72,8 @@
 | **变体切换画廊** | 点击变体卡片切换对应产品图片组（带方向滑动动画）            |
 | **规格表**       | 完整技术参数（Material / Wire Diameter / Zinc Coating 等）  |
 | **检测数据**     | 镀锌量、丝径公差、拉力强度、标准合规                        |
-| **应用场景**     | 3 个典型使用场景卡片                                        |
-| **使用方法**     | 分步安装指南 + Pro Tip                                      |
+| **应用场景**     | 3 个典型使用场景卡片，卡片图片统一 `.img-wrap` 悬停放大                      |
+| **使用方法**     | 分步安装指南 + Pro Tip                                                         |
 | **配套推荐**     | 关联产品交叉导流                                            |
 | **参考价格**     | 出厂裸价（明确标注不含运费/关税/末端配送）                  |
 | **询盘表单**     | 项目/使用场景、围栏长度、是否需要立柱/配件（可留空/不确定） |
@@ -150,7 +159,8 @@ python3 server.py
 
 ## 后续
 
-后续可以接入客户自动化开发平台, 实现客户提交表单自动发送打招呼邮件的功能, 目前客户提交表单以后, 需要人工介入维护, 因为该渠道客户精准度高, 所以当前方式尚可, 自动化邮件开发后续作为锦上添花的补充能力.
+- 当前图片已同时提供 JPG + WebP 双格式，并通过 `picture` 标签按需加载；性能优化（格式、懒加载、响应式）已基本完成。
+- 后续可以接入客户自动化开发平台, 实现客户提交表单自动发送打招呼邮件的功能, 目前客户提交表单以后, 需要人工介入维护, 因为该渠道客户精准度高, 所以当前方式尚可, 自动化邮件开发后续作为锦上添花的补充能力.
 
 且客户自动化开发未来会融入kaas, 作为其中的部分能力.
 
@@ -165,23 +175,26 @@ python3 server.py
 - [X] Turnstile 代码预埋（配置 site_key + secret 后自动生效）
 - [X] 配额预警代码预埋（配置企业微信 webhook 后自动生效）
 - [X] 仓库安全扫描（git 历史无密钥泄露）
+- [X] 牛栏网和立柱产品详情页排版统一（GIF 工艺图、配套推荐、参考价格区块一致）
+- [X] 自定义光标页面跳转优化（View Transitions + Speculation Rules 预渲染）
+- [X] 配置配额预警（企业微信 webhook，阈值 10 封）
+- [X] 图片性能优化：JPG + WebP 双格式、`loading="lazy"`、响应式 `srcset` 已落地
+- [X] 全站图片悬停放大效果统一（`.img-wrap` 组件，scale 1.04 + out-expo 缓动）
 
 ### 待完成
 
 - [ ] **自定义域名邮箱 + 邮件认证**：确定域名和邮箱服务商后，配置 SPF / DKIM / DMARC 记录（防止邮件进垃圾箱）
 - [ ] 牛栏网 勾花规格按照澳新本地习惯修改
-- [X] 牛栏网和立柱产品详情页,排版不一致（已统一：GIF 工艺图、配套推荐、参考价格区块一致）
 - [ ] 产品推荐部分是什么逻辑, 会推荐当前产品以及官网首页吗?
-- [X] **自定义光标页面跳转已优化**：已加 View Transitions (crossfade 过渡) + Speculation Rules (hover 预渲染) 优化至浏览器能力上限；残余为浏览器原生导航行为（仅 Firefox 等不支持的浏览器），属 P3 已知边界，接受。
-- [X] **配置配额预警**：企业微信 webhook 已配置，阈值 10 封
 - [ ] **启用 Cloudflare Turnstile**：注册 https://dash.cloudflare.com/turnstile ，获取 site_key + secret_key 填入代码（用 GitHub Pages URL 即可，不需要自定义域名）
 - [ ] **配置 UptimeRobot**：注册 https://uptimerobot.com ，用 GitHub Pages URL 监控，通知接企业微信
 - [ ] **开启 GitHub Secret Scanning**：仓库 Settings → Security → 开启自动密钥扫描
-- [ ] **素材性能优化**：
-  - 图片：JPG/PNG → WebP + `loading="lazy"` + `srcset` 响应式
-  - GIF：GIF → MP4（`<video autoplay loop muted playsinline>`），体积减少 80%+
-  - 长视频：上传 YouTube（Unlisted）→ `youtube-nocookie.com` 嵌入 + facade 懒加载
-  - ⚠️ 不要直接上传到 GitHub Pages（无 CDN、无自适应码率、占仓库空间）
+
+### 性能优化（持续）
+
+- 图片：JPG + WebP 双格式 + `loading="lazy"` + `srcset` 响应式 **已完成**
+- GIF：后续可按需转 MP4（`<video autoplay loop muted playsinline>`），体积减少 80%+
+- 长视频：当前使用 YouTube 嵌入（`youtube-nocookie.com`），零带宽消耗、自适应码率；不推荐直接上传到 GitHub Pages
 
 ---
 
