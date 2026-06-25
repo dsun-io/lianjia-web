@@ -20,6 +20,12 @@ const PAGES = REPO
       '/products/y-post.html',
       '/products/chain-link-fence.html',
       '/thank-you.html',
+      '/blog/index.html',
+      '/blog/hinge-joint-vs-ring-lock-field-fence.html',
+      '/blog/as-nzs-4534-zinc-coating-guide.html',
+      '/blog/best-field-fence-cattle-sheep-deer.html',
+      '/blog/import-wire-fence-from-china.html',
+      '/privacy.html',
     ];
 
 function serve(req, res) {
@@ -34,6 +40,8 @@ function serve(req, res) {
   }
   let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
   filePath = filePath.split('?')[0];
+  // 目录请求 → 其 index.html，与 GitHub Pages / server.js 行为一致（例如 /blog/）
+  try { if (fs.statSync(filePath).isDirectory()) filePath = path.join(filePath, 'index.html'); } catch (e) {}
   const ext = path.extname(filePath).toLowerCase();
   const types = {
     '.html': 'text/html',

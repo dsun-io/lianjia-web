@@ -1,0 +1,91 @@
+/* ============================================================
+   博客文章正文排版（Blog article prose）
+   ------------------------------------------------------------
+   纯 CSS，独立于 Tailwind 编译产物 —— 文章正文用到的 list-disc /
+   pl-6 / border-l-4 等工具类已被 Tailwind purge 掉，若直接用会裸奔。
+   故此处用作用域 .article-body 统一定义文章排版，避免依赖重编译。
+   颜色复用各页 head 内联的 design tokens（--accent 等）。
+   ============================================================ */
+.article-body {
+  color: #374151;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.article-body > * + * { margin-top: 1.25rem; }
+
+.article-body .lead {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.article-body h2 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: #1f2937;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 2.75rem;
+  margin-bottom: 0.5rem;
+}
+.article-body h3 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: #1f2937;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-top: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.article-body p { color: #374151; }
+.article-body strong { color: #1f2937; font-weight: 600; }
+
+.article-body a {
+  color: var(--accent, #C2410C);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+.article-body a:hover { color: var(--accent-dark, #9A3412); }
+
+.article-body ul, .article-body ol { padding-left: 1.5rem; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li { margin-top: 0.5rem; }
+.article-body li::marker { color: var(--accent, #C2410C); }
+
+.article-body blockquote {
+  border-left: 4px solid var(--accent, #C2410C);
+  padding: 0.25rem 0 0.25rem 1rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+/* 文内对比/规格表 —— 与产品页表格视觉一致 */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+.article-body th, .article-body td {
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+.article-body thead th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* 文末"延伸阅读 / 关联产品"卡片间距 */
+.article-body .article-callout {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin-top: 2rem;
+}
+.article-body .article-callout a { font-weight: 600; }

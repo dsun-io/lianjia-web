@@ -20,6 +20,13 @@
 │   ├── field-fence.html                # 牛栏网产品详情页
 │   ├── chain-link-fence.html           # 勾花网产品详情页
 │   └── y-post.html                     # Y型立柱产品详情页
+├── blog/                               # 博客 / 选型指南（独立板块，Blog 为顶栏一级入口）
+│   ├── index.html                      # 博客列表页（卡片网格）
+│   ├── hinge-joint-vs-ring-lock-field-fence.html   # 选型：铰接 vs 环锁
+│   ├── as-nzs-4534-zinc-coating-guide.html         # 标准解读：AS/NZS 4534 镀锌量
+│   ├── best-field-fence-cattle-sheep-deer.html     # 场景：牛/羊/鹿围栏选择
+│   └── import-wire-fence-from-china.html           # 采购指南：从中国进口围栏
+├── privacy.html                        # 隐私政策（依据站点真实数据行为）
 ├── assets/                             # 静态资源
 │   ├── css/                            # 编译后的 Tailwind CSS（standalone CLI 输出）
 │   ├── img/                            # 图片素材（JPG + WebP 双格式）
@@ -47,10 +54,24 @@
 ├── robots.txt                          # 搜索引擎爬虫配置
 ├── sitemap.xml                         # 站点地图
 ├── thank-you.html                      # 表单提交成功页
+├── 开发规范.md                          # ⭐ 新增/修改页面必读：工程约定与同步清单
 ├── 建站技术方案.md                      # 建站技术方案文档
 ├── 素材清单.md                          # 素材准备清单
+├── 待确认数据清单.md                    # 待客户确认的真实数据清单
 └── README.md                           # 本文件
 ```
+
+## 🧭 开发规范（新增 / 修改页面必读）
+
+站点是 **纯静态 + Swup 内联跳转 + Tailwind(purge 编译产物)** 的组合，新增页面或改导航前**必须**先读 **[开发规范.md](开发规范.md)**，避免以下高频坑：
+
+- **导航全站同步**：`<header>` 在 Swup 容器外、跨页持久；改导航必须同步所有"标准骨架"页面（`index` + `products/*` + `blog/*` + `privacy`），否则跳转后顶栏不一致。`thank-you.html` 豁免。
+- **博客是独立一级入口**：顶栏 `Blog` 与 `Products▾` 平级，**不放进 Products 下拉**。
+- **每页需 `#inquiry` 锚点**：`swup-init.js` 会把非首页的 "Get a Quote" 指向它。
+- **链接带 `.html`、canonical 用干净 URL**：GitHub Pages 无无扩展名回退。
+- **Tailwind purge**：新页只用既有 class；新增目录要进 `tailwind.config.js` 的 `content` 并重编译。
+- **登记工具脚本**：新页加入 `check-assets.js` 的 `PAGES`、`fix-paths.js` 的 `files`。
+- **文档同步**：任何改动必须同步更新 README / sitemap / 相关说明文件（元规范见开发规范.md §0）。
 
 ## 🎨 图片交互规范
 
@@ -133,7 +154,10 @@
 
 ### 启动项目
 
-项目已内置本地服务器，支持无扩展名路径自动回落到 `.html`（如 `/products/field-fence` → `/products/field-fence.html`），便于开发预览。
+项目已内置本地服务器，路由行为与 GitHub Pages 对齐：
+
+- **目录索引**：`/blog/` → `blog/index.html`
+- **无扩展名回退**（仅本地便利）：`/products/field-fence` → `/products/field-fence.html`
 
 ```bash
 # 方式一：Node.js（推荐）

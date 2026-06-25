@@ -4,6 +4,8 @@ module.exports = {
     './index.html',
     './thank-you.html',
     './products/*.html',
+    './blog/*.html',
+    './privacy.html',
     './assets/js/*.js',
   ],
   safelist: [

@@ -37,6 +37,16 @@ const server = http.createServer((req, res) => {
     try {
       const stat = fs.statSync(targetPath);
       if (stat.isFile()) return targetPath;
+      // 目录请求 → 返回其 index.html，与 GitHub Pages 的目录索引行为对齐
+      // （例如 /blog/ → blog/index.html），避免本地与生产表现不一致
+      if (stat.isDirectory()) {
+        const indexPath = path.join(targetPath, 'index.html');
+        try {
+          if (fs.statSync(indexPath).isFile()) return indexPath;
+        } catch (e) {
+          // 该目录下无 index.html
+        }
+      }
     } catch (e) {
       // targetPath does not exist; try .html fallback below
     }
