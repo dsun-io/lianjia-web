@@ -96,9 +96,9 @@
       --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
       --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
       --hairline: 1px solid rgba(0,0,0,0.08);
-      --accent: #C2410C;
-      --accent-light: #EA580C;
-      --accent-dark: #9A3412;
+      --accent: #f97316;
+      --accent-light: #f97316;
+      --accent-dark: #ea580c;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -131,7 +131,7 @@
       position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
       opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
@@ -143,11 +143,11 @@
     #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
     #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
+    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
     @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -270,59 +270,144 @@
 </section>
 
 <!-- ============================================= -->
+<!-- FEATURED ARTICLE                              -->
+<!-- ============================================= -->
+<section class="py-12 lg:py-16 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group block">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-200 bg-white">
+        <div class="overflow-hidden img-wrap aspect-[16/9] lg:aspect-auto lg:h-full min-h-[260px]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge joint field fence knot detail" class="img-product w-full h-full object-cover" loading="eager" decoding="async" width="1200" height="675">
+            </picture>
+          </div>
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-center">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600">Buying Guide</span>
+            <span class="text-sm text-gray-400">June 25, 2026</span>
+            <span class="text-sm text-gray-300">&middot;</span>
+            <span class="text-sm text-gray-400">6 min read</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 group-hover:text-accent-bright transition-colors leading-tight">Hinge Joint vs Ring Lock: How to Choose the Right Field Fence</h2>
+          <p class="text-gray-600 leading-relaxed mb-6 lg:text-lg">The single decision that most affects how your fence performs in the paddock &mdash; how the two knot types behave under pressure, and which suits your stock and terrain.</p>
+          <span class="inline-flex items-center text-orange-500 font-semibold text-sm group-hover:text-orange-600 transition-colors">
+            Read the full guide
+            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================= -->
 <!-- ARTICLE GRID                                  -->
 <!-- ============================================= -->
 <section class="py-16 lg:py-24 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Category filter -->
+    <div class="flex flex-wrap items-center gap-2 mb-10" data-aos="fade-up">
+      <span class="text-sm text-gray-500 font-medium mr-2">Filter:</span>
+      <button type="button" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-orange-500 text-white transition-all" data-filter="all">All</button>
+      <button type="button" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all" data-filter="buying-guide">Buying Guide</button>
+      <button type="button" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all" data-filter="standards">Standards</button>
+      <button type="button" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all" data-filter="importing">Importing</button>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
 
       <!-- Article 1 -->
-      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group flex flex-col rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200">
+      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" data-category="buying-guide" class="blog-card group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
         <div class="overflow-hidden img-wrap aspect-[16/9]"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp"><img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge joint field fence knot detail" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="675"></picture></div></div>
         <div class="p-6 flex flex-col flex-1">
-          <span class="inline-block self-start text-xs font-semibold tracking-widest uppercase bg-orange-100 text-orange-600 px-2.5 py-1 rounded-full mb-3">Buying Guide</span>
-          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors">Hinge Joint vs Ring Lock: How to Choose the Right Field Fence</h2>
+          <span class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Buying Guide</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">Hinge Joint vs Ring Lock: How to Choose the Right Field Fence</h2>
           <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">The single decision that most affects how your fence performs in the paddock &mdash; how the two knot types behave under pressure, and which suits your stock and terrain.</p>
-          <span class="text-orange-500 group-hover:text-orange-600 text-sm font-semibold transition-colors">Read guide &rarr;</span>
+          <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
+            <span>June 25, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+            <span>6 min read</span>
+          </div>
         </div>
       </a>
 
       <!-- Article 2 -->
-      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group flex flex-col rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200">
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" data-category="standards" class="blog-card group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
         <div class="overflow-hidden img-wrap aspect-[16/9]"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp"><img src="/assets/img/field-fence-hj-03.jpg" alt="Galvanized field fence wire close-up" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="675"></picture></div></div>
         <div class="p-6 flex flex-col flex-1">
-          <span class="inline-block self-start text-xs font-semibold tracking-widest uppercase bg-orange-100 text-orange-600 px-2.5 py-1 rounded-full mb-3">Standards</span>
-          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors">Understanding AS/NZS 4534 Zinc Coating for Rural Fencing</h2>
+          <span class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Standards</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">Understanding AS/NZS 4534 Zinc Coating for Rural Fencing</h2>
           <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">The number-one reason wire fence fails early isn't the steel &mdash; it's the zinc. What the coating weights mean and how to specify the right one for your climate.</p>
-          <span class="text-orange-500 group-hover:text-orange-600 text-sm font-semibold transition-colors">Read guide &rarr;</span>
+          <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
+            <span>June 25, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+            <span>6 min read</span>
+          </div>
         </div>
       </a>
 
       <!-- Article 3 -->
-      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group flex flex-col rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200">
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" data-category="buying-guide" class="blog-card group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
         <div class="overflow-hidden img-wrap aspect-[16/9]"><div class="h-full"><picture class="block h-full"><source srcset="/assets/img/field-fence-app-01.webp" type="image/webp"><img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on a cattle farm" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="675"></picture></div></div>
         <div class="p-6 flex flex-col flex-1">
-          <span class="inline-block self-start text-xs font-semibold tracking-widest uppercase bg-orange-100 text-orange-600 px-2.5 py-1 rounded-full mb-3">Buying Guide</span>
-          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors">Best Fencing for Cattle, Sheep &amp; Deer</h2>
+          <span class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Buying Guide</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">Best Fencing for Cattle, Sheep &amp; Deer</h2>
           <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">Cattle, sheep and deer each push on a fence differently. A practical guide to matching mesh, height and knot type to your stock and local conditions.</p>
-          <span class="text-orange-500 group-hover:text-orange-600 text-sm font-semibold transition-colors">Read guide &rarr;</span>
+          <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
+            <span>June 25, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+            <span>6 min read</span>
+          </div>
         </div>
       </a>
 
       <!-- Article 4 -->
-      <a href="/blog/import-wire-fence-from-china.html" class="group flex flex-col rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200">
+      <a href="/blog/import-wire-fence-from-china.html" data-category="importing" class="blog-card group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
         <div class="overflow-hidden img-wrap aspect-[16/9]"><div class="h-full"><picture class="block h-full"><img src="/assets/img/about-factory.jpg" alt="Wire fence factory in Anping, China" class="img-product w-full h-full object-cover" loading="lazy" decoding="async" width="1200" height="675"></picture></div></div>
         <div class="p-6 flex flex-col flex-1">
-          <span class="inline-block self-start text-xs font-semibold tracking-widest uppercase bg-orange-100 text-orange-600 px-2.5 py-1 rounded-full mb-3">Importing</span>
-          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors">Importing Wire Fence from China: MOQ, Lead Time &amp; Shipping Explained</h2>
+          <span class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Importing</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">Importing Wire Fence from China: MOQ, Lead Time &amp; Shipping Explained</h2>
           <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">A plain-English walk-through for first-time importers &mdash; minimum order quantities, samples, payment terms, lead time, packing and how to verify a real factory.</p>
-          <span class="text-orange-500 group-hover:text-orange-600 text-sm font-semibold transition-colors">Read guide &rarr;</span>
+          <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
+            <span>June 25, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+            <span>7 min read</span>
+          </div>
         </div>
       </a>
 
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.blog-card');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const filter = this.dataset.filter;
+      btns.forEach(function(b) {
+        b.classList.remove('bg-orange-500', 'text-white');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+      });
+      this.classList.remove('bg-gray-100', 'text-gray-600');
+      this.classList.add('bg-orange-500', 'text-white');
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
 
 <!-- ============================================= -->
 <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->

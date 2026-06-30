@@ -93,9 +93,9 @@
       --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
       --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
       --hairline: 1px solid rgba(0,0,0,0.08);
-      --accent: #C2410C;
-      --accent-light: #EA580C;
-      --accent-dark: #9A3412;
+      --accent: #f97316;
+      --accent-light: #f97316;
+      --accent-dark: #ea580c;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -128,7 +128,7 @@
       position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
       opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
@@ -140,11 +140,11 @@
     #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
     #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
+    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
     @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -263,93 +263,227 @@
 </section>
 
 <!-- ============================================= -->
-<!-- ARTICLE BODY                                  -->
+<!-- ARTICLE BYLINE                                -->
+<!-- ============================================= -->
+<div class="border-b border-gray-200 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 font-bold text-xs">LJ</span>
+        <span class="font-medium text-gray-700">Anping Lianjia Metal Products Co., Ltd.</span>
+      </div>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <time datetime="2026-06-25">June 25, 2026</time>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span>6 min read</span>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span class="text-orange-500 font-medium">Buying Guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- ARTICLE BODY + TOC                            -->
 <!-- ============================================= -->
 <article class="py-12 lg:py-16 bg-white">
-  <div class="article-body max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <p class="lead">If you are buying <a href="/products/field-fence.html">field fence</a> for the first time, the choice between hinge joint and ring lock knots is the single decision that most affects how the fence performs in the paddock. Both are high-tensile, galvanised stock fences &mdash; but they behave very differently under pressure, and picking the wrong one means a fence that sags, bends or fails years too early.</p>
+      <!-- Sticky TOC (desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-28">
+          <h3 class="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-4">Contents</h3>
+          <nav class="space-y-1" aria-label="Table of contents">
+            <a href="#what-is-hinge-joint" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">What is a hinge joint fence?</a>
+            <a href="#what-is-ring-lock" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">What is a ring lock fence?</a>
+            <a href="#quick-comparison" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Quick comparison</a>
+            <a href="#how-to-decide" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">How to decide</a>
+            <a href="#reading-size-code" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Reading a field fence size code</a>
+            <a href="#before-you-buy" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Before you buy: three checks</a>
+            <a href="#common-mistakes" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Common mistakes</a>
+            <a href="#zinc-coating" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Don't forget the zinc</a>
+          </nav>
+        </div>
+      </aside>
 
-    <p>Here is how a factory thinks about the two knot types, and a simple framework for matching the fence to your stock and your country.</p>
+      <!-- Article content -->
+      <div class="lg:col-span-9">
+        <div class="article-body max-w-3xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-0">
 
-    <h2>What is a hinge joint fence?</h2>
-    <p>In a hinge joint fence, the horizontal line wire wraps around the vertical stay wire, forming a hinge at each junction. When an animal leans, pushes or runs into it, that hinge flexes and then springs back to shape instead of taking a permanent set.</p>
-    <p>This flexibility is exactly what you want for general livestock and for ground that is anything but flat:</p>
-    <ul>
-      <li><strong>Cattle and sheep</strong> &mdash; the give absorbs the weight of animals leaning and rubbing without distorting the mesh.</li>
-      <li><strong>Hilly or undulating country</strong> &mdash; the fence rides the contour of the land, so you are not fighting the terrain to keep it tight.</li>
-      <li><strong>Long rural runs</strong> &mdash; quick to roll out and tension, and forgiving if a post moves slightly over the seasons.</li>
-    </ul>
+          <p class="lead">If you are buying <a href="/products/field-fence.html">field fence</a> for the first time, the choice between hinge joint and ring lock knots is the single decision that most affects how the fence performs in the paddock. Both are high-tensile, galvanised stock fences &mdash; but they behave very differently under pressure, and picking the wrong one means a fence that sags, bends or fails years too early.</p>
 
-    <h2>What is a ring lock fence?</h2>
-    <p>In a ring lock fence, a separate steel ring is crimped around each wire junction, locking the vertical and horizontal wires together. The result is a rigid, square mesh that holds its shape rather than flexing.</p>
-    <p>That rigidity is the right choice when the fence has to stay square under sustained, concentrated pressure:</p>
-    <ul>
-      <li><strong>High-pressure stock</strong> &mdash; bulls, rams and densely stocked paddocks where animals push constantly against one line.</li>
-      <li><strong>Deer and wildlife exclusion</strong> &mdash; tall fences that must not deform when animals hit them at speed.</li>
-      <li><strong>Fixed boundaries</strong> &mdash; along roads or property lines where you want the mesh to look square and stay square for decades.</li>
-    </ul>
+          <p>Here is how a factory thinks about the two knot types, and a simple framework for matching the fence to your stock and your country.</p>
 
-    <h2>Quick comparison</h2>
-    <table>
-      <thead>
-        <tr><th>Factor</th><th>Hinge Joint</th><th>Ring Lock</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Junction</td><td>Wrapped hinge</td><td>Locked steel ring</td></tr>
-        <tr><td>Behaviour under load</td><td>Flexes, absorbs impact, springs back</td><td>Rigid, holds its shape</td></tr>
-        <tr><td>Best for</td><td>Cattle, sheep, mixed livestock</td><td>Deer, high-pressure stock, exclusion</td></tr>
-        <tr><td>Terrain</td><td>Undulating, long runs</td><td>Flat, fixed boundaries</td></tr>
-        <tr><td>Priority</td><td>Value &amp; flexibility</td><td>Maximum rigidity</td></tr>
-      </tbody>
-    </table>
+          <h2 id="what-is-hinge-joint">What is a hinge joint fence?</h2>
+          <p>In a hinge joint fence, the horizontal line wire wraps around the vertical stay wire, forming a hinge at each junction. When an animal leans, pushes or runs into it, that hinge flexes and then springs back to shape instead of taking a permanent set.</p>
+          <p>This flexibility is exactly what you want for general livestock and for ground that is anything but flat:</p>
+          <ul>
+            <li><strong>Cattle and sheep</strong> &mdash; the give absorbs the weight of animals leaning and rubbing without distorting the mesh.</li>
+            <li><strong>Hilly or undulating country</strong> &mdash; the fence rides the contour of the land, so you are not fighting the terrain to keep it tight.</li>
+            <li><strong>Long rural runs</strong> &mdash; quick to roll out and tension, and forgiving if a post moves slightly over the seasons.</li>
+          </ul>
 
-    <h2>How to decide</h2>
-    <p>Strip it back to three questions:</p>
-    <ol>
-      <li><strong>What is the pressure?</strong> Steady leaning and rubbing from cattle and sheep favours hinge joint. Constant, concentrated pushing or high-speed impact favours ring lock.</li>
-      <li><strong>What is the ground like?</strong> Hilly, contoured or long runs favour the forgiving hinge joint. Flat, straight, fixed boundaries favour ring lock.</li>
-      <li><strong>What is the priority &mdash; value or rigidity?</strong> Hinge joint generally gives the best value and easiest install; ring lock costs a little more for the rigidity.</li>
-    </ol>
-    <p>Many farms run both: hinge joint across general paddocks, and ring lock where the pressure or the stakes are highest &mdash; deer yards, boundary lines, exclusion fencing. There is no single "best" knot, only the right knot for each fence line.</p>
+          <h2 id="what-is-ring-lock">What is a ring lock fence?</h2>
+          <p>In a ring lock fence, a separate steel ring is crimped around each wire junction, locking the vertical and horizontal wires together. The result is a rigid, square mesh that holds its shape rather than flexing.</p>
+          <p>That rigidity is the right choice when the fence has to stay square under sustained, concentrated pressure:</p>
+          <ul>
+            <li><strong>High-pressure stock</strong> &mdash; bulls, rams and densely stocked paddocks where animals push constantly against one line.</li>
+            <li><strong>Deer and wildlife exclusion</strong> &mdash; tall fences that must not deform when animals hit them at speed.</li>
+            <li><strong>Fixed boundaries</strong> &mdash; along roads or property lines where you want the mesh to look square and stay square for decades.</li>
+          </ul>
 
-    <h2>Reading a field fence size code</h2>
-    <p>Field fence is described by a three-number size code such as <strong>8/90/30</strong>. Once you can read it, comparing specs across suppliers becomes straightforward:</p>
-    <ul>
-      <li><strong>First number &mdash; line wires:</strong> the count of horizontal wires (8 in this example). More line wires means a denser, stronger fence.</li>
-      <li><strong>Second number &mdash; height:</strong> the fence height in centimetres (90 cm).</li>
-      <li><strong>Third number &mdash; stay spacing:</strong> the distance between the vertical stay wires (every 30 cm). Closer spacing &mdash; say 15 cm &mdash; gives a tighter mesh that holds smaller or more determined animals.</li>
-    </ul>
-    <p>So an <strong>8/90/30</strong> has 8 horizontal wires, stands 90 cm tall, with verticals every 30 cm. If you are fencing lambs or goats, drop the stay spacing; if you are fencing deer, push the height up. We weave to custom codes, so you are not limited to a standard chart.</p>
+          <h2 id="quick-comparison">Quick comparison</h2>
+          <table>
+            <thead>
+              <tr><th>Factor</th><th>Hinge Joint</th><th>Ring Lock</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Junction</td><td>Wrapped hinge</td><td>Locked steel ring</td></tr>
+              <tr><td>Behaviour under load</td><td>Flexes, absorbs impact, springs back</td><td>Rigid, holds its shape</td></tr>
+              <tr><td>Best for</td><td>Cattle, sheep, mixed livestock</td><td>Deer, high-pressure stock, exclusion</td></tr>
+              <tr><td>Terrain</td><td>Undulating, long runs</td><td>Flat, fixed boundaries</td></tr>
+              <tr><td>Priority</td><td>Value &amp; flexibility</td><td>Maximum rigidity</td></tr>
+            </tbody>
+          </table>
 
-    <h2>Before you buy: three checks</h2>
-    <p>Knot type is only half the story. Before you commit to a container, confirm three things with any supplier &mdash; a real factory will answer all three without hesitation:</p>
-    <ol>
-      <li><strong>Wire diameter and tensile grade.</strong> Ask for the line-wire and stay-wire diameters and the tensile range. High-tensile wire lets you run lighter, longer and tighter.</li>
-      <li><strong>Zinc coating, in writing.</strong> Ask for the coating weight in g/m&sup2; and a zinc-coating test report. This is what decides service life &mdash; not the knot.</li>
-      <li><strong>A physical sample.</strong> A knot and wire sample tells you more than any photo. It lets you feel the spring of a hinge joint or the rigidity of a ring lock before you order.</li>
-    </ol>
+          <h2 id="how-to-decide">How to decide</h2>
+          <p>Strip it back to three questions:</p>
+          <ol>
+            <li><strong>What is the pressure?</strong> Steady leaning and rubbing from cattle and sheep favours hinge joint. Constant, concentrated pushing or high-speed impact favours ring lock.</li>
+            <li><strong>What is the ground like?</strong> Hilly, contoured or long runs favour the forgiving hinge joint. Flat, straight, fixed boundaries favour ring lock.</li>
+            <li><strong>What is the priority &mdash; value or rigidity?</strong> Hinge joint generally gives the best value and easiest install; ring lock costs a little more for the rigidity.</li>
+          </ol>
+          <p>Many farms run both: hinge joint across general paddocks, and ring lock where the pressure or the stakes are highest &mdash; deer yards, boundary lines, exclusion fencing. There is no single "best" knot, only the right knot for each fence line.</p>
 
-    <h2>Common mistakes that cancel out the right knot</h2>
-    <p>Even the correct knot type underperforms if the fence is built wrong. The three we see most often:</p>
-    <ul>
-      <li><strong>Over-tensioning a hinge joint.</strong> The hinge needs room to flex; strain it bar-tight like a plain wire and you lose the spring that makes it forgiving. Tension firmly, not rigidly.</li>
-      <li><strong>Weak end assemblies.</strong> A fence is only as good as its strainer posts. Skimp on corner and end bracing and even the best mesh will sag within a season.</li>
-      <li><strong>Wrong post spacing for the country.</strong> Wide spacing saves posts but lets the fence move on hills and under pressure. Tighten spacing on undulating ground and high-traffic lines.</li>
-    </ul>
+          <h2 id="reading-size-code">Reading a field fence size code</h2>
+          <p>Field fence is described by a three-number size code such as <strong>8/90/30</strong>. Once you can read it, comparing specs across suppliers becomes straightforward:</p>
+          <ul>
+            <li><strong>First number &mdash; line wires:</strong> the count of horizontal wires (8 in this example). More line wires means a denser, stronger fence.</li>
+            <li><strong>Second number &mdash; height:</strong> the fence height in centimetres (90 cm).</li>
+            <li><strong>Third number &mdash; stay spacing:</strong> the distance between the vertical stay wires (every 30 cm). Closer spacing &mdash; say 15 cm &mdash; gives a tighter mesh that holds smaller or more determined animals.</li>
+          </ul>
+          <p>So an <strong>8/90/30</strong> has 8 horizontal wires, stands 90 cm tall, with verticals every 30 cm. If you are fencing lambs or goats, drop the stay spacing; if you are fencing deer, push the height up. We weave to custom codes, so you are not limited to a standard chart.</p>
 
-    <h2>Don't forget the zinc</h2>
-    <p>Whichever knot type you choose, the coating decides how long the fence lasts. Thin electro-galvanised wire can rust within a season, while a heavier hot-dip coating lasts for decades &mdash; so specify the zinc weight for your climate, not just the knot. We hot-dip galvanise our field fence and can supply to AS/NZS 4534 specifications on request. For the detail, see our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a>.</p>
+          <h2 id="before-you-buy">Before you buy: three checks</h2>
+          <p>Knot type is only half the story. Before you commit to a container, confirm three things with any supplier &mdash; a real factory will answer all three without hesitation:</p>
+          <ol>
+            <li><strong>Wire diameter and tensile grade.</strong> Ask for the line-wire and stay-wire diameters and the tensile range. High-tensile wire lets you run lighter, longer and tighter.</li>
+            <li><strong>Zinc coating, in writing.</strong> Ask for the coating weight in g/m&sup2; and a zinc-coating test report. This is what decides service life &mdash; not the knot.</li>
+            <li><strong>A physical sample.</strong> A knot and wire sample tells you more than any photo. It lets you feel the spring of a hinge joint or the rigidity of a ring lock before you order.</li>
+          </ol>
 
-    <p>And if you are still matching a fence to a particular animal &mdash; cattle, sheep or deer &mdash; our guide to the <a href="/blog/best-field-fence-cattle-sheep-deer.html">best fencing for cattle, sheep and deer</a> walks through height, mesh and spacing for each.</p>
+          <h2 id="common-mistakes">Common mistakes that cancel out the right knot</h2>
+          <p>Even the correct knot type underperforms if the fence is built wrong. The three we see most often:</p>
+          <ul>
+            <li><strong>Over-tensioning a hinge joint.</strong> The hinge needs room to flex; strain it bar-tight like a plain wire and you lose the spring that makes it forgiving. Tension firmly, not rigidly.</li>
+            <li><strong>Weak end assemblies.</strong> A fence is only as good as its strainer posts. Skimp on corner and end bracing and even the best mesh will sag within a season.</li>
+            <li><strong>Wrong post spacing for the country.</strong> Wide spacing saves posts but lets the fence move on hills and under pressure. Tighten spacing on undulating ground and high-traffic lines.</li>
+          </ul>
 
-    <div class="article-callout">
-      <p style="margin:0 0 .25rem"><strong>Not sure which knot suits your stock?</strong></p>
-      <p style="margin:0">As a factory, we weave both hinge joint and ring lock to custom height, line-wire count and stay spacing. Send us your animals and terrain and we'll recommend a spec &mdash; or browse the full <a href="/products/field-fence.html">field fence specifications</a>.</p>
+          <h2 id="zinc-coating">Don't forget the zinc</h2>
+          <p>Whichever knot type you choose, the coating decides how long the fence lasts. Thin electro-galvanised wire can rust within a season, while a heavier hot-dip coating lasts for decades &mdash; so specify the zinc weight for your climate, not just the knot. We hot-dip galvanise our field fence and can supply to AS/NZS 4534 specifications on request. For the detail, see our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a>.</p>
+
+          <p>And if you are still matching a fence to a particular animal &mdash; cattle, sheep or deer &mdash; our guide to the <a href="/blog/best-field-fence-cattle-sheep-deer.html">best fencing for cattle, sheep and deer</a> walks through height, mesh and spacing for each.</p>
+
+          <div class="article-callout">
+            <p style="margin:0 0 .25rem"><strong>Not sure which knot suits your stock?</strong></p>
+            <p style="margin:0">As a factory, we weave both hinge joint and ring lock to custom height, line-wire count and stay spacing. Send us your animals and terrain and we'll recommend a spec &mdash; or browse the full <a href="/products/field-fence.html">field fence specifications</a>.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
   </div>
 </article>
+
+<!-- ============================================= -->
+<!-- RELATED ARTICLES                              -->
+<!-- ============================================= -->
+<section class="py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Related Guides</h2>
+        <p class="text-gray-500 mt-1">More from the factory floor</p>
+      </div>
+      <a href="/blog/" class="hidden sm:inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+        View all articles
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-03.jpg" alt="Galvanized field fence wire close-up" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Standards</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Understanding AS/NZS 4534 Zinc Coating</h3>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-app-01.webp" type="image/webp">
+              <img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on a cattle farm" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Best Fencing for Cattle, Sheep &amp; Deer</h3>
+        </div>
+      </a>
+      <!-- Card 3 -->
+      <a href="/blog/import-wire-fence-from-china.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <img src="/assets/img/about-factory.jpg" alt="Wire fence factory in Anping, China" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Importing</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Importing Wire Fence from China</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- NEXT / PREV NAVIGATION                        -->
+<!-- ============================================= -->
+<nav class="border-t border-gray-200 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+      <a href="/blog/" class="group flex items-center gap-4 py-8 px-4 hover:bg-gray-50 transition-colors">
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Previous</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">All Buying Guides</p>
+        </div>
+      </a>
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group flex items-center justify-end gap-4 py-8 px-4 hover:bg-gray-50 transition-colors text-right">
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Next</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">AS/NZS 4534 Zinc Coating Guide</p>
+        </div>
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
 
 <!-- ============================================= -->
 <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->

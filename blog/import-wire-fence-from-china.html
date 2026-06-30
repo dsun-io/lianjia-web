@@ -93,9 +93,9 @@
       --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
       --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
       --hairline: 1px solid rgba(0,0,0,0.08);
-      --accent: #C2410C;
-      --accent-light: #EA580C;
-      --accent-dark: #9A3412;
+      --accent: #f97316;
+      --accent-light: #f97316;
+      --accent-dark: #ea580c;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -128,7 +128,7 @@
       position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
       opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
@@ -140,11 +140,11 @@
     #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
     #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
+    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
     @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -263,58 +263,195 @@
 </section>
 
 <!-- ============================================= -->
-<!-- ARTICLE BODY                                  -->
+<!-- ARTICLE BYLINE                                -->
+<!-- ============================================= -->
+<div class="border-b border-gray-200 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 font-bold text-xs">LJ</span>
+        <span class="font-medium text-gray-700">Anping Lianjia Metal Products Co., Ltd.</span>
+      </div>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <time datetime="2026-06-25">June 25, 2026</time>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span>7 min read</span>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span class="text-orange-500 font-medium">Importing</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- ARTICLE BODY + TOC                            -->
 <!-- ============================================= -->
 <article class="py-12 lg:py-16 bg-white">
-  <div class="article-body max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <p class="lead">Buying fence directly from a Chinese factory can cut your landed cost significantly versus buying through a local distributor &mdash; but only if you understand how the trade works. Here is a plain-English walk-through for first-time importers, from minimum order to the container leaving the port.</p>
+      <!-- Sticky TOC (desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-28">
+          <h3 class="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-4">Contents</h3>
+          <nav class="space-y-1" aria-label="Table of contents">
+            <a href="#moq" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Minimum order quantity</a>
+            <a href="#samples" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Samples</a>
+            <a href="#payment-terms" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Payment terms</a>
+            <a href="#lead-time" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Lead time</a>
+            <a href="#packing-shipping" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Packing and shipping</a>
+            <a href="#incoterms" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Incoterms: FOB vs CIF</a>
+            <a href="#documents" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">The documents you'll receive</a>
+            <a href="#landed-cost" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Don't forget the landed cost</a>
+            <a href="#red-flags" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Red flags to watch for</a>
+            <a href="#verify-factory" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">How to verify a real factory</a>
+          </nav>
+        </div>
+      </aside>
 
-    <h2>Minimum order quantity (MOQ)</h2>
-    <p>Most wire-fence factories sell by the container. A typical MOQ is one 20-foot container (1&times;20GP), with larger orders shipping in 40-foot high-cube (1&times;40HQ). Trial orders can usually be discussed &mdash; a single mixed container is a common way to test a new supplier before committing to regular volume.</p>
+      <!-- Article content -->
+      <div class="lg:col-span-9">
+        <div class="article-body max-w-3xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-0">
 
-    <h2>Samples</h2>
-    <p>Before committing, ask for fence, wire and post samples with an English spec card. Freight on samples is usually collect or deducted from your first order. Samples let you verify wire diameter, zinc coating and knot quality firsthand &mdash; far more reliable than a photo or a spec sheet alone.</p>
+          <p class="lead">Buying fence directly from a Chinese factory can cut your landed cost significantly versus buying through a local distributor &mdash; but only if you understand how the trade works. Here is a plain-English walk-through for first-time importers, from minimum order to the container leaving the port.</p>
 
-    <h2>Payment terms</h2>
-    <p>The industry standard for first orders is a <strong>30% T/T deposit with 70% paid before shipment</strong>. Letters of credit (L/C) are commonly accepted for larger orders. One rule worth keeping: never pay 100% upfront to an unverified supplier &mdash; staged payment protects both sides.</p>
+          <h2 id="moq">Minimum order quantity (MOQ)</h2>
+          <p>Most wire-fence factories sell by the container. A typical MOQ is one 20-foot container (1&times;20GP), with larger orders shipping in 40-foot high-cube (1&times;40HQ). Trial orders can usually be discussed &mdash; a single mixed container is a common way to test a new supplier before committing to regular volume.</p>
 
-    <h2>Lead time</h2>
-    <p>Expect around <strong>20 days of production</strong> after your deposit clears, depending on quantity and specifications, plus ocean transit time to your port. Build both into your planning &mdash; the production clock only starts once the deposit is received and specs are confirmed.</p>
+          <h2 id="samples">Samples</h2>
+          <p>Before committing, ask for fence, wire and post samples with an English spec card. Freight on samples is usually collect or deducted from your first order. Samples let you verify wire diameter, zinc coating and knot quality firsthand &mdash; far more reliable than a photo or a spec sheet alone.</p>
 
-    <h2>Packing and shipping</h2>
-    <p>Fence should ship on <strong>ISPM15-treated pallets</strong> &mdash; required for timber packaging entering major international markets such as Australia, New Zealand, the US and EU &mdash; wrapped in plastic film, usually FOB Tianjin. A good factory shares loading photos of every container so you know exactly what shipped before it leaves.</p>
+          <h2 id="payment-terms">Payment terms</h2>
+          <p>The industry standard for first orders is a <strong>30% T/T deposit with 70% paid before shipment</strong>. Letters of credit (L/C) are commonly accepted for larger orders. One rule worth keeping: never pay 100% upfront to an unverified supplier &mdash; staged payment protects both sides.</p>
 
-    <h2>Incoterms: what FOB actually covers</h2>
-    <p>Most fence ships <strong>FOB</strong> (Free On Board) a Chinese port such as Tianjin. Under FOB, the factory price covers getting the goods loaded onto the vessel; from there, ocean freight, insurance, destination charges and duty are yours. Some buyers prefer <strong>CIF</strong> (Cost, Insurance and Freight), where the supplier arranges freight to your port. Neither is automatically cheaper &mdash; FOB gives you control of the freight, CIF gives you convenience. Agree the Incoterm in writing before you compare quotes, or you are comparing different things.</p>
+          <h2 id="lead-time">Lead time</h2>
+          <p>Expect around <strong>20 days of production</strong> after your deposit clears, depending on quantity and specifications, plus ocean transit time to your port. Build both into your planning &mdash; the production clock only starts once the deposit is received and specs are confirmed.</p>
 
-    <h2>The documents you'll receive</h2>
-    <p>For a normal container shipment you should expect a commercial invoice, a packing list, the bill of lading, and &mdash; where a trade agreement applies &mdash; a certificate of origin. Ask up front which documents the supplier provides; missing paperwork is a common cause of delays and extra charges at the destination port.</p>
+          <h2 id="packing-shipping">Packing and shipping</h2>
+          <p>Fence should ship on <strong>ISPM15-treated pallets</strong> &mdash; required for timber packaging entering major international markets such as Australia, New Zealand, the US and EU &mdash; wrapped in plastic film, usually FOB Tianjin. A good factory shares loading photos of every container so you know exactly what shipped before it leaves.</p>
 
-    <h2>Don't forget the landed cost</h2>
-    <p>The factory price is only part of what you pay. Budget for ocean freight, destination port charges, customs duty and last-mile delivery on top of the FOB price. Ask your supplier for the FOB price and let your freight forwarder estimate the rest &mdash; a "cheap" FOB quote can land dearer than a higher one once freight and duty are added.</p>
+          <h2 id="incoterms">Incoterms: what FOB actually covers</h2>
+          <p>Most fence ships <strong>FOB</strong> (Free On Board) a Chinese port such as Tianjin. Under FOB, the factory price covers getting the goods loaded onto the vessel; from there, ocean freight, insurance, destination charges and duty are yours. Some buyers prefer <strong>CIF</strong> (Cost, Insurance and Freight), where the supplier arranges freight to your port. Neither is automatically cheaper &mdash; FOB gives you control of the freight, CIF gives you convenience. Agree the Incoterm in writing before you compare quotes, or you are comparing different things.</p>
 
-    <h2>Red flags to watch for</h2>
-    <p>A few signals should make you slow down before paying a deposit: a supplier who will not show the production line on video; a price far below everyone else (often thin coating or under-gauge wire); reluctance to put the specification or standard in writing; and pressure to pay 100% up front or into an unrelated personal account. None of these is automatically fatal, but each deserves a clear answer before you commit.</p>
+          <h2 id="documents">The documents you'll receive</h2>
+          <p>For a normal container shipment you should expect a commercial invoice, a packing list, the bill of lading, and &mdash; where a trade agreement applies &mdash; a certificate of origin. Ask up front which documents the supplier provides; missing paperwork is a common cause of delays and extra charges at the destination port.</p>
 
-    <h2>How to verify a real factory</h2>
-    <p>The biggest first-order risk is mistaking a trading company for a manufacturer. Three checks separate the two:</p>
-    <ul>
-      <li><strong>Ask for a live video walk-through or an in-person factory audit.</strong> A real factory will show you the wire-drawing, weaving and galvanising lines on request.</li>
-      <li><strong>Request zinc-coating and tensile test reports.</strong> See our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a> for what to ask for.</li>
-      <li><strong>Confirm they can supply to your local standard in writing</strong> &mdash; for example AS/NZS specifications, on request.</li>
-    </ul>
-    <p>We are a real factory, not a trading company &mdash; we control wire drawing, weaving, hot-dip galvanising and export packing in-house, and welcome audits and live video walk-throughs at any time.</p>
+          <h2 id="landed-cost">Don't forget the landed cost</h2>
+          <p>The factory price is only part of what you pay. Budget for ocean freight, destination port charges, customs duty and last-mile delivery on top of the FOB price. Ask your supplier for the FOB price and let your freight forwarder estimate the rest &mdash; a "cheap" FOB quote can land dearer than a higher one once freight and duty are added.</p>
 
-    <p>Still choosing the product itself? Start with <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint vs ring lock</a> for field fence, or browse the full <a href="/products/field-fence.html">field fence</a>, <a href="/products/chain-link-fence.html">chain link</a> and <a href="/products/y-post.html">Y post</a> specifications.</p>
+          <h2 id="red-flags">Red flags to watch for</h2>
+          <p>A few signals should make you slow down before paying a deposit: a supplier who will not show the production line on video; a price far below everyone else (often thin coating or under-gauge wire); reluctance to put the specification or standard in writing; and pressure to pay 100% up front or into an unrelated personal account. None of these is automatically fatal, but each deserves a clear answer before you commit.</p>
 
-    <div class="article-callout">
-      <p style="margin:0 0 .25rem"><strong>Ready to price a container?</strong></p>
-      <p style="margin:0">Send your specs and destination port and we'll calculate a tailored landed estimate within 24 hours.</p>
+          <h2 id="verify-factory">How to verify a real factory</h2>
+          <p>The biggest first-order risk is mistaking a trading company for a manufacturer. Three checks separate the two:</p>
+          <ul>
+            <li><strong>Ask for a live video walk-through or an in-person factory audit.</strong> A real factory will show you the wire-drawing, weaving and galvanising lines on request.</li>
+            <li><strong>Request zinc-coating and tensile test reports.</strong> See our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a> for what to ask for.</li>
+            <li><strong>Confirm they can supply to your local standard in writing</strong> &mdash; for example AS/NZS specifications, on request.</li>
+          </ul>
+          <p>We are a real factory, not a trading company &mdash; we control wire drawing, weaving, hot-dip galvanising and export packing in-house, and welcome audits and live video walk-throughs at any time.</p>
+
+          <p>Still choosing the product itself? Start with <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint vs ring lock</a> for field fence, or browse the full <a href="/products/field-fence.html">field fence</a>, <a href="/products/chain-link-fence.html">chain link</a> and <a href="/products/y-post.html">Y post</a> specifications.</p>
+
+          <div class="article-callout">
+            <p style="margin:0 0 .25rem"><strong>Ready to price a container?</strong></p>
+            <p style="margin:0">Send your specs and destination port and we'll calculate a tailored landed estimate within 24 hours.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
   </div>
 </article>
+
+<!-- ============================================= -->
+<!-- RELATED ARTICLES                              -->
+<!-- ============================================= -->
+<section class="py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Related Guides</h2>
+        <p class="text-gray-500 mt-1">More from the factory floor</p>
+      </div>
+      <a href="/blog/" class="hidden sm:inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+        View all articles
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge joint field fence knot detail" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Hinge Joint vs Ring Lock</h3>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-03.jpg" alt="Galvanized field fence wire close-up" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Standards</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">AS/NZS 4534 Zinc Coating</h3>
+        </div>
+      </a>
+      <!-- Card 3 -->
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-app-01.webp" type="image/webp">
+              <img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on a cattle farm" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Best Fencing for Cattle, Sheep & Deer</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- NEXT / PREV NAVIGATION                        -->
+<!-- ============================================= -->
+<nav class="border-t border-gray-200 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group flex items-center gap-4 py-8 px-4 hover:bg-gray-50 transition-colors">
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Previous</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">Best Fence for Cattle, Sheep & Deer</p>
+        </div>
+      </a>
+      <a href="/blog/" class="group flex items-center justify-end gap-4 py-8 px-4 hover:bg-gray-50 transition-colors text-right">
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Next</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">All Buying Guides</p>
+        </div>
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
 
 <!-- ============================================= -->
 <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->

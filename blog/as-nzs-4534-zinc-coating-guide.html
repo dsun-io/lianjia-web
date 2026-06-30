@@ -93,9 +93,9 @@
       --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
       --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
       --hairline: 1px solid rgba(0,0,0,0.08);
-      --accent: #C2410C;
-      --accent-light: #EA580C;
-      --accent-dark: #9A3412;
+      --accent: #f97316;
+      --accent-light: #f97316;
+      --accent-dark: #ea580c;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -128,7 +128,7 @@
       position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
       opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
@@ -140,11 +140,11 @@
     #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
     #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
+    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
     @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -263,66 +263,200 @@
 </section>
 
 <!-- ============================================= -->
-<!-- ARTICLE BODY                                  -->
+<!-- ARTICLE BYLINE                                -->
+<!-- ============================================= -->
+<div class="border-b border-gray-200 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 font-bold text-xs">LJ</span>
+        <span class="font-medium text-gray-700">Anping Lianjia Metal Products Co., Ltd.</span>
+      </div>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <time datetime="2026-06-25">June 25, 2026</time>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span>6 min read</span>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span class="text-orange-500 font-medium">Standards</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- ARTICLE BODY + TOC                            -->
 <!-- ============================================= -->
 <article class="py-12 lg:py-16 bg-white">
-  <div class="article-body max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <p class="lead">The number-one reason wire fence fails early is not the steel &mdash; it is the zinc. Too little zinc and the fence rusts within a season; the right coating and it lasts for decades. For overseas buyers, a widely used benchmark is <strong>AS/NZS 4534</strong>, the standard for zinc and zinc/aluminium-alloy coatings on steel wire.</p>
+      <!-- Sticky TOC (desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-28">
+          <h3 class="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-4">Contents</h3>
+          <nav class="space-y-1" aria-label="Table of contents">
+            <a href="#why-zinc-matters" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Why zinc coating matters</a>
+            <a href="#what-is-asnzs-4534" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">What AS/NZS 4534 actually is</a>
+            <a href="#coating-weights" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Coating weights explained</a>
+            <a href="#electro-vs-hot-dip" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Electro- vs hot-dip galvanised</a>
+            <a href="#matching-environment" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Matching coating to environment</a>
+            <a href="#how-long-last" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">How long does it last?</a>
+            <a href="#common-mistakes" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Three common mistakes</a>
+            <a href="#test-report" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Always ask for a test report</a>
+          </nav>
+        </div>
+      </aside>
 
-    <h2>Why zinc coating matters</h2>
-    <p>Galvanising protects steel wire in two ways: it seals the steel from moisture, and it corrodes <em>sacrificially</em> &mdash; the zinc gives itself up before the steel underneath does. The more zinc per square metre, the longer that protection lasts. This is why a heavier coating is worth paying for in wet, coastal or high-humidity environments, and why the cheapest fence on a quote is often the most expensive over its life.</p>
+      <!-- Article content -->
+      <div class="lg:col-span-9">
+        <div class="article-body max-w-3xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-0">
 
-    <h2>What AS/NZS 4534 actually is</h2>
-    <p>AS/NZS 4534 is the Australian/New Zealand standard that sets out coating mass classes and the test methods used to verify them for zinc-coated steel wire. In plain terms, it gives buyers and factories a common language for "how much zinc, measured how." It is a specification you can build a fence to &mdash; not an automatic stamp every product carries. We can supply field fence, barbed wire and Y posts <strong>to AS/NZS 4534 specifications on request</strong>; if your project calls for it, say so up front and we'll quote and test against it.</p>
+          <p class="lead">The number-one reason wire fence fails early is not the steel &mdash; it is the zinc. Too little zinc and the fence rusts within a season; the right coating and it lasts for decades. For overseas buyers, a widely used benchmark is <strong>AS/NZS 4534</strong>, the standard for zinc and zinc/aluminium-alloy coatings on steel wire.</p>
 
-    <h2>Coating weights explained</h2>
-    <p>Zinc coating is measured in grams per square metre (g/m&sup2;). Common options are 40, 60, 100 and 200 g/m&sup2;. As a rough guide:</p>
-    <ul>
-      <li><strong>40&ndash;60 g/m&sup2;</strong> &mdash; economical, suited to drier inland conditions or a shorter design life.</li>
-      <li><strong>100 g/m&sup2;</strong> &mdash; a strong general-purpose choice for most rural fencing.</li>
-      <li><strong>200 g/m&sup2;</strong> &mdash; heavy-duty, for coastal, high-rainfall or maximum-life applications.</li>
-    </ul>
-    <p>There is no single "correct" weight &mdash; it is a trade-off between upfront cost and how many years you need the fence to stand. Buying 200 g/m&sup2; for a dry inland boundary wastes money; buying 40 g/m&sup2; for a coastal run wastes the whole fence.</p>
+          <h2 id="why-zinc-matters">Why zinc coating matters</h2>
+          <p>Galvanising protects steel wire in two ways: it seals the steel from moisture, and it corrodes <em>sacrificially</em> &mdash; the zinc gives itself up before the steel underneath does. The more zinc per square metre, the longer that protection lasts. This is why a heavier coating is worth paying for in wet, coastal or high-humidity environments, and why the cheapest fence on a quote is often the most expensive over its life.</p>
 
-    <h2>Electro-galvanised vs hot-dip galvanised</h2>
-    <p>How the zinc is applied matters as much as how much. Beware thin <strong>electro-galvanised</strong> wire &mdash; it carries a light zinc layer that can rust in a single season. <strong>Hot-dip galvanising</strong> (HDG) applies a much thicker, more durable coat, which is why we hot-dip our field fence, barbed wire and Y posts. If a quote looks unusually cheap, check whether it is electro-galv with a low coating weight &mdash; the price difference usually disappears the first time you replace it.</p>
+          <h2 id="what-is-asnzs-4534">What AS/NZS 4534 actually is</h2>
+          <p>AS/NZS 4534 is the Australian/New Zealand standard that sets out coating mass classes and the test methods used to verify them for zinc-coated steel wire. In plain terms, it gives buyers and factories a common language for "how much zinc, measured how." It is a specification you can build a fence to &mdash; not an automatic stamp every product carries. We can supply field fence, barbed wire and Y posts <strong>to AS/NZS 4534 specifications on request</strong>; if your project calls for it, say so up front and we'll quote and test against it.</p>
 
-    <h2>Matching coating to your environment</h2>
-    <table>
-      <thead>
-        <tr><th>Environment</th><th>Suggested coating</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Dry inland, shorter design life</td><td>40&ndash;60 g/m&sup2; HDG</td></tr>
-        <tr><td>General rural / mixed conditions</td><td>100 g/m&sup2; HDG</td></tr>
-        <tr><td>Coastal, high-rainfall, long life</td><td>200 g/m&sup2; HDG</td></tr>
-      </tbody>
-    </table>
-    <p>These are starting points, not rules &mdash; tell us your location and how long the fence has to last, and we'll recommend a coating.</p>
+          <h2 id="coating-weights">Coating weights explained</h2>
+          <p>Zinc coating is measured in grams per square metre (g/m&sup2;). Common options are 40, 60, 100 and 200 g/m&sup2;. As a rough guide:</p>
+          <ul>
+            <li><strong>40&ndash;60 g/m&sup2;</strong> &mdash; economical, suited to drier inland conditions or a shorter design life.</li>
+            <li><strong>100 g/m&sup2;</strong> &mdash; a strong general-purpose choice for most rural fencing.</li>
+            <li><strong>200 g/m&sup2;</strong> &mdash; heavy-duty, for coastal, high-rainfall or maximum-life applications.</li>
+          </ul>
+          <p>There is no single "correct" weight &mdash; it is a trade-off between upfront cost and how many years you need the fence to stand. Buying 200 g/m&sup2; for a dry inland boundary wastes money; buying 40 g/m&sup2; for a coastal run wastes the whole fence.</p>
 
-    <h2>How long does galvanised fence actually last?</h2>
-    <p>There is no single number, because life depends on coating weight and environment together. As a rule of thumb, a heavier hot-dip coating in a dry inland setting can last decades, while a thin electro-galvanised coat near the coast may show red rust within a year or two. Zinc corrodes at a roughly predictable rate for a given atmosphere, so broadly speaking, doubling the coating weight doubles the time before the steel underneath is exposed. That is the whole economic case for paying for zinc up front &mdash; you are buying years of service life.</p>
+          <h2 id="electro-vs-hot-dip">Electro-galvanised vs hot-dip galvanised</h2>
+          <p>How the zinc is applied matters as much as how much. Beware thin <strong>electro-galvanised</strong> wire &mdash; it carries a light zinc layer that can rust in a single season. <strong>Hot-dip galvanising</strong> (HDG) applies a much thicker, more durable coat, which is why we hot-dip our field fence, barbed wire and Y posts. If a quote looks unusually cheap, check whether it is electro-galv with a low coating weight &mdash; the price difference usually disappears the first time you replace it.</p>
 
-    <h2>Three common zinc-coating mistakes</h2>
-    <ul>
-      <li><strong>Comparing price without comparing coating.</strong> Two quotes for "galvanised field fence" can differ several times over in zinc weight. Always compare g/m&sup2;, not just the headline price.</li>
-      <li><strong>Assuming "galvanised" means hot-dip.</strong> It might be a thin electro-galvanised coat. Ask which process was used and what weight was applied.</li>
-      <li><strong>Under-specifying for the coast.</strong> Salt air is brutal on zinc. If you are within sight of the sea, default to the heaviest coating you can justify.</li>
-    </ul>
+          <h2 id="matching-environment">Matching coating to your environment</h2>
+          <table>
+            <thead>
+              <tr><th>Environment</th><th>Suggested coating</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Dry inland, shorter design life</td><td>40&ndash;60 g/m&sup2; HDG</td></tr>
+              <tr><td>General rural / mixed conditions</td><td>100 g/m&sup2; HDG</td></tr>
+              <tr><td>Coastal, high-rainfall, long life</td><td>200 g/m&sup2; HDG</td></tr>
+            </tbody>
+          </table>
+          <p>These are starting points, not rules &mdash; tell us your location and how long the fence has to last, and we'll recommend a coating.</p>
 
-    <h2>Always ask for a test report</h2>
-    <p>Whatever a label claims, ask your supplier for a zinc-coating test report rather than taking the number on trust. A reputable factory tests every order for zinc coating, wire diameter and tensile strength, and can provide documentation on request. We include test reports with the order and supply to AS/NZS 4534 specifications when specified.</p>
+          <h2 id="how-long-last">How long does galvanised fence actually last?</h2>
+          <p>There is no single number, because life depends on coating weight and environment together. As a rule of thumb, a heavier hot-dip coating in a dry inland setting can last decades, while a thin electro-galvanised coat near the coast may show red rust within a year or two. Zinc corrodes at a roughly predictable rate for a given atmosphere, so broadly speaking, doubling the coating weight doubles the time before the steel underneath is exposed. That is the whole economic case for paying for zinc up front &mdash; you are buying years of service life.</p>
 
-    <p>Coating is only one half of choosing a field fence &mdash; the knot type is the other. If you haven't picked a knot yet, read <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint vs ring lock</a>. And if you are importing for the first time, our guide to <a href="/blog/import-wire-fence-from-china.html">importing wire fence from China</a> covers how to verify a factory's claims before you pay.</p>
+          <h2 id="common-mistakes">Three common zinc-coating mistakes</h2>
+          <ul>
+            <li><strong>Comparing price without comparing coating.</strong> Two quotes for "galvanised field fence" can differ several times over in zinc weight. Always compare g/m&sup2;, not just the headline price.</li>
+            <li><strong>Assuming "galvanised" means hot-dip.</strong> It might be a thin electro-galvanised coat. Ask which process was used and what weight was applied.</li>
+            <li><strong>Under-specifying for the coast.</strong> Salt air is brutal on zinc. If you are within sight of the sea, default to the heaviest coating you can justify.</li>
+          </ul>
 
-    <div class="article-callout">
-      <p style="margin:0 0 .25rem"><strong>Need a specific AS/NZS 4534 coating?</strong></p>
-      <p style="margin:0">Tell us your environment and design life and we'll spec the right zinc weight, with a test report on the order. Browse the full <a href="/products/field-fence.html">field fence specifications</a> or send your requirements below.</p>
+          <h2 id="test-report">Always ask for a test report</h2>
+          <p>Whatever a label claims, ask your supplier for a zinc-coating test report rather than taking the number on trust. A reputable factory tests every order for zinc coating, wire diameter and tensile strength, and can provide documentation on request. We include test reports with the order and supply to AS/NZS 4534 specifications when specified.</p>
+
+          <p>Coating is only one half of choosing a field fence &mdash; the knot type is the other. If you haven't picked a knot yet, read <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint vs ring lock</a>. And if you are importing for the first time, our guide to <a href="/blog/import-wire-fence-from-china.html">importing wire fence from China</a> covers how to verify a factory's claims before you pay.</p>
+
+          <div class="article-callout">
+            <p style="margin:0 0 .25rem"><strong>Need a specific AS/NZS 4534 coating?</strong></p>
+            <p style="margin:0">Tell us your environment and design life and we'll spec the right zinc weight, with a test report on the order. Browse the full <a href="/products/field-fence.html">field fence specifications</a> or send your requirements below.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
   </div>
 </article>
+
+<!-- ============================================= -->
+<!-- RELATED ARTICLES                              -->
+<!-- ============================================= -->
+<section class="py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Related Guides</h2>
+        <p class="text-gray-500 mt-1">More from the factory floor</p>
+      </div>
+      <a href="/blog/" class="hidden sm:inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+        View all articles
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge joint field fence knot detail" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Hinge Joint vs Ring Lock</h3>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-app-01.webp" type="image/webp">
+              <img src="/assets/img/field-fence-app-01.jpg" alt="Field fence on a cattle farm" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Best Fencing for Cattle, Sheep & Deer</h3>
+        </div>
+      </a>
+      <!-- Card 3 -->
+      <a href="/blog/import-wire-fence-from-china.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <img src="/assets/img/about-factory.jpg" alt="Wire fence factory in Anping, China" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Importing</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Importing Wire Fence from China</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- NEXT / PREV NAVIGATION                        -->
+<!-- ============================================= -->
+<nav class="border-t border-gray-200 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group flex items-center gap-4 py-8 px-4 hover:bg-gray-50 transition-colors">
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Previous</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">Hinge Joint vs Ring Lock</p>
+        </div>
+      </a>
+      <a href="/blog/best-field-fence-cattle-sheep-deer.html" class="group flex items-center justify-end gap-4 py-8 px-4 hover:bg-gray-50 transition-colors text-right">
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Next</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">Best Fence for Cattle, Sheep & Deer</p>
+        </div>
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
 
 <!-- ============================================= -->
 <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->

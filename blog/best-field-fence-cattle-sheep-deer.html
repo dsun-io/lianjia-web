@@ -93,9 +93,9 @@
       --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
       --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
       --hairline: 1px solid rgba(0,0,0,0.08);
-      --accent: #C2410C;
-      --accent-light: #EA580C;
-      --accent-dark: #9A3412;
+      --accent: #f97316;
+      --accent-light: #f97316;
+      --accent-dark: #ea580c;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -128,7 +128,7 @@
       position: fixed; left: 0; top: 0;
       width: 350px; height: 350px; border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(194,65,12,0.18) 0%, rgba(194,65,12,0.08) 30%, transparent 60%);
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
       opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
     }
     #cursor-glow.visible { opacity: 1; }
@@ -140,11 +140,11 @@
     #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
     #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
     #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(194,65,12,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(194,65,12,0.4), 0 0 20px rgba(194,65,12,0.15); }
+    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
     #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
 
     .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(234, 88, 12, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15); }
+    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
     @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
 
     @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -257,67 +257,203 @@
   <div class="absolute inset-0 bg-black/55"></div>
   <div class="grain-overlay" style="filter:url(#grain)"></div>
   <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-    <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Buying Guide &middot; 7 min read</p>
+    <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Buying Guide &middot; 6 min read</p>
     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Best Fencing for Cattle, Sheep &amp; Deer</h1>
   </div>
 </section>
 
 <!-- ============================================= -->
-<!-- ARTICLE BODY                                  -->
+<!-- ARTICLE BYLINE                                -->
+<!-- ============================================= -->
+<div class="border-b border-gray-200 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 font-bold text-xs">LJ</span>
+        <span class="font-medium text-gray-700">Anping Lianjia Metal Products Co., Ltd.</span>
+      </div>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <time datetime="2026-06-25">June 25, 2026</time>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span>6 min read</span>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span class="text-orange-500 font-medium">Buying Guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- ARTICLE BODY + TOC                            -->
 <!-- ============================================= -->
 <article class="py-12 lg:py-16 bg-white">
-  <div class="article-body max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <p class="lead">The right fence depends on the animal. Cattle, sheep and deer each push on a fence in their own way, so matching the mesh, height and knot type to your stock saves money and prevents escapes. Here is a practical guide for international buyers, built on what actually fails in the field.</p>
+      <!-- Sticky TOC (desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-28">
+          <h3 class="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-4">Contents</h3>
+          <nav class="space-y-1" aria-label="Table of contents">
+            <a href="#cattle" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Cattle</a>
+            <a href="#sheep" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Sheep</a>
+            <a href="#deer" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Deer</a>
+            <a href="#goats-mixed" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Goats and mixed stock</a>
+            <a href="#coastal-rainfall" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Coastal &amp; high-rainfall</a>
+            <a href="#horses" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Horses</a>
+            <a href="#posts-tensioning" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Posts and tensioning</a>
+            <a href="#worked-example" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">A worked example</a>
+            <a href="#predators" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">What about predators?</a>
+            <a href="#quick-summary" class="toc-link block text-sm text-gray-500 hover:text-orange-500 transition-colors py-1 border-l-2 border-transparent hover:border-orange-500 pl-3">Quick summary</a>
+          </nav>
+        </div>
+      </aside>
 
-    <h2>Cattle</h2>
-    <p>Cattle lean and rub rather than jump. The fence has to absorb steady weight without distorting, so a <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint</a> <a href="/products/field-fence.html">field fence</a> around 90&ndash;115 cm high, with 8&ndash;11 line wires, handles their pressure and springs back instead of bagging out. Many cattle producers add a single barbed wire along the top to discourage leaning on the mesh.</p>
+      <!-- Article content -->
+      <div class="lg:col-span-9">
+        <div class="article-body max-w-3xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-0">
 
-    <h2>Sheep</h2>
-    <p>Sheep need a tighter lower mesh to stop lambs pushing through and to deter predators. Choose a field fence with closer stay spacing &mdash; for example 15 cm &mdash; in the lower section, around 80&ndash;90 cm high. Hinge joint suits most flocks; ring lock is worth the extra on rough country where you want the mesh to hold its shape.</p>
+          <p class="lead">The right fence depends on the animal. Cattle, sheep and deer each push on a fence in their own way, so matching the mesh, height and knot type to your stock saves money and prevents escapes. Here is a practical guide for international buyers, built on what actually fails in the field.</p>
 
-    <h2>Deer</h2>
-    <p>Deer jump, so height is the critical factor &mdash; typically 150&ndash;190 cm. A rigid <strong>ring lock</strong> fence holds its square shape under repeated impact and is the standard choice for deer farming and wildlife exclusion. Don't under-spec the height to save money; a fence a deer can clear is no fence at all.</p>
+          <h2 id="cattle">Cattle</h2>
+          <p>Cattle lean and rub rather than jump. The fence has to absorb steady weight without distorting, so a <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html">hinge joint</a> <a href="/products/field-fence.html">field fence</a> around 90&ndash;115 cm high, with 8&ndash;11 line wires, handles their pressure and springs back instead of bagging out. Many cattle producers add a single barbed wire along the top to discourage leaning on the mesh.</p>
 
-    <h2>Goats and mixed stock</h2>
-    <p>Goats are the notorious escape artists &mdash; they climb, push and test every weakness. Treat goats like sheep but tighter: a small mesh opening, closer stay spacing, and ring lock where they lean hardest. If you run mixed stock in one paddock, fence for the most demanding animal in the group, not the average.</p>
+          <h2 id="sheep">Sheep</h2>
+          <p>Sheep need a tighter lower mesh to stop lambs pushing through and to deter predators. Choose a field fence with closer stay spacing &mdash; for example 15 cm &mdash; in the lower section, around 80&ndash;90 cm high. Hinge joint suits most flocks; ring lock is worth the extra on rough country where you want the mesh to hold its shape.</p>
 
-    <h2>Coastal and high-rainfall properties</h2>
-    <p>If you farm near the coast or in a wet region, prioritise a heavier zinc coating (100&ndash;200 g/m&sup2;) regardless of the animal &mdash; it is the difference between a fence that lasts 5 years and one that lasts 20. See our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a> for how to choose the weight.</p>
+          <h2 id="deer">Deer</h2>
+          <p>Deer jump, so height is the critical factor &mdash; typically 150&ndash;190 cm. A rigid <strong>ring lock</strong> fence holds its square shape under repeated impact and is the standard choice for deer farming and wildlife exclusion. Don't under-spec the height to save money; a fence a deer can clear is no fence at all.</p>
 
-    <h2>Horses</h2>
-    <p>Horses are powerful and prone to injury, so the priority is a smooth, visible barrier with no large gaps a hoof can go through. A field fence with a small mesh opening, topped with a sighter rail or a strand of plain (not barbed) wire, suits most horse paddocks. Avoid barbed wire at chest height where horses run.</p>
+          <h2 id="goats-mixed">Goats and mixed stock</h2>
+          <p>Goats are the notorious escape artists &mdash; they climb, push and test every weakness. Treat goats like sheep but tighter: a small mesh opening, closer stay spacing, and ring lock where they lean hardest. If you run mixed stock in one paddock, fence for the most demanding animal in the group, not the average.</p>
 
-    <h2>Posts and tensioning matter too</h2>
-    <p>The mesh is only half the fence. Match it with the right <a href="/products/y-post.html">Y posts</a> or timber posts at sensible spacing, well-braced end assemblies, and even tension. Under-built end strainers are the most common reason a good fence sags within a year &mdash; regardless of the animal it is holding.</p>
+          <h2 id="coastal-rainfall">Coastal and high-rainfall properties</h2>
+          <p>If you farm near the coast or in a wet region, prioritise a heavier zinc coating (100&ndash;200 g/m&sup2;) regardless of the animal &mdash; it is the difference between a fence that lasts 5 years and one that lasts 20. See our guide to <a href="/blog/as-nzs-4534-zinc-coating-guide.html">AS/NZS 4534 zinc coating</a> for how to choose the weight.</p>
 
-    <h2>A worked example</h2>
-    <p>Say you run cattle on rolling country near the coast. That points to a hinge joint fence around 90&ndash;115 cm with 8&ndash;11 line wires (cattle, undulating ground), a heavier 200 g/m&sup2; zinc coating (coastal), and a barbed top wire to discourage leaning. Change any single input &mdash; flat ground, sheep instead of cattle, dry inland &mdash; and the spec shifts. That is why we quote to your exact conditions rather than a fixed catalogue number.</p>
+          <h2 id="horses">Horses</h2>
+          <p>Horses are powerful and prone to injury, so the priority is a smooth, visible barrier with no large gaps a hoof can go through. A field fence with a small mesh opening, topped with a sighter rail or a strand of plain (not barbed) wire, suits most horse paddocks. Avoid barbed wire at chest height where horses run.</p>
 
-    <h2>What about predators?</h2>
-    <p>On many international farms the job is not just keeping stock in, but keeping predators &mdash; wild dogs, foxes and feral pigs &mdash; out. For predator control, choose a tighter mesh with smaller openings and closer stay spacing, and run the fence to ground level with minimal gap, or add an apron of mesh along the base to deter digging. A rigid ring lock fence holds its shape better against pushing and digging pressure, and a higher zinc coating pays off where the line runs through scrub or wet country.</p>
+          <h2 id="posts-tensioning">Posts and tensioning matter too</h2>
+          <p>The mesh is only half the fence. Match it with the right <a href="/products/y-post.html">Y posts</a> or timber posts at sensible spacing, well-braced end assemblies, and even tension. Under-built end strainers are the most common reason a good fence sags within a year &mdash; regardless of the animal it is holding.</p>
 
-    <h2>Quick summary</h2>
-    <table>
-      <thead>
-        <tr><th>Animal</th><th>Height</th><th>Knot / mesh</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Cattle</td><td>90&ndash;115 cm</td><td>Hinge joint, 8&ndash;11 wires (+ barbed top)</td></tr>
-        <tr><td>Sheep</td><td>80&ndash;90 cm</td><td>Hinge joint, tight lower stays</td></tr>
-        <tr><td>Goats</td><td>90&ndash;120 cm</td><td>Tight mesh, ring lock where pressured</td></tr>
-        <tr><td>Deer</td><td>150&ndash;190 cm</td><td>Ring lock, rigid mesh</td></tr>
-      </tbody>
-    </table>
-    <p>These are field-tested starting points. The exact spec &mdash; line-wire count, stay spacing, wire diameter and coating &mdash; should be tuned to your stocking density, terrain and climate. As a factory we weave to custom sizes, so you are not locked into a standard chart.</p>
+          <h2 id="worked-example">A worked example</h2>
+          <p>Say you run cattle on rolling country near the coast. That points to a hinge joint fence around 90&ndash;115 cm with 8&ndash;11 line wires (cattle, undulating ground), a heavier 200 g/m&sup2; zinc coating (coastal), and a barbed top wire to discourage leaning. Change any single input &mdash; flat ground, sheep instead of cattle, dry inland &mdash; and the spec shifts. That is why we quote to your exact conditions rather than a fixed catalogue number.</p>
 
-    <div class="article-callout">
-      <p style="margin:0 0 .25rem"><strong>Tell us your stock and we'll spec the fence.</strong></p>
-      <p style="margin:0">Send your animals, terrain and location and we'll recommend an exact height, knot and coating &mdash; or browse the full <a href="/products/field-fence.html">field fence specifications</a> first.</p>
+          <h2 id="predators">What about predators?</h2>
+          <p>On many international farms the job is not just keeping stock in, but keeping predators &mdash; wild dogs, foxes and feral pigs &mdash; out. For predator control, choose a tighter mesh with smaller openings and closer stay spacing, and run the fence to ground level with minimal gap, or add an apron of mesh along the base to deter digging. A rigid ring lock fence holds its shape better against pushing and digging pressure, and a higher zinc coating pays off where the line runs through scrub or wet country.</p>
+
+          <h2 id="quick-summary">Quick summary</h2>
+          <table>
+            <thead>
+              <tr><th>Animal</th><th>Height</th><th>Knot / mesh</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cattle</td><td>90&ndash;115 cm</td><td>Hinge joint, 8&ndash;11 wires (+ barbed top)</td></tr>
+              <tr><td>Sheep</td><td>80&ndash;90 cm</td><td>Hinge joint, tight lower stays</td></tr>
+              <tr><td>Goats</td><td>90&ndash;120 cm</td><td>Tight mesh, ring lock where pressured</td></tr>
+              <tr><td>Deer</td><td>150&ndash;190 cm</td><td>Ring lock, rigid mesh</td></tr>
+            </tbody>
+          </table>
+          <p>These are field-tested starting points. The exact spec &mdash; line-wire count, stay spacing, wire diameter and coating &mdash; should be tuned to your stocking density, terrain and climate. As a factory we weave to custom sizes, so you are not locked into a standard chart.</p>
+
+          <div class="article-callout">
+            <p style="margin:0 0 .25rem"><strong>Tell us your stock and we'll spec the fence.</strong></p>
+            <p style="margin:0">Send your animals, terrain and location and we'll recommend an exact height, knot and coating &mdash; or browse the full <a href="/products/field-fence.html">field fence specifications</a> first.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
   </div>
 </article>
+
+<!-- ============================================= -->
+<!-- RELATED ARTICLES                              -->
+<!-- ============================================= -->
+<section class="py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Related Guides</h2>
+        <p class="text-gray-500 mt-1">More from the factory floor</p>
+      </div>
+      <a href="/blog/" class="hidden sm:inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+        View all articles
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <a href="/blog/hinge-joint-vs-ring-lock-field-fence.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-02.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-02.jpg" alt="Hinge joint field fence knot detail" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Buying Guide</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Hinge Joint vs Ring Lock</h3>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <source srcset="/assets/img/field-fence-hj-03.webp" type="image/webp">
+              <img src="/assets/img/field-fence-hj-03.jpg" alt="Galvanized field fence wire close-up" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Standards</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">AS/NZS 4534 Zinc Coating</h3>
+        </div>
+      </a>
+      <!-- Card 3 -->
+      <a href="/blog/import-wire-fence-from-china.html" class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200">
+        <div class="overflow-hidden img-wrap aspect-[16/9]">
+          <div class="h-full">
+            <picture class="block h-full">
+              <img src="/assets/img/about-factory.jpg" alt="Wire fence factory in Anping, China" class="img-product w-full h-full object-cover" loading="lazy" width="400" height="225">
+            </picture>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-2">Importing</span>
+          <h3 class="font-bold text-gray-900 group-hover:text-accent-bright transition-colors leading-snug">Importing Wire Fence from China</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- NEXT / PREV NAVIGATION                        -->
+<!-- ============================================= -->
+<nav class="border-t border-gray-200 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+      <a href="/blog/as-nzs-4534-zinc-coating-guide.html" class="group flex items-center gap-4 py-8 px-4 hover:bg-gray-50 transition-colors">
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Previous</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">AS/NZS 4534 Zinc Coating Guide</p>
+        </div>
+      </a>
+      <a href="/blog/import-wire-fence-from-china.html" class="group flex items-center justify-end gap-4 py-8 px-4 hover:bg-gray-50 transition-colors text-right">
+        <div>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-400">Next</span>
+          <p class="font-semibold text-gray-900 group-hover:text-orange-500 transition-colors">Importing Wire Fence from China</p>
+        </div>
+        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
 
 <!-- ============================================= -->
 <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->
