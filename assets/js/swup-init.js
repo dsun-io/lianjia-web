@@ -157,6 +157,15 @@
     if (window.LJTracker && typeof window.LJTracker._settleDwell === 'function') window.LJTracker._settleDwell();
   });
 
+  /* ── 同文档导航（swup 接管的同页跳转）后同步高亮 ──
+     link:self ：点击指向当前页且无 hash 的链接（如 Home "/"），swup 默认只更新
+                 URL（清掉 hash）并滚动，不触发 page:view / hashchange，高亮不刷新。
+     link:anchor：点击指向当前页 + hash 的链接，同理不会触发上述事件。
+     这两类跳转之前没有任何回调能更新高亮，导致从其他区块点回 Home 时高亮卡住。
+     scheduleUpdateActiveNav 的 rAF + 50ms 延迟可读到 URL 落稳后的状态。 */
+  window._swup.hooks.on('link:self', scheduleUpdateActiveNav);
+  window._swup.hooks.on('link:anchor', scheduleUpdateActiveNav);
+
   /* ── 初始页面加载时同步一次导航高亮 ── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', scheduleUpdateActiveNav);
