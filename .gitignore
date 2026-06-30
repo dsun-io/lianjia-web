@@ -8,6 +8,9 @@ node_modules/
 test-results/
 screenshot-*.png
 
+# 本地预览服务器（仅本地调试用，不参与生产）
+.dev-server.cjs
+
 # 包管理锁定文件（本项目无构建步骤，不锁定）
 package-lock.json
 
