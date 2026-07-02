@@ -55,6 +55,18 @@
     "offers":{"@type":"Offer","priceCurrency":"USD","availability":"https://schema.org/InStock","description":"Factory reference price — contact for landed quote"}
   }
   </script>
+  <!-- BreadcrumbList：反映真实导航层级 首页 > 产品 > 具体产品 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lianjiafence.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://lianjiafence.com/#products" },
+      { "@type": "ListItem", "position": 3, "name": "Chain Link Fence", "item": "https://lianjiafence.com/products/chain-link-fence" }
+    ]
+  }
+  </script>
   <style>
     :root {
       --fs-eyebrow: 0.8125rem; --fs-h3: 1.5rem; --fs-h2: 2.25rem; --fs-h1: 3.25rem;
