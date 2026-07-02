@@ -11,7 +11,7 @@ const files = [
   'products/chain-link-fence.html',
   'blog/index.html',
   'blog/hinge-joint-vs-ring-lock-field-fence.html',
-  'blog/as-nzs-4534-zinc-coating-guide.html',
+  'blog/zinc-coating-guide.html',
   'blog/best-field-fence-cattle-sheep-deer.html',
   'blog/import-wire-fence-from-china.html',
 ];
