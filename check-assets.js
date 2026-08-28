@@ -25,6 +25,14 @@ const PAGES = REPO
       '/blog/zinc-coating-guide.html',
       '/blog/best-field-fence-cattle-sheep-deer.html',
       '/blog/import-wire-fence-from-china.html',
+      '/blog/field-fence.html',
+      '/blog/chain-link-fence.html',
+      '/blog/y-post.html',
+      '/blog/barbed-wire.html',
+      '/blog/field-fence-installation-guide.html',
+      '/blog/how-to-choose-chain-link-fence.html',
+      '/blog/y-post-profiles-explained.html',
+      '/blog/barbed-wire-specifications-explained.html',
       '/privacy.html',
     ];
 
