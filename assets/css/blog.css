@@ -11,7 +11,10 @@
   font-size: 1.0625rem;
   line-height: 1.8;
 }
-.article-body > * + * { margin-top: 1.25rem; }
+
+.article-body>*+* {
+  margin-top: 1.25rem;
+}
 
 .article-body .lead {
   font-size: 1.25rem;
@@ -32,6 +35,7 @@
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #e2e8f0;
 }
+
 .article-body h3 {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   color: #334155;
@@ -41,8 +45,14 @@
   margin-bottom: 0.75rem;
 }
 
-.article-body p { color: #374151; }
-.article-body strong { color: #1f2937; font-weight: 600; }
+.article-body p {
+  color: #374151;
+}
+
+.article-body strong {
+  color: #1f2937;
+  font-weight: 600;
+}
 
 .article-body a {
   color: var(--accent, #f97316);
@@ -50,14 +60,36 @@
   text-underline-offset: 2px;
   transition: color 0.2s ease;
 }
-.article-body a:hover { color: var(--accent-dark, #ea580c); }
 
-.article-body ul, .article-body ol { padding-left: 1.5rem; }
-.article-body ul { list-style: disc; }
-.article-body ol { list-style: decimal; }
-.article-body li { margin-top: 0.75rem; padding-left: 0.25rem; }
-.article-body li::marker { color: var(--accent, #f97316); }
-.article-body ul li::marker { font-size: 1.1em; }
+.article-body a:hover {
+  color: var(--accent-dark, #ea580c);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5rem;
+}
+
+.article-body ul {
+  list-style: disc;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body li {
+  margin-top: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+.article-body li::marker {
+  color: var(--accent, #f97316);
+}
+
+.article-body ul li::marker {
+  font-size: 1.1em;
+}
 
 .article-body blockquote {
   border-left: 4px solid var(--accent, #f97316);
@@ -76,8 +108,9 @@
   margin-bottom: 1.5rem;
   border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
+
 .article-body thead th {
   background: #1e293b;
   color: #fff;
@@ -90,9 +123,20 @@
   text-align: left;
   vertical-align: top;
 }
-.article-body tbody tr:nth-child(odd) { background: #f8fafc; }
-.article-body tbody tr:nth-child(even) { background: #ffffff; }
-.article-body tbody tr:hover { background: #fff7ed; transition: background 0.2s ease; }
+
+.article-body tbody tr:nth-child(odd) {
+  background: #f8fafc;
+}
+
+.article-body tbody tr:nth-child(even) {
+  background: #ffffff;
+}
+
+.article-body tbody tr:hover {
+  background: #fff7ed;
+  transition: background 0.2s ease;
+}
+
 .article-body td {
   padding: 0.875rem 1rem;
   text-align: left;
@@ -100,8 +144,15 @@
   color: #374151;
   border-bottom: 1px solid #e2e8f0;
 }
-.article-body tbody tr:last-child td { border-bottom: none; }
-.article-body td:first-child { font-weight: 600; color: #1f2937; }
+
+.article-body tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-body td:first-child {
+  font-weight: 600;
+  color: #1f2937;
+}
 
 /* 文末 CTA callout —— 深色工业卡片 + 左侧橙色竖线 */
 .article-body .article-callout {
@@ -112,18 +163,112 @@
   margin-top: 2.5rem;
   position: relative;
 }
+
 .article-body .article-callout::before {
   content: '';
   position: absolute;
-  left: 0; top: 1.5rem; bottom: 1.5rem;
+  left: 0;
+  top: 1.5rem;
+  bottom: 1.5rem;
   width: 3px;
   background: #f97316;
   border-radius: 0 2px 2px 0;
 }
-.article-body .article-callout p { color: #cbd5e1; margin: 0; }
-.article-body .article-callout p:first-child { color: #fff; font-weight: 600; margin-bottom: 0.5rem; }
-.article-body .article-callout a { color: #fb923c; font-weight: 600; }
-.article-body .article-callout a:hover { color: #f97316; }
+
+.article-body .article-callout p {
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.article-body .article-callout p:first-child {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.article-body .article-callout a {
+  color: #fb923c;
+  font-weight: 600;
+}
+
+.article-body .article-callout a:hover {
+  color: #f97316;
+}
+
+/* ============================================================
+   AI 摘要卡（At a glance）—— 浅色高亮卡片
+   与文末深色 CTA 区分：暖色浅底 + 橙色左边条，保证高可读性
+   说明：默认深色卡的 li 会继承正文深色文字导致看不清，故单独重制。
+   ============================================================ */
+.article-body .article-callout.ai-summary {
+  background: linear-gradient(180deg, #fffaf0 0%, #fff7ed 100%);
+  border: 1px solid #fed7aa;
+  border-left: 4px solid #f97316;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  margin-top: 2.5rem;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
+}
+
+/* 去掉默认深色卡的左侧橙色竖线（改用左边框呈现） */
+.article-body .article-callout.ai-summary::before {
+  display: none;
+}
+
+/* 标题：小号大写 + 橙色短横线装饰 */
+.article-body .article-callout.ai-summary p:first-child {
+  color: #9a3412;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin: 0 0 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.article-body .article-callout.ai-summary p:first-child::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background: #f97316;
+  border-radius: 9999px;
+  flex: none;
+}
+
+.article-body .article-callout.ai-summary p:first-child strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+/* 列表项：中性高可读文字 + 橙色强调词 + 橙色项目符号 */
+.article-body .article-callout.ai-summary ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.article-body .article-callout.ai-summary li {
+  margin: 0 0 0.6rem;
+  padding-left: 0.25rem;
+  color: #44403c;
+  font-size: 0.975rem;
+  line-height: 1.65;
+}
+
+.article-body .article-callout.ai-summary li:last-child {
+  margin-bottom: 0;
+}
+
+.article-body .article-callout.ai-summary li::marker {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.article-body .article-callout.ai-summary li strong {
+  color: #92400e;
+  font-weight: 600;
+}
 
 /* 技术性内联代码 */
 .article-body code {

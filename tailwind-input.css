@@ -14,4 +14,24 @@
     --whatsapp: #25D366;
     --whatsapp-hover: #128C7E;
   }
+
+  /* 移动端底部固定操作栏（WhatsApp / Get a Quote，sm 以下显示）高度补偿：
+     避免滚动到底部时操作栏遮挡 footer 的版权信息。
+     高度 = 按钮内容 ~74px + iPhone 底部安全区。 */
+  /* 移动端触控优化：
+     - 汉堡按钮 40px -> 44px（推荐触控目标下限）
+     - footer 内联链接加大触控区（约 17px -> 29px） */
+  @media (max-width: 639px) {
+    body {
+      padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    }
+    #mobile-menu-btn {
+      width: 44px;
+      height: 44px;
+    }
+    footer a {
+      display: inline-block;
+      padding: 6px 0;
+    }
+  }
 }
