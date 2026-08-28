@@ -98,7 +98,7 @@
   font-style: italic;
 }
 
-/* 文内对比/规格表 —— 深色表头 + 斑马纹 + hover 高亮 */
+/* 文内对比/规格表 —— 暖色表头 + 斑马纹 + hover 高亮（与正文浅色主题统一） */
 .article-body table {
   width: 100%;
   border-collapse: separate;
@@ -112,16 +112,17 @@
 }
 
 .article-body thead th {
-  background: #1e293b;
-  color: #fff;
+  background: #fff7ed;
+  color: #9a3412;
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   padding: 0.875rem 1rem;
   text-align: left;
   vertical-align: top;
+  border-bottom: 2px solid #fed7aa;
 }
 
 .article-body tbody tr:nth-child(odd) {
@@ -154,51 +155,46 @@
   color: #1f2937;
 }
 
-/* 文末 CTA callout —— 深色工业卡片 + 左侧橙色竖线 */
+/* 文末 CTA callout —— 与 At a glance 卡一致的暖色浅底 + 橙色左边条 */
 .article-body .article-callout {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 0.75rem;
-  padding: 1.5rem 2rem;
+  background: linear-gradient(180deg, #fffaf0 0%, #fff7ed 100%);
+  border: 1px solid #fed7aa;
+  border-left: 4px solid #f97316;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
   margin-top: 2.5rem;
   position: relative;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
 }
 
+/* 左侧橙色竖线已由左边框呈现，去掉额外竖线 */
 .article-body .article-callout::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 1.5rem;
-  bottom: 1.5rem;
-  width: 3px;
-  background: #f97316;
-  border-radius: 0 2px 2px 0;
+  content: none;
 }
 
 .article-body .article-callout p {
-  color: #cbd5e1;
+  color: #44403c;
   margin: 0;
 }
 
 .article-body .article-callout p:first-child {
-  color: #fff;
-  font-weight: 600;
+  color: #9a3412;
+  font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .article-body .article-callout a {
-  color: #fb923c;
+  color: #ea580c;
   font-weight: 600;
 }
 
 .article-body .article-callout a:hover {
-  color: #f97316;
+  color: #c2410c;
 }
 
 /* ============================================================
    AI 摘要卡（At a glance）—— 浅色高亮卡片
-   与文末深色 CTA 区分：暖色浅底 + 橙色左边条，保证高可读性
-   说明：默认深色卡的 li 会继承正文深色文字导致看不清，故单独重制。
+   与文末 CTA 统一为暖色浅底 + 橙色左边条，保证高可读性
    ============================================================ */
 .article-body .article-callout.ai-summary {
   background: linear-gradient(180deg, #fffaf0 0%, #fff7ed 100%);

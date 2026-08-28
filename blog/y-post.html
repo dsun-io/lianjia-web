@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" style="cursor:none">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f172a">
-  <style>*, *::before, *::after { cursor: none !important; } iframe { cursor: auto !important; } @media (hover: none) and (pointer: coarse) { *, *::before, *::after { cursor: auto !important; } }</style>
+  <style>
+    *,
+    *::before,
+    *::after {
+      cursor: none !important;
+    }
+
+    iframe {
+      cursor: auto !important;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+
+      *,
+      *::before,
+      *::after {
+        cursor: auto !important;
+      }
+    }
+  </style>
 
   <!-- SEO Meta -->
   <title>Y Post &amp; Star Picket Guides | Lianjia Fence Blog</title>
-  <meta name="description" content="Factory guides for Y posts (star pickets): profile comparison (plain, scalloped, studded), installation tips, pairing with field fence and chain link.">
+  <meta name="description"
+    content="Factory guides for Y posts (star pickets): profile comparison (plain, scalloped, studded), installation tips, pairing with field fence and chain link.">
   <meta name="keywords" content="Y post, star picket, steel fence post, Y post profiles, farm fence post">
   <link rel="canonical" href="https://lianjiafence.com/blog/y-post.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Y Post &amp; Star Picket Guides | Lianjia Fence Blog">
-  <meta property="og:description" content="Factory guides for Y posts (star pickets): profile comparison (plain, scalloped, studded), installation tips, pairing with field fence and chain link.">
+  <meta property="og:description"
+    content="Factory guides for Y posts (star pickets): profile comparison (plain, scalloped, studded), installation tips, pairing with field fence and chain link.">
   <meta property="og:image" content="https://lianjiafence.com/assets/img/y-post-app-01.jpg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="800">
@@ -34,7 +56,9 @@
   <!-- Fonts: Space Grotesk (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Tailwind CSS v3 (built with standalone CLI) -->
   <link href="/assets/css/tailwind.css" rel="stylesheet">
@@ -57,10 +81,22 @@
 
   <!-- Swup 过渡样式 -->
   <style>
-    .transition-fade { opacity: 1; transition: opacity 120ms ease; }
-    html.is-animating .transition-fade { opacity: 0; }
+    .transition-fade {
+      opacity: 1;
+      transition: opacity 120ms ease;
+    }
+
+    html.is-animating .transition-fade {
+      opacity: 0;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .transition-fade, html.is-animating .transition-fade { transition: none !important; opacity: 1 !important; }
+
+      .transition-fade,
+      html.is-animating .transition-fade {
+        transition: none !important;
+        opacity: 1 !important;
+      }
     }
   </style>
 
@@ -107,74 +143,291 @@
       --fs-h1: 3.25rem;
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       --duration-normal: 500ms;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
-      --shadow-lg: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
-      --hairline: 1px solid rgba(0,0,0,0.08);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.08);
+      --hairline: 1px solid rgba(0, 0, 0, 0.08);
       --accent: #f97316;
       --accent-light: #f97316;
       --accent-dark: #ea580c;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    h1, h2, h3, h4, .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
-    h1 { font-size: var(--fs-h1); letter-spacing: -0.03em; line-height: 1.1; }
-    h2 { font-size: var(--fs-h2); letter-spacing: -0.02em; line-height: 1.15; }
-    h3 { font-size: var(--fs-h3); letter-spacing: -0.015em; line-height: 1.2; }
-    .eyebrow { font-size: var(--fs-eyebrow); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
-    .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    h1 {
+      font-size: var(--fs-h1);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: var(--fs-h2);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    h3 {
+      font-size: var(--fs-h3);
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      font-size: var(--fs-eyebrow);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
     @keyframes wa-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-      70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
-    .wa-pulse { animation: wa-pulse 2.5s infinite; }
+
+    .wa-pulse {
+      animation: wa-pulse 2.5s infinite;
+    }
+
     .nav-dropdown-menu {
-      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-      min-width: 200px; background: white; border-radius: 6px;
-      box-shadow: var(--shadow-lg); border: var(--hairline); padding: 0.5rem 0;
-      opacity: 0; visibility: hidden; transition: opacity 0.25s var(--ease-out-expo), visibility 0.25s, margin-top 0.25s var(--ease-out-expo);
-      margin-top: 0.5rem; pointer-events: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 200px;
+      background: white;
+      border-radius: 6px;
+      box-shadow: var(--shadow-lg);
+      border: var(--hairline);
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s var(--ease-out-expo), visibility 0.25s, margin-top 0.25s var(--ease-out-expo);
+      margin-top: 0.5rem;
+      pointer-events: none;
     }
-    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover {
-      opacity: 1; visibility: visible; margin-top: 0; pointer-events: auto;
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown-menu:hover {
+      opacity: 1;
+      visibility: visible;
+      margin-top: 0;
+      pointer-events: auto;
     }
-    .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      right: 0;
+      height: 8px;
+    }
 
     /* ── Cursor Glow (收敛) ── */
     #cursor-glow {
-      position: fixed; left: 0; top: 0;
-      width: 350px; height: 350px; border-radius: 50%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.08) 30%, transparent 60%);
-      opacity: 0; transition: opacity 0.6s ease; z-index: 5; mix-blend-mode: screen; will-change: transform;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      z-index: 5;
+      mix-blend-mode: screen;
+      will-change: transform;
     }
-    #cursor-glow.visible { opacity: 1; }
+
+    #cursor-glow.visible {
+      opacity: 1;
+    }
 
     /* ── Custom Cursor (收敛) ── */
-    #cursor-dot { position: fixed; left: 0; top: 0; width: 24px; height: 24px; pointer-events: none; z-index: 99999; will-change: transform; }
-    #cursor-dot::before, #cursor-dot::after { content: ''; position: absolute; background: var(--accent); border-radius: 1px; opacity: 0.9; }
-    #cursor-dot::before { width: 1.5px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
-    #cursor-dot::after { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
-    #cursor-dot .dot-center { position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo); }
-    #cursor-dot.hovering { width: 32px; height: 32px; }
-    #cursor-dot.hovering .dot-center { width: 32px; height: 32px; background: rgba(249,115,22,0.12); border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(249,115,22,0.4), 0 0 20px rgba(249,115,22,0.15); }
-    #cursor-dot.hovering::before, #cursor-dot.hovering::after { opacity: 0; }
-
-    .magnetic-btn { position: relative; transition: transform var(--duration-normal) var(--ease-out-expo); }
-    .click-ripple { position: fixed; border: 2px solid rgba(249, 115, 22, 0.95); border-radius: 50%; pointer-events: none; z-index: 99997; animation: ripple-expand 0.6s var(--ease-out-expo) forwards; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
-    @keyframes ripple-expand { 0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); } 100% { width: 70px; height: 70px; opacity: 0; transform: translate(-50%, -50%); } }
-
-    @media (hover: none) and (pointer: coarse), (max-width: 768px) {
-      #cursor-dot, #cursor-glow, .cursor-particle { display: none !important; }
+    #cursor-dot {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      z-index: 99999;
+      will-change: transform;
     }
+
+    #cursor-dot::before,
+    #cursor-dot::after {
+      content: '';
+      position: absolute;
+      background: var(--accent);
+      border-radius: 1px;
+      opacity: 0.9;
+    }
+
+    #cursor-dot::before {
+      width: 1.5px;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    #cursor-dot::after {
+      width: 100%;
+      height: 1.5px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    #cursor-dot .dot-center {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), background var(--duration-normal) var(--ease-out-expo);
+    }
+
+    #cursor-dot.hovering {
+      width: 32px;
+      height: 32px;
+    }
+
+    #cursor-dot.hovering .dot-center {
+      width: 32px;
+      height: 32px;
+      background: rgba(249, 115, 22, 0.12);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.15);
+    }
+
+    #cursor-dot.hovering::before,
+    #cursor-dot.hovering::after {
+      opacity: 0;
+    }
+
+    .magnetic-btn {
+      position: relative;
+      transition: transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .click-ripple {
+      position: fixed;
+      border: 2px solid rgba(249, 115, 22, 0.95);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99997;
+      animation: ripple-expand 0.6s var(--ease-out-expo) forwards;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+    }
+
+    @keyframes ripple-expand {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+
+      100% {
+        width: 70px;
+        height: 70px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (hover: none) and (pointer: coarse),
+    (max-width: 768px) {
+
+      #cursor-dot,
+      #cursor-glow,
+      .cursor-particle {
+        display: none !important;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
-    .grain-overlay{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.04}
-    .img-product{width:100%;object-fit:cover;filter:contrast(1.05)saturate(1.04)brightness(1.03)}
-    picture{display:block;width:100%}
-    .img-wrap{overflow:hidden}.img-wrap picture,.img-wrap .h-full{display:block;width:100%;height:100%}.img-wrap img{transition:transform .4s cubic-bezier(0.16,1,0.3,1)}.img-wrap:hover img{transform:scale(1.04)}
+
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.04
+    }
+
+    .img-product {
+      width: 100%;
+      object-fit: cover;
+      filter: contrast(1.05)saturate(1.04)brightness(1.03)
+    }
+
+    picture {
+      display: block;
+      width: 100%
+    }
+
+    .img-wrap {
+      overflow: hidden
+    }
+
+    .img-wrap picture,
+    .img-wrap .h-full {
+      display: block;
+      width: 100%;
+      height: 100%
+    }
+
+    .img-wrap img {
+      transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1)
+    }
+
+    .img-wrap:hover img {
+      transform: scale(1.04)
+    }
   </style>
 
   <!-- Speculation Rules: hover/按下时预渲染链接目标页，消除加载空窗 -->
@@ -191,282 +444,509 @@
 </head>
 
 <body class="bg-white text-steel-gray antialiased">
-<script>document.documentElement.style.cursor='none';</script>
-<svg style="position:absolute;width:0;height:0"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter></svg>
+  <script>document.documentElement.style.cursor = 'none';</script>
+  <svg style="position:absolute;width:0;height:0">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+    </filter>
+  </svg>
 
-<!-- Custom Cursor Elements -->
-<div id="cursor-dot"><div class="dot-center"></div></div>
-<div id="cursor-glow"></div>
+  <!-- Custom Cursor Elements -->
+  <div id="cursor-dot">
+    <div class="dot-center"></div>
+  </div>
+  <div id="cursor-glow"></div>
 
-<!-- ============================================= -->
-<!-- STICKY HEADER                                 -->
-<!-- ============================================= -->
-<header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
-  <nav class="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 lg:h-20" aria-label="Main navigation">
-    <a href="/" class="flex items-center shrink-0" aria-label="Lianjia Fence home">
-      <img src="/assets/img/logo.png" alt="Lianjia Fence logo" class="h-10 w-auto">
-    </a>
-    <ul class="hidden lg:flex items-center gap-x-8 text-sm font-medium tracking-wide">
-      <li><a href="/" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Home</a></li>
-      <li class="nav-dropdown relative">
-        <a href="/#products" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright inline-flex items-center gap-1">Products <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/field-fence.html" class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Field Fence</a>
-          <a href="/products/chain-link-fence.html" class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Chain Link Fence</a>
-          <a href="/products/y-post.html" class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Y Post / Star Picket</a>
-        </div>
-      </li>
-      <li><a href="/#why-us" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Why Us</a></li>
-      <li><a href="/#about" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">About</a></li>
-      <li><a href="/#connect" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Factory Tour</a></li>
-      <li><a href="/blog/" class="text-accent-bright transition-colors duration-200 py-1 border-b-2 border-accent-bright">Blog</a></li>
-      <li><a href="/#faq" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">FAQ</a></li>
-      <li><a href="/#contact" class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Contact</a></li>
-    </ul>
-    <div class="flex items-center gap-4">
-      <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-green-50 transition-colors duration-200" aria-label="Chat on WhatsApp">
-        <svg class="w-6 h-6 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <!-- ============================================= -->
+  <!-- STICKY HEADER                                 -->
+  <!-- ============================================= -->
+  <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <nav class="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 lg:h-20"
+      aria-label="Main navigation">
+      <a href="/" class="flex items-center shrink-0" aria-label="Lianjia Fence home">
+        <img src="/assets/img/logo.png" alt="Lianjia Fence logo" class="h-10 w-auto">
       </a>
-      <a href="#inquiry" class="hidden sm:inline-flex items-center bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md">Get a Quote</a>
-      <button id="mobile-menu-btn" type="button" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md text-heading hover:bg-gray-100 transition-colors" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <svg id="icon-hamburger" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
-        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-  </nav>
-  <div id="mobile-menu" class="lg:hidden hidden overflow-hidden transition-all duration-300 max-h-0 bg-white/95 backdrop-blur-md border-t border-gray-100">
-    <ul class="flex flex-col px-6 py-4 space-y-1 text-base font-medium">
-      <li><a href="/" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Home</a></li>
-      <li>
-        <a href="/#products" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Products</a>
-        <ul class="pl-4 mt-1 space-y-1">
-          <li><a href="/products/field-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Field Fence</a></li>
-          <li><a href="/products/chain-link-fence.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Chain Link Fence</a></li>
-          <li><a href="/products/y-post.html" class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Y Post / Star Picket</a></li>
-        </ul>
-      </li>
-      <li><a href="/#why-us" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Why Us</a></li>
-      <li><a href="/#about" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">About</a></li>
-      <li><a href="/#connect" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Factory Tour</a></li>
-      <li><a href="/blog/" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Blog</a></li>
-      <li><a href="/#faq" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">FAQ</a></li>
-      <li><a href="/#contact" class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Contact</a></li>
-    </ul>
-  </div>
-</header>
-
-<main id="swup" class="transition-fade" tabindex="-1">
-
-<!-- Breadcrumb -->
-<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="Breadcrumb">
-  <ol class="flex items-center gap-2 text-sm text-gray-500">
-    <li><a href="/" class="hover:text-accent-bright transition-colors">Home</a></li>
-    <li><span class="mx-1">/</span></li>
-    <li><a href="/blog/" class="hover:text-accent-bright transition-colors">Blog</a></li>
-    <li><span class="mx-1">/</span></li>
-    <li class="text-heading font-medium">Y Post</li>
-  </ol>
-</nav>
-
-<!-- ============================================= -->
-<!-- CATEGORY HERO                                 -->
-<!-- ============================================= -->
-<section class="relative bg-slate-900 text-white overflow-hidden">
-  <div class="absolute inset-0">
-    <picture>
-      <source srcset="/assets/img/y-post-app-01.webp" type="image/webp">
-      <img src="/assets/img/y-post-app-01.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="eager" fetchpriority="high" width="1280" height="800">
-    </picture>
-  </div>
-  <div class="absolute inset-0 bg-black/50"></div>
-  <div class="grain-overlay" style="filter:url(#grain)"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-    <div class="max-w-3xl">
-      <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Y Post / Star Picket</p>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">Y Post &amp; Star Picket Guides</h1>
-      <p class="text-lg md:text-xl text-gray-300 leading-relaxed">Steel fence posts for farm, vineyard and temporary fencing &mdash; profile comparison, installation tips and pairing guides from a factory.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- ARTICLE GRID                                  -->
-<!-- ============================================= -->
-<section class="py-16 lg:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
-
-      <!-- Y Post Profiles Explained -->
-      <a href="/blog/y-post-profiles-explained.html" class="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
-        <div class="overflow-hidden img-wrap aspect-[16/10]">
-          <div class="h-full">
-            <picture class="block h-full">
-              <source srcset="/assets/img/y-post-app-01.webp" type="image/webp">
-              <img src="/assets/img/y-post-app-01.jpg" alt="Y post star picket profiles comparison" class="img-product w-full h-full object-cover" loading="eager" decoding="async" width="800" height="500">
-            </picture>
+      <ul class="hidden lg:flex items-center gap-x-8 text-sm font-medium tracking-wide">
+        <li><a href="/"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Home</a>
+        </li>
+        <li class="nav-dropdown relative">
+          <a href="/#products"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright inline-flex items-center gap-1">Products
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg></a>
+          <div class="nav-dropdown-menu">
+            <a href="/products/field-fence.html"
+              class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Field
+              Fence</a>
+            <a href="/products/chain-link-fence.html"
+              class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Chain
+              Link Fence</a>
+            <a href="/products/y-post.html"
+              class="block px-4 py-2.5 text-sm text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Y
+              Post / Star Picket</a>
           </div>
+        </li>
+        <li><a href="/#why-us"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Why
+            Us</a></li>
+        <li><a href="/#about"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">About</a>
+        </li>
+        <li><a href="/#connect"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Factory
+            Tour</a></li>
+        <li><a href="/blog/"
+            class="text-accent-bright transition-colors duration-200 py-1 border-b-2 border-accent-bright">Blog</a></li>
+        <li><a href="/#faq"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">FAQ</a>
+        </li>
+        <li><a href="/#contact"
+            class="text-heading hover:text-accent-bright transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-accent-bright">Contact</a>
+        </li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-green-50 transition-colors duration-200"
+          aria-label="Chat on WhatsApp">
+          <svg class="w-6 h-6 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <a href="#inquiry"
+          class="hidden sm:inline-flex items-center bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md">Get
+          a Quote</a>
+        <button id="mobile-menu-btn" type="button"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md text-heading hover:bg-gray-100 transition-colors"
+          aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <svg id="icon-hamburger" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu"
+      class="lg:hidden hidden overflow-hidden transition-all duration-300 max-h-0 bg-white/95 backdrop-blur-md border-t border-gray-100">
+      <ul class="flex flex-col px-6 py-4 space-y-1 text-base font-medium">
+        <li><a href="/"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Home</a>
+        </li>
+        <li>
+          <a href="/#products"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Products</a>
+          <ul class="pl-4 mt-1 space-y-1">
+            <li><a href="/products/field-fence.html"
+                class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Field
+                Fence</a></li>
+            <li><a href="/products/chain-link-fence.html"
+                class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Chain
+                Link Fence</a></li>
+            <li><a href="/products/y-post.html"
+                class="mobile-nav-link block py-2 px-3 rounded-lg text-sm text-gray-500 hover:text-accent-bright hover:bg-orange-50 transition-colors">Y
+                Post / Star Picket</a></li>
+          </ul>
+        </li>
+        <li><a href="/#why-us"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Why
+            Us</a></li>
+        <li><a href="/#about"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">About</a>
+        </li>
+        <li><a href="/#connect"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Factory
+            Tour</a></li>
+        <li><a href="/blog/"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Blog</a>
+        </li>
+        <li><a href="/#faq"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">FAQ</a>
+        </li>
+        <li><a href="/#contact"
+            class="mobile-nav-link block py-3 px-3 rounded-lg text-heading hover:text-accent-bright hover:bg-orange-50 transition-colors">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="swup" class="transition-fade" tabindex="-1">
+
+    <!-- Breadcrumb -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-accent-bright transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/blog/" class="hover:text-accent-bright transition-colors">Blog</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-heading font-medium">Y Post</li>
+      </ol>
+    </nav>
+
+    <!-- ============================================= -->
+    <!-- CATEGORY HERO                                 -->
+    <!-- ============================================= -->
+    <section class="relative bg-slate-900 text-white overflow-hidden">
+      <div class="absolute inset-0">
+        <picture>
+          <source srcset="/assets/img/y-post-app-01.webp" type="image/webp">
+          <img src="/assets/img/y-post-app-01.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="eager"
+            fetchpriority="high" width="1280" height="800">
+        </picture>
+      </div>
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="grain-overlay" style="filter:url(#grain)"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div class="max-w-3xl">
+          <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Y Post / Star Picket</p>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">Y Post &amp; Star Picket Guides</h1>
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed">Steel fence posts for farm, vineyard and temporary
+            fencing &mdash; profile comparison, installation tips and pairing guides from a factory.</p>
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <span class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Buying Guide</span>
-          <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">Y Post Profiles Explained: Plain, Scalloped and Studded Compared</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">Factory comparison of the three Y post edge profiles &mdash; which grip type suits your fence, terrain and livestock.</p>
-          <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
-            <span>August 28, 2026</span>
-            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-            <span>6 min read</span>
-          </div>
+      </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- ARTICLE GRID                                  -->
+    <!-- ============================================= -->
+    <section class="py-16 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+
+          <!-- Y Post Profiles Explained -->
+          <a href="/blog/y-post-profiles-explained.html"
+            class="group flex flex-col rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
+            <div class="overflow-hidden img-wrap aspect-[16/10]">
+              <div class="h-full">
+                <picture class="block h-full">
+                  <source srcset="/assets/img/y-post-app-01.webp" type="image/webp">
+                  <img src="/assets/img/y-post-app-01.jpg" alt="Y post star picket profiles comparison"
+                    class="img-product w-full h-full object-cover" loading="eager" decoding="async" width="800"
+                    height="500">
+                </picture>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <span
+                class="inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-600 mb-3">Buying
+                Guide</span>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent-bright transition-colors leading-snug">
+                Y Post Profiles Explained: Plain, Scalloped and Studded Compared</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">Factory comparison of the three Y post edge
+                profiles &mdash; which grip type suits your fence, terrain and livestock.</p>
+              <div class="flex items-center gap-3 text-sm text-gray-400 mt-auto pt-4 border-t border-gray-100">
+                <span>August 28, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                <span>6 min read</span>
+              </div>
+            </div>
+          </a>
+
         </div>
-      </a>
+      </div>
+    </section>
 
-    </div>
-  </div>
-</section>
+    <!-- ============================================= -->
+    <!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->
+    <!-- 仅顶部 h2 + 引导语按页面定制；表单本体与首页一致 -->
+    <!-- ============================================= -->
+    <section id="inquiry" class="bg-slate-800 text-white py-20 lg:py-28 relative">
+      <div class="grain-overlay" style="filter:url(#grain)"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          <div class="lg:col-span-3">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2">Get a Y Post Quote</h2>
+            <p class="text-gray-400 mb-8">Tell us your stock, terrain and destination port — we'll recommend a spec and
+              send a factory-direct quote within 24 hours.</p>
+            <form id="inquiry-form"
+              action="https://script.google.com/macros/s/AKfycbypWI7OkJUwfjAU4i0qzio7zAY08rQR6ZZMyq752L3bbuE6_5_3rHTkKiXF9LwQKARdoQ/exec"
+              method="POST" class="space-y-5" novalidate>
+              <input type="hidden" name="_subject"
+                value="New Inquiry from Anping Lianjia Metal Products Co., Ltd. Website">
+              <input type="hidden" name="_autoresponse"
+                value="Thank you for your inquiry! We have received your message and will reply within 24 hours with a complete quote based on your project details. Our team will prepare a full solution (mesh + posts + accessories) tailored to your needs. If urgent, please reach us via WhatsApp.">
+              <input type="hidden" name="source_page" id="inquiry-source" value="blog-y-post">
+              <input type="hidden" name="dwell_times" id="inquiry-dwell" value="">
+              <div style="display:none" aria-hidden="true"><label for="_gotcha">Leave this empty</label><input
+                  type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off"></div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label for="contact-name" class="block text-sm font-medium text-gray-300 mb-1.5">Full Name <span
+                      class="text-orange-400">*</span></label><input type="text" id="contact-name" name="name" required
+                    placeholder="John Smith"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200">
+                </div>
+                <div><label for="contact-email" class="block text-sm font-medium text-gray-300 mb-1.5">Email <span
+                      class="text-orange-400">*</span></label><input type="email" id="contact-email" name="email"
+                    required placeholder="john@example.com"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"><input
+                    type="hidden" name="_replyto" id="hidden-replyto" value=""></div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label for="contact-company"
+                    class="block text-sm font-medium text-gray-300 mb-1.5">Company</label><input type="text"
+                    id="contact-company" name="company" placeholder="Your company name"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200">
+                </div>
+                <div><label for="contact-country"
+                    class="block text-sm font-medium text-gray-300 mb-1.5">Country</label><input type="text"
+                    id="contact-country" name="country" placeholder="Your country"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200">
+                </div>
+              </div>
+              <div><label for="contact-product" class="block text-sm font-medium text-gray-300 mb-1.5">Product of
+                  Interest</label><select id="contact-product" name="product"
+                  class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 appearance-none">
+                  <option value="" disabled>Select a product...</option>
+                  <option value="Field Fence">Field Fence</option>
+                  <option value="Chain Link Fence">Chain Link Fence</option>
+                  <option value="Barbed Wire">Barbed Wire</option>
+                  <option value="Y Post" selected>Y Post</option>
+                  <option value="Multiple Products">Multiple Products (full solution)</option>
+                  <option value="Other">Other</option>
+                </select></div>
+              <div><label for="contact-scenario" class="block text-sm font-medium text-gray-300 mb-1.5">Project / Usage
+                  Scenario</label><textarea id="contact-scenario" name="scenario" rows="3"
+                  placeholder="Describe your project: fence length, purpose (livestock, boundary, security), whether you need posts + accessories..."
+                  class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 resize-vertical"></textarea>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label for="contact-fence-length" class="block text-sm font-medium text-gray-300 mb-1.5">Fence
+                    Length (approx.)</label><input type="text" id="contact-fence-length" name="fence_length"
+                    placeholder="e.g. 500 m / 2 km / Not sure"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200">
+                </div>
+                <div><label for="contact-needs-posts" class="block text-sm font-medium text-gray-300 mb-1.5">Need Posts
+                    / Accessories?</label><select id="contact-needs-posts" name="needs_posts"
+                    class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 appearance-none">
+                    <option value="Not sure">Not sure yet</option>
+                    <option value="Yes - posts and accessories">Yes — posts &amp; accessories needed</option>
+                    <option value="No - mesh only">No — mesh / wire only</option>
+                  </select></div>
+              </div>
+              <div><label for="contact-message" class="block text-sm font-medium text-gray-300 mb-1.5">Additional
+                  Details</label><textarea id="contact-message" name="message" rows="4"
+                  placeholder="Wire diameter, zinc coating, quantity, delivery terms, or any other requirements..."
+                  class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 resize-vertical"></textarea>
+              </div>
+              <button type="submit" id="submit-btn"
+                class="w-full sm:w-auto px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">Send
+                Inquiry</button>
+              <p class="text-sm text-gray-400 flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>We reply within 24 hours. Your details stay private. See our <a href="/privacy.html"
+                  class="text-gray-300 underline hover:text-white transition-colors">Privacy Policy</a>.</p>
+            </form>
 
-<!-- ============================================= -->
-<!-- INQUIRY FORM (全站统一标准表单, id=inquiry)    -->
-<!-- 仅顶部 h2 + 引导语按页面定制；表单本体与首页一致 -->
-<!-- ============================================= -->
-<section id="inquiry" class="bg-slate-800 text-white py-20 lg:py-28 relative">
-  <div class="grain-overlay" style="filter:url(#grain)"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-      <div class="lg:col-span-3">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">Get a Y Post Quote</h2>
-        <p class="text-gray-400 mb-8">Tell us your stock, terrain and destination port — we'll recommend a spec and send a factory-direct quote within 24 hours.</p>
-        <form id="inquiry-form" action="https://script.google.com/macros/s/AKfycbypWI7OkJUwfjAU4i0qzio7zAY08rQR6ZZMyq752L3bbuE6_5_3rHTkKiXF9LwQKARdoQ/exec" method="POST" class="space-y-5" novalidate>
-          <input type="hidden" name="_subject" value="New Inquiry from Anping Lianjia Metal Products Co., Ltd. Website">
-          <input type="hidden" name="_autoresponse" value="Thank you for your inquiry! We have received your message and will reply within 24 hours with a complete quote based on your project details. Our team will prepare a full solution (mesh + posts + accessories) tailored to your needs. If urgent, please reach us via WhatsApp.">
-          <input type="hidden" name="source_page" id="inquiry-source" value="blog-y-post">
-          <input type="hidden" name="dwell_times" id="inquiry-dwell" value="">
-          <div style="display:none" aria-hidden="true"><label for="_gotcha">Leave this empty</label><input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off"></div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div><label for="contact-name" class="block text-sm font-medium text-gray-300 mb-1.5">Full Name <span class="text-orange-400">*</span></label><input type="text" id="contact-name" name="name" required placeholder="John Smith" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"></div>
-            <div><label for="contact-email" class="block text-sm font-medium text-gray-300 mb-1.5">Email <span class="text-orange-400">*</span></label><input type="email" id="contact-email" name="email" required placeholder="john@example.com" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"><input type="hidden" name="_replyto" id="hidden-replyto" value=""></div>
+            <!-- Inline success message (initially hidden) -->
+            <div id="inquiry-success" class="hidden text-center py-8">
+              <div class="mb-6">
+                <svg class="w-20 h-20 mx-auto" viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="40" r="38" class="stroke-accent-bright fill-orange-50" stroke-width="3" />
+                  <path d="M25 42l10 10 20-20" class="stroke-accent-bright" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" style="stroke-dasharray:50;animation:checkDraw .6s ease-out .3s forwards" />
+                </svg>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold mb-3">Thank You for Your Inquiry!</h3>
+              <p class="text-gray-400 text-lg mb-2">We've received your message and our sales team will get back to you
+                <strong class="text-white">within 24 hours</strong> with a detailed quote.</p>
+              <p class="text-gray-500 text-sm mb-8">If urgent, reach us directly via WhatsApp.</p>
+              <div class="bg-slate-700/60 rounded-lg p-4 mb-8 text-left inline-block mx-auto">
+                <p class="font-semibold text-white mb-2">📋 What happens next:</p>
+                <ol class="space-y-1 text-sm text-gray-400">
+                  <li><span class="text-orange-400 font-bold">1.</span> Our team reviews your requirements within 24
+                    hours.</li>
+                  <li><span class="text-orange-400 font-bold">2.</span> We'll email you a complete quote with product
+                    specs &amp; freight.</li>
+                  <li><span class="text-orange-400 font-bold">3.</span> Once confirmed, we send free samples and
+                    proforma invoice.</li>
+                </ol>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button data-reset-form="#inquiry-form"
+                  class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-sm transition-colors">←
+                  Submit Another Inquiry</button>
+                <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold rounded-lg transition-colors">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Chat on WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div><label for="contact-company" class="block text-sm font-medium text-gray-300 mb-1.5">Company</label><input type="text" id="contact-company" name="company" placeholder="Your company name" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"></div>
-            <div><label for="contact-country" class="block text-sm font-medium text-gray-300 mb-1.5">Country</label><input type="text" id="contact-country" name="country" placeholder="Your country" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"></div>
-          </div>
-          <div><label for="contact-product" class="block text-sm font-medium text-gray-300 mb-1.5">Product of Interest</label><select id="contact-product" name="product" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 appearance-none"><option value="" disabled>Select a product...</option><option value="Field Fence">Field Fence</option><option value="Chain Link Fence">Chain Link Fence</option><option value="Barbed Wire">Barbed Wire</option><option value="Y Post" selected>Y Post</option><option value="Multiple Products">Multiple Products (full solution)</option><option value="Other">Other</option></select></div>
-          <div><label for="contact-scenario" class="block text-sm font-medium text-gray-300 mb-1.5">Project / Usage Scenario</label><textarea id="contact-scenario" name="scenario" rows="3" placeholder="Describe your project: fence length, purpose (livestock, boundary, security), whether you need posts + accessories..." class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 resize-vertical"></textarea></div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div><label for="contact-fence-length" class="block text-sm font-medium text-gray-300 mb-1.5">Fence Length (approx.)</label><input type="text" id="contact-fence-length" name="fence_length" placeholder="e.g. 500 m / 2 km / Not sure" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200"></div>
-            <div><label for="contact-needs-posts" class="block text-sm font-medium text-gray-300 mb-1.5">Need Posts / Accessories?</label><select id="contact-needs-posts" name="needs_posts" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 appearance-none"><option value="Not sure">Not sure yet</option><option value="Yes - posts and accessories">Yes — posts &amp; accessories needed</option><option value="No - mesh only">No — mesh / wire only</option></select></div>
-          </div>
-          <div><label for="contact-message" class="block text-sm font-medium text-gray-300 mb-1.5">Additional Details</label><textarea id="contact-message" name="message" rows="4" placeholder="Wire diameter, zinc coating, quantity, delivery terms, or any other requirements..." class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200 resize-vertical"></textarea></div>
-          <button type="submit" id="submit-btn" class="w-full sm:w-auto px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">Send Inquiry</button>
-          <p class="text-sm text-gray-400 flex items-center gap-2"><svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>We reply within 24 hours. Your details stay private. See our <a href="/privacy.html" class="text-gray-300 underline hover:text-white transition-colors">Privacy Policy</a>.</p>
-        </form>
-
-        <!-- Inline success message (initially hidden) -->
-        <div id="inquiry-success" class="hidden text-center py-8">
-          <div class="mb-6">
-            <svg class="w-20 h-20 mx-auto" viewBox="0 0 80 80" fill="none">
-              <circle cx="40" cy="40" r="38" class="stroke-accent-bright fill-orange-50" stroke-width="3"/>
-              <path d="M25 42l10 10 20-20" class="stroke-accent-bright" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:50;animation:checkDraw .6s ease-out .3s forwards"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-bold mb-3">Thank You for Your Inquiry!</h3>
-          <p class="text-gray-400 text-lg mb-2">We've received your message and our sales team will get back to you <strong class="text-white">within 24 hours</strong> with a detailed quote.</p>
-          <p class="text-gray-500 text-sm mb-8">If urgent, reach us directly via WhatsApp.</p>
-          <div class="bg-slate-700/60 rounded-lg p-4 mb-8 text-left inline-block mx-auto">
-            <p class="font-semibold text-white mb-2">📋 What happens next:</p>
-            <ol class="space-y-1 text-sm text-gray-400">
-              <li><span class="text-orange-400 font-bold">1.</span> Our team reviews your requirements within 24 hours.</li>
-              <li><span class="text-orange-400 font-bold">2.</span> We'll email you a complete quote with product specs &amp; freight.</li>
-              <li><span class="text-orange-400 font-bold">3.</span> Once confirmed, we send free samples and proforma invoice.</li>
-            </ol>
-          </div>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button data-reset-form="#inquiry-form" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-sm transition-colors">← Submit Another Inquiry</button>
-            <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold rounded-lg transition-colors">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Chat on WhatsApp
-            </a>
+          <div class="lg:col-span-2">
+            <div class="bg-slate-700/60 border border-slate-600/50 rounded-lg p-8 lg:p-10 backdrop-blur-sm">
+              <h3 class="text-2xl font-bold text-white mb-3">Get Factory-Direct Pricing</h3>
+              <p class="text-gray-400 mb-6 leading-relaxed">Tell us what you need — we reply within 24 hours with a
+                quote and samples.</p>
+              <div class="bg-slate-600/50 rounded-lg p-4 mb-6">
+                <p class="text-sm text-orange-400 font-semibold mb-1">📋 What you'll get:</p>
+                <ul class="text-sm text-gray-300 space-y-1">
+                  <li>• Product reference price</li>
+                  <li>• Estimated freight to your port</li>
+                  <li>• Recommended specs for your use</li>
+                  <li>• Lead time &amp; packing details</li>
+                </ul>
+              </div>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4"><span
+                    class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg
+                      class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg></span>
+                  <div>
+                    <p class="text-sm text-gray-400 mb-0.5">Email</p><a href="mailto:sales@lianjiafence.com"
+                      class="text-white hover:text-orange-400 transition-colors duration-200 font-medium break-all">sales@lianjiafence.com</a>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4"><span
+                    class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500/15 text-green-400"><svg
+                      class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg></span>
+                  <div>
+                    <p class="text-sm text-gray-400 mb-1">WhatsApp</p>
+                    <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer"
+                      class="block text-white hover:text-green-400 transition-colors duration-200 font-medium">+86 136 0318
+                      1774</a>
+                    <a href="https://wa.me/8618832808956" target="_blank" rel="noopener noreferrer"
+                      class="block text-white hover:text-green-400 transition-colors duration-200 font-medium">+86 188 3280
+                      8956</a>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4"><span
+                    class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg
+                      class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg></span>
+                  <div>
+                    <p class="text-sm text-gray-400 mb-0.5">Factory Address</p>
+                    <p class="text-white font-medium">100m North of Diwo Village, Anping County</p>
+                    <p class="text-gray-400 text-sm mt-1">Hengshui City, Hebei Province, China 053600</p>
+                  </div>
+                </li>
+              </ul>
+              <!-- Factory Map -->
+              <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
+                <iframe title="Factory location"
+                  src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k"
+                  width="100%" height="200" style="border:0" loading="lazy" decoding="async"></iframe>
+              </div>
+              <ul class="space-y-6 mt-6">
+                <li class="flex items-start gap-4"><span
+                    class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg
+                      class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg></span>
+                  <div>
+                    <p class="text-sm text-gray-400 mb-0.5">Business Hours</p>
+                    <p class="text-white font-medium">Mon – Sat (UTC+8)</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div class="lg:col-span-2">
-        <div class="bg-slate-700/60 border border-slate-600/50 rounded-lg p-8 lg:p-10 backdrop-blur-sm">
-          <h3 class="text-2xl font-bold text-white mb-3">Get Factory-Direct Pricing</h3>
-          <p class="text-gray-400 mb-6 leading-relaxed">Tell us what you need — we reply within 24 hours with a quote and samples.</p>
-          <div class="bg-slate-600/50 rounded-lg p-4 mb-6">
-            <p class="text-sm text-orange-400 font-semibold mb-1">📋 What you'll get:</p>
-            <ul class="text-sm text-gray-300 space-y-1">
-              <li>• Product reference price</li>
-              <li>• Estimated freight to your port</li>
-              <li>• Recommended specs for your use</li>
-              <li>• Lead time &amp; packing details</li>
-            </ul>
-          </div>
-          <ul class="space-y-6">
-            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Email</p><a href="mailto:sales@lianjiafence.com" class="text-white hover:text-orange-400 transition-colors duration-200 font-medium break-all">sales@lianjiafence.com</a></div></li>
-            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500/15 text-green-400"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">WhatsApp</p><a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer" class="text-white hover:text-green-400 transition-colors duration-200 font-medium">+86 136 0318 1774</a></div></li>
-            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Factory Address</p><p class="text-white font-medium">100m North of Diwo Village, Anping County</p><p class="text-gray-400 text-sm mt-1">Hengshui City, Hebei Province, China 053600</p></div></li>
-          </ul>
-          <!-- Factory Map -->
-          <div class="mt-6 rounded-lg overflow-hidden border border-slate-600">
-            <iframe title="Factory location" src="https://www.google.com/maps?q=38.1991225617628,115.43146862770143&output=embed&z=15&t=k" width="100%" height="200" style="border:0" loading="lazy" decoding="async"></iframe>
-          </div>
-          <ul class="space-y-6 mt-6">
-            <li class="flex items-start gap-4"><span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-orange-500/15 text-orange-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><div><p class="text-sm text-gray-400 mb-0.5">Business Hours</p><p class="text-white font-medium">Mon – Sat (UTC+8)</p></div></li>
-          </ul>
-        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- FOOTER                                        -->
+    <!-- ============================================= -->
+    <footer class="bg-slate-900 text-gray-400 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+        <p class="text-white font-semibold text-lg">Anping Lianjia Metal Products Co., Ltd. &mdash; Wire Fence
+          Manufacturer, Anping, Hebei, China</p>
+        <p class="text-sm tracking-wide">
+          <a href="/products/field-fence.html" class="hover:text-white transition-colors">Field Fence</a> &middot;
+          <a href="/products/chain-link-fence.html" class="hover:text-white transition-colors">Chain Link Fence</a>
+          &middot;
+          <a href="/products/y-post.html" class="hover:text-white transition-colors">Y Post</a> &middot;
+          <a href="/#products" class="hover:text-white transition-colors">Barbed Wire</a> &middot;
+          <a href="/blog/" class="text-orange-400 hover:text-orange-300 transition-colors">Blog</a>
+        </p>
+        <p class="text-sm"><a href="mailto:sales@lianjiafence.com"
+            class="hover:text-white transition-colors">sales@lianjiafence.com</a> &middot; <a
+            href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer"
+            class="hover:text-white transition-colors">+86 136 0318 1774</a> &middot; Anping, Hebei, China</p>
+        <p class="text-xs text-gray-500 pt-4 border-t border-slate-800">&copy; 2026 Anping Lianjia Metal Products Co.,
+          Ltd. All rights reserved. &middot; <a href="/privacy.html" class="hover:text-white transition-colors">Privacy
+            Policy</a></p>
+      </div>
+    </footer>
+
+    <!-- Back to Top + Floating buttons -->
+    <button id="back-to-top"
+      class="fixed bottom-40 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-white/90 backdrop-blur border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white shadow-lg shadow-orange-500/10 hover:shadow-orange-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 opacity-0 translate-y-4 pointer-events-none"
+      aria-label="Back to top" title="Back to top">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+      </svg>
+    </button>
+    <a href="#inquiry"
+      class="fixed bottom-24 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-xl shadow-orange-500/30 transition-all duration-200"
+      aria-label="Get a Quote" title="Get a Quote">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    </a>
+    <a href="https://wa.me/8613603181774?text=Hi%2C%20I%27m%20interested%20in%20your%20wire%20fence%20products"
+      target="_blank" rel="noopener noreferrer"
+      class="wa-pulse fixed bottom-6 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white shadow-xl shadow-green-500/30 transition-all duration-200"
+      aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </a>
+    <!-- Mobile bottom bar -->
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-700 safe-area-bottom">
+      <div class="flex items-center justify-between px-4 py-3 gap-4">
+        <a href="https://wa.me/8613603181774?text=Hi%2C%20I%27m%20interested%20in%20your%20wire%20fence%20products"
+          target="_blank" rel="noopener noreferrer"
+          class="flex-1 flex items-center justify-center gap-2 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold rounded-lg transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          WhatsApp
+        </a>
+        <a href="#inquiry"
+          class="flex-1 flex items-center justify-center gap-2 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Get a Quote
+        </a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================= -->
-<!-- FOOTER                                        -->
-<!-- ============================================= -->
-<footer class="bg-slate-900 text-gray-400 py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-    <p class="text-white font-semibold text-lg">Anping Lianjia Metal Products Co., Ltd. &mdash; Wire Fence Manufacturer, Anping, Hebei, China</p>
-    <p class="text-sm tracking-wide">
-      <a href="/products/field-fence.html" class="hover:text-white transition-colors">Field Fence</a> &middot;
-      <a href="/products/chain-link-fence.html" class="hover:text-white transition-colors">Chain Link Fence</a> &middot;
-      <a href="/products/y-post.html" class="hover:text-white transition-colors">Y Post</a> &middot;
-      <a href="/#products" class="hover:text-white transition-colors">Barbed Wire</a> &middot;
-      <a href="/blog/" class="text-orange-400 hover:text-orange-300 transition-colors">Blog</a>
-    </p>
-    <p class="text-sm"><a href="mailto:sales@lianjiafence.com" class="hover:text-white transition-colors">sales@lianjiafence.com</a> &middot; <a href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">+86 136 0318 1774</a> &middot; Anping, Hebei, China</p>
-    <p class="text-xs text-gray-500 pt-4 border-t border-slate-800">&copy; 2026 Anping Lianjia Metal Products Co., Ltd. All rights reserved. &middot; <a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></p>
-  </div>
-</footer>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 800, offset: 80 });</script>
+    <script src="/assets/js/tracker.js"></script>
+    <script src="/assets/js/cookie-consent.js"></script>
 
-<!-- Back to Top + Floating buttons -->
-<button id="back-to-top"
-  class="fixed bottom-40 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-white/90 backdrop-blur border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white shadow-lg shadow-orange-500/10 hover:shadow-orange-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 opacity-0 translate-y-4 pointer-events-none"
-  aria-label="Back to top" title="Back to top">
-  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
-</button>
-<a href="#inquiry" class="fixed bottom-24 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-xl shadow-orange-500/30 transition-all duration-200" aria-label="Get a Quote" title="Get a Quote">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-</a>
-<a href="https://wa.me/8613603181774?text=Hi%2C%20I%27m%20interested%20in%20your%20wire%20fence%20products" target="_blank" rel="noopener noreferrer" class="wa-pulse fixed bottom-6 right-6 z-50 hidden sm:flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white shadow-xl shadow-green-500/30 transition-all duration-200" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
-  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<!-- Mobile bottom bar -->
-<div class="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-700 safe-area-bottom">
-  <div class="flex items-center justify-between px-4 py-3 gap-4">
-    <a href="https://wa.me/8613603181774?text=Hi%2C%20I%27m%20interested%20in%20your%20wire%20fence%20products" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold rounded-lg transition-colors">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
-    <a href="#inquiry" class="flex-1 flex items-center justify-center gap-2 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-      Get a Quote
-    </a>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ once: true, duration: 800, offset: 80 });</script>
-<script src="/assets/js/tracker.js"></script>
-<script src="/assets/js/cookie-consent.js"></script>
-
-</main>
+  </main>
 </body>
+
 </html>

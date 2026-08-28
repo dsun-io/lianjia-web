@@ -164,8 +164,12 @@
       // Y Post cards
       if (card.classList.contains('y-post-card')) {
         e.preventDefault();
-        switchHeroImage('#y-post-hero', card);
-        setActiveCard(document.querySelectorAll('.y-post-card'), card, { labelSelector: '.text-xs' });
+        var heroSel = card.getAttribute('data-hero') || '#y-post-hero';
+        switchHeroImage(heroSel, card);
+        // 仅高亮同一选项卡组（同一 .grid 容器内）的卡片，避免首页多组选项卡互相干扰
+        var scope = card.closest('.grid');
+        var groupCards = scope ? scope.querySelectorAll('.y-post-card') : document.querySelectorAll('.y-post-card');
+        setActiveCard(groupCards, card, { labelSelector: '.text-xs' });
         return;
       }
 
