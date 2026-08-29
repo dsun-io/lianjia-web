@@ -4,7 +4,8 @@ const path = require('path');
 const { URL } = require('url');
 
 const REPO = '';
-const PORT = 8080;
+// 支持 PORT 环境变量覆盖，避免与本地 dev 服务器端口冲突
+const PORT = process.env.PORT || 8080;
 const BASE = `http://localhost:${PORT}`;
 const PAGES = REPO
   ? [

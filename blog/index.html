@@ -49,6 +49,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Google Analytics 4 -->
@@ -63,6 +64,7 @@
 
   <!-- Tailwind CSS v3 (built with standalone CLI) -->
   <link href="/assets/css/tailwind.css" rel="stylesheet">
+  <link href="/assets/css/blog.css?v=3" rel="stylesheet">
 
   <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -77,7 +79,8 @@
   <script src="/assets/js/form-handler.js?v=4"></script>
   <script src="/assets/js/back-to-top.js"></script>
   <script src="/assets/js/mobile-menu.js"></script>
-  <script src="/assets/js/swup-init.js?v=5"></script>
+  <script src="/assets/js/nav-scrollspy.js?v=2"></script>
+  <script src="/assets/js/swup-init.js?v=6"></script>
   <script src="/assets/js/back-link.js"></script>
 
   <!-- Swup 过渡样式 -->
@@ -609,13 +612,16 @@
       <div class="grain-overlay" style="filter:url(#grain)"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div class="max-w-3xl">
-          <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Resources &amp; Buying Guides
+          <p class="text-sm tracking-[0.2em] uppercase text-orange-400 font-semibold mb-4">Buying Guides
           </p>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">Wire Fence Resources &amp; Buying
-            Guides</h1>
-          <p class="text-lg md:text-xl text-gray-300 leading-relaxed">Straight-talking guides from a factory floor, not
-            a sales desk &mdash; practical advice on specs, installation and importing for every wire fence product.
-            Written for international farmers, contractors and importers.</p>
+          <!-- H1：产品名词与产品页标题严格对齐（Field Fence / Chain Link Fence / Barbed Wire / Y Post & Star Picket / Galvanized Posts & Rails），保证全站实体口径一致，服务 GEO -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">Field Fence, Chain Link Fence,
+            Barbed Wire, Y Post &amp; Galvanized Posts &amp; Rails Guides</h1>
+          <!-- Hero 副标题：面向 GEO 优化，明确列出五大产品实体词 + 技术主题 + 目标受众，便于 AI 搜索引擎提取和引用 -->
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed">Practical buying guides and technical
+            resources for field fence, chain link fence, barbed wire, Y posts and galvanized posts &amp; rails &mdash;
+            covering wire gauge, zinc coating, knot types, installation and importing from China. Written for
+            international farmers, contractors, distributors and importers.</p>
         </div>
       </div>
     </section>
@@ -1184,7 +1190,7 @@
             href="https://wa.me/8613603181774" target="_blank" rel="noopener noreferrer"
             class="hover:text-white transition-colors">+86 136 0318 1774</a> &middot; Anping, Hebei, China</p>
         <p class="text-xs text-gray-500 pt-4 border-t border-slate-800">&copy; 2026 Anping Lianjia Metal Products Co.,
-          Ltd. All rights reserved. &middot; <a href="/privacy.html" class="hover:text-white transition-colors">Privacy
+          Ltd.（安平县联佳金属制品有限公司）All rights reserved. &middot; <a href="/privacy.html" class="hover:text-white transition-colors">Privacy
             Policy</a></p>
       </div>
     </footer>

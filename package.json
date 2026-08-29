@@ -1,0 +1,19 @@
+{
+  "name": "lianjia-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lianjia Fence official website - static site build tooling",
+  "scripts": {
+    "build:css": "tailwindcss -i tailwind-input.css -o assets/css/tailwind.css --minify",
+    "backup:images": "node -e \"const fs=require('fs'),p=require('path');const src='assets/img',dst=p.join('素材','img-backup');if(fs.existsSync(dst)){console.log('backup already exists, skipped');process.exit(0)}fs.cpSync(src,dst,{recursive:true});console.log('backed up to '+dst)\"",
+    "optimize:images": "node optimize-images.js",
+    "generate:favicon": "node generate-favicon.js",
+    "check:assets": "node check-assets.js",
+    "validate:jsonld": "node validate-jsonld.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "sharp": "^0.33.0",
+    "png-to-ico": "^2.1.8"
+  }
+}

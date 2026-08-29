@@ -49,6 +49,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Google Analytics 4 -->
@@ -79,6 +80,8 @@
 
   <!-- Tailwind CSS v3 (built with standalone CLI) -->
   <link href="/assets/css/tailwind.css" rel="stylesheet">
+  <!-- 正文排版 + 共享组件样式（cursor/kb-faq，全站 link 保证 swup 跳转后样式不丢） -->
+  <link href="/assets/css/blog.css?v=3" rel="stylesheet">
 
   <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -93,7 +96,8 @@
   <script src="/assets/js/form-handler.js?v=4"></script>
   <script src="/assets/js/back-to-top.js"></script>
   <script src="/assets/js/mobile-menu.js"></script>
-  <script src="/assets/js/swup-init.js?v=5"></script>
+  <script src="/assets/js/nav-scrollspy.js?v=2"></script>
+  <script src="/assets/js/swup-init.js?v=6"></script>
   <script src="/assets/js/back-link.js"></script>
 
   <!-- Swup 过渡样式 -->
@@ -122,7 +126,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://lianjiafence.com/#organization",
     "name": "Anping Lianjia Metal Products Co., Ltd.",
+    "legalName": "Anping Lianjia Metal Products Co., Ltd.",
+    "alternateName": ["Lianjia Fence", "安平县联佳金属制品有限公司", "联佳金属", "Lianjia Metal"],
     "url": "https://lianjiafence.com",
     "logo": "https://lianjiafence.com/assets/img/lianjia-fence-logo.jpg",
     "description": "Wire fence manufacturer based in Anping, Hebei, China. Factory-direct field fence, chain link fence, barbed wire and Y posts for customers worldwide.",
@@ -167,10 +174,43 @@
     "url": "https://lianjiafence.com",
     "description": "Factory-direct field fence, chain link fence, barbed wire and Y posts from Anping, Hebei, China.",
     "publisher": {
-      "@type": "Organization",
-      "name": "Anping Lianjia Metal Products Co., Ltd.",
-      "url": "https://lianjiafence.com"
+      "@id": "https://lianjiafence.com/#organization"
     }
+  }
+  </script>
+
+  <!-- Person JSON-LD：三位署名作者，与文章 author 实体及 About 区块人物卡对应（规范见 docs/作者人设规范.md） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://lianjiafence.com/#vera",
+    "name": "Vera Sun",
+    "jobTitle": "Co-Founder",
+    "worksFor": { "@id": "https://lianjiafence.com/#organization" },
+    "knowsAbout": ["Field fence", "Chain link fence", "Barbed wire", "Y posts"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://lianjiafence.com/#leo",
+    "name": "Leo Sun",
+    "jobTitle": "Co-Founder",
+    "worksFor": { "@id": "https://lianjiafence.com/#organization" },
+    "knowsAbout": ["AS/NZS 4534", "AS/NZS 4680", "Hot-dip galvanizing", "Fence installation"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://lianjiafence.com/#david",
+    "name": "David Sun",
+    "jobTitle": "Export Director",
+    "worksFor": { "@id": "https://lianjiafence.com/#organization" },
+    "knowsAbout": ["Export logistics", "FOB shipping", "Import regulations"]
   }
   </script>
 
@@ -216,8 +256,7 @@
       "name": "Lianjia Fence"
     },
     "manufacturer": {
-      "@type": "Organization",
-      "name": "Anping Lianjia Metal Products Co., Ltd."
+      "@id": "https://lianjiafence.com/#organization"
     },
     "offers": {
       "@type": "Offer",
@@ -245,8 +284,7 @@
     "embedUrl": "https://www.youtube.com/embed/J8PyUJubARQ",
     "contentUrl": "https://www.youtube.com/watch?v=J8PyUJubARQ",
     "publisher": {
-      "@type": "Organization",
-      "name": "Anping Lianjia Metal Products Co., Ltd."
+      "@id": "https://lianjiafence.com/#organization"
     }
   }
   </script>
@@ -1675,7 +1713,8 @@
             <p class="text-sm font-semibold tracking-[0.15em] uppercase text-orange-600 mb-4">About Us</p>
             <h2 class="text-3xl sm:text-4xl font-bold text-heading mb-6 leading-tight">Factory-Direct Wire Fence from
               China's Wire Mesh Capital</h2>
-            <p class="text-base md:text-lg text-gray-600 leading-relaxed">Anping Lianjia Metal Products Co., Ltd. is a
+            <p class="text-base md:text-lg text-gray-600 leading-relaxed">Anping Lianjia Metal Products Co., Ltd.
+              （安平县联佳金属制品有限公司）is a
               wire fence manufacturer based in Anping, Hebei &mdash; the largest wire mesh production base in China.
               With 20 years of production and a capacity of 500 containers per month, we specialize in field fence,
               chain link fence, barbed wire and Y posts, supplying wholesalers, fencing contractors and importers
@@ -1699,6 +1738,30 @@
               <span
                 class="inline-block text-xs font-semibold tracking-wider uppercase bg-orange-100 text-orange-600 px-3 py-1.5 rounded-full">AS/NZS
                 &amp; ASTM Zinc</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 团队人物卡：与文章 author Person 实体对应（规范见 docs/作者人设规范.md） -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div id="vera" class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+              <h3 class="text-lg font-bold text-gray-900">Vera Sun</h3>
+              <p class="text-sm font-semibold text-orange-600 mb-3">Co-Founder</p>
+              <p class="text-sm text-gray-600 leading-relaxed">Oversees product specifications and quality standards for
+                field fence, chain link fence, barbed wire and Y posts.</p>
+            </div>
+            <div id="leo" class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+              <h3 class="text-lg font-bold text-gray-900">Leo Sun</h3>
+              <p class="text-sm font-semibold text-orange-600 mb-3">Co-Founder</p>
+              <p class="text-sm text-gray-600 leading-relaxed">Leads technical interpretation of coating standards (AS/NZS
+                4534, AS/NZS 4680, ASTM) and installation guidance.</p>
+            </div>
+            <div id="david" class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+              <h3 class="text-lg font-bold text-gray-900">David Sun</h3>
+              <p class="text-sm font-semibold text-orange-600 mb-3">Export Director</p>
+              <p class="text-sm text-gray-600 leading-relaxed">Handles export sales, import logistics and trade terms for
+                customers worldwide.</p>
             </div>
           </div>
         </div>
@@ -1906,6 +1969,16 @@
               will calculate a tailored quote based on current market conditions; the final price will be confirmed in
               our official quotation only.</div>
           </div>
+        </div>
+
+        <!-- FAQ 知识库入口：完整问答库见 /faq.html（规范见 docs/FAQ知识库规范.md） -->
+        <div class="mt-12 text-center">
+          <a href="/faq.html"
+            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-lg transition-colors duration-200">View
+            Full FAQ Knowledge Base
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg></a>
         </div>
       </div>
     </section>
@@ -2140,7 +2213,7 @@
             class="hover:text-white transition-colors duration-200">+86 136 0318 1774</a> &nbsp;&middot;&nbsp; Anping,
           Hebei, China</p>
         <p class="text-xs text-gray-500 pt-4 border-t border-slate-800">&copy; 2026 Anping Lianjia Metal Products Co.,
-          Ltd. All rights reserved. &middot; <a href="/privacy.html"
+          Ltd.（安平县联佳金属制品有限公司）All rights reserved. &middot; <a href="/privacy.html"
             class="hover:text-white transition-colors duration-200">Privacy Policy</a></p>
       </div>
     </footer>

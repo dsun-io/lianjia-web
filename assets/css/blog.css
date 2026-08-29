@@ -283,3 +283,182 @@
   background: linear-gradient(to right, transparent, #e2e8f0, transparent);
   margin: 2.5rem 0;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   全站共享组件样式层（swup 跳转 + 整页加载两种场景都必须生效）
+   说明：页面 head 内的 <style> 在 swup 跳转时不加载，
+   因此跨页共享的组件样式统一收敛到本文件（全站 <link> 引用）。
+   各页面 head 中保留的重复样式仅作整页加载兜底，修改以本文件为准。
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Custom Cursor: 工业十字线（与 index.html head 版本一致） ── */
+#cursor-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+#cursor-dot::before,
+#cursor-dot::after {
+  content: '';
+  position: absolute;
+  background: #f97316;
+  border-radius: 1px;
+  opacity: 0.9;
+}
+
+#cursor-dot::before {
+  width: 1.5px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+#cursor-dot::after {
+  width: 100%;
+  height: 1.5px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+#cursor-dot .dot-center {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f97316;
+  border: none;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#cursor-dot.hovering {
+  width: 32px;
+  height: 32px;
+}
+
+#cursor-dot.hovering .dot-center {
+  width: 32px;
+  height: 32px;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid #f97316;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.15);
+}
+
+#cursor-dot.hovering::before,
+#cursor-dot.hovering::after {
+  opacity: 0;
+}
+
+/* ── Cursor Glow (Hero only) ── */
+#cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle,
+      rgba(249, 115, 22, 0.18) 0%,
+      rgba(249, 115, 22, 0.08) 30%,
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 5;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+#cursor-glow.visible {
+  opacity: 1;
+}
+
+/* ── Click Ripple ── */
+.click-ripple {
+  position: fixed;
+  border: 2px solid rgba(249, 115, 22, 0.95);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99997;
+  animation: lj-ripple-expand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+}
+
+@keyframes lj-ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ── FAQ 知识库：全展开阅读布局（faq.html，规范见 docs/FAQ知识库规范.md） ── */
+.kb-faq h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.kb-faq h2::before {
+  content: '';
+  width: 6px;
+  height: 1.5em;
+  border-radius: 3px;
+  background: #f97316;
+  flex-shrink: 0;
+}
+
+.kb-qa {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid #f97316;
+  background: #fafaf9;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.kb-qa:hover {
+  background: #fff7ed;
+  border-left-color: #ea580c;
+}
+
+.kb-q {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 0.5rem;
+}
+
+.kb-a {
+  color: #4b5563;
+  line-height: 1.7;
+  font-size: 0.9375rem;
+}
+
+.kb-a a {
+  color: #ea580c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

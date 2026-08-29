@@ -14,7 +14,7 @@
 
   window._swup = new Swup({
     containers: ['#swup'],
-    cache: true,
+    cache: false, // 禁用内存缓存：避免内容更新后跳转仍显示旧版页面（server 已 no-cache，每次导航 fetch 最新 HTML）
     animationSelector: false,
     animateHistoryBrowsing: false,
     linkSelector: 'a[href]:not([data-no-swup]):not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])',
@@ -41,6 +41,7 @@
     var isHome = path === '/';
     var isBlog = path === '/blog' || path.indexOf('/blog/') === 0;
     var isProduct = path.indexOf('/products/') === 0;
+    var isFaq = path === '/faq';
 
     function isActiveLink(href) {
       var hashIdx = href.indexOf('#');
@@ -54,6 +55,9 @@
       // Blog 页：高亮 Blog
       if (isBlog && hrefPath === '/blog') return true;
 
+      // FAQ 知识库页：高亮 FAQ
+      if (isFaq && hrefPath === '/faq') return true;
+
       // 首页且带 hash：高亮对应章节（#about / #why-us 等）
       if (isHome && hash && hrefPath === '/' && hrefHash === hash) return true;
 
@@ -61,7 +65,7 @@
       if (isHome && !hash && hrefPath === '/' && !hrefHash) return true;
 
       // 其他页面（如 privacy）：高亮 Home
-      if (!isHome && !isProduct && !isBlog && hrefPath === '/' && !hrefHash) return true;
+      if (!isHome && !isProduct && !isBlog && !isFaq && hrefPath === '/' && !hrefHash) return true;
 
       return false;
     }
@@ -150,6 +154,7 @@
     if (window.LJFormHandler && typeof window.LJFormHandler.init === 'function') window.LJFormHandler.init();
     if (window.LJBackToTop && typeof window.LJBackToTop.init === 'function') window.LJBackToTop.init();
     if (window.LJMobileMenu && typeof window.LJMobileMenu.init === 'function') window.LJMobileMenu.init();
+    if (window.LJScrollspy && typeof window.LJScrollspy.init === 'function') window.LJScrollspy.init();
   });
 
   /* ── 离开页面前结算当前页停留时长 ── */
@@ -176,4 +181,9 @@
   /* ── 首页内锚点跳转、浏览器前进/后退时同步高亮 ── */
   window.addEventListener('hashchange', scheduleUpdateActiveNav);
   window.addEventListener('popstate', scheduleUpdateActiveNav);
+
+  /* ── 滚动到页面顶部/底部等无 section 区域时，scrollspy 交还高亮权 ── */
+  window.addEventListener('lj:nav-restore', function () {
+    updateActiveNav();
+  });
 })();

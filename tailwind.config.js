@@ -6,6 +6,7 @@ module.exports = {
     './products/*.html',
     './blog/*.html',
     './privacy.html',
+    './faq.html',
     './assets/js/*.js',
   ],
   safelist: [
