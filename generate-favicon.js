@@ -1,20 +1,18 @@
 /**
  * favicon 全套生成脚本（规范见 docs/图片与图标规范.md）
- * 源图：素材/logo/82af49d3f9fcafdcc4f1eba70f5287f3.png
- * 布局：横排 logo——左侧 icon mark（方格网 + 勾花网双图形并排），右侧文字，白底。
+ * 源图：素材/logo/cd0c349dc641689fe23a5cf316d13c41.jpg
+ * 款式：深蓝圆角方形图标（左焊接网格 + 右链环纹），白底，无文字。
  * 原理：
- *   1) 全图找深色内容 bbox；
- *   2) 在 bbox 内按列统计深色像素，从右向左找第一条空白带（文字分隔带），
- *      其左侧即为 icon mark（含内部图形间距，忠于原设计）；
- *   3) 按尺寸渲染进方形白底画布，保持比例居中。
+ *   1) 全图找深色内容 bbox（方形图标，无文字）；
+ *   2) 按尺寸缩放居中渲染进白底画布。
  */
 const fs = require('fs');
 const sharp = require('sharp');
 // png-to-ico v2 为 ESM，CJS 脚本中用动态 import 兼容
 const pngToIco = (...args) => import('png-to-ico').then((m) => m.default(...args));
 
-const SRC = '素材/logo/82af49d3f9fcafdcc4f1eba70f5287f3.png';
-const DARK = 150; // 像素判定为"深色"的阈值（logo 深蓝约 RGB 51,59,77）
+const SRC = '素材/logo/cd0c349dc641689fe23a5cf316d13c41.jpg';
+const DARK = 150; // 深色判定阈值（logo 深蓝）
 const MIN_GAP = 3; // 列空白带最小宽度（px）
 
 async function extractIcon() {
@@ -26,7 +24,7 @@ async function extractIcon() {
     return data[i] < DARK || data[i + 1] < DARK || data[i + 2] < DARK;
   };
 
-  // 1) 全图内容 bbox
+  // 全图深色边界（方形图标，无文字，直接取紧致边界）
   let top = height, bottom = -1, left = width, right = -1;
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -38,25 +36,10 @@ async function extractIcon() {
       }
     }
   }
-  const bw = right - left + 1, bh = bottom - top + 1;
-
-  // 2) 内容区按列统计，从右向左找文字分隔带
-  const colDark = new Array(bw).fill(0);
-  for (let x = 0; x < bw; x++) {
-    for (let y = 0; y < bh; y++) if (isDark(left + x, top + y)) colDark[x]++;
-  }
-  let iconRight = bw - 1;
-  for (let x = bw - 1; x >= MIN_GAP; x--) {
-    let blank = 0;
-    while (colDark[x - blank] === 0 && x - blank >= 0) blank++;
-    if (blank >= MIN_GAP) { iconRight = x - blank; break; }
-    x -= blank;
-  }
 
   console.log(`content bbox: x=${left}..${right}, y=${top}..${bottom}`);
-  console.log(`icon mark: x=${left}..${left + iconRight}, w=${iconRight + 1}, h=${bh}`);
   return sharp(SRC).flatten({ background: '#ffffff' })
-    .extract({ left, top, width: iconRight + 1, height: bh })
+    .extract({ left, top, width: right - left + 1, height: bottom - top + 1 })
     .toBuffer();
 }
 
