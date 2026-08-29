@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0",
-    "sharp": "^0.33.0",
+    "sharp": "^0.35.4",
     "png-to-ico": "^2.1.8"
   }
 }
