@@ -29,7 +29,7 @@
   "url": "https://lianjiafence.com/",
   "logo": "https://lianjiafence.com/assets/img/lianjia-fence-logo.jpg",
   "email": "sales@lianjiafence.com",
-  "telephone": "+86-136-0318-1774",
+  "telephone": "+86-188-3280-8956",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Anping County",
